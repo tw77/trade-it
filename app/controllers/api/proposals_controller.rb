@@ -3,10 +3,12 @@ class Api::ProposalsController < ApplicationController
   
   def show
     @proposal = Assets_For_Trade_Proposal.find params[:id]
+    # render json: @proposal
   end
 
   def index
-    @proposals = Assets_For_Trade_Proposal.where(:users_id => params[:users_id])) 
+    @proposals = Assets_For_Trade_Proposal.where(:users_id => params[:users_id])
+    # render json: @proposals
   end
 
   def create
@@ -38,15 +40,6 @@ private
   end
 
   
-def create
-  @product = Product.new(product_params)
-
-  if @product.save
-    redirect_to [:admin, :products], notice: 'Product created!'
-  else
-    render :new
-  end
-end
 
 
 #  assets_for_trade_proposals
