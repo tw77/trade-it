@@ -1,8 +1,8 @@
 class CreateNeighbourhoods < ActiveRecord::Migration[5.2]
   def change
     create_table :neighbourhoods do |t|
-    t.references :cities, null: false, foreign_key: true
-    t.string :name
+      t.string :name
+      t.references :city, foreign_key: true
     end
   end
 end
