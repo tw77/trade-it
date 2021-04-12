@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_11_195952) do
+ActiveRecord::Schema.define(version: 2021_04_12_180451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,12 @@ ActiveRecord::Schema.define(version: 2021_04_11_195952) do
     t.string "name"
     t.text "description"
     t.string "picture"
-    t.bigint "owner_user_id"
-    t.bigint "storer_user_id"
-    t.index ["owner_user_id"], name: "index_assets_on_owner_user_id"
-    t.index ["storer_user_id"], name: "index_assets_on_storer_user_id"
+    t.bigint "owner_id"
+    t.bigint "storer_id"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_assets_on_category_id"
+    t.index ["owner_id"], name: "index_assets_on_owner_id"
+    t.index ["storer_id"], name: "index_assets_on_storer_id"
   end
 
   create_table "assets_for_trade_proposals", force: :cascade do |t|
@@ -93,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_195952) do
     t.string "password"
     t.text "bio"
     t.bigint "neighbourhood_id"
+    t.string "profile_picture"
     t.index ["neighbourhood_id"], name: "index_users_on_neighbourhood_id"
   end
 
@@ -104,8 +107,9 @@ ActiveRecord::Schema.define(version: 2021_04_11_195952) do
     t.index ["user_id"], name: "index_wishlist_assets_on_user_id"
   end
 
-  add_foreign_key "assets", "users", column: "owner_user_id"
-  add_foreign_key "assets", "users", column: "storer_user_id"
+  add_foreign_key "assets", "categories"
+  add_foreign_key "assets", "users", column: "owner_id"
+  add_foreign_key "assets", "users", column: "storer_id"
   add_foreign_key "assets_for_trade_proposals", "assets"
   add_foreign_key "assets_for_trade_proposals", "listings"
   add_foreign_key "assets_for_trade_proposals", "statuses"

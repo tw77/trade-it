@@ -4,8 +4,8 @@ class CreateAssets < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :description
       t.string :picture
-      t.references :owner_user, foreign_key: { to_table: :users }
-      t.references :storer_user, foreign_key: { to_table: :users }
+      t.references :owner, foreign_key: { to_table: :users }
+      t.references :storer, foreign_key: { to_table: :users }
       t.references :category, foreign_key: true
     end
   end

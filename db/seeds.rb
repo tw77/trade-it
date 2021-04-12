@@ -21,13 +21,19 @@ end
 
 # Let's do this ...
 
-## PROVINCES
-
-puts "Finding or Creating Provinces ..."
-
 Neighbourhood.destroy_all
 City.destroy_all
 Province.destroy_all
+User.destroy_all
+Asset.destroy_all
+Category.destroy_all
+Status.destroy_all
+Price_Range.destroy_all
+#Listing.destroy_all
+
+## PROVINCES
+
+puts "Finding or Creating Provinces ..."
 
 province1 = Province.find_or_create_by! name: 'Alberta'
 province2 = Province.find_or_create_by! name: 'British Columbia'
@@ -106,16 +112,217 @@ neighbourhood18 = city1.neighbourhoods.create! name: "Gastown"
 neighbourhood19 = city1.neighbourhoods.create! name: "Coal Harbour"
 neighbourhood20 = city1.neighbourhoods.create! name: "False Creek"
 
+## USERS
+
+puts "Re-creating Users ..."
+
+user1 = neighbourhood1.users.create!({
+  first_name: "Alice",
+  last_name: "K.",
+  email: "alice@k.com",
+  phone: "604-xxx-xxxx",
+  password: "alice",
+  bio: "Hey, I'm looking to make some trades. I love video games.",
+  profile_picture: "https://images.pexels.com/photos/1310522/pexels-photo-1310522.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+user2 = neighbourhood1.users.create!({
+  first_name: "Michael",
+  last_name: "L.",
+  email: "michael@l.com",
+  phone: "778-xxx-xxx",
+  password: "michael",
+  bio: "Hey, I'm Michael and I've live in Vancouver all my life and I like outdoor activities.",
+  profile_picture: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+})
+
+user3 = neighbourhood1.users.create!({
+  first_name: "Jenny",
+  last_name: "McDonald",
+  email: "jennymcdonald@gmail.com",
+  phone: "778-xxx-xxx",
+  password: "jenny",
+  bio: "Hi, I'm Jenny",
+  profile_picture: "https://images.pexels.com/photos/678783/pexels-photo-678783.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+user4 = neighbourhood5.users.create!({
+  first_name: "Charlie",
+  last_name: "Brown",
+  email: "charlie@brown.com",
+  phone: "604-xxx-xxx",
+  password: "charlie",
+  bio: "Hi, I'm Charlie and I'm passionate about photography and vintage cameras.",
+  profile_picture: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+user5 = neighbourhood5.users.create!({
+  first_name: "Daniel",
+  last_name: "K.",
+  email: "daniel@k.com",
+  phone: "604-xxx-xxx",
+  password: "daniel",
+  bio: "Hi, I'm Daniel and I'm originally from Australia. I want to furnish my new apartment in Mount Plesant.",
+  profile_picture: "https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+user6 = neighbourhood5.users.create!({
+  first_name: "Aly",
+  last_name: "L.",
+  email: "aly@l.com",
+  phone: "778-xxx-xxx",
+  password: "aly",
+  bio: "Hi, I'm Amy and I love plants.",
+  profile_picture: "https://images.pexels.com/photos/7218222/pexels-photo-7218222.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+user7 = neighbourhood7.users.create!({
+  first_name: "Amy",
+  last_name: "L.",
+  email: "amy@l.com",
+  phone: "778-xxx-xxx",
+  password: "amy",
+  bio: "Hi, I'm Amy and I love plants.",
+  profile_picture: "https://images.pexels.com/photos/943084/pexels-photo-943084.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+user8 = neighbourhood7.users.create!({
+  first_name: "Thomas",
+  last_name: "M.",
+  email: "thomas@m.com",
+  phone: "778-xxx-xxx",
+  password: "thomas",
+  bio: "Hi, I'm Thomas and I'm a musician.",
+  profile_picture: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+user9 = neighbourhood7.users.create!({
+  first_name: "Lucy",
+  last_name: "Evans",
+  email: "lucy@evans.com",
+  phone: "778-xxx-xxx",
+  password: "lucy",
+  bio: "Hi, I'm Lucy and I like yoga.",
+  profile_picture: "https://images.pexels.com/photos/1542085/pexels-photo-1542085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+
+## CATEGORIES
+
+puts "Re-creating Categories ..."
+
+cat1 = Category.find_or_create_by! name: "Electronics"
+cat2 = Category.find_or_create_by! name: "Clothing"
+cat3 = Category.find_or_create_by! name: "Books"
+cat4 = Category.find_or_create_by! name: "Furniture"
+cat5 = Category.find_or_create_by! name: "Appliances"
+cat6 = Category.find_or_create_by! name: "Cars"
+cat7 = Category.find_or_create_by! name: "Bicycles"
+cat8 = Category.find_or_create_by! name: "Carpets"
+cat9 = Category.find_or_create_by! name: "Plants"
+cat10 = Category.find_or_create_by! name: "Instruments"
+
+
+
+## ASSETS
+
+puts "Re-creating Assets ..."
+
+puts user3.id
+asset1 = cat2.assets.create!({
+  name: "Linen shirt, M",
+  description: "Rarely-worn light blue linen shirt, very comfortable",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.unsplash.com/photo-1598961942613-ba897716405b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1"
+})
+
+# asset2 = cat1.assets.create!({
+#   name: "Sony Over-Ear Noise Cancelling Headphones",
+#   description: "Noise-canceling headphones working well",
+#   owner_user_id: user4,
+#   storer_user_id: user4,
+#   picture: "https://images.unsplash.com/photo-1548378329-437e1ef34263?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=582&q=80"
+# })
+
+# asset3 = cat1.assets.create!({
+#   name: "Old school PSone",
+#   description: "Old school PSone with 9 games included(Tom Raider II, Spider-Man, Mega Man X4, Street Fighter, Gran Turismo, Resident Evil, Tekken 3, Crash Bandicoot, Tony Hawk's Pro Skater 2). It's working well!",
+#   owner_user_id: user1,
+#   storer_user_id: user1,
+#   picture: "https://images.unsplash.com/photo-1551219059-b5f8e7acee56?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+# })
+
+# asset4 = cat1.assets.create!({
+#   name: "Old school Game Boy Color",
+#   description: "Old school Game Boy Color with 5 games included(The Legend of Zelda, Pac-Man, Space Invaders, Star Wars, Top Gear Pocket). It's working well!",
+#   owner_user_id: user1,
+#   storer_user_id: user1,
+#   picture: "https://images.unsplash.com/photo-1525799894461-3cfe39b72d69?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+# })
+
+
+
+## PRICE RANGES
+
+puts "Re-creating Price Ranges ..."
+
+price_range1 = Price_Range.find_or_create_by! range: "$1 to $5"
+price_range2 = Price_Range.find_or_create_by! range: "$5 to $10"
+price_range3 = Price_Range.find_or_create_by! range: "$10 to $20"
+price_range4 = Price_Range.find_or_create_by! range: "$20 to $40"
+price_range5 = Price_Range.find_or_create_by! range: "$40 to $60"
+price_range6 = Price_Range.find_or_create_by! range: "$60 to $100"
+price_range7 = Price_Range.find_or_create_by! range: "$100 to $200"
+price_range8 = Price_Range.find_or_create_by! range: "$200 to $300"
+price_range9 = Price_Range.find_or_create_by! range: "$300 to $500"
+price_range10 = Price_Range.find_or_create_by! range: "$500 to $750"
+price_range11 = Price_Range.find_or_create_by! range: "$750 to $1000"
+price_range12 = Price_Range.find_or_create_by! range: "$1000 to $2000"
+price_range13 = Price_Range.find_or_create_by! range: "$2000 to $3000"
+price_range14 = Price_Range.find_or_create_by! range: "$3000 to $4000"
+price_range15 = Price_Range.find_or_create_by! range: "$4000 to $5000"
+price_range16 = Price_Range.find_or_create_by! range: "$5000 to $6000"
+price_range17 = Price_Range.find_or_create_by! range: "$7000 to $8000"
+price_range17 = Price_Range.find_or_create_by! range: "$8000 to $9000"
+price_range18 = Price_Range.find_or_create_by! range: "$9000 to $10,000"
+price_range18 = Price_Range.find_or_create_by! range: "$10,000+"
 
 
 
 
 
 
+## LISTINGS
+
+# listing1 = user3.listings.create({
+#   asset: asset1,
+#   price_range: price_range4
+# })
 
 
 
 
+## STATUSES
+
+puts "Re-creating Statuses ..."
+
+status1 = Status.find_or_create_by! name: "Pending"
+status2 = Status.find_or_create_by! name: "Declined"
+status3 = Status.find_or_create_by! name: "Accepted"
+status4 = Status.find_or_create_by! name: "Confirmed"
+status5 = Status.find_or_create_by! name: "Temporarily Withdrawn"
+
+
+
+
+## ASSETS FOR TRADE PROPOSALS
+
+
+
+
+## WISHLIST ASSETS
+
+
+
+
+
+## USER REVIEWS
 
 
 
