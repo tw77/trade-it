@@ -1,5 +1,6 @@
 class Asset < ApplicationRecord
-
+  has_one :listing, dependent: :destroy
+  has_many :proposals, dependent: :destroy
   belongs_to :category
   belongs_to :user, foreign_key: :owner_id
   belongs_to :user, foreign_key: :storer_id
