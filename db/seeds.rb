@@ -430,27 +430,27 @@ puts "Re-creating Reviews ..."
 
 review1 = user1.reviews.find_or_create_by!({  
   rating: 5,
-  review: "Alice was on time and the tennis rackets she gave me were in great condition"
+  content: "Alice was on time and the tennis rackets she gave me were in great condition"
 })
 
 review2 = user2.reviews.find_or_create_by!({  
   rating: 5,
-  review: "Michael dropped off his camera at my place minutes after I accepted his trade."
+  content: "Michael dropped off his camera at my place minutes after I accepted his trade."
 })
 
 review3 = user3.reviews.find_or_create_by!({  
   rating: 4,
-  review: "Jenny is very reliable, but the item was quite dirty."
+  content: "Jenny is very reliable, but the item was quite dirty."
 })
 
 review4 = user9.reviews.find_or_create_by!({  
   rating: 1,
-  review: "Lucy sold me a guitar that never stays in tune... I took it to a repair shop and they told me the fingerboard is damaged... and she had the audacity to claim that it was in excellent condition... please"
+  content: "Lucy sold me a guitar that never stays in tune... I took it to a repair shop and they told me the fingerboard is damaged... and she had the audacity to claim that it was in excellent condition... please"
 })
 
 review3 = user4.reviews.find_or_create_by!({  
   rating: 5,
-  review: "Charlie is great to deal with. It was a very nice experience. I will trade with him again for sure."
+  content: "Charlie is great to deal with. It was a very nice experience. I will trade with him again for sure."
 })
 
 puts "DONE!"
