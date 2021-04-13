@@ -352,15 +352,15 @@ status5 = Status.find_or_create_by! name: "Temporarily Withdrawn"
 
 puts "Re-creating Proposals ..."
 
-proposal1 = user1.proposals.find_or_create_by!({
-  listing_id: listing3.id,
-  asset_id: asset4.id,
+proposal1 = user2.proposals.find_or_create_by!({
+  listing_id: listing4.id,
+  asset_id: asset2.id,
   status_id: status1.id,
   message: "I'm very interested on your Game Boy! I used to have the same one when I was a kid :)"
 })
 
-proposal2 = user4.proposals.find_or_create_by!({
-  listing_id: listing2.id,
+proposal2 = user2.proposals.find_or_create_by!({
+  listing_id: listing5.id,
   asset_id: asset1.id,
   status_id: status1.id,
   message: "Hope to hear from you soon!"

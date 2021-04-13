@@ -1,33 +1,36 @@
 class Api::ListingsController < ApplicationController
 
   def create
-    @listing = Listing.new(listing_params)
+    puts "we are in the create method in Listings"
+    @listing = Listing.create!(listing_params)
+    # working
   end
   
   def index
-    @listings = Listing.all
-    # working
+    @listings = Asset.joins(:listing)
     render json: @listings
+    # working
   end
 
   def show
-    @listing = Listing.find params[:id]
-    # working
+    # @listing = Listing.find params[:id]
+    @listing = Asset.joins(:listing).where(listings: { asset_id: params[:id] })
     render json: @listing
+    # working
   end
 
   def update
+    puts listing_params.inspect
     @listing = Listing.find params[:id]
-    # not sure if we need to include the table columns to be updated
-    @listing.update
-    # attributes = listing_params.clone
-    # (conditional logic for updating here?)
-    # listing.update_attributes(attributes)
+    attributes = listing_params.clone
+    @listing.update_attributes(attributes)
+    # working
   end
 
   def destroy
     @listing = Listing.find params[:id]
     @listing.destroy
+    # working
   end
 
   private

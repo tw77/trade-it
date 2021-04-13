@@ -5,10 +5,11 @@ Rails.application.routes.draw do
 
     # get '/data', to: 'tests#index'
     
-    resources :listings, only: [:create, :index, :show, :update, :destroy]
+    resources :assets, only: [:create, :update, :destroy]
+    resources :listings
 
     resources :users, only: [:create, :show, :update] do
-        resources :profile, only: [:show, :index]
+        resources :profiles, only: [:show, :index]
         resources :wishes, only: [:index, :create, :destroy]
         resources :proposals
         # resource :suggestions

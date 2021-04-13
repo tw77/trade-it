@@ -19,7 +19,8 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-    @user.update
+    attributes = user_params.clone
+    @user.update_attributes(attributes)
   end
 
   private

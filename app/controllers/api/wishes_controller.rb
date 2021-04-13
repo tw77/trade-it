@@ -6,7 +6,7 @@ class Api::WishesController < ApplicationController
   end
 
   def create
-    @wish = Wish.new(wish_params)
+    @wish = Wish.create!(wish_params)
   end
 
   def destroy
