@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
     resources :users do
         resource :profile, only: [:show, :create]
-        resource :wishlist, only: [:index, :create, :destroy]
-        resource :add_listing, only: [:show, :create]
+        resource :wishlist, only: [:show, :create, :destroy]
+        resource :add_listing, only: [:create]
         resources :proposals do 
           resource :accepted_proposal, only: [:show]
         end

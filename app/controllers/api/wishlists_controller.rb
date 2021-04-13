@@ -1,25 +1,26 @@
 class Api::WishlistsController < ApplicationController
-  def index
-    @wishlist = Wishlist_Asset.where(:users_id => params[:users_id])
+  def show
+    @wish = Wish.where(:user_id => params[:user_id])
+    render json: @wish
   end
 
   def create
-    @wishlist_asset = Wishlist_Asset.new(wishlist_asset_params)
+    @wish = Wish.new(wish_params)
   end
 
   def destroy
-    @wishlist_asset = Wishlist_Asset.find params[:id]
-    @wishlist_asset.destroy
+    @wish = Wish.find params[:id]
+    @wish.destroy
     
   end
 
   private
 
-  def wishlist_asset_params
-    params.require(:wishlist_asset(
-      :name
-      :users_id
-      :categories_id
+  def wish_params
+    params.require(:wish).permit(
+      :name,
+      :user_id,
+      :category_id
     )
   end
 

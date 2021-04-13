@@ -1,6 +1,7 @@
 class Api::ListingsController < ApplicationController
   def index
-    @listings = Listing.all.order(created_at: :desc)
+    @listings = Listing.all
+    render json: @listings
   end
 
   # we have add_listing controller that does that
@@ -10,6 +11,7 @@ class Api::ListingsController < ApplicationController
 
   def show
     @listing = Listing.find params[:id]
+    render json: @listing
   end
 
   def update

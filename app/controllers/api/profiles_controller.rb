@@ -1,8 +1,11 @@
 class Api::ProfilesController < ApplicationController
   def show
-    @listings = Listing.where(:users_id => params[:users_id])
-    # @listings = Listing.where("key = ?", params[:key])
-    @reviews = User_Reviews.find params[:id]
+    @listings = Listing.where(:user_id => params[:user_id])
+    @reviews = Review.where(:user_id => params[:user_id])
+    @user = User.find(params[:user_id])
+    # render json: @listings
+    # render json: @reviews
+    render json: @user
   end
 
   def update

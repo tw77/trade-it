@@ -1,7 +1,5 @@
 class Api::AddListingsController < ApplicationController
-  def show  
-  end
-
+  
   def create
     @listing = Listing.new(listing_params)
   end
