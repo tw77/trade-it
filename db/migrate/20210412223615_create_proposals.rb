@@ -1,6 +1,6 @@
-class CreateAssetsForTradeProposals < ActiveRecord::Migration[5.2]
+class CreateProposals < ActiveRecord::Migration[5.2]
   def change
-    create_table :assets_for_trade_proposals do |t|
+    create_table :proposals do |t|
       t.text :message
       t.boolean :is_accepted
       t.datetime :date_accepted

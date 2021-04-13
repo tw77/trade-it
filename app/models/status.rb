@@ -1,5 +1,5 @@
 class Status < ApplicationRecord
-  has_many :assets_for_trade_proposals
+  has_many :proposals, dependent: :destroy
 
   validates :name, presence: true
 end
