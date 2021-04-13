@@ -1,26 +1,21 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: 'listings#index'
-
   namespace :api do # /api/data
 
     # get '/data', to: 'tests#index'
     
-    resources :listings, only: [:index, :show, :update, :destroy]
+    resources :listings, only: [:create, :index, :show, :update, :destroy]
 
-    resources :users do
-        resource :profile, only: [:show, :create]
-        resource :wishlist, only: [:show, :create, :destroy]
-        resource :add_listing, only: [:create]
-        resources :proposals do 
-          resource :accepted_proposal, only: [:show]
-        end
-        resource :suggestions
+    resources :users, only: [:create, :show, :update] do
+        resources :profile, only: [:show, :index]
+        resources :wishes, only: [:index, :create, :destroy]
+        resources :proposals
+        # resource :suggestions
+        resources :reviews, only: [:index, :create]
     end
 
     # these routes are for showing users a login form, logging them in, and logging them out.
-    get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
     get '/signup' => 'users#new'

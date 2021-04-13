@@ -1,16 +1,18 @@
 class Api::ListingsController < ApplicationController
+
+  def create
+    @listing = Listing.new(listing_params)
+  end
+  
   def index
     @listings = Listing.all
+    # working
     render json: @listings
   end
 
-  # we have add_listing controller that does that
-  # def create
-
-  # end
-
   def show
     @listing = Listing.find params[:id]
+    # working
     render json: @listing
   end
 
@@ -28,21 +30,16 @@ class Api::ListingsController < ApplicationController
     @listing.destroy
   end
 
+  private
 
-  # private
-  # 
-  # def listing_params
-  #   params.require(:listing(
-  #     :users_id
-  #     :assets_id
-  #     :name
-  #   )
-  # end
-
-
+  def listing_params
+    params.require(:listing).permit(
+      :user_id,
+      :asset_id,
+      :price_range_id
+    )
+  end
 end
-
-
 
 
 # user = User.find_by(name: 'David')

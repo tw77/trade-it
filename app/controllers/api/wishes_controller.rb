@@ -1,7 +1,8 @@
-class Api::WishlistsController < ApplicationController
-  def show
-    @wish = Wish.where(:user_id => params[:user_id])
-    render json: @wish
+class Api::WishesController < ApplicationController
+  def index
+    @wishes = Wish.where(:user_id => params[:user_id])
+    # working
+    render json: @wishes
   end
 
   def create

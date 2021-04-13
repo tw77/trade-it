@@ -1,10 +1,8 @@
 class Api::UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
 
   def show
     @user = User.find(params[:id])
+    # working
     render json: @user  
   end
 
@@ -19,7 +17,12 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  # private
+  def update
+    @user = User.find params[:id]
+    @user.update
+  end
+
+  private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :phone, :profile_picture, :bio, :province, :city, :neighbourhood, :password, :password_confirmation)

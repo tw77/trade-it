@@ -1,13 +1,14 @@
 class Api::ProposalsController < ApplicationController
   
-  
   def show
     @proposal = Proposal.find params[:id]
+    # working
     render json: @proposal
   end
 
   def index
     @proposals = Proposal.where(:user_id => params[:user_id])
+    # working
     render json: @proposals
   end
 
