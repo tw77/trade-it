@@ -1,7 +1,6 @@
 class Api::ListingsController < ApplicationController
 
   def create
-    puts "we are in the create method in Listings"
     @listing = Listing.create!(listing_params)
     # working
   end

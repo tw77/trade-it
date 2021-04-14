@@ -5,7 +5,6 @@ class Api::AssetsController < ApplicationController
   end
 
   def update
-    # puts asset_params.inspect
     @asset = Asset.find params[:id]
     attributes = asset_params.clone
     @asset.update_attributes(attributes)
