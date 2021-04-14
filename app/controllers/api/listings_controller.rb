@@ -13,14 +13,12 @@ class Api::ListingsController < ApplicationController
   end
 
   def show
-    # @listing = Listing.find params[:id]
     @listing = Asset.joins(:listing).where(listings: { asset_id: params[:id] })
     render json: @listing
     # working
   end
 
   def update
-    puts listing_params.inspect
     @listing = Listing.find params[:id]
     attributes = listing_params.clone
     @listing.update_attributes(attributes)
@@ -43,7 +41,3 @@ class Api::ListingsController < ApplicationController
     )
   end
 end
-
-
-# user = User.find_by(name: 'David')
-# user.update(name: 'Dave')

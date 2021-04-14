@@ -6,7 +6,7 @@ class Api::ProposalsController < ApplicationController
     @offeredListing = Asset.find_by(id: 2)
     # params[:listing_id]
 
-    # if you wanted more proposal info, you can do a joins after the find_by
+    # if we want more proposal info, we can do a joins after the find_by
     
     @entireProposal = {
       wanted: @wantedAsset,
@@ -19,24 +19,16 @@ class Api::ProposalsController < ApplicationController
   def index
     @proposals = Proposal.where(:user_id => params[:user_id])
 
-    # @Allproposals.
+    @proposals.each { |p| puts p.inspect }
+    # for each proposal, find asset_id and listing_id, then do the same as in the show method above
+    # return an array of @entireProposal objects
 
-    # @Allproposals = {
-    #   @entireProposal = {
-    #   wanted: @wantedAsset,
-    #   offered: @offeredListing
-    # },
-    #   @entireProposal = {
-    #     wanted: @wantedAsset,
-    #     offered: @offeredListing
-    #   }
-    # }
 
-    # @listings = Asset.joins(:listing).select('assets.id, assets.name, assets.picture').where(listings: { user_id: params[:user_id] })
-    # @proposals = Asset.joins(:listing).
+    # this works, for reference....
+    # hash = { thing1: 300, thing2: 200 }
+    # hash.each { |key,value| puts "#{key} price is #{value}" } 
+
     render json: @proposals
-
-
   end
 
   def create

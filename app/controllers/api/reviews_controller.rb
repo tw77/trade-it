@@ -1,11 +1,10 @@
 class Api::ReviewsController < ApplicationController
   
   def create
-    puts "We are in create method Reviews"
     puts "inspecting the review params..."
     puts review_params.inspect
-    @review = Review.create!(eval_params)
-
+    @review = Review.create!(review_params)
+    # working now
   end
   
   def index
@@ -20,7 +19,7 @@ class Api::ReviewsController < ApplicationController
     params.require(:review).permit(
       :rating,
       :user_id,
-      :review
+      :content
     )
   end
 

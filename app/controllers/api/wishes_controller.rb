@@ -12,7 +12,6 @@ class Api::WishesController < ApplicationController
   def destroy
     @wish = Wish.find params[:id]
     @wish.destroy
-    
   end
 
   private
