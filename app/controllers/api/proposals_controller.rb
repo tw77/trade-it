@@ -1,28 +1,46 @@
 class Api::ProposalsController < ApplicationController
   
-  
   def show
-    @proposal = Assets_For_Trade_Proposal.find params[:id]
-    # render json: @proposal
+    # e.g. localhost:3000/api/users/4/proposals/2
+
+    @proposalInfo = Proposal.find(2)
+    # params[:proposal_id]
+
+    @entireProposal = @proposalInfo
+                      .attributes
+                      .update({:wanted => @proposalInfo.asset})
+                      .update({:offered => @proposalInfo.listing.asset})
+    
+    render json: @entireProposal
   end
 
+
   def index
-    @proposals = Assets_For_Trade_Proposal.where(:users_id => params[:users_id])
-    # render json: @proposals
+    # e.g. localhost:3000/api/users/2/proposals
+
+    @proposals = Proposal.where(:user_id => params[:user_id])
+
+    @proposals = @proposals.map do |p| 
+      @entireProposal = p.attributes
+      @entireProposal.update({:wanted => p.asset})
+      @entireProposal.update({:offered => p.listing.asset})
+    end
+  
+    render json: @proposals
   end
 
   def create
-    @proposal = Assets_For_Trade_Proposal.new(proposal_params)
+    @proposal = Proposal.create!(proposal_params)
   end
-  
+
   def update
-    @proposal = Assets_For_Trade_Proposal.find params[:id]
-    # not sure if we need to include the table columns to be updated
-    @proposal.update
+    @proposal = Proposal.find params[:id]
+    attributes = proposal_params.clone
+    @proposal.update_attributes(attributes)
   end
 
   def destroy
-    @proposal = Assets_For_Trade_Proposal.find params[:id]
+    @proposal = Proposal.find params[:id]
     @proposal.destroy
   end
 end
@@ -31,18 +49,10 @@ private
 
   def proposal_params
     params.require(:proposal).permit(
-      :listings_id,
-      :users_id,
-      :assets_id,
-      :statuses_id,
+      :listing_id,
+      :user_id,
+      :asset_id,
+      :status_id,
       :message
     )
   end
-
-  
-
-
-#  assets_for_trade_proposals
-#  id | listings_id | users_id | assets_id | statuses_id | message | is_accepted | date_accepted 
-# ----+-------------+----------+-----------+-------------+---------+-------------+---------------
-# 

@@ -1,12 +1,14 @@
 class Api::ProfilesController < ApplicationController
   def show
-    @listings = Listing.where(:users_id => params[:users_id])
-    # @listings = Listing.where("key = ?", params[:key])
-    @reviews = User_Reviews.find params[:id]
+    @user = User.find(params[:user_id])
+    # working
+    render json: @user
   end
 
-  def update
-    @user = User.find params[:id]
-    @user.update
+  def index
+    @listings = Asset.joins(:listing).select('assets.id, assets.name, assets.picture').where(listings: { user_id: params[:user_id] })
+    # working
+    render json: @listings
   end
+
 end
