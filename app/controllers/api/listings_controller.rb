@@ -1,47 +1,43 @@
 class Api::ListingsController < ApplicationController
+
+  def create
+    puts "we are in the create method in Listings"
+    @listing = Listing.create!(listing_params)
+    # working
+  end
+  
   def index
-    @listings = Listing.all.order(created_at: :desc)
+    @listings = Asset.joins(:listing)
+    render json: @listings
+    # working
   end
 
-  # we have add_listing controller that does that
-  # def create
-
-  # end
-
   def show
-    @listing = Listing.find params[:id]
+    @listing = Asset.joins(:listing).where(listings: { asset_id: params[:id] })
+    render json: @listing
+    # working
   end
 
   def update
     @listing = Listing.find params[:id]
-    # not sure if we need to include the table columns to be updated
-    @listing.update
-    # attributes = listing_params.clone
-    # (conditional logic for updating here?)
-    # listing.update_attributes(attributes)
+    attributes = listing_params.clone
+    @listing.update_attributes(attributes)
+    # working
   end
 
   def destroy
     @listing = Listing.find params[:id]
     @listing.destroy
+    # working
   end
 
+  private
 
-  # private
-  # 
-  # def listing_params
-  #   params.require(:listing(
-  #     :users_id
-  #     :assets_id
-  #     :name
-  #   )
-  # end
-
-
+  def listing_params
+    params.require(:listing).permit(
+      :user_id,
+      :asset_id,
+      :price_range_id
+    )
+  end
 end
-
-
-
-
-# user = User.find_by(name: 'David')
-# user.update(name: 'Dave')

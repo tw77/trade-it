@@ -1,28 +1,48 @@
 class Api::ProposalsController < ApplicationController
   
-  
   def show
-    @proposal = Assets_For_Trade_Proposal.find params[:id]
-    # render json: @proposal
+    @wantedAsset = Asset.find_by(id: 1)
+    # params[:asset_id]
+    @offeredListing = Asset.find_by(id: 2)
+    # params[:listing_id]
+
+    # if we want more proposal info, we can do a joins after the find_by
+    
+    @entireProposal = {
+      wanted: @wantedAsset,
+      offered: @offeredListing
+    }
+    render json: @entireProposal
   end
 
+
   def index
-    @proposals = Assets_For_Trade_Proposal.where(:users_id => params[:users_id])
-    # render json: @proposals
+    @proposals = Proposal.where(:user_id => params[:user_id])
+
+    @proposals.each { |p| puts p.inspect }
+    # for each proposal, find asset_id and listing_id, then do the same as in the show method above
+    # return an array of @entireProposal objects
+
+
+    # this works, for reference....
+    # hash = { thing1: 300, thing2: 200 }
+    # hash.each { |key,value| puts "#{key} price is #{value}" } 
+
+    render json: @proposals
   end
 
   def create
-    @proposal = Assets_For_Trade_Proposal.new(proposal_params)
+    @proposal = Proposal.create!(proposal_params)
   end
-  
+
   def update
-    @proposal = Assets_For_Trade_Proposal.find params[:id]
-    # not sure if we need to include the table columns to be updated
-    @proposal.update
+    @proposal = Proposal.find params[:id]
+    attributes = proposal_params.clone
+    @proposal.update_attributes(attributes)
   end
 
   def destroy
-    @proposal = Assets_For_Trade_Proposal.find params[:id]
+    @proposal = Proposal.find params[:id]
     @proposal.destroy
   end
 end
@@ -31,18 +51,10 @@ private
 
   def proposal_params
     params.require(:proposal).permit(
-      :listings_id,
-      :users_id,
-      :assets_id,
-      :statuses_id,
+      :listing_id,
+      :user_id,
+      :asset_id,
+      :status_id,
       :message
     )
   end
-
-  
-
-
-#  assets_for_trade_proposals
-#  id | listings_id | users_id | assets_id | statuses_id | message | is_accepted | date_accepted 
-# ----+-------------+----------+-----------+-------------+---------+-------------+---------------
-# 
