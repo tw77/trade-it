@@ -6,11 +6,16 @@ class Api::ProposalsController < ApplicationController
     @offeredListing = Asset.find_by(id: 2)
     # params[:listing_id]
 
-    # if we want more proposal info, we can do a joins after the find_by
+    
+    # if we want more proposal info, we can do a joins after the find_by  
+
+    @proposalInfo = Proposal.where(id: 2).select("message, status_id, is_accepted, date_accepted")
+    # params[:proposal_id]
     
     @entireProposal = {
       wanted: @wantedAsset,
-      offered: @offeredListing
+      offered: @offeredListing,
+      info: @proposalInfo
     }
     render json: @entireProposal
   end
