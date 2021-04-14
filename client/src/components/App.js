@@ -16,9 +16,9 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 // import MenuIcon from '@material-ui/core/Menu'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import MyWishlist from "./MyWishlist";
-// import MySuggestions from "./MySuggestions";
-// import MyProposals from "./MyProposals";
-// import AddNewItem from "./AddNewItem";
+import MySuggestions from "./MySuggestions";
+import MyProposals from "./MyProposals";
+import AddNewItem from "./AddNewItem";
 import Listings from "./Listings";
 // import Profile from "./Profile";
 // import Listing from "./Listing";
@@ -30,6 +30,7 @@ const useStyles = makeStyles({
     backgroundColor: '#E0E0E0',
     bottom: 0,
     position: 'fixed',
+    width: '100%',
   }
 });
 
@@ -45,17 +46,8 @@ export default function App() {
     setValue(newValue)
   }
 
-  
-
-  
-
-
-
-// <Route path="/suggestions" component={MySuggestions} />
-// <Route exact path="/proposals" component={MyProposals} />
-// <Route path="/add" component={AddNewItem} />
 // <Route path="/profile" component={Profile} /> 
-// <Route exact path="/listing" component={Listing} />
+// <Route path="/listing" component={Listing} />
 // <Route path="/offer" component={ProposeTrade} />
 // <Route path="/accepted" component={AcceptedProposal} />
 
@@ -64,8 +56,8 @@ export default function App() {
   return (
     <>
       <Router>
-      {/* <Container maxWidth="xs"> */}
-      <div className="App">
+      <Container maxWidth="xs">
+      <div className="App" >
         <header className="App-header">
           <AppBar>
               <Toolbar className="Toolbar">
@@ -80,8 +72,11 @@ export default function App() {
         </header> 
         <section>
             <Switch>
-            <Route path="/" component={Listings} />
             <Route path="/wishlist" component={MyWishlist} />
+            <Route path="/suggestions" component={MySuggestions} />
+            <Route path="/proposals" component={MyProposals} />
+            <Route path="/add" component={AddNewItem} />
+            <Route path="/" component={Listings} />
             </Switch>
         </section>
 
@@ -89,20 +84,21 @@ export default function App() {
         <footer>
           <BottomNavigation
             className={classes.root}
-            showLabels
+            // showLabels
             value={value}
             onChange={(event, newValue) => handleChange(event, newValue)}
+            // style={{height: '40px',width: '15px'}}
             
           >
             <BottomNavigationAction component={Link} to="/" label="Search" icon={<SearchIcon />} />
             <BottomNavigationAction component={Link} to="/wishlist" label="My Wishlist" icon={<FavoriteBorderIcon />} />
-            <BottomNavigationAction label="My Suggestions" icon={<EmojiObjectsIcon />} />
-            <BottomNavigationAction label="My Proposals" icon={<AutorenewIcon />} />
-            <BottomNavigationAction label="Add New itel"  icon={<AddCircleOutlineIcon />} />
+            <BottomNavigationAction component={Link} to="/suggestions" label="My Suggestions" icon={<EmojiObjectsIcon />} />
+            <BottomNavigationAction component={Link} to="/proposals" label="My Proposals" icon={<AutorenewIcon />} />
+            <BottomNavigationAction component={Link} to="/add" label="Add New itel"  icon={<AddCircleOutlineIcon />} />
           </BottomNavigation>
         </footer>
       </div> 
-      {/* </Container> */}
+      </Container>
       </Router>
 
     </>

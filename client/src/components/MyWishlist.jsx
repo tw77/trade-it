@@ -1,7 +1,28 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  whishlistContainer: {
+    paddingTop: "50px",
+    paddingLeft: "3px",
+    paddingRight: "3px",
+  }
+});
 
 export default function MyWishlist() {
+  const classes = useStyles();
+  const fakeWishesDataForUser = [
+    {
+      "id": 1,
+      "name": "Bluetooth speakers",
+      "category_id": 1,
+      "user_id": 1
+    }
+  ];
+
+  console.log('wishlist');
+
   // const {userId} = useParams();
 
   // useEffect(() => {
@@ -15,8 +36,10 @@ export default function MyWishlist() {
   // function removeWish(){};
     
   return (
-    <div>
-      <h2>My Wishlist</h2>
-    </div>
+    <>
+      <h2
+        className={classes.whishlistContainer}
+      >My Wishlist</h2>
+    </>
   )
 }

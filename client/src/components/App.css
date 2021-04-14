@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  max-height: 736;
+  max-height: 400;
+  margin:0;
   /* background-color: #dfe3ed; */
 }
 
