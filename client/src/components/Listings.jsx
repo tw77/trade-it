@@ -41,10 +41,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Listings(props) {
   const classes = useStyles();
-  const { history } = props;
   const [filter, setFilter] = useState();
 
   (props.listings.length > 0) ? console.log('props.listings', props.listings) : console.log('loading');
+
+  const handleSearchChange = (e) => {
+    setFilter(e.target.value.toLowerCase());
+  };
 
   function getListingCard(listingsId, name, picture) {
 
@@ -98,7 +101,12 @@ export default function Listings(props) {
         <Container className={classes.cardGrid} maxWidth="md">
           
       <Grid container spacing={4}>
-          {props.listings.map(item => getListingCard(item.id, item.name, item.picture))}
+          {props.listings.map(item =>
+            (
+              (item.name.toLowerCase().includes(filter) && (item.category_id <= 10))
+              || (!filter)
+            )
+            && getListingCard(item.id, item.name, item.picture))}
           
 
       </Grid>
