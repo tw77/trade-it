@@ -24,6 +24,8 @@ import Profile from "./Profile";
 import Listing from "./Listing";
 import Login from './Login'
 import Register from './Register'
+import DropDownMenu from './DropDownMenu'
+import ProposeTrade from "./ProposeTrade";
 // import ProposeTrade from "./ProposeTrade";
 // import AcceptedProposal from "./AcceptedProposal";
 // import { createBrowserHistory } from 'history';
@@ -32,10 +34,13 @@ const useStyles = makeStyles({
     backgroundColor: '#E0E0E0',
     bottom: 0,
     left: "0px",
+    // paddingTop: "30px",
     right: "0px",
     position: 'fixed',
+    justifyContent: 'center',
     height: '70px',
     width: '100%',
+    display: 'flex',
     "& .MuiBottomNavigationAction-root": {
       "@media (max-width: 736px)": {
         minWidth: "auto",
@@ -74,19 +79,19 @@ export default function App() {
             className={classes.root}
           >
             <Toolbar className="Toolbar">
-              <Typography variant="h3">
-                  <p className='Pagetitle'>Trade It</p>
+              <Typography variant="h3" className='Pagetitle'>
+                Trade It
               </Typography>
-              <IconButton className="Account-button">
-                <AccountCircleIcon fontSize="large"/>   
-              </IconButton>
+              <DropDownMenu className="DropDown"/>  
             </Toolbar>
           </AppBar>  
         </header> 
         <section>
               
           <Switch>
+                
               <Route exact path="/login" component={Login} />
+              <Route exact path="/offer" component={ProposeTrade} />
               <Route exact path="/register" component={Register} />  
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/wishlist" component={MyWishlist} />
@@ -104,13 +109,12 @@ export default function App() {
         </section>
 
 
-        <footer>
+        <footer style={{ zIndex: "999999" }}>
           <BottomNavigation
             className={classes.root}
             showLabels
             value={value}
             onChange={(event, newValue) => handleChange(event, newValue)}
-            // style={{height: '40px',width: '414px'}}
             
           >
             <BottomNavigationAction component={Link} to="/" label="Search" icon={<SearchIcon />} />
