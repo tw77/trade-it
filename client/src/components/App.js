@@ -93,6 +93,7 @@ export default function App() {
               <Route exact path="/suggestions" component={MySuggestions} />
               <Route exact path="/proposals" component={MyProposals} />
               <Route exact path="/add" component={AddNewItem} />
+              <Route exact path="/" render={(props) => <Listings {...props}/>}  />
               <Route exact path="/listings" render={(props) => <Listings {...props}/>}  />
               <Route
                   exact
