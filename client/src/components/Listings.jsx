@@ -1,5 +1,5 @@
 import React , { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { Grid, Card, CardContent, AppBar, Toolbar, CircularProgress, Typography, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Listings(props) {
   const classes = useStyles();
   const [filter, setFilter] = useState();
+  const history = useHistory();
 
   (props.listings.length > 0) ? console.log('props.listings', props.listings) : console.log('loading');
 
