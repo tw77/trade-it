@@ -57,12 +57,6 @@ export default function App() {
     setValue(newValue)
   }
 
-// <Route path="/profile" component={Profile} /> 
-// <Route path="/listing" component={Listing} />
-// <Route path="/offer" component={ProposeTrade} />
-// <Route path="/accepted" component={AcceptedProposal} />
-
-
 
   return (
     <>
@@ -77,7 +71,7 @@ export default function App() {
               <Typography variant="h3">
                   <p className='Pagetitle'>Trade It</p>
               </Typography>
-              <IconButton className="Account-button">
+              <IconButton className="Account-button" component={Link} to="/profile">
                 <AccountCircleIcon fontSize="large"/>   
               </IconButton>
             </Toolbar>
