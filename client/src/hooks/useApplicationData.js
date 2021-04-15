@@ -14,6 +14,7 @@ export default function useApplicationData() {
     }],
   });
 
+
   const userId = 2;
   // for right now
 

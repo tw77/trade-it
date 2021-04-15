@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 export default function Listing(props) {
   const classes = useStyles();
   const { listingId } = useParams();
-
+  const { match } = props;
   const [listingData, setlistingData] = useState()
 
   useEffect(() => {
@@ -39,6 +39,7 @@ export default function Listing(props) {
   }, [listingId]);
 
   const generateListingJSX = () => {
+    // const { id } = listingData;
     return (
     <>
       {listingData ? (
@@ -73,7 +74,6 @@ export default function Listing(props) {
     </>
     )
   }
-
 
   console.log('listing number' + listingId);
 

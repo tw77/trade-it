@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+
 export default function Profile(props) {
   const classes = useStyles();
   // const {userId} = useParams(); <--- would this be replaced by useState or no?
@@ -164,7 +165,6 @@ export default function Profile(props) {
       <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
         Something here to give the footer a purpose!
       </Typography>
-      {/* <Copyright /> */}
     </footer>
     {/* End footer */}
   </React.Fragment>

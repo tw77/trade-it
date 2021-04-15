@@ -15,6 +15,8 @@ import IconButton from '@material-ui/core/IconButton'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 // import MenuIcon from '@material-ui/core/Menu'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+
+
 import useApplicationData from "../hooks/useApplicationData";
 import MyWishlist from "./MyWishlist";
 import MySuggestions from "./MySuggestions";
@@ -25,6 +27,9 @@ import Profile from "./Profile";
 import Listing from "./Listing";
 import Login from './Login'
 import Register from './Register'
+import DropDownMenu from './DropDownMenu'
+import ProposeTrade from "./ProposeTrade";
+
 // import ProposeTrade from "./ProposeTrade";
 // import AcceptedProposal from "./AcceptedProposal";
 // import { createBrowserHistory } from 'history';
@@ -33,6 +38,13 @@ const useStyles = makeStyles({
     backgroundColor: '#E0E0E0',
     bottom: 0,
     left: "0px",
+    // paddingTop: "30px",
+    right: "0px",
+    position: 'fixed',
+    justifyContent: 'center',
+    height: '70px',
+    width: '100%',
+    display: 'flex',
     right: "0px",
     position: 'fixed',
     height: '70px',
@@ -70,6 +82,10 @@ export default function App() {
             className={classes.root}
           >
             <Toolbar className="Toolbar">
+              <Typography variant="h3" className='Pagetitle'>
+                Trade It
+              </Typography>
+              <DropDownMenu className="DropDown"/>  
               <Typography variant="h3">
                   <p className='Pagetitle'>Trade It</p>
               </Typography>
@@ -81,6 +97,8 @@ export default function App() {
         </header> 
         <section>
               
+       
+        <footer style={{ zIndex: "999999" }}>
         <Switch>
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />  

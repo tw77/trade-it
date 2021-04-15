@@ -11,6 +11,10 @@ const useStyles = makeStyles({
   }
 });
 
+export default function MyProposals() {
+  const classes = useStyles();
+  
+
 export default function MyProposals(props) {
   const classes = useStyles();
 
@@ -27,6 +31,7 @@ export default function MyProposals(props) {
   // function cancelOrRemove(){};
 
   // "View" button links to {AcceptedProposal}
+
 
   console.log('props.proposals', props.proposals);
     

@@ -41,6 +41,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Listings(props) {
   const classes = useStyles();
+  const { history } = props;
+  const [filter, setFilter] = useState()
+  const { state } = useApplicationData();
+
+  function getListingCard(listingsId, name, picture) {
+  
   const [filter, setFilter] = useState();
   const history = useHistory();
 
@@ -66,14 +72,6 @@ export default function Listings(props) {
               <Typography gutterBottom variant="h6" component="h2">
                 {name}</Typography>
             </CardContent>
-            {/* <CardActions>
-              <Button size="small" color="primary">
-                View
-              </Button>
-              <Button size="small" color="primary">
-                Edit
-              </Button>
-            </CardActions> */}
           </Card>
           </Grid>
          
