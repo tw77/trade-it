@@ -3,10 +3,10 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Grid, Card, CardContent, AppBar, Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-// import useApplicationData from "../hooks/useApplicationData";
+import useApplicationData from "../hooks/useApplicationData";
 
-// const { state } = useApplicationData();
-// console.log(state.listings);
+
+// listingId = 2 for now
 
 const fakeListingsData = [
   {
@@ -65,9 +65,11 @@ const useStyles = makeStyles({
   }
 });
 
+//2 = to be replaced with listingId
 const getListingCard = () => {
+  console.log(getListingCard[2]) //We will need a number
   return (
-    <Grid item>
+    <Grid item xs={4} key={2}>
       <Card>
         <CardContent style={{height: '100px',width: '100px'}}>
           Listing 1
@@ -78,7 +80,21 @@ const getListingCard = () => {
 }
 
 export default function Listings() {
+  const { state } = useApplicationData();
+  console.log('state right now', state);
+  // const [state, setState]  = useApplicationData();
+  console.log('fake data id', fakeListingsData[2].id)
+  console.log('id', state.listings[0].id);
+  
   const classes = useStyles();
+
+  // const {id, name, picture} = state.listings[2]
+
+  // const id = state.listings[2].id
+  // const name = state.listings[2].name
+  // const picture = state.listings[2].picture
+
+  // Object.keys(state.listings).map(listingId => getListingCard(listingId))
   
   return (
     <>

@@ -21,7 +21,7 @@ import MyProposals from "./MyProposals";
 import AddNewItem from "./AddNewItem";
 import Listings from "./Listings";
 // import Profile from "./Profile";
-// import Listing from "./Listing";
+import Listing from "./Listing";
 // import ProposeTrade from "./ProposeTrade";
 // import AcceptedProposal from "./AcceptedProposal";
 // import { createBrowserHistory } from 'history';
@@ -29,8 +29,17 @@ const useStyles = makeStyles({
   root: {
     backgroundColor: '#E0E0E0',
     bottom: 0,
+    left: "0px",
+    right: "0px",
     position: 'fixed',
+    height: '70px',
     width: '100%',
+    "& .MuiBottomNavigationAction-root": {
+      "@media (max-width: 736px)": {
+        minWidth: "auto",
+        padding: "6px 0"
+      }
+    }
   }
 });
 
@@ -56,27 +65,30 @@ export default function App() {
   return (
     <>
       <Router>
-      <Container maxWidth="xs">
+      <Container maxWidth="s">
       <div className="App" >
         <header className="App-header">
-          <AppBar>
-              <Toolbar className="Toolbar">
-                <Typography variant="h3">
-                  Trade It
-                </Typography>
-                <IconButton className="Account-button">
-                  <AccountCircleIcon fontSize="large"/>   
-                </IconButton>
-              </Toolbar>
+          <AppBar
+            className={classes.root}
+          >
+            <Toolbar className="Toolbar">
+              <Typography variant="h3">
+                  <p className='Pagetitle'>Trade It</p>
+              </Typography>
+              <IconButton className="Account-button">
+                <AccountCircleIcon fontSize="large"/>   
+              </IconButton>
+            </Toolbar>
           </AppBar>  
         </header> 
-        <section>
+          <section>
             <Switch>
-            <Route path="/wishlist" component={MyWishlist} />
-            <Route path="/suggestions" component={MySuggestions} />
-            <Route path="/proposals" component={MyProposals} />
-            <Route path="/add" component={AddNewItem} />
-            <Route path="/" component={Listings} />
+              <Route path="/wishlist" component={MyWishlist} />
+              <Route path="/suggestions" component={MySuggestions} />
+              <Route path="/proposals" component={MyProposals} />
+              <Route path="/add" component={AddNewItem} />
+              <Route exact path="/listings/:listingId" component={Listing} />
+              <Route path="/" component={Listings} />
             </Switch>
         </section>
 
@@ -84,17 +96,17 @@ export default function App() {
         <footer>
           <BottomNavigation
             className={classes.root}
-            // showLabels
+            showLabels
             value={value}
             onChange={(event, newValue) => handleChange(event, newValue)}
-            // style={{height: '40px',width: '15px'}}
+            // style={{height: '40px',width: '414px'}}
             
           >
             <BottomNavigationAction component={Link} to="/" label="Search" icon={<SearchIcon />} />
-            <BottomNavigationAction component={Link} to="/wishlist" label="My Wishlist" icon={<FavoriteBorderIcon />} />
-            <BottomNavigationAction component={Link} to="/suggestions" label="My Suggestions" icon={<EmojiObjectsIcon />} />
-            <BottomNavigationAction component={Link} to="/proposals" label="My Proposals" icon={<AutorenewIcon />} />
-            <BottomNavigationAction component={Link} to="/add" label="Add New itel"  icon={<AddCircleOutlineIcon />} />
+            <BottomNavigationAction component={Link} to="/wishlist" label="Wishlist" icon={<FavoriteBorderIcon />} />
+            <BottomNavigationAction component={Link} to="/suggestions" label="Suggestions" icon={<EmojiObjectsIcon />} />
+            <BottomNavigationAction component={Link} to="/proposals" label="Proposals" icon={<AutorenewIcon />} />
+            <BottomNavigationAction component={Link} to="/add" label="New item"  icon={<AddCircleOutlineIcon />} />
           </BottomNavigation>
         </footer>
       </div> 

@@ -5,6 +5,10 @@
   /* background-color: #dfe3ed; */
 }
 
+.Pagetitle {
+  color: #686868;
+}
+
 .App-header {
   display: flex;
   flex-direction: column;
