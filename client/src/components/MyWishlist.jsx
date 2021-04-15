@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
-  whishlistContainer: {
-    paddingTop: "50px",
+  wishlistContainer: {
+    paddingTop: "60px",
     paddingLeft: "3px",
     paddingRight: "3px",
   }
@@ -38,7 +38,7 @@ export default function MyWishlist() {
   return (
     <>
       <h2
-        className={classes.whishlistContainer}
+        className={classes.wishlistContainer}
       >My Wishlist</h2>
     </>
   )

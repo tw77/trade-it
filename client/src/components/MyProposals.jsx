@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   proposalsContainer: {
-    paddingTop: "50px",
+    paddingTop: "60px",
     paddingLeft: "3px",
     paddingRight: "3px",
   }
