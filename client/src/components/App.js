@@ -15,6 +15,9 @@ import IconButton from '@material-ui/core/IconButton'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 // import MenuIcon from '@material-ui/core/Menu'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+
+
+import useApplicationData from "../hooks/useApplicationData";
 import MyWishlist from "./MyWishlist";
 import MySuggestions from "./MySuggestions";
 import MyProposals from "./MyProposals";
@@ -26,6 +29,7 @@ import Login from './Login'
 import Register from './Register'
 import DropDownMenu from './DropDownMenu'
 import ProposeTrade from "./ProposeTrade";
+
 // import ProposeTrade from "./ProposeTrade";
 // import AcceptedProposal from "./AcceptedProposal";
 // import { createBrowserHistory } from 'history';
@@ -41,6 +45,10 @@ const useStyles = makeStyles({
     height: '70px',
     width: '100%',
     display: 'flex',
+    right: "0px",
+    position: 'fixed',
+    height: '70px',
+    width: '100%',
     "& .MuiBottomNavigationAction-root": {
       "@media (max-width: 736px)": {
         minWidth: "auto",
@@ -53,6 +61,7 @@ const useStyles = makeStyles({
 
 
 export default function App() {
+  const { state } = useApplicationData();
 
   const classes = useStyles();
 
@@ -61,12 +70,6 @@ export default function App() {
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
-
-// <Route path="/profile" component={Profile} /> 
-// <Route path="/listing" component={Listing} />
-// <Route path="/offer" component={ProposeTrade} />
-// <Route path="/accepted" component={AcceptedProposal} />
-
 
 
   return (
@@ -83,38 +86,42 @@ export default function App() {
                 Trade It
               </Typography>
               <DropDownMenu className="DropDown"/>  
+              <Typography variant="h3">
+                  <p className='Pagetitle'>Trade It</p>
+              </Typography>
+              <IconButton className="Account-button" component={Link} to="/profile">
+                <AccountCircleIcon fontSize="large"/>   
+              </IconButton>
             </Toolbar>
           </AppBar>  
         </header> 
         <section>
               
-          <Switch>
-                
+       
+        <footer style={{ zIndex: "999999" }}>
+        <Switch>
               <Route exact path="/login" component={Login} />
-              <Route exact path="/offer" component={ProposeTrade} />
               <Route exact path="/register" component={Register} />  
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/wishlist" component={MyWishlist} />
-              <Route exact path="/suggestions" component={MySuggestions} />
-              <Route exact path="/proposals" component={MyProposals} />
+              <Route exact path="/profile"> <Profile listingsByUser={state.listingsByUser} reviews={state.reviews} /> </Route>
+              <Route exact path="/wishlist"> <MyWishlist wishes={state.wishes} /> </Route>
+              <Route exact path="/suggestions">
+                <MySuggestions wishes={state.wishes} listingsByUser={state.listingsByUser} listings={state.listings} proposals={state.proposals} /> 
+                </Route>
+              <Route exact path="/proposals"> <MyProposals proposals={state.proposals} /> </Route>
               <Route exact path="/add" component={AddNewItem} />
-              <Route exact path="/" render={(props) => <Listings {...props}/>}  />
-              <Route exact path="/listings" render={(props) => <Listings {...props}/>}  />
-              <Route
-                  exact
-                  path="/listings/:listingId"
-                  render={(props) => <Listing { ...props } />}
-              />
-          </Switch>   
+              <Route exact path="/"> <Listings listings={state.listings} /> </Route>
+              <Route exact path="/listings/:listingId"> <Listing listings={state.listings} /> </Route>
+          </Switch>     
         </section>
 
 
-        <footer style={{ zIndex: "999999" }}>
+        <footer>
           <BottomNavigation
             className={classes.root}
             showLabels
             value={value}
             onChange={(event, newValue) => handleChange(event, newValue)}
+            // style={{height: '40px',width: '414px'}}
             
           >
             <BottomNavigationAction component={Link} to="/" label="Search" icon={<SearchIcon />} />

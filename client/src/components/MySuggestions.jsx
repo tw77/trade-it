@@ -153,6 +153,13 @@ export default function MySuggestions() {
   //     }));
   //   });
   // }, []);
+  
+export default function MySuggestions(props) {
+  const classes = useStyles();
+  
+  // const {userId} = useParams(); <--- would this be replaced by useState or no?
+
+  console.log('relevant data', props.listings, props.proposals, props.listingsByUser, props.wishes);
 
   // "Propose a trade!" button links to {ProposeTrade}
   // "Dismiss" removes suggestion from view (all client-side)

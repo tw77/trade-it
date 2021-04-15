@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProposeTrade() {
   const classes = useStyles();
+
   const fakeWantedItem = [
     {
       "id": 1,

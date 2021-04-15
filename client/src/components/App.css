@@ -19,6 +19,7 @@
   color: white;
     z-index: 1; /* integer */
 
+
 }
 
 .Toolbar {
@@ -27,6 +28,8 @@
   align-items: center;
   justify-content: space-between;
 }
+
+
 
 
 .App-link {

@@ -36,6 +36,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddNewItem() {
   const classes = useStyles();
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom'
+
+export default function AddNewItem() {
+
     
   // function publishItem(){
   //   // includes axios.post(`listings/`)
@@ -107,9 +112,6 @@ export default function AddNewItem() {
           </Button>
         </form>
       </div>
-      {/* <Box mt={8}>
-        <Copyright />
-      </Box> */}
     </Container>
   );
 }
