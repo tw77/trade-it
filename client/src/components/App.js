@@ -20,8 +20,10 @@ import MySuggestions from "./MySuggestions";
 import MyProposals from "./MyProposals";
 import AddNewItem from "./AddNewItem";
 import Listings from "./Listings";
-// import Profile from "./Profile";
+import Profile from "./Profile";
 import Listing from "./Listing";
+import Login from './Login'
+import Register from './Register'
 // import ProposeTrade from "./ProposeTrade";
 // import AcceptedProposal from "./AcceptedProposal";
 // import { createBrowserHistory } from 'history';
@@ -81,15 +83,23 @@ export default function App() {
             </Toolbar>
           </AppBar>  
         </header> 
-          <section>
-            <Switch>
-              <Route path="/wishlist" component={MyWishlist} />
-              <Route path="/suggestions" component={MySuggestions} />
-              <Route path="/proposals" component={MyProposals} />
-              <Route path="/add" component={AddNewItem} />
-              <Route exact path="/listings/:listingId" component={Listing} />
-              <Route path="/" component={Listings} />
-            </Switch>
+        <section>
+              
+          <Switch>
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />  
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/wishlist" component={MyWishlist} />
+              <Route exact path="/suggestions" component={MySuggestions} />
+              <Route exact path="/proposals" component={MyProposals} />
+              <Route exact path="/add" component={AddNewItem} />
+              <Route exact path="/listings" render={(props) => <Listings {...props}/>}  />
+              <Route
+                  exact
+                  path="/listings/:listingId"
+                  render={(props) => <Listing { ...props } />}
+              />
+          </Switch>   
         </section>
 
 
