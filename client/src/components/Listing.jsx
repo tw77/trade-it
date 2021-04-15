@@ -23,12 +23,6 @@ const useStyles = makeStyles({
 export default function Listing(props) {
   const classes = useStyles();
   const { listingId } = useParams();
-  // const { listingId } = params;
-  const { match } = props;
-
-  // const { match } = props;
-  // const { params } = match;
-  // const { listingId } = params;
 
   const [listingData, setlistingData] = useState()
 
@@ -45,7 +39,6 @@ export default function Listing(props) {
   }, [listingId]);
 
   const generateListingJSX = () => {
-    // const { id } = listingData;
     return (
     <>
       {listingData ? (
@@ -80,6 +73,14 @@ export default function Listing(props) {
     </>
     )
   }
+
+
+  console.log('listing number' + listingId);
+
+  console.log('props.listings', props.listings[(listingId - 1)]);
+
+
+
   // const { name, description, image } = listingData;
   // Propose a trade! button links to {ProposeTrade}
     

@@ -15,6 +15,7 @@ import IconButton from '@material-ui/core/IconButton'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 // import MenuIcon from '@material-ui/core/Menu'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import useApplicationData from "../hooks/useApplicationData";
 import MyWishlist from "./MyWishlist";
 import MySuggestions from "./MySuggestions";
 import MyProposals from "./MyProposals";
@@ -48,6 +49,7 @@ const useStyles = makeStyles({
 
 
 export default function App() {
+  const { state } = useApplicationData();
 
   const classes = useStyles();
 
@@ -79,22 +81,19 @@ export default function App() {
         </header> 
         <section>
               
-          <Switch>
+        <Switch>
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />  
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/wishlist" component={MyWishlist} />
-              <Route exact path="/suggestions" component={MySuggestions} />
-              <Route exact path="/proposals" component={MyProposals} />
+              <Route exact path="/profile"> <Profile listingsByUser={state.listingsByUser} reviews={state.reviews} /> </Route>
+              <Route exact path="/wishlist"> <MyWishlist wishes={state.wishes} /> </Route>
+              <Route exact path="/suggestions">
+                <MySuggestions wishes={state.wishes} listingsByUser={state.listingsByUser} listings={state.listings} proposals={state.proposals} /> 
+                </Route>
+              <Route exact path="/proposals"> <MyProposals proposals={state.proposals} /> </Route>
               <Route exact path="/add" component={AddNewItem} />
-              <Route exact path="/" render={(props) => <Listings {...props}/>}  />
-              <Route exact path="/listings" render={(props) => <Listings {...props}/>}  />
-              <Route
-                  exact
-                  path="/listings/:listingId"
-                  render={(props) => <Listing { ...props } />}
-              />
-          </Switch>   
+              <Route exact path="/"> <Listings listings={state.listings} /> </Route>
+              <Route exact path="/listings/:listingId"> <Listing listings={state.listings} /> </Route>
+          </Switch>     
         </section>
 
 

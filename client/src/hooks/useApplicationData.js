@@ -14,12 +14,24 @@ export default function useApplicationData() {
     }],
   });
 
+  const userId = 2;
+  // for right now
+
   useEffect(() => {
-    axios.get("/api/listings")
-    .then((response) => {
+    Promise.all([
+      axios.get(`/api/listings`),
+      axios.get(`/api/users/${userId}/wishes`),
+      axios.get(`/api/users/${userId}/reviews`),
+      axios.get(`/api/users/${userId}/proposals`),
+      axios.get(`/api/users/${userId}/profiles`),
+    ]).then((all) => {
       setState((prev) => ({
         ...prev,
-        listings: response.data
+        listings: all[0].data,
+        wishes: all[1].data,
+        reviews: all[2].data,
+        proposals: all[3].data,
+        listingsByUser: all[4].data
       }));
     });
   }, []);

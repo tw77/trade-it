@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Profile() {
+export default function Profile(props) {
   const classes = useStyles();
   // const {userId} = useParams(); <--- would this be replaced by useState or no?
 
@@ -85,6 +85,10 @@ export default function Profile() {
 
   // Edit button beside profile pic allows for modifying user details
   // Edit buttons by items in My Listings section link to specific {Listing}
+
+
+  console.log('props.listingsByUser', props.listingsByUser);
+  console.log('props.reviews', props.reviews);
     
   return (
     <React.Fragment>

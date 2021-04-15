@@ -42,28 +42,17 @@ const useStyles = makeStyles((theme) => ({
 export default function Listings(props) {
   const classes = useStyles();
   const { history } = props;
-  const [filter, setFilter] = useState()
-  // const [ listingsData, setListingsData] = useState([fakeListingsData]);
+  const [filter, setFilter] = useState();
 
-  const { state } = useApplicationData();
-
-  console.log('state', state.listings);
-  
-  // getListingCard(obj)
-
-  // let i = 0; i++
-  // listingsData[i].id
+  (props.listings.length > 0) ? console.log('props.listings', props.listings) : console.log('loading');
 
   function getListingCard(listingsId, name, picture) {
-    // console.log(listingsData[`${listingsId}`])
-    // const {id, name} = listingsData[`${listingsId}`]
-  
+
     return (
       
       
         <Grid item xs={6} sm={6} md={4} key={listingsId}>
           <Card className={classes.card} onClick={() => history.push(`/listings/${listingsId}`)}>
-            {/* onClick={() => history.push(`/${listingsId}`)} */}
             <CardMedia
                     className={classes.cardMedia}
                     image={picture}
@@ -104,12 +93,12 @@ export default function Listings(props) {
           </div>
         </Toolbar>
       </AppBar>
-      {state.listings ? (
+      {props.listings ? (
         
         <Container className={classes.cardGrid} maxWidth="md">
           
       <Grid container spacing={4}>
-          {state.listings.map(item => getListingCard(item.id, item.name, item.picture))}
+          {props.listings.map(item => getListingCard(item.id, item.name, item.picture))}
           
 
       </Grid>

@@ -10,18 +10,10 @@ const useStyles = makeStyles({
   }
 });
 
-export default function MyWishlist() {
+export default function MyWishlist(props) {
   const classes = useStyles();
-  const fakeWishesDataForUser = [
-    {
-      "id": 1,
-      "name": "Bluetooth speakers",
-      "category_id": 1,
-      "user_id": 1
-    }
-  ];
-
-  console.log('wishlist');
+  
+  console.log('props.wishes', props.wishes);
 
   // const {userId} = useParams();
 
