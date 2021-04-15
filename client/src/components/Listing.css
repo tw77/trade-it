@@ -1,0 +1,30 @@
+.listingName {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1em;
+  margin-left: .5em;
+  margin-right: .5em;
+  margin-bottom: 1em;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.listingDescription {
+  text-align: left;
+  margin-top: .5em;
+  margin-left: .5em;
+  height: 6em;
+  overflow: auto;
+}
+
+.ownerUser {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1em;
+  margin-left: .5em;
+  margin-right: .5em;
+  margin-bottom: 1em;
+  justify-content: space-between;
+  align-items: center;
+}
