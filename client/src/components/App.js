@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-// import { makeStyles } from '@material-ui/core/styles';
 import { BottomNavigationAction, BottomNavigation, makeStyles, Typography, } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -8,12 +7,8 @@ import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Container from '@material-ui/core/Container'
-// import Grid from '@material-ui/core/Grid'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-// import MenuIcon from '@material-ui/core/Menu'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 
@@ -30,24 +25,16 @@ import Register from './Register'
 import DropDownMenu from './DropDownMenu'
 import ProposeTrade from "./ProposeTrade";
 
-// import ProposeTrade from "./ProposeTrade";
-// import AcceptedProposal from "./AcceptedProposal";
-// import { createBrowserHistory } from 'history';
 const useStyles = makeStyles({
   root: {
     backgroundColor: '#E0E0E0',
     bottom: 0,
     left: "0px",
-    // paddingTop: "30px",
-    right: "0px",
     position: 'fixed',
     justifyContent: 'center',
     height: '70px',
-    width: '100%',
     display: 'flex',
     right: "0px",
-    position: 'fixed',
-    height: '70px',
     width: '100%',
     "& .MuiBottomNavigationAction-root": {
       "@media (max-width: 736px)": {

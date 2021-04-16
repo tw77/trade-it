@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
 import {
   Grid,
   Card,
@@ -9,10 +8,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import CardMedia from "@material-ui/core/CardMedia";
-import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
-import useApplicationData from "../hooks/useApplicationData";
-import fakeListingsData from "../mockData/fakeListingsData";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AutorenewIcon from "@material-ui/icons/Autorenew";

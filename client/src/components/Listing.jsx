@@ -1,14 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom'
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Link} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Button, Divider, CircularProgress, } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import "./Listing.css";
-import { useState } from 'react';
-import axios from 'axios';
-import Typography from '@material-ui/core/Typography';
 
 
 
@@ -35,7 +32,7 @@ export default function Listing(props) {
         <p className={classes.listingContainer}></p>
           <Card>
           <CardContent style={{height: '200px', width: '100px'}}>
-          <img src={currentListing.picture} />
+          <img alt="listing_pic" src={currentListing.picture} />
           </CardContent>
           </Card>
           <div class="listingName">{currentListing.name}

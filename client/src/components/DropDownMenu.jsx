@@ -2,7 +2,7 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Menu, Dropdown } from 'antd';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import "./DropDownMenu.css";
 
 export default function DropDownMenu2() {

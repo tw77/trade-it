@@ -1,15 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Carousel, WingBlank } from 'antd-mobile';
-import Container from "@material-ui/core/Container";
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  TextField,
-} from "@material-ui/core";
-import CardMedia from "@material-ui/core/CardMedia";
 import "./ImageCarousel.css";
 
 

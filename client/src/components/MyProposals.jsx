@@ -1,28 +1,21 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
 import {
   Grid,
   Card,
   CardContent,
   Typography,
-  TextField,
 } from "@material-ui/core";
 
 import CardMedia from "@material-ui/core/CardMedia";
-import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import "./ProposeTrade.css";
 import {
-  createMuiTheme,
   withStyles,
   makeStyles,
-  ThemeProvider,
 } from "@material-ui/core/styles";
-
-import { green, purple, red } from "@material-ui/core/colors";
 
 const BootstrapButton = withStyles({
   root: {

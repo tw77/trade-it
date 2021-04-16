@@ -1,12 +1,8 @@
-import React , { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import React , { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Grid, Card, CardContent, AppBar, Toolbar, CircularProgress, Typography, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardActions from '@material-ui/core/CardActions';
-import Button from '@material-ui/core/Button';
-import useApplicationData from "../hooks/useApplicationData";
-import fakeListingsData from '../mockData/fakeListingsData'
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import SearchIcon from '@material-ui/icons/Search'
