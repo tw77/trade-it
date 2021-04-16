@@ -77,13 +77,11 @@ export default function SignIn() {
           /> */}
           <Button
             type="submit"
-
-            fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
           >
-            Log In
+            Sign In
           </Button>
           <Grid container>
             {/* <Grid item xs>
@@ -94,8 +92,6 @@ export default function SignIn() {
             <Grid item>
               <Link href="/register" variant="body2">
                 {"Don't have an account? Register"}
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
           </Grid>

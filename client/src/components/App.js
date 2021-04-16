@@ -61,7 +61,7 @@ const useStyles = makeStyles({
 
 
 export default function App() {
-  const { state } = useApplicationData();
+  const { state, publishListing } = useApplicationData();
 
   const classes = useStyles();
 
@@ -77,7 +77,7 @@ export default function App() {
       <Router>
       <Container maxWidth="s">
       <div className="App" >
-        <header className="App-header">
+      <header className="App-header">
           <AppBar
             className={classes.root}
           >
@@ -86,19 +86,12 @@ export default function App() {
                 Trade It
               </Typography>
               <DropDownMenu className="DropDown"/>  
-              <Typography variant="h3">
-                  <p className='Pagetitle'>Trade It</p>
-              </Typography>
-              <IconButton className="Account-button" component={Link} to="/profile">
-                <AccountCircleIcon fontSize="large"/>   
-              </IconButton>
             </Toolbar>
           </AppBar>  
         </header> 
         <section>
               
        
-        <footer style={{ zIndex: "999999" }}>
         <Switch>
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />  
@@ -108,9 +101,10 @@ export default function App() {
                 <MySuggestions wishes={state.wishes} listingsByUser={state.listingsByUser} listings={state.listings} proposals={state.proposals} /> 
                 </Route>
               <Route exact path="/proposals"> <MyProposals proposals={state.proposals} /> </Route>
-              <Route exact path="/add" component={AddNewItem} />
+              <Route exact path="/add"> <AddNewItem listings={state.listings} publishListing={publishListing} /> </Route>
               <Route exact path="/"> <Listings listings={state.listings} /> </Route>
               <Route exact path="/listings/:listingId"> <Listing listings={state.listings} /> </Route>
+              <Route exact path="/offer" component={ProposeTrade} />
           </Switch>     
         </section>
 
@@ -134,7 +128,6 @@ export default function App() {
       </div> 
       </Container>
       </Router>
-
     </>
   );
 }

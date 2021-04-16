@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Button, Divider, CircularProgress, } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton'
@@ -23,43 +24,30 @@ const useStyles = makeStyles({
 export default function Listing(props) {
   const classes = useStyles();
   const { listingId } = useParams();
-  const { match } = props;
-  const [listingData, setlistingData] = useState()
 
-  useEffect(() => {
-    axios.get(`/api/listings/${listingId}`)
-      .then((response) => {
-        const { data } = response;
-        console.log('response data', response.data)
-        setlistingData(data)
-      })
-      .catch((error) => {
-        setlistingData(false)
-    });
-  }, [listingId]);
-
+  const currentListing = props.listings.find((listing) => listing.id === Number(listingId));
+  
   const generateListingJSX = () => {
-    // const { id } = listingData;
     return (
     <>
-      {listingData ? (
+      {currentListing ? (
       <div>
         <p className={classes.listingContainer}></p>
           <Card>
           <CardContent style={{height: '200px', width: '100px'}}>
-          Listing #{listingData.id}
+          <img src={currentListing.picture} />
           </CardContent>
           </Card>
-          <div class="listingName">{listingData.id} <Button variant="contained" style={{textTransform: 'none'}}>
+          <div class="listingName">{currentListing.name}
+          <Button variant="contained" component={Link} to="/offer" style={{textTransform: 'none'}}>
           Propose a trade!
           </Button></div>
           
-          <p class="listingDescription">description description description description description description
-          description description description description description description description
-          description description description description description </p>
+          <p class="listingDescription">{currentListing.description} </p>
           <Divider />
           <div class="ownerUser">
-            User Name, Location
+            {currentListing.user.first_name} {currentListing.user.last_name} -- 
+            {currentListing.neighbourhood.name}, {currentListing.city.name}
           <IconButton className="Account-button">
             <AccountCircleIcon fontSize="large"/>   
           </IconButton>
@@ -75,20 +63,12 @@ export default function Listing(props) {
     )
   }
 
-  console.log('listing number' + listingId);
-
-  console.log('props.listings', props.listings[(listingId - 1)]);
-
-
-
-  // const { name, description, image } = listingData;
   // Propose a trade! button links to {ProposeTrade}
     
   return (
     <>
-      {listingData === undefined && <CircularProgress/>}
-      {listingData !== undefined && listingData && generateListingJSX(listingData )}
-      {listingData !== false && <Typography>Listing not found</Typography>}
+      {currentListing === undefined && <CircularProgress/>}
+      {currentListing !== undefined && currentListing && generateListingJSX()}
     </>
   )
 }

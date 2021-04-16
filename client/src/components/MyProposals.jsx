@@ -11,10 +11,6 @@ const useStyles = makeStyles({
   }
 });
 
-export default function MyProposals() {
-  const classes = useStyles();
-  
-
 export default function MyProposals(props) {
   const classes = useStyles();
 
