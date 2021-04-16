@@ -1,0 +1,11 @@
+
+.separation {
+  border: 5px solid white;
+  height: 15px;
+  display: block;
+}
+
+
+#root > div > div > section > div > div > div.am-wingblank.am-wingblank-lg > div > div.slider-frame > ul {
+  height: 180px !important;
+}

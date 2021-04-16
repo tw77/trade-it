@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import { Menu, Dropdown } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import "./DropDownMenu.css";
@@ -34,7 +32,7 @@ export default function DropDownMenu2() {
         icon={
           <AccountCircleIcon
             style={{
-              fontSize: '40px',
+              fontSize: '45px',
               paddingBottom: '10px',
               backgroundColor: '#E0E0E0',
             }}
