@@ -101,7 +101,7 @@ export default function App() {
                 <MySuggestions wishes={state.wishes} listingsByUser={state.listingsByUser} listings={state.listings} proposals={state.proposals} /> 
                 </Route>
               <Route exact path="/proposals"> <MyProposals proposals={state.proposals} /> </Route>
-              <Route exact path="/add" component={AddNewItem} />
+              <Route exact path="/add"> <AddNewItem listings={state.listings} /> </Route>
               <Route exact path="/"> <Listings listings={state.listings} /> </Route>
               <Route exact path="/listings/:listingId"> <Listing listings={state.listings} /> </Route>
           </Switch>     

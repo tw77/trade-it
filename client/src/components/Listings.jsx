@@ -41,15 +41,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Listings(props) {
   const classes = useStyles();
-  // const { history } = props;
   const history = useHistory();
-  console.log('history', history);
   const [filter, setFilter] = useState()
-  // const [ listingsData, setListingsData] = useState([fakeListingsData]);
-
-  const { state } = useApplicationData();
-
-  console.log('state', state.listings);
   
   const handleSearchChange = (e) => {
     setFilter(e.target.value.toLowerCase());
@@ -71,14 +64,6 @@ export default function Listings(props) {
               <Typography gutterBottom variant="h6" component="h2">
                 {name}</Typography>
             </CardContent>
-            {/* <CardActions>
-              <Button size="small" color="primary">
-                View
-              </Button>
-              <Button size="small" color="primary">
-                Edit
-              </Button>
-            </CardActions> */}
           </Card>
           </Grid>
          
@@ -105,12 +90,12 @@ export default function Listings(props) {
           </div>
         </Toolbar>
       </AppBar>
-      {state.listings ? (
+      {props.listings ? (
         
         <Container className={classes.cardGrid} maxWidth="md">
           
       <Grid container spacing={4}>
-          {state.listings.map(item =>
+          {props.listings.map(item =>
             (
               (item.name.toLowerCase().includes(filter) && (item.category_id <= 10))
               || (!filter)
