@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :assets, as: :owner, dependent: :destroy
   has_many :assets, as: :storer, dependent: :destroy
   has_many :proposals, dependent: :destroy
+  belongs_to :neighbourhood
 
   validates :first_name, presence: true
   validates :last_name, presence: true

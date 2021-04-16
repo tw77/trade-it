@@ -41,23 +41,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Listings(props) {
   const classes = useStyles();
-  const { history } = props;
-  const [filter, setFilter] = useState()
-  const { state } = useApplicationData();
-
-  function getListingCard(listingsId, name, picture) {
-  
-  const [filter, setFilter] = useState();
   const history = useHistory();
-
-  (props.listings.length > 0) ? console.log('props.listings', props.listings) : console.log('loading');
-
+  const [filter, setFilter] = useState()
+  
   const handleSearchChange = (e) => {
     setFilter(e.target.value.toLowerCase());
   };
 
   function getListingCard(listingsId, name, picture) {
-
+  
     return (
       
       
@@ -79,6 +71,8 @@ export default function Listings(props) {
     )
   }
 
+
+
   return (
    
   <React.Fragment>
@@ -89,6 +83,7 @@ export default function Listings(props) {
           <div>
             <SearchIcon />
               <TextField
+              onChange={handleSearchChange}
                 label='search'
                 variant='standard'
               />
