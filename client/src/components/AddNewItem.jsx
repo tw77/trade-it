@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useParams } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -36,12 +37,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddNewItem() {
   const classes = useStyles();
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom'
 
-export default function AddNewItem() {
 
-    
   // function publishItem(){
   //   // includes axios.post(`listings/`)
   // };

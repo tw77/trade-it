@@ -23,7 +23,6 @@ const useStyles = makeStyles({
 export default function Listing(props) {
   const classes = useStyles();
   const { listingId } = useParams();
-  const { match } = props;
   const [listingData, setlistingData] = useState()
 
   useEffect(() => {
@@ -39,7 +38,6 @@ export default function Listing(props) {
   }, [listingId]);
 
   const generateListingJSX = () => {
-    // const { id } = listingData;
     return (
     <>
       {listingData ? (
@@ -47,7 +45,7 @@ export default function Listing(props) {
         <p className={classes.listingContainer}></p>
           <Card>
           <CardContent style={{height: '200px', width: '100px'}}>
-          Listing #{listingData.id}
+          Listing #{listingId}
           </CardContent>
           </Card>
           <div class="listingName">{listingData.id} <Button variant="contained" style={{textTransform: 'none'}}>

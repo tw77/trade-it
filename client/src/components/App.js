@@ -77,7 +77,7 @@ export default function App() {
       <Router>
       <Container maxWidth="s">
       <div className="App" >
-        <header className="App-header">
+      <header className="App-header">
           <AppBar
             className={classes.root}
           >
@@ -86,19 +86,12 @@ export default function App() {
                 Trade It
               </Typography>
               <DropDownMenu className="DropDown"/>  
-              <Typography variant="h3">
-                  <p className='Pagetitle'>Trade It</p>
-              </Typography>
-              <IconButton className="Account-button" component={Link} to="/profile">
-                <AccountCircleIcon fontSize="large"/>   
-              </IconButton>
             </Toolbar>
           </AppBar>  
         </header> 
         <section>
               
        
-        <footer style={{ zIndex: "999999" }}>
         <Switch>
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />  
@@ -134,7 +127,6 @@ export default function App() {
       </div> 
       </Container>
       </Router>
-
     </>
   );
 }
