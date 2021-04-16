@@ -24,12 +24,22 @@ const useStyles = makeStyles({
 export default function Listing(props) {
   const classes = useStyles();
   const { listingId } = useParams();
-  const currentListing = props.listings[(listingId - 1)];
 
+  console.log('listingId', listingId);
+  // const currentListing = props.listings[(listingId - 1)];
+  // const currentListing = props.listings.find((listing) => listing.id === 1)
+  // props.listings.find 
+
+  const currentListing = props.listings.find((listing) => listing.id === Number(listingId));
+
+  // useEffect(() => {
+  //   currentListing = props.listings.find((listing) => listing.id == listingId)
+  // }, [listingId]);
+  
   const generateListingJSX = () => {
     return (
     <>
-      {props.listings ? (
+      {currentListing ? (
       <div>
         <p className={classes.listingContainer}></p>
           <Card>
@@ -45,7 +55,7 @@ export default function Listing(props) {
           <p class="listingDescription">{currentListing.description} </p>
           <Divider />
           <div class="ownerUser">
-            {currentListing.user.first_name} {currentListing.user.last_name}
+            user name etc
           <IconButton className="Account-button">
             <AccountCircleIcon fontSize="large"/>   
           </IconButton>
@@ -62,8 +72,9 @@ export default function Listing(props) {
   }
 
   console.log('listing number' + listingId);
+  console.log('currentListing', currentListing);
 
-  console.log('props.listings', props.listings[(listingId - 1)]);
+  // console.log('props.listings', props.listings[(listingId - 1)]);
 
 
   // Propose a trade! button links to {ProposeTrade}
