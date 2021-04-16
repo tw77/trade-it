@@ -8,7 +8,6 @@ export default function useApplicationData() {
     reviews: [],
     proposals: [],
     listingsByUser: [],
-    updatedListings: []
   });
 
 

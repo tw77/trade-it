@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :assets, only: [:create, :update, :destroy]
     resources :listings
 
-    resources :users, only: [:create, :show, :update] do
+    resources :users, only: [:create, :show, :update, :index] do
         resources :profiles, only: [:show, :index]
         resources :wishes, only: [:index, :create, :destroy]
         resources :proposals
