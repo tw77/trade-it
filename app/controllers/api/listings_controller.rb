@@ -11,6 +11,8 @@ class Api::ListingsController < ApplicationController
     @listings = @listings.map do |p| 
       @entireListing = p.attributes
       @entireListing.update({:user => p.user})
+      @entireListing.update({:neighbourhood => p.user.neighbourhood})
+      @entireListing.update({:city => p.user.neighbourhood.city})
     end
 
     render json: @listings
