@@ -45,7 +45,7 @@ export default function Listing(props) {
           <p class="listingDescription">{currentListing.description} </p>
           <Divider />
           <div class="ownerUser">
-            User Name, Location
+            {currentListing.user.first_name} {currentListing.user.last_name}
           <IconButton className="Account-button">
             <AccountCircleIcon fontSize="large"/>   
           </IconButton>

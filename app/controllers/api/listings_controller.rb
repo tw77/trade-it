@@ -6,7 +6,13 @@ class Api::ListingsController < ApplicationController
   end
   
   def index
-    @listings = Asset.joins(:listing)
+    @listings = Asset.joins(:listing).joins(:user)
+
+    @listings = @listings.map do |p| 
+      @entireListing = p.attributes
+      @entireListing.update({:user => p.user})
+    end
+
     render json: @listings
     # working
   end
