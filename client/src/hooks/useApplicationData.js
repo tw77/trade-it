@@ -4,6 +4,11 @@ import { useState, useEffect } from "react";
 export default function useApplicationData() {
   const [state, setState] = useState({
     listings: [],
+    wishes: [],
+    reviews: [],
+    proposals: [],
+    listingsByUser: [],
+    updatedListings: []
   });
 
 
@@ -29,6 +34,23 @@ export default function useApplicationData() {
     });
   }, []);
 
-  return { state };
+
+  function publishListing(item) {
+
+    item = {
+      id: state.listings.length + 1,
+      name: item.name,
+      description: item.description,
+      picture: item.picture,
+      owner_id: userId,
+      storer_id: userId,
+      category_id: 2
+    };
+    console.log('item in useApplicationData', item);
+    const updatedListings = ([item, ...state.listings]);
+    setState((state) => ({...state, listings: updatedListings}));
+  }
+
+  return { state, publishListing };
 }
 

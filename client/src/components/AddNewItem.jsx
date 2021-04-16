@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -84,10 +84,7 @@ const formReducer = (state, event) => {
 export default function AddNewItem(props) {
   // const history = useHistory();
 
-  const [listings, setListings] = useState(props.listings);
-
-  console.log('listings: ', listings);
-
+  // console.log('listings in AddNewItem.jsx: ', listings);
 
   const classes = useStyles();
   const [formData, setFormData] = useReducer(formReducer, {});
@@ -100,17 +97,16 @@ export default function AddNewItem(props) {
     });
   }
 
+  console.log('props.listings in AddNewItem', props.listings);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    setListings((listings) => ([...listings, mockListing]));
-
+    props.publishListing(formData);
     setSubmitting(true);
-    // console.log('listings on submit: ', listings);
-    // console.log('new item: ', formData);
+    console.log('new item: ', formData);
 
     setTimeout(() => {
       setSubmitting(false);
-      // console.log('listings after submit are the same within this function, but not outside. why?: ', listings);
       setFormData({
         reset: true
       })
@@ -118,13 +114,9 @@ export default function AddNewItem(props) {
   }
 
 
-  // function publishItem(){
-  //   // axios.post(`/api/listings`)
-  //   // event.preventDefault();
-  //   // console.log(item);
-  // };
+ // axios.post(`/api/listings`)
 
-  // console.log(formData);
+
 
   // back naviagation with a "Cancel" button?
 
@@ -164,6 +156,20 @@ export default function AddNewItem(props) {
           <TextField
             variant="outlined"
             id="select"
+            label="Category *"
+            fullWidth
+            margin="normal"
+            name="category"
+            select onChange={handleChange} >
+            {currencies.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))} 
+          </TextField>
+          <TextField
+            variant="outlined"
+            id="select"
             label="Price Range *"
             fullWidth
             margin="normal"
@@ -175,7 +181,6 @@ export default function AddNewItem(props) {
             </MenuItem>
           ))} 
           </TextField>
-
           <TextField
             variant="outlined"
             margin="normal"

@@ -61,7 +61,7 @@ const useStyles = makeStyles({
 
 
 export default function App() {
-  const { state } = useApplicationData();
+  const { state, publishListing } = useApplicationData();
 
   const classes = useStyles();
 
@@ -101,7 +101,7 @@ export default function App() {
                 <MySuggestions wishes={state.wishes} listingsByUser={state.listingsByUser} listings={state.listings} proposals={state.proposals} /> 
                 </Route>
               <Route exact path="/proposals"> <MyProposals proposals={state.proposals} /> </Route>
-              <Route exact path="/add"> <AddNewItem listings={state.listings} /> </Route>
+              <Route exact path="/add"> <AddNewItem listings={state.listings} publishListing={publishListing} /> </Route>
               <Route exact path="/"> <Listings listings={state.listings} /> </Route>
               <Route exact path="/listings/:listingId"> <Listing listings={state.listings} /> </Route>
           </Switch>     
