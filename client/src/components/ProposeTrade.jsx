@@ -4,9 +4,6 @@ import {
   Grid,
   Card,
   CardContent,
-  AppBar,
-  Toolbar,
-  CircularProgress,
   Typography,
   TextField,
 } from "@material-ui/core";
@@ -20,6 +17,7 @@ import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import "./ProposeTrade.css";
+import ImageCarousel from "./ImageCarousel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   heroContent: {
     padding: theme.spacing(8, 0, 0),
-    paddingTop: "80px",
+    paddingTop: "100px",
   },
   cardContent: {
     flexGrow: 1,
@@ -85,7 +83,7 @@ export default function ProposeTrade() {
     <>
       <CssBaseline />
       <div className={classes.heroContent}>
-        <Typography variant="h5" align="left" color="textPrimary" paragraph>
+        <Typography variant="h6" align="left" color="textPrimary" paragraph>
           Propose a trade!
         </Typography>
 
@@ -108,7 +106,7 @@ export default function ProposeTrade() {
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h7" component="h3">
                       Heading
                     </Typography>
                     {/* <Typography>
@@ -128,7 +126,7 @@ export default function ProposeTrade() {
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h7" component="h3">
                       Heading
                     </Typography>
                     {/* <Typography>
@@ -141,63 +139,8 @@ export default function ProposeTrade() {
           ))}
           </Grid>
           <div className="separation"></div>
-          <section className="carousel" aria-label="Gallery">
-            <ol className="carousel__viewport">
-              <li id="carousel__slide1"
-                  tabindex="0"
-                  className="carousel__slide">
-                <div className="carousel__snapper">
-                  <a href="#carousel__slide4"
-                    className="carousel__prev">Go to last slide</a>
-                  <a href="#carousel__slide2"
-                    className="carousel__next">Go to next slide</a>
-                </div>
-              </li>
-              <li id="carousel__slide2"
-                  tabindex="0"
-                  className="carousel__slide">
-                <div className="carousel__snapper"></div>
-                <a href="#carousel__slide1"
-                  className="carousel__prev">Go to previous slide</a>
-                <a href="#carousel__slide3"
-                  className="carousel__next">Go to next slide</a>
-              </li>
-              <li id="carousel__slide3"
-                  tabindex="0"
-                  className="carousel__slide">
-                <div className="carousel__snapper"></div>
-                <a href="#carousel__slide2"
-                  className="carousel__prev">Go to previous slide</a>
-                <a href="#carousel__slide4"
-                  className="carousel__next">Go to next slide</a>
-              </li>
-              <li id="carousel__slide4"
-                  tabindex="0"
-                  className="carousel__slide">
-                <div className="carousel__snapper"></div>
-                <a href="#carousel__slide3"
-                  className="carousel__prev">Go to previous slide</a>
-                <a href="#carousel__slide1"
-                  className="carousel__next">Go to first slide</a>
-              </li>
-            </ol>
-            <aside className="carousel__navigation">
-              <ol className="carousel__navigation-list">
-                <li className="carousel__navigation-item">
-                  <a href="#carousel__slide1"
-                    className="carousel__navigation-button">Go to slide 1</a>
-                </li>
-                <li className="carousel__navigation-item">
-                  <a href="#carousel__slide2"
-                    className="carousel__navigation-button">Go to slide 2</a>
-                </li>
-                <li className="carousel__navigation-item">
-                  <a href="#carousel__slide3"
-                    className="carousel__navigation-button">Go to slide 3</a>
-                </li>
-              </ol>
-            </aside>
-          </section>
+          <ImageCarousel />
+          <p></p>
           <form className={classes.form} noValidate>
             <TextField
               id="outlined-multiline-static"
@@ -225,3 +168,4 @@ export default function ProposeTrade() {
     </>
   );
 }
+
