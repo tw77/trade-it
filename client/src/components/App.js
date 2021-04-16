@@ -104,6 +104,7 @@ export default function App() {
               <Route exact path="/add"> <AddNewItem listings={state.listings} publishListing={publishListing} /> </Route>
               <Route exact path="/"> <Listings listings={state.listings} /> </Route>
               <Route exact path="/listings/:listingId"> <Listing listings={state.listings} /> </Route>
+              <Route exact path="/offer" component={ProposeTrade} />
           </Switch>     
         </section>
 
