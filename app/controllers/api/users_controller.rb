@@ -6,6 +6,20 @@ class Api::UsersController < ApplicationController
     render json: @user  
   end
 
+  def index
+    @users = User.all
+
+    @users = @users.map do |u| 
+      @fullUserInfo = u.attributes
+      @fullUserInfo.update({:reviews => u.reviews})
+      @fullUserInfo.update({:listings => u.listings})
+      @fullUserInfo.update({:wishes => u.wishes})
+      @fullUserInfo.update({:proposals => u.proposals})
+    end
+
+    render json: @users
+  end
+
   def create
     @user = User.create!(user_params)
   end

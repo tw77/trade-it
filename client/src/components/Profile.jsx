@@ -80,7 +80,6 @@ export default function Profile(props) {
   // Edit buttons by items in My Listings section link to specific {Listing}
 
 
-  console.log('props.listingsByUser', props.listingsByUser);
   console.log('props.reviews', props.reviews);
     
   return (

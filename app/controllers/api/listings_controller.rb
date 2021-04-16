@@ -8,11 +8,11 @@ class Api::ListingsController < ApplicationController
   def index
     @listings = Asset.joins(:listing).joins(:user)
 
-    @listings = @listings.map do |p| 
-      @entireListing = p.attributes
-      @entireListing.update({:user => p.user})
-      @entireListing.update({:neighbourhood => p.user.neighbourhood})
-      @entireListing.update({:city => p.user.neighbourhood.city})
+    @listings = @listings.map do |l| 
+      @entireListing = l.attributes
+      @entireListing.update({:user => l.user})
+      @entireListing.update({:neighbourhood => l.user.neighbourhood})
+      @entireListing.update({:city => l.user.neighbourhood.city})
     end
 
     render json: @listings
