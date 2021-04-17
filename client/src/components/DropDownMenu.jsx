@@ -3,15 +3,21 @@ import 'antd/dist/antd.css';
 import { Menu, Dropdown } from 'antd';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'
 import "./DropDownMenu.css";
 
 export default function DropDownMenu2() {
+  const history = useHistory();
+
+  function toProfile() {
+    history.push(`/profile/2`)
+  }
+
   const userMenu = (
   <Router>
 
     <Menu style={{backgroundColor: '#E0E0E0', }}>
-      <Menu.Item key="1">
-        <Link to="/profile"></Link>
+      <Menu.Item onClick={toProfile} key="1">
         <span>My profile</span>
       </Menu.Item>
       
