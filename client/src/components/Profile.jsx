@@ -79,8 +79,8 @@ export default function Profile(props) {
             Album layout
           </Typography> */}
           <Typography variant="h5" align="left" color="textPrimary" paragraph>
-            Firstname Lastname
-            <p>Bio</p>
+            {displayedUser.first_name} {displayedUser.last_name}
+            <p>{displayedUser.bio}</p>
           </Typography>
           <Typography variant="h5" align="left" color="textPrimary" paragraph>
             Listings by user
