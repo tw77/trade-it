@@ -40,6 +40,8 @@ export default function ProposeTrade(props) {
   const { listingId } = useParams();
   const history = useHistory();
 
+  console.log('props.proposals', props.proposals);
+
   const mergedProposals = [].concat.apply([], props.proposals);
 
   const wantedListing = props.listings.find((listing) => listing.id === Number(listingId));

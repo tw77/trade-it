@@ -71,8 +71,8 @@ export default function useApplicationData() {
       };
     const updatedProposals = ([newProposal, ...cloneStateProposals]);
     console.log('updatedProposals', updatedProposals);
-    // setState((state) => ({...state, proposals: updatedProposals}));
-    // console.log('state.proposals now', state.proposals);
+    setState((state) => ({...state, proposals: updatedProposals}));
+    console.log('state.proposals now', state.proposals);
   }
 
 
