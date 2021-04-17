@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useState } from 'react';
 import {
   Grid,
   Card,
@@ -14,6 +14,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import "./ProposeTrade.css";
 import ImageCarousel from "./ImageCarousel";
+import { useParams, useHistory } from 'react-router-dom'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,11 +35,21 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1];
 
-export default function ProposeTrade() {
+export default function ProposeTrade(props) {
   const classes = useStyles();
+  const { listingId } = useParams();
+  const history = useHistory();
 
-  const fakeWantedItem = [
-    {
+  const mergedProposals = [].concat.apply([], props.proposals);
+
+  const wantedListing = props.listings.find((listing) => listing.id === Number(listingId));
+
+  const [offeredListing, setOfferedListing] = useState();
+
+  const newProposal = {};
+
+
+  const fakeWantedItem = {
       id: 1,
       name: "Linen shirt, M",
       description: "Rarely-worn light blue linen shirt, very comfortable",
@@ -46,8 +58,7 @@ export default function ProposeTrade() {
       owner_id: 3,
       storer_id: 3,
       category_id: 2,
-    },
-  ];
+    };
 
   const fakeListingsForUser = [
     {
@@ -64,14 +75,11 @@ export default function ProposeTrade() {
     },
   ];
 
-  // const {userId} = useParams();
-
-  // // can the data for the wanted item be passed in here from {Listing}?
-  // // also, is it necessary to include a get request to the current user's listings here?
-
-  // function sendProposal(){
-  //   // includes axios.post(`users/${userId}/proposals`)
-  // };
+  
+  function offerTrade(event) {
+    event.preventDefault();
+    props.propose(fakeWantedItem, fakeListingsForUser[0], 'hi')
+  };
 
   // back naviagation with a "Cancel" button?
 
@@ -155,6 +163,7 @@ export default function ProposeTrade() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={offerTrade}
             >
               Propose a trade!
             </Button>
