@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { BrowserRouter as Link} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Button, Divider, CircularProgress, } from '@material-ui/core';
@@ -21,8 +21,19 @@ const useStyles = makeStyles({
 export default function Listing(props) {
   const classes = useStyles();
   const { listingId } = useParams();
+  const history = useHistory();
 
   const currentListing = props.listings.find((listing) => listing.id === Number(listingId));
+
+  console.log('currentListing', currentListing);
+
+  function toOffer() {
+    history.push(`/offer/${listingId}`)
+  }
+
+  function toUserProfile() {
+    history.push(`/profile/${currentListing.owner_id}`)
+  }
   
   const generateListingJSX = () => {
     return (
@@ -36,7 +47,7 @@ export default function Listing(props) {
           </CardContent>
           </Card>
           <div class="listingName">{currentListing.name}
-          <Button variant="contained" component={Link} to="/offer" style={{textTransform: 'none'}}>
+          <Button variant="contained" style={{textTransform: 'none'}} onClick={toOffer}>
           Propose a trade!
           </Button></div>
           
@@ -45,8 +56,8 @@ export default function Listing(props) {
           <div class="ownerUser">
             {currentListing.user.first_name} {currentListing.user.last_name} -- 
             {currentListing.neighbourhood.name}, {currentListing.city.name}
-          <IconButton className="Account-button">
-            <AccountCircleIcon fontSize="large"/>   
+          <IconButton className="Account-button" onClick={toUserProfile} >
+            <AccountCircleIcon fontSize="large" />   
           </IconButton>
           </div>
           <Divider />

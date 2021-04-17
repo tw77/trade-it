@@ -11,6 +11,7 @@ class Api::UsersController < ApplicationController
 
     @users = @users.map do |u| 
       @fullUserInfo = u.attributes
+      @fullUserInfo.update({:details => u.attributes})
       @fullUserInfo.update({:reviews => u.reviews})
       @fullUserInfo.update({:listings => u.listings})
       @fullUserInfo.update({:wishes => u.wishes})

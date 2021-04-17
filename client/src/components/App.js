@@ -82,7 +82,7 @@ export default function App() {
         <Switch>
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />  
-              <Route exact path="/profile"> <Profile listings={state.listings} reviews={state.reviews} /> </Route>
+              <Route path="/profile/:userId"> <Profile users={state.users} listings={state.listings} reviews={state.reviews} /> </Route>
               <Route exact path="/wishlist"> <MyWishlist wishes={state.wishes} /> </Route>
               <Route exact path="/suggestions">
                 <MySuggestions wishes={state.wishes} listings={state.listings} proposals={state.proposals} /> 
