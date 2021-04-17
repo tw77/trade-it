@@ -53,11 +53,30 @@ export default function useApplicationData() {
         profile_picture: "https://images.pexels.com/photos/678783/pexels-photo-678783.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
       }
     };
-    console.log('item in useApplicationData', item);
+    // console.log('item in useApplicationData', item);
     const updatedListings = ([item, ...state.listings]);
     setState((state) => ({...state, listings: updatedListings}));
   }
 
-  return { state, publishListing };
+  function propose(wantedItem, offeredItem, message) {
+    const cloneStateProposals = [].concat.apply([], state.proposals);
+    const newProposal = {
+        id: (cloneStateProposals.length + 1),
+        listing_id: offeredItem.id,
+        asset_id: wantedItem.id,
+        status_id: 1,
+        message: message,
+        is_accepted: null,
+        date_accepted: null
+      };
+    const updatedProposals = ([newProposal, ...cloneStateProposals]);
+    console.log('updatedProposals', updatedProposals);
+    setState((state) => ({...state, proposals: updatedProposals}));
+    console.log('state.proposals now', state.proposals);
+  }
+
+
+
+  return { state, publishListing, propose };
 }
 

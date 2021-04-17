@@ -48,7 +48,7 @@ const useStyles = makeStyles({
 
 
 export default function App() {
-  const { state, publishListing } = useApplicationData();
+  const { state, publishListing, propose } = useApplicationData();
 
   const classes = useStyles();
 
@@ -72,7 +72,7 @@ export default function App() {
               <Typography variant="h3" className='Pagetitle'>
                 Trade It
               </Typography>
-              <DropDownMenu className="DropDown"/>  
+              <DropDownMenu className="DropDown" />  
             </Toolbar>
           </AppBar>  
         </header> 
@@ -91,7 +91,7 @@ export default function App() {
               <Route exact path="/add"> <AddNewItem listings={state.listings} publishListing={publishListing} /> </Route>
               <Route exact path="/"> <Listings listings={state.listings} /> </Route>
               <Route exact path="/listings/:listingId"> <Listing listings={state.listings} /> </Route>
-              <Route exact path="/offer" component={ProposeTrade} />
+              <Route exact path="/offer/:listingId"> <ProposeTrade listings={state.listings} proposals={state.proposals} propose={propose} /> </Route>
           </Switch>     
         </section>
 
