@@ -9,7 +9,7 @@ import SearchIcon from '@material-ui/icons/Search'
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
+    // backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 0),
     paddingTop: "100px",
   },
@@ -40,6 +40,8 @@ export default function Listings(props) {
   const history = useHistory();
   const [filter, setFilter] = useState()
   
+  console.log("Listings", props.listings);
+
   const handleSearchChange = (e) => {
     setFilter(e.target.value.toLowerCase());
   };
