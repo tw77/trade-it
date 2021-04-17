@@ -25,7 +25,6 @@ class ImageCarousel extends React.Component {
           slideWidth={0.8}
           autoplay
           infinite
-          beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
           afterChange={index => this.setState({ slideIndex: index })}
         >
           {this.state.data.map((val, index) => (
