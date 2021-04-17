@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 export default function useApplicationData() {
   const [state, setState] = useState({
     listings: [],
+    users: [],
     wishes: [],
     proposals: [],
     reviews: []
@@ -21,6 +22,7 @@ export default function useApplicationData() {
       setState((prev) => ({
         ...prev,
         listings: all[0].data,
+        users: all[1].data.map((user) => user.details),
         wishes: all[1].data.map((user) => user.wishes),
         proposals: all[1].data.map((user) => user.proposals),
         reviews: all[1].data.map((user) => user.reviews),

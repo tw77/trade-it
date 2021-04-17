@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -49,39 +50,24 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Profile(props) {
   const classes = useStyles();
-  // const {userId} = useParams(); <--- would this be replaced by useState or no?
+  const { userId } = useParams()
+  
+  const displayedUser = props.users.find((user) => user.id === Number(userId));
 
+  const mergedReviews = [].concat.apply([], props.reviews);
+  const displayedReviews = mergedReviews.find((review) => review.user_id === Number(userId));
 
-  // const [state, setState] = useState({
-  //   userDetailsAndListings: [],
-  //   reviewsOfUser: {},
-  // }); 
+  const displayedListings = props.listings.find((listing) => listing.user.id === Number(userId));
 
-  // useEffect(() => {
-  //   axios.get(`users/${userId}/profiles`)
-  // }, [userId]);
+  console.log('displayedUser', displayedUser);
+  console.log('displayedReviews', displayedReviews);
+  console.log('displayedListings', displayedListings);
 
-  // useEffect(() => {
-  //   Promise.all([
-  //     axios.get(`users/${userId}/profiles`),
-  //     axios.get(`users/${userId}/reviews`),
-  //   ]).then((all) => {
-  //     setState((prev) => ({
-  //       ...prev,
-  //       userDetailsAndListings: all[0].data,
-  //       reviewsOfUser: all[1].data,
-  //     }));
-  //   });
-  // }, []);
 
   // if the userId matches the current user, render "editable" Profile.
 
-  // Edit button beside profile pic allows for modifying user details
-  // Edit buttons by items in My Listings section link to specific {Listing}
 
-
-  console.log('props.reviews', props.reviews);
-    
+  
   return (
     <React.Fragment>
     <CssBaseline />
@@ -93,8 +79,8 @@ export default function Profile(props) {
             Album layout
           </Typography> */}
           <Typography variant="h5" align="left" color="textPrimary" paragraph>
-            User name
-            <p>Description</p>
+            Firstname Lastname
+            <p>Bio</p>
           </Typography>
           <Typography variant="h5" align="left" color="textPrimary" paragraph>
             Listings by user
