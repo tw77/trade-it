@@ -64,7 +64,9 @@ export default function Profile(props) {
   console.log('displayedListings', displayedListings);
 
 
-  // if the userId matches the current user, render "editable" Profile.
+  console.log('displayedUser', displayedUser);
+  console.log('displayedReviews', JSON.stringify(displayedReviews));
+  console.log('displayedListings', JSON.stringify(displayedListings));
 
 
   
