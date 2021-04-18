@@ -1,5 +1,8 @@
 .dropdown-btn > .ant-dropdown-trigger  {
-  border: none;
+  border-right: none;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  color:  #686868;
   
 }
 

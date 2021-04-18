@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import { BottomNavigationAction, BottomNavigation, makeStyles, Typography, } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -10,8 +9,6 @@ import Container from '@material-ui/core/Container'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
-
-
 import useApplicationData from "../hooks/useApplicationData";
 import MyWishlist from "./MyWishlist";
 import MySuggestions from "./MySuggestions";
@@ -25,6 +22,7 @@ import Register from './Register'
 import DropDownMenu from './DropDownMenu'
 import ProposeTrade from "./ProposeTrade";
 import AcceptedProposal from "./AcceptedProposal";
+import "./App.css";
 
 
 const useStyles = makeStyles({
@@ -66,18 +64,17 @@ export default function App() {
       <Router>
       <Container maxWidth="s">
       <div className="App" >
-      <header className="App-header">
+      
           <AppBar
             className={classes.root}
           >
             <Toolbar className="Toolbar">
-              <Typography variant="h3" className='Pagetitle'>
-                Trade It
-              </Typography>
+              <p className='Pagetitle'>Trade It</p>       
+              
               <DropDownMenu className="DropDown" />  
             </Toolbar>
           </AppBar>  
-        </header> 
+        
         <section>
               
        

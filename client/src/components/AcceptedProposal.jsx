@@ -1,11 +1,12 @@
 import React from "react";
-import { useParams } from 'react-router-dom'
+import { useParams } from "react-router-dom";
 import {
   Grid,
   Card,
   CardContent,
   Typography,
   TextField,
+  CircularProgress,
 } from "@material-ui/core";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -15,14 +16,14 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
 import { green } from "@material-ui/core/colors";
-import { Rate } from 'antd';
+import { Rate } from "antd";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   heroContent: {
-    padding: theme.spacing(8, 0, 0),
+    padding: theme.spacing(8, 0, 12),
     paddingTop: "100px",
   },
   cardContent: {
@@ -113,19 +114,26 @@ const BootstrapButton2 = withStyles({
 
 export default function AcceptedProposal(props) {
   const classes = useStyles();
-  
+
   const { proposalId } = useParams();
 
   const userId = 2;
   // for now
 
   const mergedProposals = [].concat.apply([], props.proposals);
-  const currentUserProposals = mergedProposals.filter((proposal) => proposal.user_id === userId);
-  const acceptedProposal = currentUserProposals.find((proposal) => proposal.id === Number(proposalId));
-  
-  const offeredItemListing = props.listings.find((item) => item.listing.id === acceptedProposal.listing_id);
-  const wantedItemListing = props.listings.find((item) => item.id === acceptedProposal.asset_id);
+  const currentUserProposals = mergedProposals.filter(
+    (proposal) => proposal.user_id === userId
+  );
+  const acceptedProposal = currentUserProposals.find(
+    (proposal) => proposal.id === Number(proposalId)
+  );
 
+  const offeredItemListing = props.listings.find(
+    (item) => item.listing.id === acceptedProposal.listing_id
+  );
+  const wantedItemListing = props.listings.find(
+    (item) => item.id === acceptedProposal.asset_id
+  );
 
   // function confirmTrade(){};
 
@@ -141,93 +149,58 @@ export default function AcceptedProposal(props) {
           Ready for trade:
         </Typography>
 
-        <Container maxWidth="md">
-          <Grid
-            container
-            spacing={1}
-            direction="row"
-            alignItems="center"
-            justify="space-evenly"
-            className={classes.root}
-          >
-            <Grid className="grid" item xs={5} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={offeredItemListing.picture}
-                  title="Image title"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography gutterBottom variant="h7" component="h3">
-                    {offeredItemListing.name}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={2} sm={2} md={4}>
-              <AutorenewIcon style={{ fontSize: 35 }} color="primary" />
-            </Grid>
-            <Grid item xs={5} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={wantedItemListing.picture}
-                  title="Image title"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography gutterBottom variant="h7" component="h3">
-                  {wantedItemListing.name}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
-          {/* <div className="separation"> */}
-          <Grid
-            container
-            spacing={0}
-            direction="row"
-            alignItems="center"
-            justify="space-around"
-            style={{ paddingTop: "10px" }}
-          >
-            <Grid item xs={5} sm={6} md={4}>
-              <PermContactCalendarIcon
-                color="action"
-                style={{ marginLeft: "70px", color: green[500], fontSize: 80 }}
-              />
-              {/* </div> */}
-            </Grid>
-            <Grid item xs={5} sm={6} md={4}>
-              <Typography align="left" gutterBottom variant="h7" component="h3">
-              {wantedItemListing.user.first_name} {wantedItemListing.user.last_name}
-              </Typography>
-              <Typography align="left" gutterBottom variant="h7" component="h3">
-              {wantedItemListing.user.email}
-              </Typography>
-              <Typography align="left" gutterBottom variant="h7" component="h3">
-              {wantedItemListing.user.phone}
-              </Typography>
-            </Grid>
-            </Grid>
-
+        {offeredItemListing && wantedItemListing ? (
+          <Container maxWidth="md">
             <Grid
               container
-              spacing={2}
+              spacing={1}
               direction="row"
+              alignItems="center"
               justify="space-evenly"
-              style={{ padding: "10px", paddingRight:"50px" }}
+              className={classes.root}
             >
-              <Grid item xs={3} spacing={3}>
-                <BootstrapButton2
-                  variant="contained"
-                  color="primary"
-                  disableRipple
-                >
-                  Trade Confirmed
-                </BootstrapButton2>
+              <Grid className="grid" item xs={5} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image={offeredItemListing.picture}
+                    title="Image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h7" component="h3">
+                      {offeredItemListing.name}
+                    </Typography>
+                  </CardContent>
+                </Card>
               </Grid>
-              <Grid item xs={3} spacing={3}>
+              <Grid item xs={2} sm={2} md={4}>
+                <AutorenewIcon style={{ fontSize: 35 }} color="primary" />
+              </Grid>
+              <Grid item xs={5} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image={wantedItemListing.picture}
+                    title="Image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h7" component="h3">
+                      {wantedItemListing.name}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
+            {/* <div className="separation"> */}
+            <Grid
+              container
+              spacing={0}
+              direction="row"
+              alignItems="center"
+              justify="space-around"
+              style={{ paddingTop: "10px" }}
+            >
+               <Grid item xs={3}>
                 <BootstrapButton
                   variant="contained"
                   color="primary"
@@ -236,35 +209,63 @@ export default function AcceptedProposal(props) {
                   Confirm pick-up
                 </BootstrapButton>
               </Grid>
+              
+              <Grid item xs={5} sm={6} md={4}>
+                <Typography
+                  align="left"
+                  gutterBottom
+                  variant="h7"
+                  component="h3"
+                >
+                  {wantedItemListing.user.first_name}{" "}
+                  {wantedItemListing.user.last_name}
+                </Typography>
+                <Typography
+                  align="left"
+                  gutterBottom
+                  variant="h7"
+                  component="h3"
+                >
+                  {wantedItemListing.user.email}
+                </Typography>
+                <Typography
+                  align="left"
+                  gutterBottom
+                  variant="h7"
+                  component="h3"
+                >
+                  {wantedItemListing.user.phone}
+                </Typography>
+              </Grid>
             </Grid>
-          
-          <Typography variant="h6" color="textPrimary">
-            Leave a review
-        </Typography>
-        <Rate />
-          <form className={classes.form} noValidate>
-            <TextField
-              id="outlined-multiline-static"
-              required
-              fullWidth
-              multiline
-              rows={2}
-              label="Review"
-              variant="outlined"
-            />
-            <div className="separation"></div>
+            <Rate />
+            <form className={classes.form} noValidate>
+              <TextField
+                id="outlined-multiline-static"
+                required
+                fullWidth
+                multiline
+                rows={2}
+                label="Leave a review"
+                variant="outlined"
+              />
+              <div className="separation"></div>
 
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Publish
-            </Button>
-          </form>
-         
-        </Container>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Publish
+              </Button>
+            </form>
+          </Container>
+        ) : (
+          <div className={classes.progress}>
+            <CircularProgress />
+          </div>
+        )}
       </div>
     </>
   );

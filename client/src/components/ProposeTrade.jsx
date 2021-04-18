@@ -13,7 +13,6 @@ import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import "./ProposeTrade.css";
-import ImageCarousel from "./ImageCarousel";
 import { useParams, useHistory } from 'react-router-dom'
 import { Carousel } from 'antd';
 

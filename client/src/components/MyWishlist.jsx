@@ -10,7 +10,6 @@ import {
 } from "@material-ui/core";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import "./MyWishlist.css";
-import ImageCarousel2 from "./ImageCarousel";
 import { Carousel } from 'antd';
 
 const useStyles = makeStyles((theme) => ({
