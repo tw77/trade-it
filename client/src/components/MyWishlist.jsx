@@ -37,14 +37,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MyWishlist(props) {
   const classes = useStyles();
-  const fakeWishesDataForUser = [
-    {
-      id: 1,
-      name: "Bluetooth speakers",
-      category_id: 1,
-      user_id: 1,
-    },
-  ];
 
   const categories = [
     {
@@ -89,60 +81,52 @@ export default function MyWishlist(props) {
     },
   ];
 
-  console.log('props.wishes', props.wishes);
-
   const userId = 2; // for now
   const mergedWishes = [].concat.apply([], props.wishes);
   const userWishes = mergedWishes.filter((wish) => wish.user_id === userId);
-  console.log('mergedWishes', mergedWishes);
-  console.log('userWishes', userWishes);
 
-  // const userWishCategories = userWishes.map((wish) => wish.category_id);
-  // console.log('userWishCategories', userWishCategories);
-  // // sort by most represented
+  const userWishCategories = userWishes.map((wish) => wish.category_id);
 
-  // function findMostRepresented(userWishCategories) {
-  //   const frequency = {};
+  function findMostRepresented(userWishCategories) {
+    const frequency = {};
 
-  //   userWishCategories.forEach(function(id) { frequency[id] = 0; });
+    userWishCategories.forEach(function(id) { frequency[id] = 0; });
 
-  //   const uniques = userWishCategories.filter(function(id) {
-  //       return ++frequency[id] == 1;
-  //   });
+    const uniques = userWishCategories.filter(function(id) {
+        return ++frequency[id] == 1;
+    });
 
-  //   return uniques.sort(function(a, b) {
-  //       return frequency[b] - frequency[a];
-  //   });
-  // }
+    return uniques.sort(function(a, b) {
+        return frequency[b] - frequency[a];
+    });
+  }
 
-  // const relevantListings = props.listings.filter(
-  //   (listing) => listing.owner_id !== userId && 
-  //   listing.category_id === findMostRepresented(userWishCategories)[0])
-  //   .slice(0, 5);
-
-  // console.log('relevantListings', relevantListings)
+  const relevantListings = props.listings.filter(
+    (listing) => listing.owner_id !== userId && 
+    listing.category_id === findMostRepresented(userWishCategories)[0])
+    .slice(0, 5);
 
 
-  // const [wishName, setWishName] = useState("")
-  // const handleChange = function(event) {
-  //   setWishName(event.target.value);
-  // };
+  const [wishName, setWishName] = useState("")
+  const handleChange = function(event) {
+    setWishName(event.target.value);
+  };
 
-  // const [wishCategory, setWishCategory] = useState(null)
-  // const categorySelect = function(event) {
-  //   setWishCategory(event.target.value);
-  // };
+  const [wishCategory, setWishCategory] = useState(null)
+  const categorySelect = function(event) {
+    setWishCategory(event.target.value);
+  };
 
-  // function addWish(event){
-  //   event.preventDefault();
-  //   const newWish = {
-  //     id: props.wishes.length + 1,
-  //     name: wishName,
-  //     category_id: wishCategory,
-  //     user_id: userId
-  //   }
-  //   props.updateWishes(newWish);
-  // };
+  function addWish(event){
+    event.preventDefault();
+    const newWish = {
+      id: props.wishes.length + 1,
+      name: wishName,
+      category_id: wishCategory,
+      user_id: userId
+    }
+    props.updateWishes(newWish);
+  };
 
   // function removeWish(){};
 
@@ -279,13 +263,13 @@ export default function MyWishlist(props) {
               </>
             ))}
           </Grid>
-          {props.listings ? (
+          {relevantListings ? (
             <>
           <Typography component="h1" variant="h5">
             Explore related listings
           </Typography>
           <Carousel>
-          {props.listings.map((listing) => (
+          {relevantListings.map((listing) => (
               <div>
               <h3 style={{
                 height: '160px',
