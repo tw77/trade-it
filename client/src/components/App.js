@@ -83,7 +83,7 @@ export default function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />  
               <Route path="/profile/:userId"> <Profile users={state.users} listings={state.listings} reviews={state.reviews} /> </Route>
-              <Route exact path="/wishlist"> <MyWishlist wishes={state.wishes} /> </Route>
+              <Route exact path="/wishlist"> <MyWishlist wishes={state.wishes} listings={state.listings} /> </Route>
               <Route exact path="/suggestions">
                 <MySuggestions wishes={state.wishes} listings={state.listings} proposals={state.proposals} /> 
                 </Route>
@@ -92,6 +92,7 @@ export default function App() {
               <Route exact path="/"> <Listings listings={state.listings} /> </Route>
               <Route exact path="/listings/:listingId"> <Listing listings={state.listings} /> </Route>
               <Route exact path="/offer/:listingId"> <ProposeTrade listings={state.listings} proposals={state.proposals} propose={propose} /> </Route>
+              <Route exact path="/accept/:proposalId"> <Listing listings={state.listings} /> </Route>
           </Switch>     
         </section>
 
