@@ -58,12 +58,12 @@ export default function useApplicationData() {
     setState((state) => ({...state, listings: updatedListings}));
   }
 
-  function propose(wantedItem, offeredItem, message) {
+  function propose(wantedItemId, offeredItemId, message) {
     const cloneStateProposals = [].concat.apply([], state.proposals);
     const newProposal = {
         id: (cloneStateProposals.length + 1),
-        listing_id: offeredItem.id,
-        asset_id: wantedItem.id,
+        listing_id: offeredItemId,
+        asset_id: wantedItemId,
         status_id: 1,
         message: message,
         is_accepted: null,
@@ -72,7 +72,6 @@ export default function useApplicationData() {
     const updatedProposals = ([newProposal, ...cloneStateProposals]);
     console.log('updatedProposals', updatedProposals);
     setState((state) => ({...state, proposals: updatedProposals}));
-    console.log('state.proposals now', state.proposals);
   }
 
 
