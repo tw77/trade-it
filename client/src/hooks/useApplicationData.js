@@ -70,18 +70,25 @@ export default function useApplicationData() {
         date_accepted: null
       };
     const updatedProposals = ([newProposal, ...cloneStateProposals]);
-    console.log('updatedProposals', updatedProposals);
+    // console.log('updatedProposals', updatedProposals);
     setState((state) => ({...state, proposals: updatedProposals}));
   }
 
   function updateProposalStatus(acceptedProposal) {
     const cloneStateProposals = [].concat.apply([], state.proposals);
     cloneStateProposals.find((proposal) => proposal.id === acceptedProposal.id).is_accepted = true;
-    setState((state) => ({...state, proposals: cloneStateProposals}))
+    setState((state) => ({...state, proposals: cloneStateProposals}));
+  }
+
+  function updateWishes(newUserWish) {
+    const cloneStateWishes = [].concat.apply([], state.wishes);
+    const updatedWishes = ([...cloneStateWishes, newUserWish]);
+    console.log(updatedWishes);
+    setState((state) => ({...state, wishes: updatedWishes}));
   }
 
 
 
-  return { state, publishListing, propose, updateProposalStatus };
+  return { state, publishListing, propose, updateProposalStatus, updateWishes };
 }
 
