@@ -356,23 +356,16 @@ proposal1 = user2.proposals.find_or_create_by!({
   listing_id: listing4.id,
   asset_id: asset2.id,
   status_id: status1.id,
-  message: "I'm very interested on your Game Boy! I used to have the same one when I was a kid :)"
+  message: "Trade me your headphones for my Game Boy Color?"
 })
 
 proposal2 = user2.proposals.find_or_create_by!({
   listing_id: listing5.id,
   asset_id: asset1.id,
   status_id: status1.id,
-  message: "Hope to hear from you soon!"
+  message: "Your linen shirt for my popular poetry book?"
 })
 
-proposal3 = user3.proposals.find_or_create_by!({
-  listing_id: listing1.id,
-  asset_id: asset5.id,
-  status_id: status3.id,
-  is_accepted: true,
-  date_accepted: Time.now
-})
 
 ## WISHES
 

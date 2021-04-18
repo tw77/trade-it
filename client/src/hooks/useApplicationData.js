@@ -67,9 +67,10 @@ export default function useApplicationData() {
         status_id: 1,
         message: message,
         is_accepted: null,
-        date_accepted: null
+        date_accepted: null,
+        user_id: userId
       };
-    const updatedProposals = ([newProposal, ...cloneStateProposals]);
+    const updatedProposals = ([...cloneStateProposals, newProposal]);
     // console.log('updatedProposals', updatedProposals);
     setState((state) => ({...state, proposals: updatedProposals}));
   }

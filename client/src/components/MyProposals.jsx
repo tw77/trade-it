@@ -160,14 +160,44 @@ export default function MyProposals(props) {
   const currentUserProposals = mergedProposals.filter((proposal) => proposal.user_id === userId);
 
   const offeredItemIds = currentUserProposals.map((proposal) => proposal.listing_id);
-  const offeredItemListings = props.listings.filter((listing) => offeredItemIds.includes(listing.id));
+
+  function findOfferedListings(offeredItemIds) {
+    let allOfferedListings = [];
+    let offeredItem;
+    for (const id of offeredItemIds) {
+      offeredItem = props.listings.find((listing) => listing.id === id)
+      allOfferedListings.push(offeredItem)
+    }
+    return allOfferedListings;
+  }
+
+  const offeredItemListings = findOfferedListings(offeredItemIds)
   const offeredItemPictures = offeredItemListings.map((offeredItem) => offeredItem.picture);
 
   const wantedItemIds = currentUserProposals.map((proposal) => proposal.asset_id);
-  const wantedItemListings = props.listings.filter((listing) => wantedItemIds.includes(listing.id)).reverse();
+
+  function findWantedListings(wantedItemIds) {
+    let allWantedListings = [];
+    let wantedItem;
+    for (const id of wantedItemIds) {
+      wantedItem = props.listings.find((listing) => listing.id === id)
+      allWantedListings.push(wantedItem)
+    }
+    return allWantedListings;
+  }
+
+  const wantedItemListings = findWantedListings(wantedItemIds);
   const wantedItemPictures = wantedItemListings.map((wantedItem) => wantedItem.picture);
 
+  console.log('mergedProposals', mergedProposals);
+  console.log('offeredItemIds', offeredItemIds);
+  console.log('wantedItemIds', wantedItemIds);
+  console.log('offeredItemListings', offeredItemListings);
+  console.log('wantedItemListings', wantedItemListings);
+
+
   function accept(id){
+    console.log('card id', id);
     const updatedProposal = {
       ...currentUserProposals[id],
       is_accepted: true
@@ -192,7 +222,7 @@ export default function MyProposals(props) {
           Proposals
         </Typography>
         <Typography variant="subtitle1" align="left" color="textSecondary" paragraph>
-        Trades proposed to me
+        Trades I've proposed
         </Typography>
 
         <Container maxWidth="md">
@@ -268,8 +298,8 @@ export default function MyProposals(props) {
             ))}
           </Grid>
         </Container>
-        <Typography variant="subtitle1" align="left" color="textSecondary" paragraph>
-        Trades I've proposed
+        {/* <Typography variant="subtitle1" align="left" color="textSecondary" paragraph>
+        Trades proposed to me
         </Typography>
 
         <Container maxWidth="md">
@@ -321,7 +351,7 @@ export default function MyProposals(props) {
               </>
             ))}
           </Grid>
-        </Container>
+        </Container> */}
       </div>
     </>
   );

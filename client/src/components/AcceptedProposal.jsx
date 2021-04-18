@@ -122,6 +122,7 @@ export default function AcceptedProposal(props) {
   const mergedProposals = [].concat.apply([], props.proposals);
   const currentUserProposals = mergedProposals.filter((proposal) => proposal.user_id === userId);
   const acceptedProposal = currentUserProposals.find((proposal) => proposal.id === Number(proposalId));
+  console.log('acceptedProposal', acceptedProposal);
   
   const offeredItemListing = props.listings.find((item) => item.listing.id === acceptedProposal.listing_id);
   const wantedItemListing = props.listings.find((item) => item.id === acceptedProposal.asset_id);
