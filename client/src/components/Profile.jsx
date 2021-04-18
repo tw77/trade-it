@@ -51,31 +51,22 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 export default function Profile(props) {
   const classes = useStyles();
   const { userId } = useParams()
-
-  // console.log('userId', userId);
-
-  // let displayedUser;
-  // if (userId) {
-  //   (displayedUser = props.users.find((user) => user.id === Number(userId)))
-  // } else {
-  //   displayedUser = props.users.find((user) => user.id === 2);
-  // }
-    
-  
   
   const displayedUser = props.users.find((user) => user.id === Number(userId));
 
   const mergedReviews = [].concat.apply([], props.reviews);
-  const displayedReviews = mergedReviews.filter((review) => review.user_id === Number(userId));
+  const displayedReviews = mergedReviews.find((review) => review.user_id === Number(userId));
 
-  const displayedListings = props.listings.filter((listing) => listing.user.id === Number(userId));
+  const displayedListings = props.listings.find((listing) => listing.user.id === Number(userId));
+
+  console.log('displayedUser', displayedUser);
+  console.log('displayedReviews', displayedReviews);
+  console.log('displayedListings', displayedListings);
+
 
   console.log('displayedUser', displayedUser);
   console.log('displayedReviews', JSON.stringify(displayedReviews));
   console.log('displayedListings', JSON.stringify(displayedListings));
-
-
-  // if the userId matches the current user, render "editable" Profile.
 
 
   
