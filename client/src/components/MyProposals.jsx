@@ -1,4 +1,5 @@
-import React from "react";
+import React , { useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import {
   Grid,
   Card,
@@ -152,21 +153,41 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MyProposals(props) {
   const classes = useStyles();
+  const history = useHistory();
 
-  // const {userId} = useParams();
+  const mergedProposals = [].concat.apply([], props.proposals);
+  const userId = 2;
+  // for now
+  const currentUserProposals = mergedProposals.filter((proposal) => proposal.user_id === userId);
+  console.log('currentUserProposals', currentUserProposals);
 
-  // useEffect(() => {
-  //   axios.get(`users/${userId}/proposals`)
-  // }, [userId]);
+  const offeredItemIds = currentUserProposals.map((proposal) => proposal.listing_id);
+  const offeredItemListings = props.listings.filter((listing) => offeredItemIds.includes(listing.id));
+  const offeredItemPictures = offeredItemListings.map((offeredItem) => offeredItem.picture);
 
-  // function accept(){};
+  const wantedItemIds = currentUserProposals.map((proposal) => proposal.asset_id);
+  const wantedItemListings = props.listings.filter((listing) => wantedItemIds.includes(listing.id));
+  const wantedItemPictures = wantedItemListings.map((wantedItem) => wantedItem.picture);
 
-  // function decline(){};
+  function accept(id){
+    const updatedProposal = {
+      ...currentUserProposals[id],
+      is_accepted: true
+    };
+    console.log('updatedProposal', updatedProposal);
+    props.updateProposalStatus(updatedProposal);
+  };
 
-  // function cancelOrRemove(){};
+  console.log('mergedProposals', mergedProposals);
+  function decline(id){};
+
+  function view(id){
+    history.push(`accepted/${id}`)
+  };
 
   // "View" button links to {AcceptedProposal}
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  const cards = Array.from(Array(currentUserProposals.length).keys()) // an index counting the user's proposals from 0
 
   return (
     <>
@@ -191,12 +212,12 @@ export default function MyProposals(props) {
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image="https://source.unsplash.com/random"
+                      image={offeredItemPictures[card]}
                       title="Image title"
                     />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h7" component="h3">
-                        Heading
+                        {offeredItemListings[card].name}
                       </Typography>
                       {/* <Typography>
                     This is a media card. You can use this section to describe the content.
@@ -211,7 +232,7 @@ export default function MyProposals(props) {
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image="https://source.unsplash.com/random"
+                      image={wantedItemPictures[card]}
                       title="Image title"
                     />
                     <CardContent className={classes.cardContent}>
@@ -220,7 +241,7 @@ export default function MyProposals(props) {
                         variant="subtitle1"
                         component="h3"
                       >
-                        Heading
+                        {wantedItemListings[card].name}
                       </Typography>
                       {/* <Typography>
                     This is a media card. You can use this section to describe the content.
@@ -232,13 +253,14 @@ export default function MyProposals(props) {
                   <Typography gutterBottom variant="h7">
                     2 days ago
                   </Typography>
-                  {true ? (
+                  {!currentUserProposals[card].is_accepted ? (
                     <>
                       <BootstrapButton2
                         variant="contained"
                         color="primary"
                         disableRipple
                         className={classes.margin}
+                        onClick={() => accept(card)}
                       >
                         Accept
                       </BootstrapButton2>
@@ -247,6 +269,7 @@ export default function MyProposals(props) {
                         color="primary"
                         disableRipple
                         className={classes.margin}
+                        onClick={() => decline(card)}
                       >
                         Decline
                       </BootstrapButton>
@@ -257,6 +280,7 @@ export default function MyProposals(props) {
                       color="primary"
                       disableRipple
                       className={classes.margin}
+                      onClick={view}
                     >
                       View
                     </BootstrapButton3>

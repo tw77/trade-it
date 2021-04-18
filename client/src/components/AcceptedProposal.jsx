@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from 'react-router-dom'
 import {
   Grid,
   Card,
@@ -143,7 +144,7 @@ export default function AcceptedProposal() {
     },
   };
 
-  // const {userId, proposalId} = useParams();
+  const { proposalId } = useParams();
 
   // useEffect(() => {
   //   axios.get(`users/${userId}/proposals/${proposalId}`)

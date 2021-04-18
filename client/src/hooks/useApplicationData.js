@@ -7,7 +7,8 @@ export default function useApplicationData() {
     users: [],
     wishes: [],
     proposals: [],
-    reviews: []
+    reviews: [],
+    acceptedProposals: []
   });
 
 
@@ -63,7 +64,7 @@ export default function useApplicationData() {
     const newProposal = {
         id: (cloneStateProposals.length + 1),
         listing_id: offeredItemId,
-        asset_id: wantedItemId,
+        asset_id: Number(wantedItemId),
         status_id: 1,
         message: message,
         is_accepted: null,
@@ -74,8 +75,14 @@ export default function useApplicationData() {
     setState((state) => ({...state, proposals: updatedProposals}));
   }
 
+  function updateProposalStatus(acceptedProposal) {
+    const cloneStateProposals = [].concat.apply([], state.proposals);
+    cloneStateProposals.find((proposal) => proposal.id === acceptedProposal.id).is_accepted = true;
+    setState((state) => ({...state, proposals: cloneStateProposals}))
+  }
 
 
-  return { state, publishListing, propose };
+
+  return { state, publishListing, propose, updateProposalStatus };
 }
 

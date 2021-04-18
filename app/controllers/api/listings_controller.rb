@@ -13,6 +13,7 @@ class Api::ListingsController < ApplicationController
       @entireListing.update({:user => l.user})
       @entireListing.update({:neighbourhood => l.user.neighbourhood})
       @entireListing.update({:city => l.user.neighbourhood.city})
+      @entireListing.update({:listing => l.listing})
     end
 
     render json: @listings
