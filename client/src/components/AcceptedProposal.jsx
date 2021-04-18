@@ -111,44 +111,21 @@ const BootstrapButton2 = withStyles({
   },
 })(Button);
 
-export default function AcceptedProposal() {
+export default function AcceptedProposal(props) {
   const classes = useStyles();
-  const fakeProposalData = {
-    id: 2,
-    message: "Hope to hear from you soon!",
-    is_accepted: null,
-    date_accepted: null,
-    listing_id: 5,
-    user_id: 2,
-    asset_id: 1,
-    status_id: 1,
-    wanted: {
-      id: 1,
-      name: "Linen shirt, M",
-      description: "Rarely-worn light blue linen shirt, very comfortable",
-      picture:
-        "https://images.unsplash.com/photo-1598961942613-ba897716405b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1",
-      owner_id: 3,
-      storer_id: 3,
-      category_id: 2,
-    },
-    offered: {
-      id: 5,
-      name: "Milk and Honey",
-      description: "Author: Rupi Kaur",
-      picture:
-        "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
-      owner_id: 2,
-      storer_id: 2,
-      category_id: 3,
-    },
-  };
-
+  
   const { proposalId } = useParams();
 
-  // useEffect(() => {
-  //   axios.get(`users/${userId}/proposals/${proposalId}`)
-  // }, [userId, proposalId]);
+  const userId = 2;
+  // for now
+
+  const mergedProposals = [].concat.apply([], props.proposals);
+  const currentUserProposals = mergedProposals.filter((proposal) => proposal.user_id === userId);
+  const acceptedProposal = currentUserProposals.find((proposal) => proposal.id === Number(proposalId));
+  
+  const offeredItemListing = props.listings.find((item) => item.listing.id === acceptedProposal.listing_id);
+  const wantedItemListing = props.listings.find((item) => item.id === acceptedProposal.asset_id);
+
 
   // function confirmTrade(){};
 
@@ -161,7 +138,7 @@ export default function AcceptedProposal() {
       <CssBaseline />
       <div className={classes.heroContent}>
         <Typography variant="h6" align="left" color="textPrimary" paragraph>
-          Trade proposal acceped!
+          Ready for trade:
         </Typography>
 
         <Container maxWidth="md">
@@ -177,16 +154,13 @@ export default function AcceptedProposal() {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image="https://source.unsplash.com/random"
+                  image={offeredItemListing.picture}
                   title="Image title"
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h7" component="h3">
-                    Heading
+                    {offeredItemListing.name}
                   </Typography>
-                  {/* <Typography>
-                    This is a media card. You can use this section to describe the content.
-                  </Typography> */}
                 </CardContent>
               </Card>
             </Grid>
@@ -197,16 +171,13 @@ export default function AcceptedProposal() {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image="https://source.unsplash.com/random"
+                  image={wantedItemListing.picture}
                   title="Image title"
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h7" component="h3">
-                    Heading
+                  {wantedItemListing.name}
                   </Typography>
-                  {/* <Typography>
-                    This is a media card. You can use this section to describe the content.
-                  </Typography> */}
                 </CardContent>
               </Card>
             </Grid>
@@ -229,13 +200,13 @@ export default function AcceptedProposal() {
             </Grid>
             <Grid item xs={5} sm={6} md={4}>
               <Typography align="left" gutterBottom variant="h7" component="h3">
-                Name
+              {wantedItemListing.user.first_name} {wantedItemListing.user.last_name}
               </Typography>
               <Typography align="left" gutterBottom variant="h7" component="h3">
-                email
+              {wantedItemListing.user.email}
               </Typography>
               <Typography align="left" gutterBottom variant="h7" component="h3">
-                phoneNumber
+              {wantedItemListing.user.phone}
               </Typography>
             </Grid>
             </Grid>

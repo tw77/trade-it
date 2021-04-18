@@ -7,8 +7,7 @@ export default function useApplicationData() {
     users: [],
     wishes: [],
     proposals: [],
-    reviews: [],
-    acceptedProposals: []
+    reviews: []
   });
 
 

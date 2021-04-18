@@ -156,17 +156,15 @@ export default function MyProposals(props) {
   const history = useHistory();
 
   const mergedProposals = [].concat.apply([], props.proposals);
-  const userId = 2;
-  // for now
+  const userId = 2; // for now
   const currentUserProposals = mergedProposals.filter((proposal) => proposal.user_id === userId);
-  console.log('currentUserProposals', currentUserProposals);
 
   const offeredItemIds = currentUserProposals.map((proposal) => proposal.listing_id);
   const offeredItemListings = props.listings.filter((listing) => offeredItemIds.includes(listing.id));
   const offeredItemPictures = offeredItemListings.map((offeredItem) => offeredItem.picture);
 
   const wantedItemIds = currentUserProposals.map((proposal) => proposal.asset_id);
-  const wantedItemListings = props.listings.filter((listing) => wantedItemIds.includes(listing.id));
+  const wantedItemListings = props.listings.filter((listing) => wantedItemIds.includes(listing.id)).reverse();
   const wantedItemPictures = wantedItemListings.map((wantedItem) => wantedItem.picture);
 
   function accept(id){
@@ -174,18 +172,15 @@ export default function MyProposals(props) {
       ...currentUserProposals[id],
       is_accepted: true
     };
-    console.log('updatedProposal', updatedProposal);
     props.updateProposalStatus(updatedProposal);
   };
 
-  console.log('mergedProposals', mergedProposals);
   function decline(id){};
 
   function view(id){
+    id++;
     history.push(`accepted/${id}`)
   };
-
-  // "View" button links to {AcceptedProposal}
 
   const cards = Array.from(Array(currentUserProposals.length).keys()) // an index counting the user's proposals from 0
 
@@ -219,9 +214,6 @@ export default function MyProposals(props) {
                       <Typography gutterBottom variant="h7" component="h3">
                         {offeredItemListings[card].name}
                       </Typography>
-                      {/* <Typography>
-                    This is a media card. You can use this section to describe the content.
-                  </Typography> */}
                     </CardContent>
                   </Card>
                 </Grid>
@@ -243,17 +235,24 @@ export default function MyProposals(props) {
                       >
                         {wantedItemListings[card].name}
                       </Typography>
-                      {/* <Typography>
-                    This is a media card. You can use this section to describe the content.
-                  </Typography> */}
                     </CardContent>
                   </Card>
                 </Grid>
                 <Grid item key={card} xs={3}>
                   <Typography gutterBottom variant="h7">
-                    2 days ago
+                  {currentUserProposals[card].is_accepted ? `Trade accepted!` : `2 days ago`}
                   </Typography>
-                  {!currentUserProposals[card].is_accepted ? (
+                  {currentUserProposals[card].is_accepted ? (
+                    <BootstrapButton3
+                      variant="contained"
+                      color="primary"
+                      disableRipple
+                      className={classes.margin}
+                      onClick={() => view(card)}
+                    >
+                      View
+                    </BootstrapButton3>
+                  ) : (
                     <>
                       <BootstrapButton2
                         variant="contained"
@@ -274,16 +273,6 @@ export default function MyProposals(props) {
                         Decline
                       </BootstrapButton>
                     </>
-                  ) : (
-                    <BootstrapButton3
-                      variant="contained"
-                      color="primary"
-                      disableRipple
-                      className={classes.margin}
-                      onClick={view}
-                    >
-                      View
-                    </BootstrapButton3>
                   )}
                 </Grid>
               </>
