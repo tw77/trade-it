@@ -169,7 +169,7 @@ export default function Profile(props) {
                      <Rate disabled defaultValue={review.rating} />
                     <Typography
                       variant="subtitle1"
-                      align="left"
+                      align="center"
                       color="textSecondary"
                       component="p"
                     >
