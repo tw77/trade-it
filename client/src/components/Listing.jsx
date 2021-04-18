@@ -135,9 +135,10 @@ export default function Listing(props) {
               </Grid>
               <Typography
                 component="h1"
-                align="justify"
+                align="left"
                 variant="subtitle1"
                 style={{ padding: "8px 21px 8px 21px" }}
+                color="textSecondary"
               >
                 {currentListing.description}
               </Typography>
