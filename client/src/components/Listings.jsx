@@ -10,17 +10,15 @@ import SearchIcon from '@material-ui/icons/Search'
 const useStyles = makeStyles((theme) => ({
   heroContent: {
     // backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 0),
+    padding: theme.spacing(8, 0, 8),
     paddingTop: "100px",
-  },
-  progress: {
-    paddingTop: "150px",
   },
   cardContent: {
     flexGrow: 1,
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    // paddingTop: '56.25%', // 16:9
+    paddingTop: "100%", // 16:9
   },
   card: {
     height: '100%',
@@ -58,10 +56,10 @@ export default function Listings(props) {
                     image={picture}
                     title={name}
                   />
-            <CardContent className={classes.cardContent}>
+            {/* <CardContent className={classes.cardContent}>
               <Typography gutterBottom variant="h6" component="h2">
                 {name}</Typography>
-            </CardContent>
+            </CardContent> */}
           </Card>
           </Grid>
          
@@ -75,14 +73,17 @@ export default function Listings(props) {
    
   <React.Fragment>
     <CssBaseline />
-    <div className={classes.heroContent}>
-      <AppBar position="static" color='white' >
+      <div className={classes.heroContent}>
+      <Typography variant="h5" align="left" color="textPrimary">
+          Explore listed items
+        </Typography>
+      <AppBar position="static" align="left" style={{ background: 'transparent', boxShadow: 'none'}} > 
         <Toolbar>
           <div>
-            <SearchIcon />
+            <SearchIcon align="left" />
               <TextField
               onChange={handleSearchChange}
-                label='search'
+                label='Search'
                 variant='standard'
               />
           </div>
