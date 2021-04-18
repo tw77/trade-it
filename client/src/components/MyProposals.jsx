@@ -1,9 +1,8 @@
 import React , { useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   Grid,
   Card,
-  CardContent,
   Typography,
 } from "@material-ui/core";
 
@@ -135,6 +134,7 @@ const BootstrapButton3 = withStyles({
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    paddingBottom: "20px",
   },
   heroContent: {
     padding: theme.spacing(8, 0, 14),
@@ -144,7 +144,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   cardMedia: {
-    paddingTop: "56.25%", // 16:9
+    paddingTop: "100%",
   },
   margin: {
     margin: theme.spacing(1),
@@ -188,8 +188,11 @@ export default function MyProposals(props) {
     <>
       <CssBaseline />
       <div className={classes.heroContent}>
-        <Typography variant="h5" align="left" color="textPrimary" paragraph>
+        <Typography variant="h5" align="left" color="textPrimary">
           Proposals
+        </Typography>
+        <Typography variant="subtitle1" align="left" color="textSecondary" paragraph>
+        Trades proposed to me
         </Typography>
 
         <Container maxWidth="md">
@@ -210,11 +213,6 @@ export default function MyProposals(props) {
                       image={offeredItemPictures[card]}
                       title="Image title"
                     />
-                    <CardContent className={classes.cardContent}>
-                      <Typography gutterBottom variant="h7" component="h3">
-                        {offeredItemListings[card].name}
-                      </Typography>
-                    </CardContent>
                   </Card>
                 </Grid>
                 <Grid item key={card} xs={1}>
@@ -227,15 +225,6 @@ export default function MyProposals(props) {
                       image={wantedItemPictures[card]}
                       title="Image title"
                     />
-                    <CardContent className={classes.cardContent}>
-                      <Typography
-                        gutterBottom
-                        variant="subtitle1"
-                        component="h3"
-                      >
-                        {wantedItemListings[card].name}
-                      </Typography>
-                    </CardContent>
                   </Card>
                 </Grid>
                 <Grid item key={card} xs={3}>
@@ -274,6 +263,60 @@ export default function MyProposals(props) {
                       </BootstrapButton>
                     </>
                   )}
+                </Grid>
+              </>
+            ))}
+          </Grid>
+        </Container>
+        <Typography variant="subtitle1" align="left" color="textSecondary" paragraph>
+        Trades I've proposed
+        </Typography>
+
+        <Container maxWidth="md">
+          <Grid
+            container
+            spacing={2}
+            direction="row"
+            alignItems="center"
+            // justify="space-evenly"
+            className={classes.root}
+          >
+            {cards.map((card) => (
+              <>
+                <Grid item key={card} xs={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={offeredItemPictures[card]}
+                      title="Image title"
+                    />
+                  </Card>
+                </Grid>
+                <Grid item key={card} xs={1}>
+                  <AutorenewIcon style={{ fontSize: 20 }} color="primary" />
+                </Grid>
+                <Grid item key={card} xs={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={wantedItemPictures[card]}
+                      title="Image title"
+                    />
+                  </Card>
+                </Grid>
+                <Grid item key={card} xs={3}>
+                  <Typography gutterBottom variant="h7">
+                  Accepted
+                  </Typography>
+                    <BootstrapButton3
+                      variant="contained"
+                      color="primary"
+                      disableRipple
+                      className={classes.margin}
+                      onClick={() => view(card)}
+                    >
+                      View
+                    </BootstrapButton3>
                 </Grid>
               </>
             ))}
