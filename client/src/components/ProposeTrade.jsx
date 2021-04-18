@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useState } from 'react';
 import {
   Grid,
   Card,
@@ -14,6 +14,17 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import "./ProposeTrade.css";
 import ImageCarousel from "./ImageCarousel";
+import { useParams, useHistory } from 'react-router-dom'
+import { Carousel } from 'antd';
+
+const contentStyle = {
+  height: '160px',
+  color: '#fff',
+  lineHeight: '160px',
+  alignItems: 'center',
+  textAlign: 'center'
+  // background: '#364d79',
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,47 +44,38 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1];
 
-export default function ProposeTrade() {
+export default function ProposeTrade(props) {
   const classes = useStyles();
+  const { listingId } = useParams();
+  const history = useHistory();
 
-  const fakeWantedItem = [
-    {
-      id: 1,
-      name: "Linen shirt, M",
-      description: "Rarely-worn light blue linen shirt, very comfortable",
-      picture:
-        "https://images.unsplash.com/photo-1598961942613-ba897716405b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1",
-      owner_id: 3,
-      storer_id: 3,
-      category_id: 2,
-    },
-  ];
+  const [message, setMessage] = useState("")
+  const onMessageChange = function(event) {
+    setMessage(event.target.value);
+  };
 
-  const fakeListingsForUser = [
-    {
-      id: 4,
-      name: "Old school Game Boy Color",
-      picture:
-        "https://images.unsplash.com/photo-1525799894461-3cfe39b72d69?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",
-    },
-    {
-      id: 5,
-      name: "Milk and Honey",
-      picture:
-        "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
-    },
-  ];
+  console.log('props.proposals', props.proposals);
 
-  // const {userId} = useParams();
+  const mergedProposals = [].concat.apply([], props.proposals);
 
-  // // can the data for the wanted item be passed in here from {Listing}?
-  // // also, is it necessary to include a get request to the current user's listings here?
+  const currentUserListings = props.listings.filter((listing) => listing.user.id === 2);
+  // hard-coding current user's id for now
 
-  // function sendProposal(){
-  //   // includes axios.post(`users/${userId}/proposals`)
-  // };
+  const [offeredListingId, setOfferedListingId] = useState(currentUserListings[0].id);
+  const [offeredListingPicture, setofferedListingPicture] = useState(currentUserListings[0].picture);
+  const wantedListingPicture = props.listings.find((listing) => listing.id === Number(listingId)).picture;
 
-  // back naviagation with a "Cancel" button?
+  function selectListingToOffer(id) {
+    setOfferedListingId(id);
+    setofferedListingPicture(currentUserListings.find((listing) => listing.id === id).picture)
+  };
+
+  function offerTrade(event) {
+    event.preventDefault();
+    props.propose(listingId, offeredListingId, message)
+    history.push(`/proposals`)
+  };
+
 
   return (
     <>
@@ -98,16 +100,13 @@ export default function ProposeTrade() {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
+                    image={offeredListingPicture}
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h7" component="h3">
                       Heading
                     </Typography>
-                    {/* <Typography>
-                    This is a media card. You can use this section to describe the content.
-                  </Typography> */}
                   </CardContent>
                 </Card>
               </Grid>
@@ -118,16 +117,13 @@ export default function ProposeTrade() {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
+                    image={wantedListingPicture}
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h7" component="h3">
                       Heading
                     </Typography>
-                    {/* <Typography>
-                    This is a media card. You can use this section to describe the content.
-                  </Typography> */}
                   </CardContent>
                 </Card>
               </Grid>
@@ -135,7 +131,20 @@ export default function ProposeTrade() {
           ))}
           </Grid>
           <div className="separation"></div>
-          <ImageCarousel />
+          <Carousel>
+          {currentUserListings.map((listing) => (
+              <div>
+              <h3 onClick={() => selectListingToOffer(listing.id)} style={{
+                height: '160px',
+                lineHeight: '160px',
+                textAlign: 'center',
+                backgroundImage: `url(${listing.picture})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}></h3>
+              </div>
+          ))}
+            </Carousel>
           <p></p>
           <form className={classes.form} noValidate>
             <TextField
@@ -145,8 +154,11 @@ export default function ProposeTrade() {
               fullWidth
               multiline
               rows={2}
-              label="Description"
+              name="message"
+              label="Add a message (optional)"
               variant="outlined"
+              onChange={onMessageChange}
+              value={message}
             />  
           <div className="separation"></div>
 
@@ -155,6 +167,7 @@ export default function ProposeTrade() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={offerTrade}
             >
               Propose a trade!
             </Button>

@@ -48,7 +48,7 @@ const useStyles = makeStyles({
 
 
 export default function App() {
-  const { state, publishListing } = useApplicationData();
+  const { state, publishListing, propose } = useApplicationData();
 
   const classes = useStyles();
 
@@ -72,7 +72,7 @@ export default function App() {
               <Typography variant="h3" className='Pagetitle'>
                 Trade It
               </Typography>
-              <DropDownMenu className="DropDown"/>  
+              <DropDownMenu className="DropDown" />  
             </Toolbar>
           </AppBar>  
         </header> 
@@ -83,7 +83,7 @@ export default function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />  
               <Route path="/profile/:userId"> <Profile users={state.users} listings={state.listings} reviews={state.reviews} /> </Route>
-              <Route exact path="/wishlist"> <MyWishlist wishes={state.wishes} /> </Route>
+              <Route exact path="/wishlist"> <MyWishlist wishes={state.wishes} listings={state.listings} /> </Route>
               <Route exact path="/suggestions">
                 <MySuggestions wishes={state.wishes} listings={state.listings} proposals={state.proposals} /> 
                 </Route>
@@ -91,7 +91,8 @@ export default function App() {
               <Route exact path="/add"> <AddNewItem listings={state.listings} publishListing={publishListing} /> </Route>
               <Route exact path="/"> <Listings listings={state.listings} /> </Route>
               <Route exact path="/listings/:listingId"> <Listing listings={state.listings} /> </Route>
-              <Route exact path="/offer" component={ProposeTrade} />
+              <Route exact path="/offer/:listingId"> <ProposeTrade listings={state.listings} proposals={state.proposals} propose={propose} /> </Route>
+              <Route exact path="/accept/:proposalId"> <Listing listings={state.listings} /> </Route>
           </Switch>     
         </section>
 
