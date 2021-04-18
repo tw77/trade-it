@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React, { useState } from "react";
 import {
   Grid,
   Card,
@@ -14,7 +14,27 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import "./ProposeTrade.css";
 import ImageCarousel from "./ImageCarousel";
+import { Carousel } from 'antd';
 import { useParams, useHistory } from 'react-router-dom'
+
+let url = "https://images.pexels.com/photos/7527871/pexels-photo-7527871.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+
+// let contentStyle = {
+//   height: '160px',
+//   color: '#fff',
+//   lineHeight: '160px',
+//   textAlign: 'center',
+//   background: '#364d79',
+//   backgroundImage: "url(" + { url } + ")"
+// };
+
+function onChange(a, b, c) {
+  // console.log(a, b, c);
+}
+
+// function onChange(a, b, c) {
+//   contentStyle.backgroundImage = "url(" + { "https://images.pexels.com/photos/7527871/pexels-photo-7527871.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" } + ")"
+// }
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +60,11 @@ export default function ProposeTrade(props) {
   const { listingId } = useParams();
   const history = useHistory();
 
+  const [message, setMessage] = useState("")
+  const onMessageChange = function(event) {
+    setMessage(event.target.value);
+  };
+
   console.log('props.proposals', props.proposals);
 
   const mergedProposals = [].concat.apply([], props.proposals);
@@ -48,10 +73,12 @@ export default function ProposeTrade(props) {
 
   const [offeredListing, setOfferedListing] = useState();
 
-  const newProposal = {};
+  const currentUserListings = props.listings.filter((listing) => listing.user.id === 2);
+  // hard-coding current user's id for now
+  console.log('currentUserListings', currentUserListings);
 
-
-  const fakeWantedItem = {
+  const fakeWantedItem = [
+    {
       id: 1,
       name: "Linen shirt, M",
       description: "Rarely-worn light blue linen shirt, very comfortable",
@@ -60,7 +87,8 @@ export default function ProposeTrade(props) {
       owner_id: 3,
       storer_id: 3,
       category_id: 2,
-    };
+    },
+  ];
 
   const fakeListingsForUser = [
     {
@@ -77,11 +105,14 @@ export default function ProposeTrade(props) {
     },
   ];
 
-  
-  function offerTrade(event) {
-    event.preventDefault();
-    props.propose(fakeWantedItem, fakeListingsForUser[0], 'hi')
-  };
+  // const {userId} = useParams();
+
+  // // can the data for the wanted item be passed in here from {Listing}?
+  // // also, is it necessary to include a get request to the current user's listings here?
+
+  // function sendProposal(){
+  //   // includes axios.post(`users/${userId}/proposals`)
+  // };
 
   // back naviagation with a "Cancel" button?
 
@@ -145,7 +176,22 @@ export default function ProposeTrade(props) {
           ))}
           </Grid>
           <div className="separation"></div>
-          <ImageCarousel />
+          {/* <ImageCarousel /> */}
+          <Carousel>
+          {currentUserListings.map((listing) => (
+              <div>
+                {/* <img style={contentStyle} src={listing.picture} /> */}
+              <h3 style={{
+                height: '160px',
+                lineHeight: '160px',
+                textAlign: 'center',
+                backgroundImage: `url(${listing.picture})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}></h3>
+              </div>
+          ))}
+            </Carousel>
           <p></p>
           <form className={classes.form} noValidate>
             <TextField
@@ -165,7 +211,6 @@ export default function ProposeTrade(props) {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={offerTrade}
             >
               Propose a trade!
             </Button>
