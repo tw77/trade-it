@@ -6,10 +6,12 @@ import {
   Grid,
   Typography,
   TextField,
+  CircularProgress,
 } from "@material-ui/core";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import "./MyWishlist.css";
 import ImageCarousel2 from "./ImageCarousel";
+import { Carousel } from 'antd';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MyWishlist() {
+export default function MyWishlist(props) {
   const classes = useStyles();
   const fakeWishesDataForUser = [
     {
@@ -181,10 +183,31 @@ export default function MyWishlist() {
               </>
             ))}
           </Grid>
+          {props.listings ? (
+            <>
           <Typography component="h1" variant="h5">
             Explore related listings
           </Typography>
-          <ImageCarousel2 />
+          <Carousel>
+          {props.listings.map((listing) => (
+              <div>
+              <h3 style={{
+                height: '160px',
+                lineHeight: '160px',
+                textAlign: 'center',
+                backgroundImage: `url(${listing.picture})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}></h3>
+            </div>
+          ))}
+              </Carousel>
+              </>
+          ) : (
+            <div className={classes.progress}>
+            <CircularProgress/>
+            </div>
+          )}
           
         </Container>
       </div>
