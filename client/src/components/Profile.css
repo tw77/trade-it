@@ -1,3 +1,8 @@
 #root > div > div > section > div {
   margin-bottom: 2px !important;
 }
+
+#root > div > div > section > div > main > div > div.MuiGrid-root.MuiGrid-container.MuiGrid-align-items-xs-center > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-8 > button {
+  margin-left: 165px
+}
+
