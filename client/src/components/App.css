@@ -1,18 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 
 
-.App {
+/* .App {
   text-align: center;
   max-height: 400;
   margin:0;
-  /* background-color: #dfe3ed; */
+ 
+} */
+
+.App-header {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+    z-index: 1; 
 }
 
 .Pagetitle {
   font-family: 'Amatic SC';
   font-weight:700;
   font-size: 3.5rem;
-  color: #686868;
+  color: #6e5d34;
   margin-bottom: 0;
 }
 
@@ -24,7 +35,7 @@
 }
 
 
-.App-link {
+/* .App-link {
   color: #61dafb;
-}
+} */
 

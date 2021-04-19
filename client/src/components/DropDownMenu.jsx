@@ -10,7 +10,7 @@ export default function DropDownMenu2() {
   const history = useHistory();
 
   function toProfile() {
-    history.push(`/profile/2`)
+    history.push(`/profile`)
   }
 
   const userMenu = (

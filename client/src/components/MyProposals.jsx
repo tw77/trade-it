@@ -25,8 +25,8 @@ const BootstrapButton = withStyles({
     padding: "4px 8px",
     border: "1px solid",
     lineHeight: 1.5,
-    backgroundColor: "#CA302D",
-    borderColor: "#CA302D",
+    backgroundColor: "#e76f51",
+    borderColor: "#e76f51",
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",
@@ -40,18 +40,15 @@ const BootstrapButton = withStyles({
       '"Segoe UI Symbol"',
     ].join(","),
     "&:hover": {
-      backgroundColor: "#BA262B",
-      borderColor: "#BA262B",
+      backgroundColor: "#e76f51",
+      borderColor: "#e76f51",
       boxShadow: "none",
     },
-    "&:active": {
-      boxShadow: "none",
-      backgroundColor: "#CA302D",
-      borderColor: "#CA302D",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    },
+    // "&:active": {
+    //   boxShadow: "none",
+    //   backgroundColor: "#e76f51",
+    //   borderColor: "#e76f51",
+    // },
   },
 })(Button);
 
@@ -63,8 +60,8 @@ const BootstrapButton2 = withStyles({
     padding: "4px 8px",
     border: "1px solid",
     lineHeight: 1.5,
-    backgroundColor: "#27B376",
-    borderColor: "#27B376",
+    backgroundColor: "#2a9d8f",
+    borderColor: "#2a9d8f",
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",
@@ -81,14 +78,6 @@ const BootstrapButton2 = withStyles({
       backgroundColor: "#006F3C",
       borderColor: "#006F3C",
       boxShadow: "none",
-    },
-    "&:active": {
-      boxShadow: "none",
-      backgroundColor: "#006F3C",
-      borderColor: "#006F3C",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
     },
   },
 })(Button);
@@ -101,12 +90,9 @@ const BootstrapButton3 = withStyles({
     padding: "4px 8px",
     border: "1px solid",
     lineHeight: 1.5,
-    backgroundColor: "#F9A83E",
-    borderColor: "#F9A83E",
+    backgroundColor: "#4958b6",
+    borderColor: "#4958b6",
     fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
       "Roboto",
       '"Helvetica Neue"',
       "Arial",
@@ -119,14 +105,6 @@ const BootstrapButton3 = withStyles({
       backgroundColor: "#EDCF3C",
       borderColor: "#EDCF3C",
       boxShadow: "none",
-    },
-    "&:active": {
-      boxShadow: "none",
-      backgroundColor: "#EDCF3C",
-      borderColor: "#EDCF3C",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
     },
   },
 })(Button);
@@ -147,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "100%",
   },
   margin: {
-    margin: theme.spacing(1),
+    marginTop: "5px",
   },
 }));
 
@@ -216,7 +194,7 @@ export default function MyProposals(props) {
                   </Card>
                 </Grid>
                 <Grid item key={card} xs={1}>
-                  <AutorenewIcon style={{ fontSize: 20 }} color="primary" />
+                  <AutorenewIcon style={{ fontSize: 20, color: '#4958b6' }} />
                 </Grid>
                 <Grid item key={card} xs={4}>
                   <Card className={classes.card}>
@@ -293,7 +271,7 @@ export default function MyProposals(props) {
                   </Card>
                 </Grid>
                 <Grid item key={card} xs={1}>
-                  <AutorenewIcon style={{ fontSize: 20 }} color="primary" />
+                  <AutorenewIcon style={{ fontSize: 20, color: '#4958b6' }} />
                 </Grid>
                 <Grid item key={card} xs={4}>
                   <Card className={classes.card}>

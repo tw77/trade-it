@@ -32,19 +32,6 @@ const BootstrapButton2 = withStyles({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(","),
-    "&:hover": {
-      backgroundColor: "#006F3C",
-      borderColor: "#006F3C",
-      boxShadow: "none",
-    },
-    "&:active": {
-      boxShadow: "none",
-      backgroundColor: "#006F3C",
-      borderColor: "#006F3C",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    },
   },
 })(Button);
 
@@ -126,16 +113,7 @@ const formReducer = (state, event) => {
   };
 };
 
-const mockListing = {
-  id: 1,
-  name: "Linen shirt, M",
-  description: "Rarely-worn light blue linen shirt, very comfortable",
-  picture:
-    "https://images.unsplash.com/photo-1598961942613-ba897716405b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1",
-  owner_id: 3,
-  storer_id: 3,
-  category_id: 2,
-};
+
 
 export default function AddNewItem(props) {
   // const history = useHistory();
@@ -243,7 +221,6 @@ export default function AddNewItem(props) {
                 variant="contained"
                 color="primary"
                 disableRipple
-                className={classes.margin}
                 onClick={handleSubmit}
               >
                 Add Item

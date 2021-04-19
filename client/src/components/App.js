@@ -1,5 +1,5 @@
 import React from "react";
-import { BottomNavigationAction, BottomNavigation, makeStyles, Typography, } from '@material-ui/core';
+import { BottomNavigationAction, BottomNavigation, makeStyles } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
@@ -27,7 +27,8 @@ import "./App.css";
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: '#E0E0E0',
+    backgroundColor: '#e9c46a',
+    color: 'white',
     bottom: 0,
     left: "0px",
     position: 'fixed',
@@ -42,13 +43,13 @@ const useStyles = makeStyles({
         padding: "6px 0"
       }
     }
-  }
+  },
 });
 
 
 
 export default function App() {
-  const { state, publishListing, propose, updateProposalStatus } = useApplicationData();
+  const { state, publishListing, propose, updateProposalStatus, updateWishes, updateReviews } = useApplicationData();
 
   const classes = useStyles();
 
@@ -64,8 +65,9 @@ export default function App() {
       <Router>
       <Container maxWidth="s">
       <div className="App" >
-      
-          <AppBar
+      <header className="App-header">
+            <AppBar
+              elevation={0}
             className={classes.root}
           >
             <Toolbar className="Toolbar">
@@ -74,15 +76,16 @@ export default function App() {
               <DropDownMenu className="DropDown" />  
             </Toolbar>
           </AppBar>  
-        
+          </header>
         <section>
               
        
         <Switch>
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />  
-              <Route path="/profile/:userId"> <Profile users={state.users} listings={state.listings} reviews={state.reviews} /> </Route>
-              <Route exact path="/wishlist"> <MyWishlist wishes={state.wishes} listings={state.listings} /> </Route>
+              <Route exact path="/profile/:userId"> <Profile users={state.users} listings={state.listings} reviews={state.reviews} /> </Route>
+              <Route exact path="/profile"> <Profile users={state.users} listings={state.listings} reviews={state.reviews} /> </Route>
+              <Route exact path="/wishlist"> <MyWishlist wishes={state.wishes} listings={state.listings} updateWishes={updateWishes} /> </Route>
               <Route exact path="/suggestions">
                 <MySuggestions wishes={state.wishes} listings={state.listings} proposals={state.proposals} /> 
                 </Route>
@@ -91,7 +94,7 @@ export default function App() {
               <Route exact path="/"> <Listings listings={state.listings} /> </Route>
               <Route exact path="/listings/:listingId"> <Listing listings={state.listings} /> </Route>
               <Route exact path="/offer/:listingId"> <ProposeTrade listings={state.listings} proposals={state.proposals} propose={propose} /> </Route>
-              <Route exact path="/accepted/:proposalId"> <AcceptedProposal proposals={state.proposals} listings={state.listings} /> </Route>
+              <Route exact path="/accepted/:proposalId"> <AcceptedProposal proposals={state.proposals} listings={state.listings} updateReviews={updateReviews} /> </Route>
           </Switch>     
         </section>
 
@@ -102,7 +105,7 @@ export default function App() {
             showLabels
             value={value}
             onChange={(event, newValue) => handleChange(event, newValue)}
-            // style={{height: '40px',width: '414px'}}
+            style={{color: 'white'}}
             
           >
             <BottomNavigationAction component={Link} to="/" label="Search" icon={<SearchIcon />} />

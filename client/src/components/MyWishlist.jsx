@@ -55,25 +55,11 @@ const BootstrapButton2 = withStyles({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(","),
-    "&:hover": {
-      backgroundColor: "#006F3C",
-      borderColor: "#006F3C",
-      boxShadow: "none",
-    },
-    "&:active": {
-      boxShadow: "none",
-      backgroundColor: "#006F3C",
-      borderColor: "#006F3C",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    },
   },
 })(Button);
 
 export default function MyWishlist(props) {
   const classes = useStyles();
-  
   const categories = [
     {
       value: 1,
@@ -120,7 +106,6 @@ export default function MyWishlist(props) {
   const userId = 2; // for now
   const mergedWishes = [].concat.apply([], props.wishes);
   const userWishes = mergedWishes.filter((wish) => wish.user_id === userId);
-
   const userWishCategories = userWishes.map((wish) => wish.category_id);
 
   function findMostRepresented(userWishCategories) {
@@ -129,7 +114,7 @@ export default function MyWishlist(props) {
     userWishCategories.forEach(function(id) { frequency[id] = 0; });
 
     const uniques = userWishCategories.filter(function(id) {
-        return ++frequency[id] == 1;
+        return ++frequency[id] === 1;
     });
 
     return uniques.sort(function(a, b) {
@@ -234,7 +219,7 @@ export default function MyWishlist(props) {
             </Grid>
           </form>
           <Typography variant="h5" align="left" color="textPrimary">
-            My Whishlist
+            My Wishlist
           </Typography>
           <Grid
             container
@@ -260,11 +245,12 @@ export default function MyWishlist(props) {
           </Grid>
           {relevantListings ? (
             <>
+
               <Typography variant="h5" align="left" color="textPrimary" paragraph>
                 Explore related listings
               </Typography>
               <Carousel>
-                {relevantListings .map((listing) => (
+                {relevantListings.map((listing) => (
                   <div>
                     <h3
                       style={{
