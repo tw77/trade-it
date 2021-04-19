@@ -4,5 +4,9 @@
 
 #root > div > div > section > div > main > div.am-wingblank.am-wingblank-lg > div > div.slider-frame > ul {
   height: 180px !important;
-  margin-top: 20px !important;
+  margin-top: 22px !important;
+}
+
+#root > div > div > section > div > main > div.MuiGrid-root.makeStyles-heroContent-5.MuiGrid-container.MuiGrid-spacing-xs-1.MuiGrid-align-items-xs-center > div> button {
+  padding: 0;
 }
