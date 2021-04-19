@@ -178,7 +178,7 @@ export default function AddNewItem(props) {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography variant="h5" align="left" color="textPrimary">
-          Add Item
+          Add new item
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
