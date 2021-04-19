@@ -1,5 +1,6 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React , { useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+
 import {
   Grid,
   Card,
@@ -135,19 +136,103 @@ export default function MyProposals(props) {
 
   const mergedProposals = [].concat.apply([], props.proposals);
   const userId = 2; // for now
+
+
+
+
+
   const currentUserProposals = mergedProposals.filter((proposal) => proposal.user_id === userId);
+  console.log('currentUserProposals', currentUserProposals);
 
   const offeredItemIds = currentUserProposals.map((proposal) => proposal.listing_id);
-  const offeredItemListings = props.listings.filter((listing) => offeredItemIds.includes(listing.id));
+
+  function findOfferedListings(offeredItemIds) {
+    let allOfferedListings = [];
+    let offeredItem;
+    for (const id of offeredItemIds) {
+      offeredItem = props.listings.find((listing) => listing.id === id)
+      allOfferedListings.push(offeredItem)
+    }
+    return allOfferedListings;
+  }
+
+  const offeredItemListings = findOfferedListings(offeredItemIds)
   const offeredItemPictures = offeredItemListings.map((offeredItem) => offeredItem.picture);
 
   const wantedItemIds = currentUserProposals.map((proposal) => proposal.asset_id);
-  const wantedItemListings = props.listings.filter((listing) => wantedItemIds.includes(listing.id)).reverse();
+
+  function findWantedListings(wantedItemIds) {
+    let allWantedListings = [];
+    let wantedItem;
+    for (const id of wantedItemIds) {
+      wantedItem = props.listings.find((listing) => listing.id === id)
+      allWantedListings.push(wantedItem)
+    }
+    return allWantedListings;
+  }
+
+  const wantedItemListings = findWantedListings(wantedItemIds);
   const wantedItemPictures = wantedItemListings.map((wantedItem) => wantedItem.picture);
 
-  function accept(id){
+  console.log('mergedProposals', mergedProposals);
+  console.log('offeredItemIds', offeredItemIds);
+  console.log('wantedItemIds', wantedItemIds);
+  console.log('offeredItemListings', offeredItemListings);
+  console.log('wantedItemListings', wantedItemListings);
+
+
+
+
+
+
+
+
+  const tradesProposedToMe = mergedProposals.filter((proposal) => offeredItemIds.includes(proposal.asset_id));
+  console.log('tradesProposedToMe', tradesProposedToMe);
+
+  const offeredToMeIds = tradesProposedToMe.map((proposal) => proposal.listing_id);
+  console.log('itemOfferedToMeIds', offeredToMeIds);
+
+  function findListingsOfferedToMe(offeredToMeIds) {
+    let allListingsOfferedToMe = [];
+    let offeredItem;
+    for (const id of offeredToMeIds) {
+      offeredItem = props.listings.find((listing) => listing.id === id)
+      allListingsOfferedToMe.push(offeredItem)
+    }
+    return allListingsOfferedToMe;
+  }
+
+  const offeredToMeListings = findListingsOfferedToMe(offeredToMeIds)
+  const offeredToMePictures = offeredToMeListings.map((offeredItem) => offeredItem.picture);
+
+  const listingsTheyWantIds = tradesProposedToMe.map((proposal) => proposal.asset_id);
+  console.log('listingsTheyWantIds', listingsTheyWantIds);
+
+  function listingsTheyWant(listingsTheyWantIds) {
+    let allListingsTheyWant = [];
+    let wantedItem;
+    for (const id of listingsTheyWantIds) {
+      wantedItem = props.listings.find((listing) => listing.id === id)
+      allListingsTheyWant.push(wantedItem)
+    }
+    return allListingsTheyWant;
+  }
+
+  const wantedFromMyListings = listingsTheyWant(listingsTheyWantIds);
+  const wantedFromMyPictures = wantedFromMyListings.map((wantedItem) => wantedItem.picture);
+
+
+
+
+
+
+
+
+
+  function accept(card){
     const updatedProposal = {
-      ...currentUserProposals[id],
+      ...tradesProposedToMe[card],
       is_accepted: true
     };
     props.updateProposalStatus(updatedProposal);
@@ -155,12 +240,29 @@ export default function MyProposals(props) {
 
   function decline(id){};
 
-  function view(id){
-    id++;
-    history.push(`accepted/${id}`)
+  function viewProposalTheyAccepted(card){
+    history.push(`accepted/${currentUserProposals[card].id}`)
   };
 
-  const cards = Array.from(Array(currentUserProposals.length).keys()) // an index counting the user's proposals from 0
+  function viewProposalIAccepted(card){
+    history.push(`accepted/${tradesProposedToMe[card].id}`)
+  };
+
+
+
+
+
+
+
+
+  const tradesIProposedCards = Array.from(Array(currentUserProposals.length).keys()); // an index counting the user's proposals from 0
+  const tradesProposedToMeCards = Array.from(Array(tradesProposedToMe.length).keys());
+
+  const tradesProposedToMeIds = tradesProposedToMe.map((proposal) => proposal.id);
+
+  console.log('tradesIProposedCards', tradesIProposedCards);
+  console.log('tradesProposedToMeCards', tradesProposedToMeCards);
+
 
   return (
     <>
@@ -182,13 +284,13 @@ export default function MyProposals(props) {
             // justify="space-evenly"
             className={classes.root}
           >
-            {cards.map((card) => (
+            {tradesProposedToMeCards.map((card) => (
               <>
                 <Grid item key={card} xs={4}>
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image={offeredItemPictures[card]}
+                      image={wantedFromMyPictures[card]}
                       title="Image title"
                     />
                   </Card>
@@ -200,22 +302,22 @@ export default function MyProposals(props) {
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image={wantedItemPictures[card]}
+                      image={offeredToMePictures[card]}
                       title="Image title"
                     />
                   </Card>
                 </Grid>
                 <Grid item key={card} xs={3}>
                   <Typography gutterBottom variant="h7">
-                  {currentUserProposals[card].is_accepted ? `Trade accepted!` : `2 days ago`}
+                  {tradesProposedToMe[card].is_accepted ? `Trade accepted!` : `2 days ago`}
                   </Typography>
-                  {currentUserProposals[card].is_accepted ? (
+                  {tradesProposedToMe[card].is_accepted ? (
                     <BootstrapButton3
                       variant="contained"
                       color="primary"
                       disableRipple
                       className={classes.margin}
-                      onClick={() => view(card)}
+                      onClick={() => viewProposalIAccepted(card)}
                     >
                       View
                     </BootstrapButton3>
@@ -259,7 +361,7 @@ export default function MyProposals(props) {
             // justify="space-evenly"
             className={classes.root}
           >
-            {cards.map((card) => (
+            {tradesIProposedCards.map((card) => (
               <>
                 <Grid item key={card} xs={4}>
                   <Card className={classes.card}>
@@ -291,7 +393,7 @@ export default function MyProposals(props) {
                       color="primary"
                       disableRipple
                       className={classes.margin}
-                      onClick={() => view(card)}
+                      onClick={() => viewProposalTheyAccepted(card)}
                     >
                       View
                     </BootstrapButton3>

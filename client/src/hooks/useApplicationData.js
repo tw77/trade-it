@@ -66,18 +66,26 @@ export default function useApplicationData() {
         asset_id: Number(wantedItemId),
         status_id: 1,
         message: message,
-        is_accepted: null,
-        date_accepted: null
+        is_accepted: false,
+        date_accepted: null,
+        user_id: userId
       };
-    const updatedProposals = ([newProposal, ...cloneStateProposals]);
-    console.log('updatedProposals', updatedProposals);
+    const updatedProposals = ([...cloneStateProposals, newProposal]);
+    // console.log('updatedProposals', updatedProposals);
     setState((state) => ({...state, proposals: updatedProposals}));
   }
 
   function updateProposalStatus(acceptedProposal) {
     const cloneStateProposals = [].concat.apply([], state.proposals);
     cloneStateProposals.find((proposal) => proposal.id === acceptedProposal.id).is_accepted = true;
-    setState((state) => ({...state, proposals: cloneStateProposals}))
+    setState((state) => ({...state, proposals: cloneStateProposals}));
+  }
+
+  function updateWishes(newUserWish) {
+    const cloneStateWishes = [].concat.apply([], state.wishes);
+    const updatedWishes = ([...cloneStateWishes, newUserWish]);
+    console.log(updatedWishes);
+    setState((state) => ({...state, wishes: updatedWishes}));
   }
 
   function updateReviews(reviewedUserId, reviewText, rating){
@@ -95,6 +103,6 @@ export default function useApplicationData() {
 
 
 
-  return { state, publishListing, propose, updateProposalStatus, updateReviews };
+  return { state, publishListing, propose, updateProposalStatus, updateWishes, updateReviews };
 }
 
