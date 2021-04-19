@@ -362,8 +362,24 @@ proposal1 = user2.proposals.find_or_create_by!({
 proposal2 = user2.proposals.find_or_create_by!({
   listing_id: listing5.id,
   asset_id: asset1.id,
-  status_id: status1.id,
+  status_id: status3.id,
   message: "Your linen shirt for my popular poetry book?"
+})
+
+proposal3 = user1.proposals.find_or_create_by!({
+  listing_id: listing3.id,
+  asset_id: asset5.id,
+  status_id: status3.id,
+  is_accepted: true,
+  message: "Haven't played this PSOne in years"
+})
+
+proposal3 = user3.proposals.find_or_create_by!({
+  listing_id: listing1.id,
+  asset_id: asset4.id,
+  status_id: status1.id,
+  is_accepted: false,
+  message: "Do you want this shirt?"
 })
 
 

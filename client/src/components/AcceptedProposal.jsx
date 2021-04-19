@@ -121,11 +121,26 @@ export default function AcceptedProposal(props) {
 
   const mergedProposals = [].concat.apply([], props.proposals);
   const currentUserProposals = mergedProposals.filter((proposal) => proposal.user_id === userId);
-  const acceptedProposal = currentUserProposals.find((proposal) => proposal.id === Number(proposalId));
+  const offeredItemIds = currentUserProposals.map((proposal) => proposal.listing_id);
+
+  const tradesProposedToMe = mergedProposals.filter((proposal) => offeredItemIds.includes(proposal.asset_id));
+
+  let acceptedProposal;
+  let offeredItemListing;
+  let wantedItemListing;
+
+  if (tradesProposedToMe.find((proposal) => proposal.id === Number(proposalId))) {
+    acceptedProposal = tradesProposedToMe.find((proposal) => proposal.id === Number(proposalId)); 
+    offeredItemListing = props.listings.find((item) => item.id === acceptedProposal.asset_id);
+    wantedItemListing = props.listings.find((item) => item.id === acceptedProposal.listing_id);
+  } else {
+    acceptedProposal = currentUserProposals.find((proposal) => proposal.id === Number(proposalId));
+    offeredItemListing = props.listings.find((item) => item.id === acceptedProposal.listing_id);
+    wantedItemListing = props.listings.find((item) => item.id === acceptedProposal.asset_id);
+  };
+
   console.log('acceptedProposal', acceptedProposal);
   
-  const offeredItemListing = props.listings.find((item) => item.listing.id === acceptedProposal.listing_id);
-  const wantedItemListing = props.listings.find((item) => item.id === acceptedProposal.asset_id);
 
 
   // function confirmTrade(){};

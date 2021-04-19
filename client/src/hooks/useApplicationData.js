@@ -66,7 +66,7 @@ export default function useApplicationData() {
         asset_id: Number(wantedItemId),
         status_id: 1,
         message: message,
-        is_accepted: null,
+        is_accepted: false,
         date_accepted: null,
         user_id: userId
       };
