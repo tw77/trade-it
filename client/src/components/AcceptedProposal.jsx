@@ -111,6 +111,13 @@ export default function AcceptedProposal(props) {
 
   console.log('acceptedProposal', acceptedProposal);
 
+  const offeredItemListing = props.listings.find(
+    (item) => item.listing.id === acceptedProposal.listing_id
+  );
+  const wantedItemListing = props.listings.find(
+    (item) => item.id === acceptedProposal.asset_id
+  );
+
   // function confirmTrade(){};
 
   // function confirmPickUp(){};
@@ -221,6 +228,7 @@ export default function AcceptedProposal(props) {
               <Grid container spacing={2} direction="row" justify="flex-end">
             <Grid item xs={3.5}>
               <BootstrapButton3
+
                   variant="contained"
                   color="primary"
                   disableRipple

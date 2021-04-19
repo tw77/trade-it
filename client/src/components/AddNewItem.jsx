@@ -35,6 +35,7 @@ const BootstrapButton2 = withStyles({
   },
 })(Button);
 
+
 const categories = [
   {
     value: 1,
@@ -77,7 +78,6 @@ const categories = [
     label: "Instruments",
   },
 ];
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -97,13 +97,12 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-
 const formReducer = (state, event) => {
   if (event.reset) {
     return {
       name: "",
       description: "",
-      price_range: "",
+      category: "",
       picture: "",
     };
   }
@@ -113,13 +112,9 @@ const formReducer = (state, event) => {
   };
 };
 
-
-
 export default function AddNewItem(props) {
   // const history = useHistory();
-
   // console.log('listings in AddNewItem.jsx: ', listings);
-
   const classes = useStyles();
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
@@ -147,10 +142,7 @@ export default function AddNewItem(props) {
     }, 3000);
   };
 
-  // axios.post(`/api/listings`)
-
   // back naviagation with a "Cancel" button?
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

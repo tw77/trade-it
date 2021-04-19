@@ -250,6 +250,7 @@ export default function MyWishlist(props) {
                 Explore related listings
               </Typography>
               <Carousel>
+
                 {relevantListings.map((listing) => (
                   <div>
                     <h3

@@ -159,6 +159,7 @@ export default function Profile(props) {
                   align="left"
                   color="subtitle 2"
                   style={{ paddingTop: "8px"}}
+
                 >
                   Listings by user
                 </Typography>

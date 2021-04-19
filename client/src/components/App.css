@@ -17,7 +17,6 @@
   font-size: calc(10px + 2vmin);
   color: white;
     z-index: 1; 
-}
 
 .Pagetitle {
   font-family: 'Amatic SC';
@@ -34,8 +33,8 @@
   justify-content: space-between;
 }
 
-
 /* .App-link {
+
   color: #61dafb;
 } */
 
