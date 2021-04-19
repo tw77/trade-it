@@ -1,9 +1,7 @@
 import React from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { BrowserRouter as Link } from "react-router-dom";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import {
-  Card,
   Grid,
   Avatar,
   Typography,
@@ -39,8 +37,8 @@ const BootstrapButton2 = withStyles({
     padding: "4px 8px",
     border: "1px solid",
     lineHeight: 1.5,
-    backgroundColor: "#27B376",
-    borderColor: "#27B376",
+    backgroundColor: "#2a9d8f",
+    borderColor: "#2a9d8f",
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",
@@ -53,19 +51,6 @@ const BootstrapButton2 = withStyles({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(","),
-    "&:hover": {
-      backgroundColor: "#006F3C",
-      borderColor: "#006F3C",
-      boxShadow: "none",
-    },
-    "&:active": {
-      boxShadow: "none",
-      backgroundColor: "#006F3C",
-      borderColor: "#006F3C",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    },
   },
 })(Button);
 
@@ -195,7 +180,6 @@ export default function Listing(props) {
     );
   };
 
-  // Propose a trade! button links to {ProposeTrade}
 
   return (
     <>

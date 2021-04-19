@@ -28,19 +28,6 @@ const BootstrapButton3 = withStyles({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(","),
-    "&:hover": {
-      backgroundColor: "#EDCF3C",
-      borderColor: "#EDCF3C",
-      boxShadow: "none",
-    },
-    "&:active": {
-      boxShadow: "none",
-      backgroundColor: "#EDCF3C",
-      borderColor: "#EDCF3C",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    },
   },
 })(Button);
 
@@ -171,7 +158,8 @@ export default function Profile(props) {
                   variant="h5"
                   align="left"
                   color="subtitle 2"
-                  style={{ paddingTop: "8px", paddingTop: "8px" }}
+                  style={{ paddingTop: "8px"}}
+
                 >
                   Listings by user
                 </Typography>
@@ -188,7 +176,7 @@ export default function Profile(props) {
                   align="left"
                   color="subtitle 2"
                   paragraph
-                  style={{ paddingTop: "8px", paddingTop: "10px" }}
+                  style={{ paddingTop: "8px"}}
                 >
                   Reviews
                 </Typography>

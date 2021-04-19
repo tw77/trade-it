@@ -6,7 +6,7 @@ import {
   Typography,
   TextField,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
@@ -16,28 +16,44 @@ import "./ProposeTrade.css";
 import { useParams, useHistory } from 'react-router-dom'
 import { Carousel } from 'antd';
 
-const contentStyle = {
-  height: '160px',
-  color: '#fff',
-  lineHeight: '160px',
-  alignItems: 'center',
-  textAlign: 'center'
-  // background: '#364d79',
-};
+const BootstrapButton2 = withStyles({
+  root: {
+    boxShadow: "none",
+    textTransform: "none",
+    fontSize: 16,
+    padding: "4px 12px 8px 12px",
+    border: "1px solid",
+    lineHeight: 1.5,
+    backgroundColor: "#2a9d8f",
+    borderColor: "#2a9d8f",
+    fontFamily: [
+      "-apple-system",
+      "BlinkMacSystemFont",
+      '"Segoe UI"',
+      "Roboto",
+      '"Helvetica Neue"',
+      "Arial",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
+  },
+})(Button);
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   heroContent: {
-    padding: theme.spacing(8, 0, 0),
-    paddingTop: "100px",
+    padding: theme.spacing(8, 0, 12),
+    paddingTop: "85px",
   },
   cardContent: {
     flexGrow: 1,
   },
   cardMedia: {
-    paddingTop: "56.25%", // 16:9
+    paddingTop: "100%",
   },
 }));
 
@@ -55,18 +71,21 @@ export default function ProposeTrade(props) {
 
   console.log('props.proposals', props.proposals);
 
-  const mergedProposals = [].concat.apply([], props.proposals);
+  // const mergedProposals = [].concat.apply([], props.proposals);
 
   const currentUserListings = props.listings.filter((listing) => listing.user.id === 2);
   // hard-coding current user's id for now
 
   const [offeredListingId, setOfferedListingId] = useState(currentUserListings[0].id);
+  const [offeredListingName, setofferedListingName] = useState(currentUserListings[0].name);
   const [offeredListingPicture, setofferedListingPicture] = useState(currentUserListings[0].picture);
+  const wantedListingName = props.listings.find((listing) => listing.id === Number(listingId)).name;
   const wantedListingPicture = props.listings.find((listing) => listing.id === Number(listingId)).picture;
 
   function selectListingToOffer(id) {
     setOfferedListingId(id);
-    setofferedListingPicture(currentUserListings.find((listing) => listing.id === id).picture)
+    setofferedListingName(currentUserListings.find((listing) => listing.id === id).name);
+    setofferedListingPicture(currentUserListings.find((listing) => listing.id === id).picture);
   };
 
   function offerTrade(event) {
@@ -81,7 +100,7 @@ export default function ProposeTrade(props) {
       <CssBaseline />
       <div className={classes.heroContent}>
         <Typography variant="h6" align="left" color="textPrimary" paragraph>
-          Propose a trade!
+          Propose a trade
         </Typography>
 
         <Container maxWidth="md">
@@ -102,9 +121,9 @@ export default function ProposeTrade(props) {
                     image={offeredListingPicture}
                     title="Image title"
                   />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h7" component="h3">
-                      Heading
+                   <CardContent className={classes.cardContent}>
+                    <Typography color="textSecondary" variant="subtitle1">
+                      {offeredListingName}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -119,9 +138,9 @@ export default function ProposeTrade(props) {
                     image={wantedListingPicture}
                     title="Image title"
                   />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h7" component="h3">
-                      Heading
+                   <CardContent className={classes.cardContent}>
+                    <Typography color="textSecondary" variant="subtitle1">
+                      {wantedListingName}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -148,10 +167,8 @@ export default function ProposeTrade(props) {
           <form className={classes.form} noValidate>
             <TextField
               id="outlined-multiline-static"
-              label="Add a message (optional)"
               required
               fullWidth
-              multiline
               rows={2}
               name="message"
               label="Add a message (optional)"
@@ -160,20 +177,23 @@ export default function ProposeTrade(props) {
               value={message}
             />  
           <div className="separation"></div>
-
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={offerTrade}
-            >
-              Propose a trade!
-            </Button>
+          <Grid container spacing={0} direction="row" justify="flex-end">
+            <Grid item xs={6}>
+              <BootstrapButton2
+                type="submit"
+                style={{ marginTop: "8px" }}
+                variant="contained"
+                color="primary"
+                disableRipple
+                onClick={offerTrade}
+              >
+                Propose a trade!
+              </BootstrapButton2>
+            </Grid>
+          </Grid>
           </form>
         </Container>
       </div>
     </>
   );
 }
-

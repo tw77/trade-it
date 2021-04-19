@@ -1,26 +1,24 @@
 import React from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import { Grid, Card, CardContent, Typography } from "@material-ui/core";
+import { Grid, Card, Typography } from "@material-ui/core";
 
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
-import PersonIcon from "@material-ui/icons/Person";
 import GroupIcon from "@material-ui/icons/Group";
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const BootstrapButton = withStyles({
   root: {
     boxShadow: "none",
     textTransform: "none",
     fontSize: 12,
-    padding: "4px 8px",
+    padding: "2px 13px",
     border: "1px solid",
     lineHeight: 1.5,
-    backgroundColor: "#CA302D",
-    borderColor: "#CA302D",
+    backgroundColor: "#e76f51",
+    borderColor: "#e76f51",
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",
@@ -33,19 +31,6 @@ const BootstrapButton = withStyles({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(","),
-    "&:hover": {
-      backgroundColor: "#BA262B",
-      borderColor: "#BA262B",
-      boxShadow: "none",
-    },
-    "&:active": {
-      boxShadow: "none",
-      backgroundColor: "#CA302D",
-      borderColor: "#CA302D",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    },
   },
 })(Button);
 
@@ -54,11 +39,11 @@ const BootstrapButton2 = withStyles({
     boxShadow: "none",
     textTransform: "none",
     fontSize: 12,
-    padding: "4px 8px",
+    padding: "2px 4px",
     border: "1px solid",
     lineHeight: 1.5,
-    backgroundColor: "#27B376",
-    borderColor: "#27B376",
+    backgroundColor: "#2a9d8f",
+    borderColor: "#2a9d8f",
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",
@@ -71,59 +56,9 @@ const BootstrapButton2 = withStyles({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(","),
-    "&:hover": {
-      backgroundColor: "#006F3C",
-      borderColor: "#006F3C",
-      boxShadow: "none",
-    },
-    "&:active": {
-      boxShadow: "none",
-      backgroundColor: "#006F3C",
-      borderColor: "#006F3C",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    },
   },
 })(Button);
 
-const BootstrapButton3 = withStyles({
-  root: {
-    boxShadow: "none",
-    textTransform: "none",
-    fontSize: 12,
-    padding: "4px 8px",
-    border: "1px solid",
-    lineHeight: 1.5,
-    backgroundColor: "#F9A83E",
-    borderColor: "#F9A83E",
-    fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(","),
-    "&:hover": {
-      backgroundColor: "#EDCF3C",
-      borderColor: "#EDCF3C",
-      boxShadow: "none",
-    },
-    "&:active": {
-      boxShadow: "none",
-      backgroundColor: "#EDCF3C",
-      borderColor: "#EDCF3C",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    },
-  },
-})(Button);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -141,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "100%", // 16:9
   },
   margin: {
-    margin: theme.spacing(1),
+    marginTop: "5px",
   },
 }));
 
@@ -159,17 +94,17 @@ export default function MySuggestions(props) {
     <>
       <CssBaseline />
       <div className={classes.heroContent}>
-        <Typography variant="h5" align="left" color="textPrimary" paragraph>
+        <Typography variant="h5" align="left" color="textPrimary">
           Suggestions
         </Typography>
-        <Typography variant="body1" align="left" color="textPrimary" paragraph>
+        <Typography variant="subtitle1" align="left" color="textSecondary">
           Inmediate trades
         </Typography>
 
         <Container maxWidth="md">
           <Grid
             container
-            spacing={1}
+            spacing={2}
             direction="row"
             alignItems="center"
             // justify="space-evenly"
@@ -184,18 +119,10 @@ export default function MySuggestions(props) {
                       image="https://source.unsplash.com/random"
                       title="Image title"
                     />
-                    {/* <CardContent className={classes.cardContent}>
-                      <Typography gutterBottom variant="h7" component="h3">
-                        Heading
-                      </Typography> */}
-                      {/* <Typography>
-                    This is a media card. You can use this section to describe the content.
-                  </Typography> */}
-                    {/* </CardContent> */}
                   </Card>
                 </Grid>
                 <Grid item key={card} xs={1}>
-                  <AutorenewIcon style={{ fontSize: 20 }} color="primary" />
+                  <AutorenewIcon style={{ fontSize: 20, color: '#404a8a' }} />
                 </Grid>
                 <Grid item key={card} xs={4}>
                   <Card className={classes.card}>
@@ -204,22 +131,11 @@ export default function MySuggestions(props) {
                       image="https://source.unsplash.com/random"
                       title="Image title"
                     />
-                    {/* <CardContent className={classes.cardContent}>
-                      <Typography
-                        gutterBottom
-                        variant="subtitle1"
-                        component="h3"
-                      >
-                        Heading
-                      </Typography> */}
-                      {/* <Typography>
-                    This is a media card. You can use this section to describe the content.
-                  </Typography> */}
-                    {/* </CardContent> */}
                   </Card>
                 </Grid>
+                
                 <Grid item key={card} xs={3}>
-                  <PersonIcon fontSize="large" style={{ paddingLeft: '5px' }} />
+                  <GroupIcon fontSize="large" style={{ paddingLeft: '3px' }} />
                   <BootstrapButton2
                     variant="contained"
                     color="primary"
@@ -241,13 +157,13 @@ export default function MySuggestions(props) {
             ))}
           </Grid>
         </Container>
-        <Typography variant="body1" align="left" color="textPrimary">
+        <Typography variant="subtitle1" align="left" color="textSecondary">
           Two-part trades
         </Typography>
         <Typography
           variant="caption text"
           align="left"
-          color="textPrimary"
+          color="textSecondary"
           paragraph
         >
           Make an initial trade, then trade for the item you want!
@@ -256,7 +172,7 @@ export default function MySuggestions(props) {
         <Container maxWidth="md">
           <Grid
             container
-            spacing={1}
+            spacing={2}
             direction="row"
             alignItems="center"
             // justify="space-evenly"
@@ -271,18 +187,10 @@ export default function MySuggestions(props) {
                       image="https://source.unsplash.com/random"
                       title="Image title"
                     />
-                    {/* <CardContent className={classes.cardContent}>
-                      <Typography gutterBottom variant="h7" component="h3">
-                        Heading
-                      </Typography> */}
-                      {/* <Typography>
-                    This is a media card. You can use this section to describe the content.
-                  </Typography> */}
-                    {/* </CardContent> */}
                   </Card>
                   </Grid>
                   <Grid item key={card2} xs={1}>
-                    <AutorenewIcon style={{ fontSize: 20 }} color="primary" />
+                    <AutorenewIcon style={{ fontSize: 20, color: '#404a8a' }} />
                   </Grid>
                 <Grid item key={card2} xs={2}>
                   <Card className={classes.card}>
@@ -291,26 +199,10 @@ export default function MySuggestions(props) {
                       image="https://source.unsplash.com/random"
                       title="Image title"
                     />
-                    {/* <CardContent className={classes.cardContent}>
-                      <Typography
-                        gutterBottom
-                        variant="subtitle1"
-                        component="h3"
-                      >
-                        Heading
-                      </Typography> */}
-                      {/* <Typography>
-                    This is a media card. You can use this section to describe the content.
-                  </Typography> */}
-                    {/* </CardContent> */}
                   </Card>
                 </Grid>
-                {/* <Grid item key={card2} xs={1}>
-                  <AutorenewIcon style={{ fontSize: 20 }} color="primary" />
-                </Grid> */}
                   <Grid item key={card2} xs={1}>
-                    <ArrowForwardIcon style={{ fontSize: 20 }} color="primary" />
-                  </Grid>
+                  <AutorenewIcon style={{ fontSize: 20, color: '#404a8a' }} />                  </Grid>
                 <Grid item key={card2} xs={3}>
                   <Card className={classes.card}>
                     <CardMedia
@@ -318,29 +210,17 @@ export default function MySuggestions(props) {
                       image="https://source.unsplash.com/random"
                       title="Image title"
                     />
-                    {/* <CardContent className={classes.cardContent}>
-                      <Typography
-                        gutterBottom
-                        variant="subtitle1"
-                        component="h3"
-                      >
-                        Heading
-                      </Typography> */}
-                      {/* <Typography>
-                    This is a media card. You can use this section to describe the content.
-                  </Typography> */}
-                    {/* </CardContent> */}
                   </Card>
                 </Grid>
-                <Grid item key={card2} xs={2}>
-                  <GroupIcon fontSize="large" style={{ paddingLeft: '5px' }} />
+                <Grid item key={card2} xs={3} >
+                  {/* <GroupIcon fontSize="large" style={{ paddingLeft: '10px' }} /> */}
                   <BootstrapButton2
                     variant="contained"
                     color="primary"
                     disableRipple
                     className={classes.margin}
                   >
-                    Propose a trade!
+                    Propose trade!
                   </BootstrapButton2>
                   <BootstrapButton
                     variant="contained"

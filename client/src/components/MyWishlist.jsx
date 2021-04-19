@@ -55,19 +55,6 @@ const BootstrapButton2 = withStyles({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(","),
-    "&:hover": {
-      backgroundColor: "#006F3C",
-      borderColor: "#006F3C",
-      boxShadow: "none",
-    },
-    "&:active": {
-      boxShadow: "none",
-      backgroundColor: "#006F3C",
-      borderColor: "#006F3C",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    },
   },
 })(Button);
 
@@ -127,7 +114,7 @@ export default function MyWishlist(props) {
     userWishCategories.forEach(function(id) { frequency[id] = 0; });
 
     const uniques = userWishCategories.filter(function(id) {
-        return ++frequency[id] == 1;
+        return ++frequency[id] === 1;
     });
 
     return uniques.sort(function(a, b) {
@@ -263,7 +250,8 @@ export default function MyWishlist(props) {
                 Explore related listings
               </Typography>
               <Carousel>
-                {relevantListings .map((listing) => (
+
+                {relevantListings.map((listing) => (
                   <div>
                     <h3
                       style={{

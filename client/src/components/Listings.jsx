@@ -1,6 +1,6 @@
 import React , { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Grid, Card, CardContent, AppBar, Toolbar, CircularProgress, Typography, TextField } from '@material-ui/core';
+import { Grid, Card, AppBar, Toolbar, CircularProgress, Typography, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
 import Container from '@material-ui/core/Container';

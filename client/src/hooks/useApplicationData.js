@@ -88,8 +88,21 @@ export default function useApplicationData() {
     setState((state) => ({...state, wishes: updatedWishes}));
   }
 
+  function updateReviews(reviewedUserId, reviewText, rating){
+    const cloneStateReviews = [].concat.apply([], state.reviews);
+    const newReview = {
+      id: (cloneStateReviews.length + 1),
+      user_id: reviewedUserId,
+      rating: rating.value,
+      content: reviewText
+    };
+    const updatedReviews = ([newReview, ...cloneStateReviews]);
+    // console.log('updatedProposals', updatedReviews);
+    setState((state) => ({...state, reviews: updatedReviews}));
+  };
 
 
-  return { state, publishListing, propose, updateProposalStatus, updateWishes };
+
+  return { state, publishListing, propose, updateProposalStatus, updateWishes, updateReviews };
 }
 
