@@ -10,17 +10,16 @@ export default function DropDownMenu2() {
   const history = useHistory();
 
   function toProfile() {
-    history.push(`/profile/2`)
+    history.push(`/profile`)
   }
 
   const userMenu = (
   <Router>
 
-    <Menu style={{backgroundColor: '#E0E0E0', }}>
+    <Menu >
       <Menu.Item onClick={toProfile} key="1">
         <span>My profile</span>
       </Menu.Item>
-      
       <Menu.Divider />
         <Menu.Item key="3">
         <Link to="/logout"></Link>
@@ -32,15 +31,11 @@ export default function DropDownMenu2() {
   return (
     <div>
       <Dropdown.Button
-        style={{backgroundColor: '#E0E0E0'}}
         className="dropdown-btn"
-        
         icon={
           <AccountCircleIcon
             style={{
               fontSize: '45px',
-              paddingBottom: '10px',
-              backgroundColor: '#E0E0E0',
             }}
           />
         }
