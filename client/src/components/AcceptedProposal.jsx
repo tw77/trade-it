@@ -111,13 +111,6 @@ export default function AcceptedProposal(props) {
 
   console.log('acceptedProposal', acceptedProposal);
 
-  const offeredItemListing = props.listings.find(
-    (item) => item.listing.id === acceptedProposal.listing_id
-  );
-  const wantedItemListing = props.listings.find(
-    (item) => item.id === acceptedProposal.asset_id
-  );
-
   // function confirmTrade(){};
 
   // function confirmPickUp(){};
