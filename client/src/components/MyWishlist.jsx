@@ -73,7 +73,6 @@ const BootstrapButton2 = withStyles({
 
 export default function MyWishlist(props) {
   const classes = useStyles();
-  
   const categories = [
     {
       value: 1,
@@ -120,7 +119,6 @@ export default function MyWishlist(props) {
   const userId = 2; // for now
   const mergedWishes = [].concat.apply([], props.wishes);
   const userWishes = mergedWishes.filter((wish) => wish.user_id === userId);
-
   const userWishCategories = userWishes.map((wish) => wish.category_id);
 
   function findMostRepresented(userWishCategories) {
@@ -234,7 +232,7 @@ export default function MyWishlist(props) {
             </Grid>
           </form>
           <Typography variant="h5" align="left" color="textPrimary">
-            My Whishlist
+            My Wishlist
           </Typography>
           <Grid
             container
@@ -260,6 +258,7 @@ export default function MyWishlist(props) {
           </Grid>
           {relevantListings ? (
             <>
+
               <Typography variant="h5" align="left" color="textPrimary" paragraph>
                 Explore related listings
               </Typography>

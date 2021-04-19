@@ -7,22 +7,46 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const currencies = [
+const categories = [
   {
-    value: 'USD',
-    label: '$',
+    value: 1,
+    label: 'Electronics',
   },
   {
-    value: 'EUR',
-    label: '€',
+    value: 2,
+    label: 'Clothing',
   },
   {
-    value: 'BTC',
-    label: '฿',
+    value: 3,
+    label: 'Books',
   },
   {
-    value: 'JPY',
-    label: '¥',
+    value: 4,
+    label: 'Furniture',
+  },
+  {
+    value: 5,
+    label: 'Appliances',
+  },
+  {
+    value: 6,
+    label: 'Cars',
+  },
+  {
+    value: 7,
+    label: 'Bicycles',
+  },
+  {
+    value: 8,
+    label: 'Carpets',
+  },
+  {
+    value: 9,
+    label: 'Plants',
+  },
+  {
+    value: 10,
+    label: 'Instruments',
   },
 ];
 
@@ -152,21 +176,7 @@ export default function AddNewItem(props) {
             margin="normal"
             name="category"
             select onChange={handleChange} >
-            {currencies.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))} 
-          </TextField>
-          <TextField
-            variant="outlined"
-            id="select"
-            label="Price Range *"
-            fullWidth
-            margin="normal"
-            name="price range"
-            select onChange={handleChange} >
-            {currencies.map((option) => (
+            {categories.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>

@@ -48,7 +48,7 @@ const useStyles = makeStyles({
 
 
 export default function App() {
-  const { state, publishListing, propose, updateProposalStatus } = useApplicationData();
+  const { state, publishListing, propose, updateProposalStatus, updateWishes } = useApplicationData();
 
   const classes = useStyles();
 
@@ -82,7 +82,7 @@ export default function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />  
               <Route path="/profile/:userId"> <Profile users={state.users} listings={state.listings} reviews={state.reviews} /> </Route>
-              <Route exact path="/wishlist"> <MyWishlist wishes={state.wishes} listings={state.listings} /> </Route>
+              <Route exact path="/wishlist"> <MyWishlist wishes={state.wishes} listings={state.listings} updateWishes={updateWishes} /> </Route>
               <Route exact path="/suggestions">
                 <MySuggestions wishes={state.wishes} listings={state.listings} proposals={state.proposals} /> 
                 </Route>
