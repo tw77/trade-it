@@ -1,26 +1,54 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
-} from "@material-ui/core";
+import { Card, Button, CardMedia, Grid, Typography } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { Container, CircularProgress } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { Image } from "antd";
-import { Rate } from 'antd';
+import { Rate } from "antd";
 import "./Profile.css";
+
+const BootstrapButton3 = withStyles({
+  root: {
+    boxShadow: "none",
+    textTransform: "none",
+    fontSize: 12,
+    padding: "4px 8px",
+    border: "1px solid",
+    lineHeight: 1.5,
+    backgroundColor: "#404a8a",
+    borderColor: "#404a8a",
+    fontFamily: [
+      "Roboto",
+      '"Helvetica Neue"',
+      "Arial",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
+    "&:hover": {
+      backgroundColor: "#EDCF3C",
+      borderColor: "#EDCF3C",
+      boxShadow: "none",
+    },
+    "&:active": {
+      boxShadow: "none",
+      backgroundColor: "#EDCF3C",
+      borderColor: "#EDCF3C",
+    },
+    "&:focus": {
+      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+    },
+  },
+})(Button);
 
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    // backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 14),
     paddingTop: "100px",
   },
@@ -37,15 +65,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
   },
   cardMedia: {
-    paddingTop: "56.25%", // 16:9
+    paddingTop: "100%",
   },
   cardContent: {
     flexGrow: 1,
   },
-  // footer: {
-  //   // backgroundColor: theme.palette.background.paper,
-  //   padding: theme.spacing(6),
-  // },
 }));
 
 export default function Profile(props) {
@@ -53,31 +77,29 @@ export default function Profile(props) {
   const { userId } = useParams();
   const history = useHistory();
 
-  const displayedUser = props.users.find((user) => user.id === Number(userId));
-
+  let displayedUser;
+  userId &&
+    (displayedUser = props.users.find((user) => user.id === Number(userId)));
+  !userId && (displayedUser = props.users.find((user) => user.id === 2)); // for now
   const mergedReviews = [].concat.apply([], props.reviews);
-  const displayedReviews = mergedReviews.filter(
-    (review) => review.user_id === Number(userId)
-  );
 
-  // const displayedReviews = [
-  //   {
-  //     id: 1,
-  //     content:
-  //       "Alice was on time and the tennis rackets she gave me were in great condition",
-  //     rating: 5,
-  //     user_id: 1,
-  //   },
-  //   { id: 6, content: "Hey", rating: 5, user_id: 1 },
-  // ];
+  let displayedReviews;
+  userId &&
+    (displayedReviews = mergedReviews.filter(
+      (review) => review.user_id === Number(userId)
+    ));
+  !userId &&
+    (displayedReviews = mergedReviews.filter((review) => review.user_id === 2)); // for now
 
-  const displayedListings = props.listings.filter(
-    (listing) => listing.user.id === Number(userId)
-  );
-
-  console.log("displayedUser", displayedUser);
-  console.log("displayedReviews", displayedReviews);
-  console.log("displayedListings", displayedListings);
+  let displayedListings;
+  userId &&
+    (displayedListings = props.listings.filter(
+      (listing) => listing.user.id === Number(userId)
+    ));
+  !userId &&
+    (displayedListings = props.listings.filter(
+      (listing) => listing.user.id === 2
+    )); // for now
 
   function getListingCard(listingsId, name, picture) {
     return (
@@ -91,11 +113,6 @@ export default function Profile(props) {
             image={picture}
             title={name}
           />
-          <CardContent className={classes.cardContent}>
-            <Typography gutterBottom variant="h6" component="h2">
-              {name}
-            </Typography>
-          </CardContent>
         </Card>
       </Grid>
     );
@@ -114,11 +131,14 @@ export default function Profile(props) {
                   spacing={0}
                   direction="row"
                   alignItems="center"
-                  // justify="space-evenly"
                   className={classes.root}
                 >
                   <Grid item xs={4}>
-                    <Image width={100} src={displayedUser.profile_picture} />
+                    <Image
+                      style={{ borderRadius: "5px", marginBottom: "15px" }}
+                      width={100}
+                      src={displayedUser.profile_picture}
+                    />
                   </Grid>
 
                   <Grid item xs={8}>
@@ -128,11 +148,22 @@ export default function Profile(props) {
                     <Typography
                       variant="body1"
                       align="right"
-                      color="textPrimary"
+                      color="textSecondary"
                       paragraph
                     >
                       {displayedUser.bio}
                     </Typography>
+
+                    {displayedUser.id === 2 && (
+                      <BootstrapButton3
+                        variant="contained"
+                        color="primary"
+                        disableRipple
+                        // align="right"
+                      >
+                        Edit
+                      </BootstrapButton3>
+                    )}
                   </Grid>
                 </Grid>
 
@@ -140,19 +171,16 @@ export default function Profile(props) {
                   variant="h5"
                   align="left"
                   color="subtitle 2"
-                  paragraph
                   style={{ paddingTop: "8px", paddingTop: "8px" }}
                 >
                   Listings by user
                 </Typography>
 
-                
-                  <Grid container style={{ paddingTop: "10px"}} spacing={4}>
-                    {displayedListings.map((item) =>
-                      getListingCard(item.id, item.name, item.picture)
-                    )}
-                  </Grid>
-            
+                <Grid container style={{ paddingTop: "10px" }} spacing={4}>
+                  {displayedListings.map((item) =>
+                    getListingCard(item.id, item.name, item.picture)
+                  )}
+                </Grid>
 
                 {/* <footer className={classes.footer}> */}
                 <Typography
@@ -166,7 +194,7 @@ export default function Profile(props) {
                 </Typography>
                 {displayedReviews.map((review, index) => (
                   <>
-                     <Rate disabled defaultValue={review.rating} />
+                    <Rate disabled defaultValue={review.rating} />
                     <Typography
                       variant="subtitle1"
                       align="center"
