@@ -386,7 +386,7 @@ export default function MyProposals(props) {
                   <Typography gutterBottom variant="h7">
                   {currentUserProposals[card].is_accepted ? `Accepted` : `Pending`}
                   </Typography>
-                    <BootstrapButton3
+                  {currentUserProposals[card].is_accepted ? (<BootstrapButton3
                       variant="contained"
                       color="primary"
                       disableRipple
@@ -394,7 +394,16 @@ export default function MyProposals(props) {
                       onClick={() => viewProposalTheyAccepted(card)}
                     >
                       View
-                    </BootstrapButton3>
+                    </BootstrapButton3>) : (
+                      <BootstrapButton
+                      variant="contained"
+                      color="primary"
+                      disableRipple
+                      className={classes.margin}
+                    >
+                      Cancel
+                    </BootstrapButton>
+                    )}
                 </Grid>
               </>
             ))}
