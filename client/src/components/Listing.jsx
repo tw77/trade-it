@@ -180,9 +180,9 @@ export default function Listing(props) {
                     src={prevTrade.picture}
                     style={{ borderRadius: "10px"}}
                   />
+
                 </Grid>
                 </>)}
-
 
               </Grid>
             </div>
