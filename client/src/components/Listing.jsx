@@ -73,6 +73,15 @@ export default function Listing(props) {
     history.push(`/profile/${currentListing.owner_id}`);
   }
 
+  const mockTradeHistoryIds = [2, 4, 5];
+  let mockTradeHistoryListings = [];
+  for (const id of mockTradeHistoryIds) {
+    mockTradeHistoryListings.push(props.listings.find((listing) => listing.id === id))
+  };
+
+  // console.log('mockTradeHistoryListings', mockTradeHistoryListings);
+
+
   const generateListingJSX = () => {
     return (
       <>
@@ -161,13 +170,17 @@ export default function Listing(props) {
                 <Grid item xs={1}>
                   <ArrowForwardIcon style={{ fontSize: 20 }} color="primary" />
                 </Grid>
+
+                {mockTradeHistoryListings.map((prevTrade) => 
                 <Grid item xs={3}>
                   <Image
                     width={50}
-                    src={currentListing.picture}
+                    src={prevTrade.picture}
                     style={{ borderRadius: "10px"}}
                   />
-                </Grid>
+                </Grid>)}
+
+
               </Grid>
             </div>
           ) : (

@@ -70,23 +70,32 @@ export default function Profile(props) {
   !userId && (displayedUser = props.users.find((user) => user.id === 2)); // for now
   const mergedReviews = [].concat.apply([], props.reviews);
 
-  let displayedReviews;
+  let reviewsOfUser;
   userId &&
-    (displayedReviews = mergedReviews.filter(
+    (reviewsOfUser = mergedReviews.filter(
       (review) => review.user_id === Number(userId)
     ));
   !userId &&
-    (displayedReviews = mergedReviews.filter((review) => review.user_id === 2)); // for now
+    (reviewsOfUser = mergedReviews.filter((review) => review.user_id === 2)); // for now
 
-  let displayedListings;
+  let listingsByUser;
   userId &&
-    (displayedListings = props.listings.filter(
+    (listingsByUser = props.listings.filter(
       (listing) => listing.user.id === Number(userId)
     ));
   !userId &&
-    (displayedListings = props.listings.filter(
+    (listingsByUser = props.listings.filter(
       (listing) => listing.user.id === 2
     )); // for now
+
+
+  const mergedProposals = [].concat.apply([], props.proposals);
+  const acceptedProposals = mergedProposals.filter((proposal) => proposal.is_accepted === true);
+  const unavailableListingIds = acceptedProposals.map((proposal) => proposal.listing_id);
+  const unavailableAssetIds = acceptedProposals.map((proposal) => proposal.asset_id);
+  unavailableListingIds.push(...unavailableAssetIds);
+  const availableListings = listingsByUser.filter((listing) => !unavailableListingIds.includes(listing.id));
+
 
   function getListingCard(listingsId, name, picture) {
     return (
@@ -111,7 +120,7 @@ export default function Profile(props) {
       <Container maxWidth="sm">
         <main>
           <div className={classes.heroContent}>
-            {displayedUser && displayedReviews && displayedListings ? (
+            {displayedUser ? (
               <>
                 <Grid
                   container
@@ -153,8 +162,8 @@ export default function Profile(props) {
                     )}
                   </Grid>
                 </Grid>
-
-                <Typography
+                {(availableListings.length > 0) && <>
+                  <Typography
                   variant="h5"
                   align="left"
                   color="subtitle 2"
@@ -165,10 +174,12 @@ export default function Profile(props) {
                 </Typography>
 
                 <Grid container style={{ paddingTop: "10px" }} spacing={4}>
-                  {displayedListings.map((item) =>
+                  {availableListings.map((item) =>
                     getListingCard(item.id, item.name, item.picture)
                   )}
                 </Grid>
+                </>}
+                
 
                 {/* <footer className={classes.footer}> */}
                 <Typography
@@ -180,7 +191,7 @@ export default function Profile(props) {
                 >
                   Reviews
                 </Typography>
-                {displayedReviews.map((review, index) => (
+                {reviewsOfUser.map((review, index) => (
                   <>
                     <Rate disabled defaultValue={review.rating} />
                     <Typography

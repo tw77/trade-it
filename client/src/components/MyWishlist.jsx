@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
@@ -60,6 +61,7 @@ const BootstrapButton2 = withStyles({
 
 export default function MyWishlist(props) {
   const classes = useStyles();
+  const history = useHistory();
   const categories = [
     {
       value: 1,
@@ -253,7 +255,7 @@ export default function MyWishlist(props) {
 
                 {relevantListings.map((listing) => (
                   <div>
-                    <h3
+                    <h3 onClick={() => history.push(`/listings/${listing.id}`)}
                       style={{
                         height: "160px",
                         lineHeight: "160px",

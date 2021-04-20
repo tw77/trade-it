@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import {
   Grid,
   Card,
@@ -80,6 +80,7 @@ const BootstrapButton3 = withStyles({
 
 export default function AcceptedProposal(props) {
   const classes = useStyles();
+  const history = useHistory();
 
   const { proposalId } = useParams();
 
@@ -192,14 +193,17 @@ export default function AcceptedProposal(props) {
               </Grid>
               
               <Grid item xs={8} sm={6} md={4}>
-              <Typography variant="subtitle1" align="right" color="textSecondary">
+              <Typography variant="subtitle1" align="right" color="textSecondary"
+              onClick={() => history.push(`/profile/${wantedItemListing.user.id}`)}>
                   {wantedItemListing.user.first_name}{" "}
                   {wantedItemListing.user.last_name}
                 </Typography>
-                <Typography variant="subtitle1" align="right" color="textSecondary">
+                <Typography variant="subtitle1" align="right" color="textSecondary"
+                onClick={() => history.push(`/profile/${wantedItemListing.user.id}`)}>
                   {wantedItemListing.user.email}
                 </Typography>
-                <Typography variant="subtitle1" align="right" color="textSecondary">
+                <Typography variant="subtitle1" align="right" color="textSecondary"
+                onClick={() => history.push(`/profile/${wantedItemListing.user.id}`)}>
                   {wantedItemListing.user.phone}
                 </Typography>
               </Grid>
