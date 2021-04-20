@@ -35,6 +35,11 @@ const BootstrapButton2 = withStyles({
   },
 })(Button);
 
+const CustomTypography = withStyles({
+  root: {
+    color: "#6e5d34"
+  }
+})(Typography);
 
 const categories = [
   {
@@ -117,7 +122,7 @@ export default function AddNewItem(props) {
   // console.log('listings in AddNewItem.jsx: ', listings);
   const classes = useStyles();
   const [formData, setFormData] = useReducer(formReducer, {});
-  const [submitting, setSubmitting] = useState(false);
+  const [submitting, setSubmitting] = useState(false); 
 
   const handleChange = (event) => {
     setFormData({
@@ -132,107 +137,117 @@ export default function AddNewItem(props) {
     event.preventDefault();
     props.publishListing(formData);
     setSubmitting(true);
-    console.log("new item: ", formData);
-
+    
     setTimeout(() => {
       setSubmitting(false);
       setFormData({
         reset: true,
       });
-    }, 3000);
+    }, 4000);
   };
 
   // back naviagation with a "Cancel" button?
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Typography variant="h5" align="left" color="textPrimary">
-          Add new item
-        </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="outlined-basic"
-            label="Name"
-            name="name"
-            autoComplete="name"
-            autoFocus
-            onChange={handleChange}
-            value={formData.name || ""}
-          />
-          <TextField
-            id="outlined-multiline-static"
-            label="Description"
-            required
-            fullWidth
-            multiline
-            rows={4}
-            name="description"
-            variant="outlined"
-            onChange={handleChange}
-            value={formData.description || ""}
-          />
-          <TextField
-            variant="outlined"
-            id="select"
-            label="Category *"
-            fullWidth
-            margin="normal"
-            name="category"
-            select
-            onChange={handleChange}
-          >
-            {categories.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="picture"
-            label="Picture"
-            type="picture"
-            id="picture"
-            autoComplete="picture"
-            onChange={handleChange}
-            value={formData.picture || ""}
-          />
-          <Grid container spacing={0} direction="row" justify="flex-end">
-            <Grid item xs={4}>
-              <BootstrapButton2
-                type="submit"
-                style={{ marginTop: "8px" }}
-                variant="contained"
-                color="primary"
-                disableRipple
-                onClick={handleSubmit}
-              >
-                Add Item
-              </BootstrapButton2>
-            </Grid>
+      {submitting ? (
+        <Grid container direction="column" alignItems="center" justify="center">
+          <Grid item xs={12}>
+            <CustomTypography
+              variant="h6"
+              align="justify"
+              style={{
+                backgroundColor: "#e9c46a",
+                border: "2.5px solid #4958b6",
+                padding: "26px",
+                borderRadius: "10px",
+                marginTop: "75%",
+              }}
+            >
+              Your listing is now up for trade.{" "}
+              <strong>
+                Thanks for helping to create a more sustainable future.
+              </strong>
+            </CustomTypography>
           </Grid>
-          {submitting && (
-            <div>
-              You are posting the following listing:
-              <ul>
-                {Object.entries(formData).map(([name, value]) => (
-                  <li key={name}>
-                    <strong>{name}</strong>: {value.toString()}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </form>
-      </div>
+        </Grid>
+      ) : (
+        <div className={classes.paper}>
+          <Typography variant="h5" align="left" color="textPrimary">
+            Add new item
+          </Typography>
+          <form className={classes.form} noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="outlined-basic"
+              label="Name"
+              name="name"
+              autoComplete="name"
+              autoFocus
+              onChange={handleChange}
+              value={formData.name || ""}
+            />
+            <TextField
+              id="outlined-multiline-static"
+              label="Description"
+              required
+              fullWidth
+              multiline
+              rows={4}
+              name="description"
+              variant="outlined"
+              onChange={handleChange}
+              value={formData.description || ""}
+            />
+            <TextField
+              variant="outlined"
+              id="select"
+              label="Category *"
+              fullWidth
+              margin="normal"
+              name="category"
+              select
+              onChange={handleChange}
+            >
+              {categories.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="picture"
+              label="Picture"
+              type="picture"
+              id="picture"
+              autoComplete="picture"
+              onChange={handleChange}
+              value={formData.picture || ""}
+            />
+            <Grid container spacing={0} direction="row" justify="flex-end">
+              <Grid item xs={4}>
+                <BootstrapButton2
+                  type="submit"
+                  style={{ marginTop: "8px" }}
+                  variant="contained"
+                  color="primary"
+                  disableRipple
+                  onClick={handleSubmit}
+                >
+                  Add Item
+                </BootstrapButton2>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+      )}
     </Container>
   );
 }

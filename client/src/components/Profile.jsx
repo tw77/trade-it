@@ -193,12 +193,11 @@ export default function Profile(props) {
                 </Typography>
                 {reviewsOfUser.map((review, index) => (
                   <>
-                    <Rate disabled defaultValue={review.rating} />
+                    <Rate disabled style={{paddingLeft: '31%'}} defaultValue={review.rating} />
                     <Typography
                       variant="subtitle1"
                       align="center"
                       color="textSecondary"
-                      component="p"
                     >
                       {review.content}
                     </Typography>

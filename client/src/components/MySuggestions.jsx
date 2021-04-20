@@ -190,7 +190,7 @@ export default function MySuggestions(props) {
                   </Card>
                   </Grid>
                   <Grid item key={card2} xs={1}>
-                    <AutorenewIcon style={{ fontSize: 20, color: '#404a8a' }} />
+                    <AutorenewIcon style={{ fontSize: 20, color: "#4958b6" }} />
                   </Grid>
                 <Grid item key={card2} xs={2}>
                   <Card className={classes.card}>
@@ -202,7 +202,8 @@ export default function MySuggestions(props) {
                   </Card>
                 </Grid>
                   <Grid item key={card2} xs={1}>
-                  <AutorenewIcon style={{ fontSize: 20, color: '#404a8a' }} />                  </Grid>
+                  <AutorenewIcon style={{ fontSize: 20, color: "#4958b6" }} />
+                </Grid>
                 <Grid item key={card2} xs={3}>
                   <Card className={classes.card}>
                     <CardMedia
