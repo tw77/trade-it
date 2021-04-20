@@ -91,7 +91,7 @@ export default function App() {
                 </Route>
               <Route exact path="/proposals"> <MyProposals proposals={state.proposals} listings={state.listings} updateProposalStatus={updateProposalStatus}/> </Route>
               <Route exact path="/add"> <AddNewItem listings={state.listings} publishListing={publishListing} /> </Route>
-              <Route exact path="/"> <Listings listings={state.listings} /> </Route>
+              <Route exact path="/"> <Listings listings={state.listings} proposals={state.proposals} /> </Route>
               <Route exact path="/listings/:listingId"> <Listing listings={state.listings} /> </Route>
               <Route exact path="/offer/:listingId"> <ProposeTrade listings={state.listings} proposals={state.proposals} propose={propose} /> </Route>
               <Route exact path="/accepted/:proposalId"> <AcceptedProposal proposals={state.proposals} listings={state.listings} updateReviews={updateReviews} /> </Route>
