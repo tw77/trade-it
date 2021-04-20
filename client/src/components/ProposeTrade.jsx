@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React, { useState } from "react";
 import {
   Grid,
   Card,
@@ -13,8 +13,8 @@ import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import "./ProposeTrade.css";
-import { useParams, useHistory } from 'react-router-dom'
-import { Carousel } from 'antd';
+import { useParams, useHistory } from "react-router-dom";
+import { Carousel } from "antd";
 
 const BootstrapButton2 = withStyles({
   root: {
@@ -41,6 +41,12 @@ const BootstrapButton2 = withStyles({
   },
 })(Button);
 
+const CustomTypography = withStyles({
+  root: {
+    color: "#6e5d34",
+  },
+})(Typography);
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -64,136 +70,180 @@ export default function ProposeTrade(props) {
   const { listingId } = useParams();
   const history = useHistory();
 
-  const [message, setMessage] = useState("")
-  const onMessageChange = function(event) {
+  const [message, setMessage] = useState("");
+  const onMessageChange = function (event) {
     setMessage(event.target.value);
   };
 
-  console.log('props.proposals', props.proposals);
+  console.log("props.proposals", props.proposals);
 
   // const mergedProposals = [].concat.apply([], props.proposals);
 
-  const currentUserListings = props.listings.filter((listing) => listing.user.id === 2);
+  const currentUserListings = props.listings.filter(
+    (listing) => listing.user.id === 2
+  );
   // hard-coding current user's id for now
 
-  const [offeredListingId, setOfferedListingId] = useState(currentUserListings[0].id);
-  const [offeredListingName, setofferedListingName] = useState(currentUserListings[0].name);
-  const [offeredListingPicture, setofferedListingPicture] = useState(currentUserListings[0].picture);
-  const wantedListingName = props.listings.find((listing) => listing.id === Number(listingId)).name;
-  const wantedListingPicture = props.listings.find((listing) => listing.id === Number(listingId)).picture;
+  const [offeredListingId, setOfferedListingId] = useState(
+    currentUserListings[0].id
+  );
+  const [offeredListingName, setofferedListingName] = useState(
+    currentUserListings[0].name
+  );
+  const [offeredListingPicture, setofferedListingPicture] = useState(
+    currentUserListings[0].picture
+  );
+  const wantedListingName = props.listings.find(
+    (listing) => listing.id === Number(listingId)
+  ).name;
+  const wantedListingPicture = props.listings.find(
+    (listing) => listing.id === Number(listingId)
+  ).picture;
+  const [submitting, setSubmitting] = useState(false);
 
   function selectListingToOffer(id) {
     setOfferedListingId(id);
-    setofferedListingName(currentUserListings.find((listing) => listing.id === id).name);
-    setofferedListingPicture(currentUserListings.find((listing) => listing.id === id).picture);
-  };
+    setofferedListingName(
+      currentUserListings.find((listing) => listing.id === id).name
+    );
+    setofferedListingPicture(
+      currentUserListings.find((listing) => listing.id === id).picture
+    );
+  }
 
   function offerTrade(event) {
     event.preventDefault();
-    props.propose(listingId, offeredListingId, message)
-    history.push(`/proposals`)
-  };
+    props.propose(listingId, offeredListingId, message);
+    setSubmitting(true);
 
+    setTimeout(() => {
+      setSubmitting(false);
+      history.push(`/proposals`);
+    }, 3000);
+  }
 
   return (
     <>
       <CssBaseline />
-      <div className={classes.heroContent}>
-        <Typography variant="h6" align="left" color="textPrimary" paragraph>
-          Propose a trade
-        </Typography>
+      {submitting ? (
+        <Grid container direction="column" alignItems="center" justify="center">
+          <Grid item xs={10}>
+            <CustomTypography
+              variant="subtitle1"
+              align="justify"
+              style={{
+                backgroundColor: "#e9c46a",
+                border: "2.5px solid #4958b6",
+                padding: "30px",
+                borderRadius: "10px",
+                margin: "80% 6.5% 0% 6.5%",
+              }}
+            >
+              Trade successfully proposed. <strong>Best of luck.</strong>
+            </CustomTypography>
+          </Grid>
+        </Grid>
+      ) : (
+        <div className={classes.heroContent}>
+          <Typography variant="h6" align="left" color="textPrimary" paragraph>
+            Propose a trade
+          </Typography>
 
-        <Container maxWidth="md">
-        <Grid
-          container
-          spacing={1}
-          direction="row"
-          alignItems="center"
-          justify="space-evenly"
-          className={classes.root}
-        >
-          {cards.map((card) => (
-            <>
-              <Grid className="grid" item key={card} xs={5} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={offeredListingPicture}
-                    title="Image title"
-                  />
-                   <CardContent className={classes.cardContent}>
-                    <Typography color="textSecondary" variant="subtitle1">
-                      {offeredListingName}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item key={card} xs={2} sm={2} md={4}>
-                <AutorenewIcon style={{ fontSize: 35 }} color="primary" />
-              </Grid>
-              <Grid item key={card} xs={5} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={wantedListingPicture}
-                    title="Image title"
-                  />
-                   <CardContent className={classes.cardContent}>
-                    <Typography color="textSecondary" variant="subtitle1">
-                      {wantedListingName}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </>
-          ))}
-          </Grid>
-          <div className="separation"></div>
-          <Carousel>
-          {currentUserListings.map((listing) => (
-              <div>
-              <h3 onClick={() => selectListingToOffer(listing.id)} style={{
-                height: '160px',
-                lineHeight: '160px',
-                textAlign: 'center',
-                backgroundImage: `url(${listing.picture})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }}></h3>
-              </div>
-          ))}
-            </Carousel>
-          <p></p>
-          <form className={classes.form} noValidate>
-            <TextField
-              id="outlined-multiline-static"
-              required
-              fullWidth
-              rows={2}
-              name="message"
-              label="Add a message (optional)"
-              variant="outlined"
-              onChange={onMessageChange}
-              value={message}
-            />  
-          <div className="separation"></div>
-          <Grid container spacing={0} direction="row" justify="flex-end">
-            <Grid item xs={6}>
-              <BootstrapButton2
-                type="submit"
-                style={{ marginTop: "8px" }}
-                variant="contained"
-                color="primary"
-                disableRipple
-                onClick={offerTrade}
-              >
-                Propose a trade!
-              </BootstrapButton2>
+          <Container maxWidth="md">
+            <Grid
+              container
+              spacing={1}
+              direction="row"
+              alignItems="center"
+              justify="space-evenly"
+              className={classes.root}
+            >
+              {cards.map((card) => (
+                <>
+                  <Grid className="grid" item key={card} xs={5} sm={6} md={4}>
+                    <Card className={classes.card}>
+                      <CardMedia
+                        className={classes.cardMedia}
+                        image={offeredListingPicture}
+                        title="Image title"
+                      />
+                      <CardContent className={classes.cardContent}>
+                        <Typography color="textSecondary" variant="subtitle1">
+                          {offeredListingName}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                  <Grid item key={card} xs={2} sm={2} md={4}>
+                    <AutorenewIcon style={{ fontSize: 35 }} color="primary" />
+                  </Grid>
+                  <Grid item key={card} xs={5} sm={6} md={4}>
+                    <Card className={classes.card}>
+                      <CardMedia
+                        className={classes.cardMedia}
+                        image={wantedListingPicture}
+                        title="Image title"
+                      />
+                      <CardContent className={classes.cardContent}>
+                        <Typography color="textSecondary" variant="subtitle1">
+                          {wantedListingName}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                </>
+              ))}
             </Grid>
-          </Grid>
-          </form>
-        </Container>
-      </div>
+            <div className="separation"></div>
+            <Carousel>
+              {currentUserListings.map((listing) => (
+                <div>
+                  <h3
+                    onClick={() => selectListingToOffer(listing.id)}
+                    style={{
+                      height: "160px",
+                      lineHeight: "160px",
+                      textAlign: "center",
+                      backgroundImage: `url(${listing.picture})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></h3>
+                </div>
+              ))}
+            </Carousel>
+            <p></p>
+            <form className={classes.form} noValidate>
+              <TextField
+                id="outlined-multiline-static"
+                required
+                fullWidth
+                rows={2}
+                name="message"
+                label="Add a message (optional)"
+                variant="outlined"
+                onChange={onMessageChange}
+                value={message}
+              />
+              <div className="separation"></div>
+              <Grid container spacing={0} direction="row" justify="flex-end">
+                <Grid item xs={6}>
+                  <BootstrapButton2
+                    type="submit"
+                    style={{ marginTop: "8px" }}
+                    variant="contained"
+                    color="primary"
+                    disableRipple
+                    onClick={offerTrade}
+                  >
+                    Propose a trade!
+                  </BootstrapButton2>
+                </Grid>
+              </Grid>
+            </form>
+          </Container>
+        </div>
+      )}
     </>
   );
 }
