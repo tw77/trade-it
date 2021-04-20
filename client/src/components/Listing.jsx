@@ -174,15 +174,16 @@ export default function Listing(props) {
                 <Grid item xs={1}>
                 <ArrowForwardIcon style={{ fontSize: 20 }} color="primary" />
               </Grid> 
+
                 <Grid item xs={3}>
                   <Image
                     width={50}
                     src={prevTrade.picture}
                     style={{ borderRadius: "10px"}}
                   />
+
                 </Grid>
                 </>)}
-
 
               </Grid>
             </div>
