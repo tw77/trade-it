@@ -106,9 +106,20 @@ export default function MyWishlist(props) {
   ];
 
   const userId = 2; // for now
-  const mergedWishes = [].concat.apply([], props.wishes);
-  const userWishes = mergedWishes.filter((wish) => wish.user_id === userId);
-  const userWishCategories = userWishes.map((wish) => wish.category_id);
+  const mergedWishesNotNull = [].concat.apply([], props.wishes).filter((wish) => wish);
+
+  let userWishes;
+  let userWishCategories;
+  let relevantListings;
+
+  if (mergedWishesNotNull.filter((wish) => wish.user_id === userId)) {
+    userWishes = mergedWishesNotNull.filter((wish) => wish.user_id === userId);
+    userWishCategories = userWishes.map((wish) => wish.category_id);
+    relevantListings = props.listings.filter(
+      (listing) => listing.owner_id !== userId && 
+      listing.category_id === findMostRepresented(userWishCategories)[0])
+      .slice(0, 5);
+  }
 
   function findMostRepresented(userWishCategories) {
     const frequency = {};
@@ -123,12 +134,6 @@ export default function MyWishlist(props) {
         return frequency[b] - frequency[a];
     });
   }
-
-  const relevantListings = props.listings.filter(
-    (listing) => listing.owner_id !== userId && 
-    listing.category_id === findMostRepresented(userWishCategories)[0])
-    .slice(0, 5);
-
 
   const [wishName, setWishName] = useState("")
   const handleChange = function(event) {
@@ -151,9 +156,13 @@ export default function MyWishlist(props) {
     props.updateWishes(newWish);
   };
 
-  // function removeWish(){};
+  function remove(card){
+    const wishToRemove = userWishes[card];
+    props.removeWish(wishToRemove);
+  };
   
-  const cards = Array.from(Array(userWishes.length).keys()); // an index counting the user's wishes from 0
+  let cards;
+  userWishes && (cards = Array.from(Array(userWishes.length).keys())); // an index counting the user's wishes from 0
   
   return (
     <>
@@ -223,7 +232,8 @@ export default function MyWishlist(props) {
           <Typography variant="h5" align="left" color="textPrimary">
             My Wishlist
           </Typography>
-          <Grid
+
+          {userWishes && (<Grid
             container
             alignItems="center"
             spacing={0}
@@ -238,14 +248,15 @@ export default function MyWishlist(props) {
                   </Typography>
                 </Grid>
                 <Grid item  xs={3}>
-                  <IconButton color="secondary">
-                    <CloseIcon />
+                  <IconButton color="secondary" >
+                    <CloseIcon onClick={() => remove(card)}/>
                   </IconButton>
                 </Grid>
               </>
             ))}
-          </Grid>
-          {relevantListings ? (
+          </Grid>)}
+
+          {(relevantListings.length > 0) && (
             <>
 
               <Typography variant="h5" align="left" color="textPrimary" paragraph>
@@ -269,10 +280,6 @@ export default function MyWishlist(props) {
                 ))}
               </Carousel>
             </>
-          ) : (
-            <div className={classes.progress}>
-              <CircularProgress />
-            </div>
           )}
         </Container>
       </div>
