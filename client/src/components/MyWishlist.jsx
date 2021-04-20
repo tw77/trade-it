@@ -111,14 +111,22 @@ export default function MyWishlist(props) {
   let userWishes;
   let userWishCategories;
   let relevantListings;
+  let relevantAndAvailableListings;
 
-  if (mergedWishesNotNull.filter((wish) => wish.user_id === userId)) {
+  if (mergedWishesNotNull.filter((wish) => wish.user_id === userId)) { // if the user has wishlist entries
     userWishes = mergedWishesNotNull.filter((wish) => wish.user_id === userId);
     userWishCategories = userWishes.map((wish) => wish.category_id);
     relevantListings = props.listings.filter(
       (listing) => listing.owner_id !== userId && 
       listing.category_id === findMostRepresented(userWishCategories)[0])
       .slice(0, 5);
+
+    const mergedProposals = [].concat.apply([], props.proposals);
+    const acceptedProposals = mergedProposals.filter((proposal) => proposal.is_accepted === true);
+    const unavailableListingIds = acceptedProposals.map((proposal) => proposal.listing_id);
+    const unavailableAssetIds = acceptedProposals.map((proposal) => proposal.asset_id);
+    unavailableListingIds.push(...unavailableAssetIds);
+    relevantAndAvailableListings = relevantListings.filter((listing) => !unavailableListingIds.includes(listing.id));
   }
 
   function findMostRepresented(userWishCategories) {
@@ -256,7 +264,7 @@ export default function MyWishlist(props) {
             ))}
           </Grid>)}
 
-          {(relevantListings.length > 0) && (
+          {(relevantAndAvailableListings.length > 0) && (
             <>
 
               <Typography variant="h5" align="left" color="textPrimary" paragraph>
@@ -264,7 +272,7 @@ export default function MyWishlist(props) {
               </Typography>
               <Carousel>
 
-                {relevantListings.map((listing) => (
+                {relevantAndAvailableListings.map((listing) => (
                   <div>
                     <h3 onClick={() => history.push(`/listings/${listing.id}`)}
                       style={{
