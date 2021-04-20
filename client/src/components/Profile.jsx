@@ -70,21 +70,21 @@ export default function Profile(props) {
   !userId && (displayedUser = props.users.find((user) => user.id === 2)); // for now
   const mergedReviews = [].concat.apply([], props.reviews);
 
-  let displayedReviews;
+  let reviewsOfUser;
   userId &&
-    (displayedReviews = mergedReviews.filter(
+    (reviewsOfUser = mergedReviews.filter(
       (review) => review.user_id === Number(userId)
     ));
   !userId &&
-    (displayedReviews = mergedReviews.filter((review) => review.user_id === 2)); // for now
+    (reviewsOfUser = mergedReviews.filter((review) => review.user_id === 2)); // for now
 
-  let displayedListings;
+  let listingsByUser;
   userId &&
-    (displayedListings = props.listings.filter(
+    (listingsByUser = props.listings.filter(
       (listing) => listing.user.id === Number(userId)
     ));
   !userId &&
-    (displayedListings = props.listings.filter(
+    (listingsByUser = props.listings.filter(
       (listing) => listing.user.id === 2
     )); // for now
 
@@ -94,7 +94,7 @@ export default function Profile(props) {
   const unavailableListingIds = acceptedProposals.map((proposal) => proposal.listing_id);
   const unavailableAssetIds = acceptedProposals.map((proposal) => proposal.asset_id);
   unavailableListingIds.push(...unavailableAssetIds);
-  const availableListings = displayedListings.filter((listing) => !unavailableListingIds.includes(listing.id));
+  const availableListings = listingsByUser.filter((listing) => !unavailableListingIds.includes(listing.id));
 
 
   function getListingCard(listingsId, name, picture) {
@@ -191,7 +191,7 @@ export default function Profile(props) {
                 >
                   Reviews
                 </Typography>
-                {displayedReviews.map((review, index) => (
+                {reviewsOfUser.map((review, index) => (
                   <>
                     <Rate disabled defaultValue={review.rating} />
                     <Typography
