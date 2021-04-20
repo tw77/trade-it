@@ -82,10 +82,19 @@ export default function useApplicationData() {
   }
 
   function updateWishes(newUserWish) {
-    const cloneStateWishes = [].concat.apply([], state.wishes);
+    const cloneStateWishes = [].concat.apply([], state.wishes).filter((wish) => wish);
     const updatedWishes = ([...cloneStateWishes, newUserWish]);
-    console.log(updatedWishes);
+    // console.log(updatedWishes);
     setState((state) => ({...state, wishes: updatedWishes}));
+  }
+
+  function removeWish(wishToRemove) {
+    console.log('removing...');
+    console.log('wishToRemove', wishToRemove);
+    const cloneStateWishes = [].concat.apply([], state.wishes).filter((wish) => wish);
+    const idToRemove = cloneStateWishes.indexOf(wishToRemove)
+    cloneStateWishes[idToRemove] = null;
+    setState((state) => ({...state, wishes: cloneStateWishes}));
   }
 
   function updateReviews(reviewedUserId, reviewText, rating){
@@ -103,6 +112,6 @@ export default function useApplicationData() {
 
 
 
-  return { state, publishListing, propose, updateProposalStatus, updateWishes, updateReviews };
+  return { state, publishListing, propose, updateProposalStatus, updateWishes, removeWish, updateReviews };
 }
 
