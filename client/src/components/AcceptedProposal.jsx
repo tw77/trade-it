@@ -15,6 +15,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import { Rate } from "antd";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -39,8 +40,8 @@ const BootstrapButton2 = withStyles({
     padding: "4px 12px 8px 12px",
     border: "1px solid",
     lineHeight: 1.5,
-    backgroundColor: "#2a9d8f",
-    borderColor: "#2a9d8f",
+    backgroundColor: "#2a9d8f",//green
+    borderColor: "#2a9d8f",//green
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",
@@ -62,10 +63,10 @@ const BootstrapButton3 = withStyles({
     textTransform: "none",
     fontSize: 16,
     padding: "4px 12px 8px 12px",
-    border: "1px solid",
+    // border: "1px solid",
     lineHeight: 1.5,
-    backgroundColor: "#404a8a",
-    borderColor: "#404a8a",
+    backgroundColor: "#2a9d8f",//green
+    borderColor: "#2a9d8f",//green
     fontFamily: [
       "Roboto",
       '"Helvetica Neue"',
@@ -75,6 +76,11 @@ const BootstrapButton3 = withStyles({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(","),
+    "&:hover": {
+      backgroundColor: "#4958b6",//blue
+      borderColor: "#4958b6",//blue
+      boxShadow: "none",
+    },
   },
 })(Button);
 
@@ -133,6 +139,8 @@ export default function AcceptedProposal(props) {
     props.updateReviews(otherUserId, reviewText, rating)
   };
 
+  const [buttonText, setButtonText] = useState("Confirm pick-up");
+
   return (
     <>
       <CssBaseline />
@@ -183,13 +191,13 @@ export default function AcceptedProposal(props) {
               style={{ paddingTop: "10px" }}
             >
                <Grid item xs={4}>
-                <BootstrapButton2
+                <BootstrapButton3
                   variant="contained"
                   color="primary"
                   disableRipple
-                >
-                  Confirm pick-up
-                </BootstrapButton2>
+                  onClick={() => setButtonText("Pick up confirmed")}>
+                    {buttonText}
+                </BootstrapButton3>
               </Grid>
               
               <Grid item xs={8} sm={6} md={4}>
@@ -207,8 +215,10 @@ export default function AcceptedProposal(props) {
                   {wantedItemListing.user.phone}
                 </Typography>
               </Grid>
+              <Grid item xs={6}>
+                <Rate onChange={onRatingChange} />
+              </Grid>
             </Grid>
-            <Rate onChange={onRatingChange} />
             <form className={classes.form} noValidate>
               <TextField
                 id="outlined-multiline-static"
@@ -224,7 +234,7 @@ export default function AcceptedProposal(props) {
               <div className="separation"></div>
               <Grid container spacing={2} direction="row" justify="flex-end">
             <Grid item xs={3.5}>
-              <BootstrapButton3
+              <BootstrapButton2
 
                   variant="contained"
                   color="primary"
@@ -232,9 +242,9 @@ export default function AcceptedProposal(props) {
                   onClick={publishReview}
                 >
                   Publish
-                </BootstrapButton3>
-                </Grid>
-                </Grid>
+                </BootstrapButton2>
+              </Grid>
+            </Grid>
             </form>
           </Container>
         ) : (
