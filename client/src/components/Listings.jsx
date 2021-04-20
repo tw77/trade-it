@@ -38,7 +38,13 @@ export default function Listings(props) {
   const history = useHistory();
   const [filter, setFilter] = useState()
   
-  console.log("Listings", props.listings);
+  const mergedProposals = [].concat.apply([], props.proposals);
+  const acceptedProposals = mergedProposals.filter((proposal) => proposal.is_accepted === true);
+  const unavailableListingIds = acceptedProposals.map((proposal) => proposal.listing_id);
+  const unavailableAssetIds = acceptedProposals.map((proposal) => proposal.asset_id);
+  unavailableListingIds.push(...unavailableAssetIds);
+  const availableListings = props.listings.filter((listing) => !unavailableListingIds.includes(listing.id));
+
 
   const handleSearchChange = (e) => {
     setFilter(e.target.value.toLowerCase());
@@ -89,12 +95,12 @@ export default function Listings(props) {
           </div>
         </Toolbar>
       </AppBar>
-      {props.listings ? (
+      {availableListings ? (
         
         <Container className={classes.cardGrid} maxWidth="md">
           
       <Grid container spacing={4}>
-          {props.listings.map(item =>
+          {availableListings.map(item =>
             (
               (item.name.toLowerCase().includes(filter) && (item.category_id <= 10))
               || (!filter)

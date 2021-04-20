@@ -1,5 +1,5 @@
-import React , { useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import {
   Grid,
@@ -142,7 +142,7 @@ export default function MyProposals(props) {
 
 
   const currentUserProposals = mergedProposals.filter((proposal) => proposal.user_id === userId);
-  console.log('currentUserProposals', currentUserProposals);
+  // console.log('currentUserProposals', currentUserProposals);
 
   const offeredItemIds = currentUserProposals.map((proposal) => proposal.listing_id);
 
@@ -174,11 +174,11 @@ export default function MyProposals(props) {
   const wantedItemListings = findWantedListings(wantedItemIds);
   const wantedItemPictures = wantedItemListings.map((wantedItem) => wantedItem.picture);
 
-  console.log('mergedProposals', mergedProposals);
-  console.log('offeredItemIds', offeredItemIds);
-  console.log('wantedItemIds', wantedItemIds);
-  console.log('offeredItemListings', offeredItemListings);
-  console.log('wantedItemListings', wantedItemListings);
+  // console.log('mergedProposals', mergedProposals);
+  // console.log('offeredItemIds', offeredItemIds);
+  // console.log('wantedItemIds', wantedItemIds);
+  // console.log('offeredItemListings', offeredItemListings);
+  // console.log('wantedItemListings', wantedItemListings);
 
 
 
@@ -188,10 +188,10 @@ export default function MyProposals(props) {
 
 
   const tradesProposedToMe = mergedProposals.filter((proposal) => offeredItemIds.includes(proposal.asset_id));
-  console.log('tradesProposedToMe', tradesProposedToMe);
+  // console.log('tradesProposedToMe', tradesProposedToMe);
 
   const offeredToMeIds = tradesProposedToMe.map((proposal) => proposal.listing_id);
-  console.log('itemOfferedToMeIds', offeredToMeIds);
+  // console.log('itemOfferedToMeIds', offeredToMeIds);
 
   function findListingsOfferedToMe(offeredToMeIds) {
     let allListingsOfferedToMe = [];
@@ -207,7 +207,7 @@ export default function MyProposals(props) {
   const offeredToMePictures = offeredToMeListings.map((offeredItem) => offeredItem.picture);
 
   const listingsTheyWantIds = tradesProposedToMe.map((proposal) => proposal.asset_id);
-  console.log('listingsTheyWantIds', listingsTheyWantIds);
+  // console.log('listingsTheyWantIds', listingsTheyWantIds);
 
   function listingsTheyWant(listingsTheyWantIds) {
     let allListingsTheyWant = [];
@@ -258,10 +258,8 @@ export default function MyProposals(props) {
   const tradesIProposedCards = Array.from(Array(currentUserProposals.length).keys()); // an index counting the user's proposals from 0
   const tradesProposedToMeCards = Array.from(Array(tradesProposedToMe.length).keys());
 
-  const tradesProposedToMeIds = tradesProposedToMe.map((proposal) => proposal.id);
-
-  console.log('tradesIProposedCards', tradesIProposedCards);
-  console.log('tradesProposedToMeCards', tradesProposedToMeCards);
+  // console.log('tradesIProposedCards', tradesIProposedCards);
+  // console.log('tradesProposedToMeCards', tradesProposedToMeCards);
 
 
   return (
@@ -386,9 +384,9 @@ export default function MyProposals(props) {
                 </Grid>
                 <Grid item key={card} xs={3}>
                   <Typography gutterBottom variant="h7">
-                  Accepted
+                  {currentUserProposals[card].is_accepted ? `Accepted` : `Pending`}
                   </Typography>
-                    <BootstrapButton3
+                  {currentUserProposals[card].is_accepted ? (<BootstrapButton3
                       variant="contained"
                       color="primary"
                       disableRipple
@@ -396,7 +394,16 @@ export default function MyProposals(props) {
                       onClick={() => viewProposalTheyAccepted(card)}
                     >
                       View
-                    </BootstrapButton3>
+                    </BootstrapButton3>) : (
+                      <BootstrapButton
+                      variant="contained"
+                      color="primary"
+                      disableRipple
+                      className={classes.margin}
+                    >
+                      Cancel
+                    </BootstrapButton>
+                    )}
                 </Grid>
               </>
             ))}

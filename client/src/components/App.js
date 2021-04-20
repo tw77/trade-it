@@ -49,7 +49,7 @@ const useStyles = makeStyles({
 
 
 export default function App() {
-  const { state, publishListing, propose, updateProposalStatus, updateWishes, updateReviews } = useApplicationData();
+  const { state, publishListing, propose, updateProposalStatus, updateWishes, removeWish, updateReviews } = useApplicationData();
 
   const classes = useStyles();
 
@@ -83,15 +83,15 @@ export default function App() {
         <Switch>
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />  
-              <Route exact path="/profile/:userId"> <Profile users={state.users} listings={state.listings} reviews={state.reviews} /> </Route>
-              <Route exact path="/profile"> <Profile users={state.users} listings={state.listings} reviews={state.reviews} /> </Route>
-              <Route exact path="/wishlist"> <MyWishlist wishes={state.wishes} listings={state.listings} updateWishes={updateWishes} /> </Route>
+              <Route exact path="/profile/:userId"> <Profile users={state.users} listings={state.listings} reviews={state.reviews} proposals={state.proposals} /> </Route>
+              <Route exact path="/profile"> <Profile users={state.users} listings={state.listings} reviews={state.reviews} proposals={state.proposals} /> </Route>
+              <Route exact path="/wishlist"> <MyWishlist wishes={state.wishes} listings={state.listings} updateWishes={updateWishes} removeWish={removeWish} /> </Route>
               <Route exact path="/suggestions">
                 <MySuggestions wishes={state.wishes} listings={state.listings} proposals={state.proposals} /> 
                 </Route>
               <Route exact path="/proposals"> <MyProposals proposals={state.proposals} listings={state.listings} updateProposalStatus={updateProposalStatus}/> </Route>
               <Route exact path="/add"> <AddNewItem listings={state.listings} publishListing={publishListing} /> </Route>
-              <Route exact path="/"> <Listings listings={state.listings} /> </Route>
+              <Route exact path="/"> <Listings listings={state.listings} proposals={state.proposals} /> </Route>
               <Route exact path="/listings/:listingId"> <Listing listings={state.listings} /> </Route>
               <Route exact path="/offer/:listingId"> <ProposeTrade listings={state.listings} proposals={state.proposals} propose={propose} /> </Route>
               <Route exact path="/accepted/:proposalId"> <AcceptedProposal proposals={state.proposals} listings={state.listings} updateReviews={updateReviews} /> </Route>
