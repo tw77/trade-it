@@ -461,7 +461,7 @@ asset30 = cat12.assets.find_or_create_by!({
 })
 
 asset31 = cat7.assets.find_or_create_by!({
-  name: "Fixed-gear bicycle (drop-handle road bike)",
+  name: "Fixed-gear bicycle",
   description: "Used for five years, upgrading now but it's still a great bike.",
   owner_id: user4.id,
   storer_id: user4.id,
