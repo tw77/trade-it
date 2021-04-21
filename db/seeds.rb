@@ -109,7 +109,6 @@ neighbourhood20 = city1.neighbourhoods.find_or_create_by! name: "False Creek"
 
 puts "Re-creating Users ..."
 
-
 user1 = neighbourhood1.users.find_or_create_by!({
   first_name: "Alice",
   last_name: "K.",
@@ -126,8 +125,8 @@ user2 = neighbourhood1.users.find_or_create_by!({
   email: "mendez.puig@gmail.com",
   phone: "236-888-8525",
   password: "judit",
-  bio: "I'm Judit and I love coding, I have some cameras that I wanna trade.",
-  profile_picture: "https://lh3.googleusercontent.com/onvvPdJRtIj4iHlR1zWb3nTELZDQ4553E0gu6mZyUdkafUAccQv-mF_wMBoW1jPIIhTXUO4LQs1FeQu8fApr0TsUSeO5T50N2Z1TEh6YHUA9ASzupZXWtN4K-eKghclmw1iGpYqxvH04G2DPv4zvgQ7rOwhF9gOVoKHXb9dEpitiLsNeyTyOmeKKY6RQ0pTzRu_aY0i05FgYHkP7PsLy8d6mgA4okWPhlMq2SfZaFtmZceufZdAzQGYxsjWW6K8gaRMzCsetY70yifjbC8jf7VfdCFIZ6ph--OCKNrFLJHFsB8KV1lwHF9NhVbFX35FojmfSevOefMMw2rxHRy7HPUQde0fdSV57Bsjd8xRR9A8m9flDe9EKf0yZ23vwM3aBVMHmY8DEy0KuAlQZG8adfk-APp8_gjnpQ5478iVTsALkeiRjicUrqgBzOvNHGQZsMAcyforOElcli-kh4KEAPMOr-cXoo1A9nbiMnCuKLJsLS5kZ624LwYhiSGi-7BL7_zVFf4bqEvPIOHxKdsB135xotK7MD_ESdLJbbw-q_OQR0NIAIKQ73uIavroGz-HIVWv8fbORc0BCRFyUin35D8pdtuazA5Z10od-tycTZAQiEfS0Dr2h9jlhGkg-8bcjd5GAWUA8EpKE0YxzdbXNvi9R3jwV4SirybFfbwgBueHDjNptXyRQ7ckDdTF3TI1cXUgG3Cny8-OmNdcLnhDbt5k=w770-h513-no?authuser=0"
+  bio: "I'm Judit and I love coding. I have some cameras that I wanna trade.",
+  profile_picture: "https://i.imgur.com/SD0t7YG.jpeg"
 })
 
 user3 = neighbourhood1.users.find_or_create_by!({
@@ -182,8 +181,8 @@ user8 = neighbourhood17.users.find_or_create_by!({
   email: "thomas@m.com",
   phone: "778-555-8970",
   password: "thomas",
-  bio: "Hey, I'm Thomas, I'm a web developer from Vancouver.",
-  profile_picture: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  bio: "Hi, I'm Thomas, I'm a web developer from Vancouver.",
+  profile_picture: "https://i.imgur.com/uzVA4jZ.jpg"
 })
 user9 = neighbourhood7.users.find_or_create_by!({
   first_name: "Lucy",
@@ -201,7 +200,7 @@ user10 = neighbourhood1.users.find_or_create_by!({
   email: "michael@l.com",
   phone: "778-888-1520",
   password: "michael",
-  bio: "Hey, I'm Michael and I've live in Vancouver all my life and I like outdoor activities.",
+  bio: "Hey, I'm Michael and I've lived in Vancouver all my life and I like outdoor activities.",
   profile_picture: "https://images.unsplash.com/photo-1598966739654-5e9a252d8c32?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHNlbGZpZXxlbnwwfDB8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 })
 
@@ -232,8 +231,6 @@ cat12 = Category.find_or_create_by! name: "Cameras"
 ## ASSETS
 
 puts "Re-creating Assets ..."
-
-Asset.destroy_all
 
 asset1 = cat2.assets.find_or_create_by!({
   name: "Linen shirt, M",
@@ -284,11 +281,11 @@ asset6 = cat7.assets.find_or_create_by!({
 })
 
 asset7 = cat1.assets.find_or_create_by!({
-  name: "MacBook Pro 13-inch laptop",
-  description: "I'm switching laptops because I want a bigger screen. I've used this one very lightly.",
+  name: "MacBook Pro 13-inch laptop (2015)",
+  description: "Battery replaced, perfectly functional, like-new condition.",
   owner_id: user8.id,
   storer_id: user8.id,
-  history: ["https://images.pexels.com/photos/625788/pexels-photo-625788.jpeg?cs=srgb&dl=pexels-rebecca-swafford-625788.jpg&fm=jpg", "https://images.pexels.com/photos/4430936/pexels-photo-4430936.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", "https://www.pexels.com/photo/black-and-silver-mixing-board-63703/"],
+  history: ["https://images.unsplash.com/photo-1556449895-a33c9dba33dd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z3VpdGFyfGVufDB8MXwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60", "https://images.pexels.com/photos/4430936/pexels-photo-4430936.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", "https://images.unsplash.com/photo-1483000805330-4eaf0a0d82da?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"],
   picture: "https://images.pexels.com/photos/40185/mac-freelancer-macintosh-macbook-40185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 })
 
@@ -323,9 +320,10 @@ asset11 = cat3.assets.find_or_create_by!({
 
 asset12 = cat4.assets.find_or_create_by!({
   name: "Stylish outdoor chair",
+  description: "Bought used in 2010 -- very comfortable",
   owner_id: user3.id,
   storer_id: user3.id,
-  history: ["https://images.unsplash.com/photo-1603850121303-d4ade9e5ba65?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJlY29yZCUyMHBsYXllcnxlbnwwfDB8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"],
+  history: ["https://images.unsplash.com/photo-1582661702593-149b3f4f2927?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"],
   picture: "https://images.unsplash.com/photo-1602023039928-7af5a2f000fa?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fGZ1cm5pdHVyZXxlbnwwfDB8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 })
 
@@ -347,6 +345,7 @@ asset15 = cat7.assets.find_or_create_by!({
   name: "Bicycle",
   owner_id: user8.id,
   storer_id: user8.id,
+  history: ["https://images.unsplash.com/photo-1597260491619-bab87197869f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2Nvb3RlcnxlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"],
   picture: "https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmljeWNsZXxlbnwwfDB8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 })
 
@@ -366,9 +365,9 @@ asset17 = cat4.assets.find_or_create_by!({
 
 asset18 = cat1.assets.find_or_create_by!({
   name: "Black MacBook Pro mid-2013 laptop",
-  description: "Battery replaced, perfectly functional, just a little bit of wear and tear on the keyboard.",
-  owner_id: user8.id,
-  storer_id: user8.id,
+  description: "I'm switching laptops because I want a bigger screen. I've used this one very lightly",
+  owner_id: user10.id,
+  storer_id: user10.id,
   picture: "https://images.pexels.com/photos/2148217/pexels-photo-2148217.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
 })
 
@@ -384,7 +383,7 @@ asset20 = cat3.assets.find_or_create_by!({
   name: "Wooden sunglasses with light-blue lenses",
   owner_id: user3.id,
   storer_id: user3.id,
-  history: ["https://images.unsplash.com/photo-1558594187-6ac6484bf5d4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80"],
+  history: ["https://images.unsplash.com/photo-1583394838336-acd977736f90?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=931&q=80", "https://images.unsplash.com/photo-1558594187-6ac6484bf5d4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80"],
   picture: "https://images.pexels.com/photos/1362558/pexels-photo-1362558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
 })
 
@@ -396,9 +395,10 @@ asset21 = cat1.assets.find_or_create_by!({
 })
 
 asset22 = cat9.assets.find_or_create_by!({
-  name: "plant",
+  name: "Indoor plant",
   owner_id: user3.id,
   storer_id: user3.id,
+  history: ["https://images.unsplash.com/photo-1459785704030-654f6c5934a7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2847&q=80", "https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"],
   picture: "https://images.pexels.com/photos/1084188/pexels-photo-1084188.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 })
 
@@ -461,9 +461,10 @@ asset30 = cat12.assets.find_or_create_by!({
 })
 
 asset31 = cat7.assets.find_or_create_by!({
-  name: "Drop handle road bike",
-  owner_id: user3.id,
-  storer_id: user3.id,
+  name: "Fixed-gear bicycle",
+  description: "Used for five years, upgrading now but it's still a great bike.",
+  owner_id: user4.id,
+  storer_id: user4.id,
   history: ["https://images.unsplash.com/photo-1607606116242-357a0bd4404f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"],
   picture: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 })
@@ -514,8 +515,8 @@ asset37 = cat3.assets.find_or_create_by!({
 asset38 = cat1.assets.find_or_create_by!({
   name: "laptop",
   picture: "https://images.pexels.com/photos/812264/pexels-photo-812264.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-  owner_id: user8.id,
-  storer_id: user8.id
+  owner_id: user7.id,
+  storer_id: user7.id
 })
 
 asset39 = cat1.assets.find_or_create_by!({
@@ -960,15 +961,16 @@ puts "Re-creating Proposals ..."
 proposal1 = user2.proposals.find_or_create_by!({
   listing_id: listing4.id,
   asset_id: asset2.id,
-  status_id: status1.id,
+  status_id: status3.id,
+  is_accepted: true,
   message: "Trade me your headphones for my Game Boy Color?"
 })
 
 proposal2 = user2.proposals.find_or_create_by!({
-  listing_id: listing5.id,
+  listing_id: listing9.id,
   asset_id: asset1.id,
-  status_id: status3.id,
-  message: "Your linen shirt for my popular poetry book?"
+  status_id: status1.id,
+  message: "Your linen shirt for these 55-200mm lenses?"
 })
 
 proposal3 = user1.proposals.find_or_create_by!({
@@ -976,12 +978,12 @@ proposal3 = user1.proposals.find_or_create_by!({
   asset_id: asset5.id,
   status_id: status3.id,
   is_accepted: true,
-  message: "Haven't played this PSOne in years"
+  message: "Hey"
 })
 
 proposal3 = user3.proposals.find_or_create_by!({
   listing_id: listing1.id,
-  asset_id: asset4.id,
+  asset_id: asset19.id,
   status_id: status1.id,
   is_accepted: false,
   message: "Do you want this shirt?"
@@ -997,9 +999,9 @@ wish1 = user1.wishes.find_or_create_by({
   category_id: cat1.id
 })
 
-wish2 = user2.wishes.find_or_create_by({
-  name: "Running vest",
-  category_id: cat2.id
+wish2 = user3.wishes.find_or_create_by({
+  name: "New laptop",
+  category_id: cat1.id
 })
 
 wish3 = user3.wishes.find_or_create_by({
@@ -1049,7 +1051,7 @@ review1 = user1.reviews.find_or_create_by!({
 
 review2 = user2.reviews.find_or_create_by!({  
   rating: 5,
-  content: "Michael dropped off his camera at my place minutes after I accepted his trade."
+  content: "Judit dropped off her camera at my place minutes after I accepted her trade."
 })
 
 review3 = user3.reviews.find_or_create_by!({  
@@ -1062,9 +1064,14 @@ review4 = user9.reviews.find_or_create_by!({
   content: "Lucy sold me a guitar that never stays in tune... I took it to a repair shop and they told me the fingerboard is damaged... and she had the audacity to claim that it was in excellent condition... please"
 })
 
-review3 = user4.reviews.find_or_create_by!({  
+review5 = user4.reviews.find_or_create_by!({  
   rating: 5,
   content: "Charlie is great to deal with. It was a very nice experience. I will trade with him again for sure."
+})
+
+review6 = user8.reviews.find_or_create_by!({
+  rating: 5,
+  content: "Thomas was great to deal with, I'd gladly trade with him again."
 })
 
 puts "DONE!"

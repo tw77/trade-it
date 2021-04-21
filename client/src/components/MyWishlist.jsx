@@ -73,7 +73,7 @@ export default function MyWishlist(props) {
     },
     {
       value: 3,
-      label: 'Books',
+      label: 'Accessories',
     },
     {
       value: 4,
@@ -85,7 +85,7 @@ export default function MyWishlist(props) {
     },
     {
       value: 6,
-      label: 'Cars',
+      label: 'Sports',
     },
     {
       value: 7,
@@ -93,7 +93,7 @@ export default function MyWishlist(props) {
     },
     {
       value: 8,
-      label: 'Carpets',
+      label: 'Books',
     },
     {
       value: 9,
@@ -102,6 +102,14 @@ export default function MyWishlist(props) {
     {
       value: 10,
       label: 'Instruments',
+    },
+    {
+      value: 11,
+      label: 'Services',
+    },
+    {
+      value: 12,
+      label: 'Cameras',
     },
   ];
 
@@ -178,7 +186,7 @@ export default function MyWishlist(props) {
       <div className={classes.paper}>
         <Container component="main" maxWidth="xs">
           <Typography variant="h5" align="left" color="textPrimary">
-            Add an item to your wishlist
+            Add an entry to your wishlist
           </Typography>
           
           <form className={classes.form} noValidate>

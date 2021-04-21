@@ -179,7 +179,7 @@ export default function Listing(props) {
               >
           
 
-                {mockTradeHistoryListings.map((prevTrade) => 
+          {currentListing.history.map((prevTrade) => 
                 <>
                 <Grid item xs={1}>
                 <ArrowForwardIcon style={{ fontSize: 20 }} color="primary" />
@@ -187,7 +187,7 @@ export default function Listing(props) {
                 <Grid item xs={3}>
                   <Image
                     width={50}
-                    src={prevTrade.picture}
+                    src={prevTrade}
                     style={{ borderRadius: "10px"}}
                   />
 
