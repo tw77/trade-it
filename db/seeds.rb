@@ -114,85 +114,95 @@ user1 = neighbourhood1.users.find_or_create_by!({
   first_name: "Alice",
   last_name: "K.",
   email: "alice@k.com",
-  phone: "604-xxx-xxxx",
+  phone: "604-777-8888",
   password: "alice",
   bio: "Hey, I'm looking to make some trades. I love video games.",
-  profile_picture: "https://images.pexels.com/photos/1310522/pexels-photo-1310522.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  profile_picture: "https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c2VsZmllfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 })
 
 user2 = neighbourhood1.users.find_or_create_by!({
-  first_name: "Michael",
-  last_name: "L.",
-  email: "michael@l.com",
-  phone: "778-xxx-xxx",
-  password: "michael",
-  bio: "Hey, I'm Michael and I've live in Vancouver all my life and I like outdoor activities.",
-  profile_picture: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+  first_name: "Judit",
+  last_name: "Mendez",
+  email: "mendez.puig@gmail.com",
+  phone: "236-888-8525",
+  password: "judit",
+  bio: "I'm Judit and I love coding, I have some cameras that I wanna trade.",
+  profile_picture: "https://lh3.googleusercontent.com/onvvPdJRtIj4iHlR1zWb3nTELZDQ4553E0gu6mZyUdkafUAccQv-mF_wMBoW1jPIIhTXUO4LQs1FeQu8fApr0TsUSeO5T50N2Z1TEh6YHUA9ASzupZXWtN4K-eKghclmw1iGpYqxvH04G2DPv4zvgQ7rOwhF9gOVoKHXb9dEpitiLsNeyTyOmeKKY6RQ0pTzRu_aY0i05FgYHkP7PsLy8d6mgA4okWPhlMq2SfZaFtmZceufZdAzQGYxsjWW6K8gaRMzCsetY70yifjbC8jf7VfdCFIZ6ph--OCKNrFLJHFsB8KV1lwHF9NhVbFX35FojmfSevOefMMw2rxHRy7HPUQde0fdSV57Bsjd8xRR9A8m9flDe9EKf0yZ23vwM3aBVMHmY8DEy0KuAlQZG8adfk-APp8_gjnpQ5478iVTsALkeiRjicUrqgBzOvNHGQZsMAcyforOElcli-kh4KEAPMOr-cXoo1A9nbiMnCuKLJsLS5kZ624LwYhiSGi-7BL7_zVFf4bqEvPIOHxKdsB135xotK7MD_ESdLJbbw-q_OQR0NIAIKQ73uIavroGz-HIVWv8fbORc0BCRFyUin35D8pdtuazA5Z10od-tycTZAQiEfS0Dr2h9jlhGkg-8bcjd5GAWUA8EpKE0YxzdbXNvi9R3jwV4SirybFfbwgBueHDjNptXyRQ7ckDdTF3TI1cXUgG3Cny8-OmNdcLnhDbt5k=w770-h513-no?authuser=0"
 })
 
 user3 = neighbourhood1.users.find_or_create_by!({
   first_name: "Jenny",
   last_name: "McDonald",
   email: "jennymcdonald@gmail.com",
-  phone: "778-xxx-xxx",
+  phone: "778-999-5555",
   password: "jenny",
   bio: "Hi, I'm Jenny",
-  profile_picture: "https://images.pexels.com/photos/678783/pexels-photo-678783.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  profile_picture: "https://images.unsplash.com/photo-1609902726285-00668009f004?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
 })
 
 user4 = neighbourhood5.users.find_or_create_by!({
-  first_name: "Charlie",
-  last_name: "Brown",
-  email: "charlie@brown.com",
-  phone: "604-xxx-xxx",
-  password: "charlie",
-  bio: "Hi, I'm Charlie and I'm passionate about photography and vintage cameras.",
-  profile_picture: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  first_name: "Edward",
+  last_name: "Jones",
+  email: "edward@jones.com",
+  phone: "604-456-7890",
+  password: "edward",
+  bio: "Hi, I'm Edward and I'm passionate about dogs.",
+  profile_picture: "https://images.unsplash.com/photo-1598262088246-2b1a35324c83?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzgzfHxzZWxmaWV8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 })
 user5 = neighbourhood5.users.find_or_create_by!({
   first_name: "Daniel",
   last_name: "K.",
   email: "daniel@k.com",
-  phone: "604-xxx-xxx",
+  phone: "604-111-2222",
   password: "daniel",
   bio: "Hi, I'm Daniel and I'm originally from Australia. I want to furnish my new apartment in Mount Plesant.",
-  profile_picture: "https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  profile_picture: "https://images.unsplash.com/photo-1601724373327-8d3d925e43a2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjAyfHxzZWxmaWV8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 })
 user6 = neighbourhood5.users.find_or_create_by!({
   first_name: "Aly",
   last_name: "L.",
   email: "aly@l.com",
-  phone: "778-xxx-xxx",
+  phone: "778-444-1234",
   password: "aly",
   bio: "Hi, I'm Aly and I love books.",
-  profile_picture: "https://images.pexels.com/photos/7218222/pexels-photo-7218222.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  profile_picture: "https://images.unsplash.com/photo-1547625249-06e8c613f229?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzkzfHxzZWxmaWV8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 })
 user7 = neighbourhood7.users.find_or_create_by!({
   first_name: "Amy",
   last_name: "L.",
   email: "amy@l.com",
-  phone: "778-xxx-xxx",
+  phone: "778-109-9999",
   password: "amy",
   bio: "Hi, I'm Amy and I love plants.",
-  profile_picture: "https://images.pexels.com/photos/943084/pexels-photo-943084.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  profile_picture: "https://images.unsplash.com/photo-1608716987742-7a5d6149ab5f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjg3fHxzZWxmaWV8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 })
-user8 = neighbourhood7.users.find_or_create_by!({
+user8 = neighbourhood17.users.find_or_create_by!({
   first_name: "Thomas",
-  last_name: "M.",
+  last_name: "W.",
   email: "thomas@m.com",
-  phone: "778-xxx-xxx",
+  phone: "778-555-8970",
   password: "thomas",
-  bio: "Hi, I'm Thomas and I'm a musician.",
+  bio: "Hey, I'm Thomas, I'm a web developer from Vancouver.",
   profile_picture: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 })
 user9 = neighbourhood7.users.find_or_create_by!({
   first_name: "Lucy",
   last_name: "Evans",
   email: "lucy@evans.com",
-  phone: "778-xxx-xxx",
+  phone: "778-222-8678",
   password: "lucy",
   bio: "Hi, I'm Lucy and I like yoga.",
-  profile_picture: "https://images.pexels.com/photos/1542085/pexels-photo-1542085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  profile_picture: "https://images.unsplash.com/photo-1595951960408-a7259baee032?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHNlbGZpZXxlbnwwfDB8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+})
+
+user10 = neighbourhood1.users.find_or_create_by!({
+  first_name: "Michael",
+  last_name: "L.",
+  email: "michael@l.com",
+  phone: "778-888-1520",
+  password: "michael",
+  bio: "Hey, I'm Michael and I've live in Vancouver all my life and I like outdoor activities.",
+  profile_picture: "https://images.unsplash.com/photo-1598966739654-5e9a252d8c32?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHNlbGZpZXxlbnwwfDB8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 })
 
 
@@ -204,16 +214,20 @@ puts "Re-creating Categories ..."
 
 cat1 = Category.find_or_create_by! name: "Electronics"
 cat2 = Category.find_or_create_by! name: "Clothing"
-cat3 = Category.find_or_create_by! name: "Books"
+cat3 = Category.find_or_create_by! name: "Accessories"
 cat4 = Category.find_or_create_by! name: "Furniture"
 cat5 = Category.find_or_create_by! name: "Appliances"
-cat6 = Category.find_or_create_by! name: "Cars"
+cat6 = Category.find_or_create_by! name: "Sports"
 cat7 = Category.find_or_create_by! name: "Bicycles"
-cat8 = Category.find_or_create_by! name: "Carpets"
+cat8 = Category.find_or_create_by! name: "Books"
 cat9 = Category.find_or_create_by! name: "Plants"
 cat10 = Category.find_or_create_by! name: "Instruments"
+cat11 = Category.find_or_create_by! name: "Services"
+cat12 = Category.find_or_create_by! name: "Cameras" 
 
 
+
+# category 1, 2, 3, 7
 
 ## ASSETS
 
@@ -246,8 +260,8 @@ asset3 = cat1.assets.find_or_create_by!({
 })
 
 asset4 = cat1.assets.find_or_create_by!({
-  name: "Old school Game Boy Color",
-  description: "Old school Game Boy Color with 5 games included(The Legend of Zelda, Pac-Man, Space Invaders, Star Wars, Top Gear Pocket). It's working well!",
+  name: "Game Boy Color",
+  description: "Old school Game Boy Color with 5 games included. It's working well!",
   owner_id: user2.id,
   storer_id: user2.id,
   picture: "https://images.unsplash.com/photo-1525799894461-3cfe39b72d69?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
@@ -262,12 +276,362 @@ asset5 = cat3.assets.find_or_create_by!({
 })
 
 asset6 = cat7.assets.find_or_create_by!({
-  name: "Peugeot fixie",
+  name: "Bicycle Peugeot fixie",
   description: "Vintage fixie bike very well mantained",
   owner_id: user3.id,
   storer_id: user3.id,
   picture: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
 })
+
+asset7 = cat1.assets.find_or_create_by!({
+  name: "MacBook Pro 13-inch laptop",
+  description: "I'm switching laptops because I want a bigger screen. I've used this one very lightly.",
+  owner_id: user8.id,
+  storer_id: user8.id,
+  history: ["https://images.pexels.com/photos/625788/pexels-photo-625788.jpeg?cs=srgb&dl=pexels-rebecca-swafford-625788.jpg&fm=jpg", "https://images.pexels.com/photos/4430936/pexels-photo-4430936.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", "https://www.pexels.com/photo/black-and-silver-mixing-board-63703/"],
+  picture: "https://images.pexels.com/photos/40185/mac-freelancer-macintosh-macbook-40185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+asset8 = cat9.assets.find_or_create_by!({
+  name: "name",
+  owner_id: user7.id,
+  storer_id: user7.id,
+  picture: "https://images.pexels.com/photos/1302305/pexels-photo-1302305.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+})
+
+asset9 = cat12.assets.find_or_create_by!({
+  name: "Nikon 55-200mm lenses (camera)",
+  description: "Very good condition",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.pexels.com/photos/19671/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+asset10 = cat11.assets.find_or_create_by!({
+  name: "Dog walking (60 min)",
+  owner_id: user5.id,
+  storer_id: user5.id,
+  picture: "https://images.pexels.com/photos/4148828/pexels-photo-4148828.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+})
+
+asset11 = cat3.assets.find_or_create_by!({
+  name: "sunglasses",
+  owner_id: user1.id,
+  storer_id: user1.id,
+  picture: "https://images.pexels.com/photos/701877/pexels-photo-701877.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+})
+
+asset12 = cat4.assets.find_or_create_by!({
+  name: "Stylish outdoor chair",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  history: ["https://images.unsplash.com/photo-1603850121303-d4ade9e5ba65?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHJlY29yZCUyMHBsYXllcnxlbnwwfDB8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"],
+  picture: "https://images.unsplash.com/photo-1602023039928-7af5a2f000fa?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fGZ1cm5pdHVyZXxlbnwwfDB8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+})
+
+asset13 = cat9.assets.find_or_create_by!({
+  name: "name",
+  owner_id: user1.id,
+  storer_id: user1.id,
+  picture: "https://images.pexels.com/photos/912396/pexels-photo-912396.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+asset14 = cat1.assets.find_or_create_by!({
+  name: "name",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+})
+
+asset15 = cat7.assets.find_or_create_by!({
+  name: "Bicycle",
+  owner_id: user8.id,
+  storer_id: user8.id,
+  picture: "https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmljeWNsZXxlbnwwfDB8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+})
+
+asset16 = cat4.assets.find_or_create_by!({
+  name: "chair",
+  owner_id: user1.id,
+  storer_id: user1.id,
+  picture: "https://images.unsplash.com/photo-1601858865196-cee0b8393812?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTEyfHxmdXJuaXR1cmV8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+})
+
+asset17 = cat4.assets.find_or_create_by!({
+  name: "furniture...",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.unsplash.com/photo-1532588213355-52317771cce6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8ZnVybml0dXJlfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+})
+
+asset18 = cat1.assets.find_or_create_by!({
+  name: "Black MacBook Pro mid-2013 laptop",
+  description: "Battery replaced, perfectly functional, just a little bit of wear and tear on the keyboard.",
+  owner_id: user8.id,
+  storer_id: user8.id,
+  picture: "https://images.pexels.com/photos/2148217/pexels-photo-2148217.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+})
+
+asset19 = cat12.assets.find_or_create_by!({
+  name: "Polaroid camera",
+  owner_id: user2.id,
+  storer_id: user2.id,
+  description: "Beautifull working camera",
+  picture: "https://images.pexels.com/photos/3945349/pexels-photo-3945349.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+asset20 = cat3.assets.find_or_create_by!({
+  name: "Wooden sunglasses with light-blue lenses",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  history: ["https://images.unsplash.com/photo-1558594187-6ac6484bf5d4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80"],
+  picture: "https://images.pexels.com/photos/1362558/pexels-photo-1362558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+})
+
+asset21 = cat1.assets.find_or_create_by!({
+  name: "name",
+  picture: "https://images.pexels.com/photos/218717/pexels-photo-218717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  owner_id: user3.id,
+  storer_id: user3.id
+})
+
+asset22 = cat9.assets.find_or_create_by!({
+  name: "plant",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.pexels.com/photos/1084188/pexels-photo-1084188.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+asset23 = cat4.assets.find_or_create_by!({
+  name: "chair",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.unsplash.com/photo-1574070492107-e2e4835031bf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGFybWNoYWlyfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+})
+
+asset24 = cat11.assets.find_or_create_by!({
+  name: "Cat boarding",
+  owner_id: user1.id,
+  storer_id: user1.id,
+  picture: "https://images.pexels.com/photos/569170/pexels-photo-569170.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+})
+
+asset25 = cat7.assets.find_or_create_by!({
+  name: "Bicycle",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.unsplash.com/photo-1560799486-f4b726357fcd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGJpa2UlMjBmb3IlMjBzYWxlfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+})
+
+asset26 = cat3.assets.find_or_create_by!({
+  name: "sunglasses",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.pexels.com/photos/1798665/pexels-photo-1798665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+asset27 = cat4.assets.find_or_create_by!({
+  name: "chair",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.unsplash.com/photo-1536095615694-dfbad2da5d6a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGRlY2slMjBjaGFpcnxlbnwwfDB8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+})
+
+asset28 = cat9.assets.find_or_create_by!({
+  name: "name",
+  owner_id: user1.id,
+  storer_id: user1.id,
+  picture: "https://images.pexels.com/photos/867481/pexels-photo-867481.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+})
+
+asset29 = cat1.assets.find_or_create_by!({
+  name: "ASUS laptop + trackpad",
+  description: "You can have both the laptop and the trackpad. Looking for music gear and instruments!",
+  owner_id: user10.id,
+  storer_id: user10.id,
+  picture: "https://images.pexels.com/photos/109371/pexels-photo-109371.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+})
+
+asset30 = cat12.assets.find_or_create_by!({
+  name: "Canon 550D with lenses (camera)",
+  description: "Makes beutifull pictures and well mantained",
+  owner_id: user2.id,
+  storer_id: user2.id,
+  picture: "https://images.unsplash.com/photo-1499696786230-3ebd9d0d6fd8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+})
+
+asset31 = cat7.assets.find_or_create_by!({
+  name: "Drop handle road bike",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  history: ["https://images.unsplash.com/photo-1607606116242-357a0bd4404f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"],
+  picture: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+asset32 = cat4.assets.find_or_create_by!({
+  name: "couch",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZnVybml0dXJlfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+})
+
+asset33 = cat4.assets.find_or_create_by!({
+  name: "chair",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.unsplash.com/photo-1616708390049-76b87f8ff376?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+})
+
+asset34 = cat12.assets.find_or_create_by!({
+  name: "Fujifilm Vintage camera",
+  owner_id: user2.id,
+  storer_id: user2.id,
+  description: "Beautiful working camera",
+  picture: "https://images.pexels.com/photos/1091290/pexels-photo-1091290.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+asset35 = cat11.assets.find_or_create_by!({
+  name: "House painting",
+  owner_id: user1.id,
+  storer_id: user1.id,
+  picture: "https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+asset36 = cat9.assets.find_or_create_by!({
+  name: "name",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.pexels.com/photos/906150/pexels-photo-906150.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+})
+
+asset37 = cat3.assets.find_or_create_by!({
+  name: "sunglasses",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.pexels.com/photos/1669595/pexels-photo-1669595.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+})
+
+asset38 = cat1.assets.find_or_create_by!({
+  name: "laptop",
+  picture: "https://images.pexels.com/photos/812264/pexels-photo-812264.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+  owner_id: user8.id,
+  storer_id: user8.id
+})
+
+asset39 = cat1.assets.find_or_create_by!({
+  name: "name",
+  picture: "https://images.pexels.com/photos/1334597/pexels-photo-1334597.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  owner_id: user9.id,
+  storer_id: user9.id
+})
+
+asset40 = cat12.assets.find_or_create_by!({
+  name: "Konica Vintage camera",
+  owner_id: user2.id,
+  storer_id: user2.id,
+  description: "Vintage camera. The pictures look amazing!",
+  picture: "https://images.pexels.com/photos/433098/pexels-photo-433098.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+asset41 = cat4.assets.find_or_create_by!({
+  name: "chair",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.pexels.com/photos/116915/pexels-photo-116915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+asset42 = cat7.assets.find_or_create_by!({
+  name: "Bicycle",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.pexels.com/photos/1431117/pexels-photo-1431117.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+
+asset43 = cat11.assets.find_or_create_by!({
+  name: "Plant watering",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.pexels.com/photos/6802972/pexels-photo-6802972.jpeg?cs=srgb&dl=pexels-vlada-karpovich-6802972.jpg&fm=jpg"
+})
+
+asset44 = cat12.assets.find_or_create_by!({
+  name: "Leica M6 camera",
+  description: "Vintage Camera. The pictures look amazing!",
+  owner_id: user4.id,
+  storer_id: user4.id,
+  picture: "https://images.unsplash.com/photo-1519458246479-6acae7536988?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2850&q=80"
+})
+
+asset45 = cat3.assets.find_or_create_by!({
+  name: "sunglasses",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.pexels.com/photos/147641/pexels-photo-147641.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+})
+
+asset46 = cat12.assets.find_or_create_by!({
+  name: "camera Sony A7",
+  description: "High quality videos & pictures",
+  owner_id: user4.id,
+  storer_id: user4.id,
+  picture: "https://images.pexels.com/photos/45889/camera-photo-camera-sony-alpha-7-sony-45889.jpeg?cs=srgb&dl=pexels-pixabay-45889.jpg&fm=jpg"
+})
+
+asset47 = cat4.assets.find_or_create_by!({
+  name: "chair",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.pexels.com/photos/106839/pexels-photo-106839.jpeg?cs=srgb&dl=pexels-mike-106839.jpg&fm=jpg"
+})
+
+
+asset48 = cat4.assets.find_or_create_by!({
+  name: "furniture...",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.pexels.com/photos/3935321/pexels-photo-3935321.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+})
+
+asset49 = cat12.assets.find_or_create_by!({
+  name: "Ricoh Vintage camera",
+  description: "Not working, just for decorative purposes",
+  owner_id: user4.id,
+  storer_id: user4.id,
+  picture: "https://images.pexels.com/photos/206501/pexels-photo-206501.jpeg?cs=srgb&dl=pexels-pixabay-206501.jpg&fm=jpg"
+})
+
+asset50 = cat7.assets.find_or_create_by!({
+  name: "Bicycle",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.pexels.com/photos/2539400/pexels-photo-2539400.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+})
+
+
+asset51 = cat9.assets.find_or_create_by!({
+  name: "name",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.pexels.com/photos/834657/pexels-photo-834657.jpeg?cs=srgb&dl=pexels-lisa-834657.jpg&fm=jpg"
+})
+
+asset52 = cat12.assets.find_or_create_by!({
+  name: "Cosina Vintage camera",
+  description: "Needs to be fix",
+  owner_id: user4.id,
+  storer_id: user4.id,
+  picture: "https://images.pexels.com/photos/1251910/pexels-photo-1251910.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+})
+
+asset53 = cat4.assets.find_or_create_by!({
+  name: "name",
+  owner_id: user3.id,
+  storer_id: user3.id,
+  picture: "https://images.unsplash.com/photo-1602023039928-7af5a2f000fa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80"
+})
+
+
 
 
 ## PRICE RANGES
@@ -331,6 +695,247 @@ listing5 = user2.listings.find_or_create_by!({
   asset_id: asset5.id,
   price_range_id: price_range3.id
 })
+
+listing6 = user3.listings.find_or_create_by!({
+  asset_id: asset6.id,
+  price_range_id: price_range3.id
+})
+
+listing7 = user8.listings.find_or_create_by!({
+  asset_id: asset7.id,
+  price_range_id: price_range3.id
+})
+
+listing8 = user7.listings.find_or_create_by!({
+  asset_id: asset8.id,
+  price_range_id: price_range3.id
+})
+
+listing9 = user3.listings.find_or_create_by!({
+  asset_id: asset9.id,
+  price_range_id: price_range3.id
+})
+
+listing10 = user5.listings.find_or_create_by!({
+  asset_id: asset10.id,
+  price_range_id: price_range3.id
+})
+
+listing11 = user1.listings.find_or_create_by!({
+  asset_id: asset11.id,
+  price_range_id: price_range3.id
+})
+
+listing12 = user3.listings.find_or_create_by!({
+  asset_id: asset12.id,
+  price_range_id: price_range3.id
+})
+
+listing13 = user1.listings.find_or_create_by!({
+  asset_id: asset13.id,
+  price_range_id: price_range3.id
+})
+
+listing14 = user3.listings.find_or_create_by!({
+  asset_id: asset14.id,
+  price_range_id: price_range3.id
+})
+
+listing15 = user8.listings.find_or_create_by!({
+  asset_id: asset15.id,
+  price_range_id: price_range3.id
+})
+
+listing16 = user1.listings.find_or_create_by!({
+  asset_id: asset16.id,
+  price_range_id: price_range3.id
+})
+
+listing17 = user3.listings.find_or_create_by!({
+  asset_id: asset17.id,
+  price_range_id: price_range3.id
+})
+
+listing18 = user8.listings.find_or_create_by!({
+  asset_id: asset18.id,
+  price_range_id: price_range3.id
+})
+
+listing19 = user2.listings.find_or_create_by!({
+  asset_id: asset19.id,
+  price_range_id: price_range3.id
+})
+
+listing20 = user3.listings.find_or_create_by!({
+  asset_id: asset20.id,
+  price_range_id: price_range3.id
+})
+
+listing21 = user3.listings.find_or_create_by!({
+  asset_id: asset21.id,
+  price_range_id: price_range3.id
+})
+
+listing22 = user3.listings.find_or_create_by!({
+  asset_id: asset22.id,
+  price_range_id: price_range3.id
+})
+
+listing23 = user3.listings.find_or_create_by!({
+  asset_id: asset23.id,
+  price_range_id: price_range3.id
+})
+
+listing24 = user1.listings.find_or_create_by!({
+  asset_id: asset24.id,
+  price_range_id: price_range3.id
+})
+
+listing25 = user3.listings.find_or_create_by!({
+  asset_id: asset25.id,
+  price_range_id: price_range3.id
+})
+
+listing26 = user3.listings.find_or_create_by!({
+  asset_id: asset26.id,
+  price_range_id: price_range3.id
+})
+
+listing27 = user3.listings.find_or_create_by!({
+  asset_id: asset27.id,
+  price_range_id: price_range3.id
+})
+
+listing28 = user1.listings.find_or_create_by!({
+  asset_id: asset28.id,
+  price_range_id: price_range3.id
+})
+
+listing29 = user10.listings.find_or_create_by!({
+  asset_id: asset29.id,
+  price_range_id: price_range3.id
+})
+
+listing30 = user2.listings.find_or_create_by!({
+  asset_id: asset30.id,
+  price_range_id: price_range3.id
+})
+
+listing31 = user3.listings.find_or_create_by!({
+  asset_id: asset31.id,
+  price_range_id: price_range3.id
+})
+
+listing32 = user3.listings.find_or_create_by!({
+  asset_id: asset32.id,
+  price_range_id: price_range3.id
+})
+
+listing33 = user3.listings.find_or_create_by!({
+  asset_id: asset33.id,
+  price_range_id: price_range3.id
+})
+
+listing34 = user2.listings.find_or_create_by!({
+  asset_id: asset34.id,
+  price_range_id: price_range3.id
+})
+
+listing35 = user1.listings.find_or_create_by!({
+  asset_id: asset35.id,
+  price_range_id: price_range3.id
+})
+
+listing36 = user3.listings.find_or_create_by!({
+  asset_id: asset36.id,
+  price_range_id: price_range3.id
+})
+
+listing37 = user3.listings.find_or_create_by!({
+  asset_id: asset37.id,
+  price_range_id: price_range3.id
+})
+
+listing38 = user8.listings.find_or_create_by!({
+  asset_id: asset38.id,
+  price_range_id: price_range3.id
+})
+
+listing39 = user9.listings.find_or_create_by!({
+  asset_id: asset39.id,
+  price_range_id: price_range3.id
+})
+
+listing40 = user2.listings.find_or_create_by!({
+  asset_id: asset40.id,
+  price_range_id: price_range3.id
+})
+
+listing41 = user3.listings.find_or_create_by!({
+  asset_id: asset41.id,
+  price_range_id: price_range3.id
+})
+
+listing42 = user3.listings.find_or_create_by!({
+  asset_id: asset42.id,
+  price_range_id: price_range3.id
+})
+
+listing43 = user3.listings.find_or_create_by!({
+  asset_id: asset43.id,
+  price_range_id: price_range3.id
+})
+
+listing44 = user4.listings.find_or_create_by!({
+  asset_id: asset44.id,
+  price_range_id: price_range3.id
+})
+
+listing45 = user3.listings.find_or_create_by!({
+  asset_id: asset45.id,
+  price_range_id: price_range3.id
+})
+
+listing46 = user4.listings.find_or_create_by!({
+  asset_id: asset46.id,
+  price_range_id: price_range3.id
+})
+
+listing47 = user3.listings.find_or_create_by!({
+  asset_id: asset47.id,
+  price_range_id: price_range3.id
+})
+
+listing48 = user3.listings.find_or_create_by!({
+  asset_id: asset48.id,
+  price_range_id: price_range3.id
+})
+
+listing49 = user4.listings.find_or_create_by!({
+  asset_id: asset49.id,
+  price_range_id: price_range3.id
+})
+
+listing50 = user3.listings.find_or_create_by!({
+  asset_id: asset50.id,
+  price_range_id: price_range3.id
+})
+
+listing51 = user3.listings.find_or_create_by!({
+  asset_id: asset51.id,
+  price_range_id: price_range3.id
+})
+
+listing52 = user4.listings.find_or_create_by!({
+  asset_id: asset52.id,
+  price_range_id: price_range3.id
+})
+
+listing53 = user3.listings.find_or_create_by!({
+  asset_id: asset53.id,
+  price_range_id: price_range3.id
+})
+
 
 
 ## STATUSES

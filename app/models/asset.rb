@@ -9,7 +9,7 @@ class Asset < ApplicationRecord
   validates :storer_id, presence: true
   validates :category_id, presence: true
   validates :name, presence: true
-  validates :description, presence: true
+  # validates :description, presence: true
   validates :picture, presence: true
 
 end

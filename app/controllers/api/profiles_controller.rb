@@ -6,7 +6,7 @@ class Api::ProfilesController < ApplicationController
   end
 
   def index
-    @listings = Asset.joins(:listing).select('assets.id, assets.name, assets.picture').where(listings: { user_id: params[:user_id] })
+    @listings = Asset.joins(:listing).where(listings: { user_id: params[:user_id] })
     # working
     render json: @listings
   end

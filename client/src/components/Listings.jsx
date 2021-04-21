@@ -81,7 +81,7 @@ export default function Listings(props) {
     <CssBaseline />
       <div className={classes.heroContent}>
       <Typography variant="h5" align="left" color="textPrimary">
-          Explore listed items
+          Explore listings
         </Typography>
       <AppBar position="static" align="left" style={{ background: 'transparent', boxShadow: 'none'}} > 
         <Toolbar>
@@ -102,7 +102,7 @@ export default function Listings(props) {
       <Grid container spacing={4}>
           {availableListings.map(item =>
             (
-              (item.name.toLowerCase().includes(filter) && (item.category_id <= 10))
+              (item.name.toLowerCase().includes(filter) && (item.category_id <= 12))
               || (!filter)
             )
             && getListingCard(item.id, item.name, item.picture))}
