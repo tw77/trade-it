@@ -142,7 +142,7 @@ export default function MyProposals(props) {
 
 
   const currentUserProposals = mergedProposals.filter((proposal) => proposal.user_id === userId);
-  // console.log('currentUserProposals', currentUserProposals);
+  console.log('currentUserProposals', currentUserProposals);
 
   const offeredItemIds = currentUserProposals.map((proposal) => proposal.listing_id);
 
@@ -185,13 +185,14 @@ export default function MyProposals(props) {
 
 
 
+  const userListings = props.listings.filter((listing) => listing.user.id === userId);
+  const userListingIds = userListings.map((listing) => listing.id); 
 
-
-  const tradesProposedToMe = mergedProposals.filter((proposal) => offeredItemIds.includes(proposal.asset_id));
-  // console.log('tradesProposedToMe', tradesProposedToMe);
+  const tradesProposedToMe = mergedProposals.filter((proposal) => userListingIds.includes(proposal.asset_id));
+  console.log('tradesProposedToMe', tradesProposedToMe);
 
   const offeredToMeIds = tradesProposedToMe.map((proposal) => proposal.listing_id);
-  // console.log('itemOfferedToMeIds', offeredToMeIds);
+  console.log('itemOfferedToMeIds', offeredToMeIds);
 
   function findListingsOfferedToMe(offeredToMeIds) {
     let allListingsOfferedToMe = [];
@@ -204,10 +205,11 @@ export default function MyProposals(props) {
   }
 
   const offeredToMeListings = findListingsOfferedToMe(offeredToMeIds)
+  console.log('offeredToMeListings', offeredToMeListings);
   const offeredToMePictures = offeredToMeListings.map((offeredItem) => offeredItem.picture);
 
   const listingsTheyWantIds = tradesProposedToMe.map((proposal) => proposal.asset_id);
-  // console.log('listingsTheyWantIds', listingsTheyWantIds);
+  console.log('listingsTheyWantIds', listingsTheyWantIds);
 
   function listingsTheyWant(listingsTheyWantIds) {
     let allListingsTheyWant = [];
@@ -258,8 +260,8 @@ export default function MyProposals(props) {
   const tradesIProposedCards = Array.from(Array(currentUserProposals.length).keys()); // an index counting the user's proposals from 0
   const tradesProposedToMeCards = Array.from(Array(tradesProposedToMe.length).keys());
 
-  // console.log('tradesIProposedCards', tradesIProposedCards);
-  // console.log('tradesProposedToMeCards', tradesProposedToMeCards);
+  console.log('tradesIProposedCards', tradesIProposedCards);
+  console.log('tradesProposedToMeCards', tradesProposedToMeCards);
 
 
   return (
