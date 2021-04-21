@@ -81,6 +81,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MySuggestions(props) {
+
   const classes = useStyles();
   const cards = [1, 2];
   const cards2 = [1, 2];

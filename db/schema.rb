@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_12_232928) do
+ActiveRecord::Schema.define(version: 2021_04_21_030148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_04_12_232928) do
     t.bigint "owner_id"
     t.bigint "storer_id"
     t.bigint "category_id"
+    t.text "history", default: [], array: true
     t.index ["category_id"], name: "index_assets_on_category_id"
     t.index ["owner_id"], name: "index_assets_on_owner_id"
     t.index ["storer_id"], name: "index_assets_on_storer_id"
