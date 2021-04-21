@@ -342,7 +342,7 @@ asset14 = cat1.assets.find_or_create_by!({
 })
 
 asset15 = cat7.assets.find_or_create_by!({
-  name: "Bicycle",
+  name: "Hybrid bicycle (excellent condition)",
   owner_id: user8.id,
   storer_id: user8.id,
   history: ["https://images.unsplash.com/photo-1597260491619-bab87197869f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2Nvb3RlcnxlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"],
