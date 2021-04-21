@@ -1,4 +1,5 @@
 import React, { useReducer, useState } from "react";
+import { useHistory } from 'react-router-dom';
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
@@ -126,7 +127,7 @@ const formReducer = (state, event) => {
 };
 
 export default function AddNewItem(props) {
-  // const history = useHistory();
+  const history = useHistory();
   // console.log('listings in AddNewItem.jsx: ', listings);
   const classes = useStyles();
   const [formData, setFormData] = useReducer(formReducer, {});
@@ -145,12 +146,12 @@ export default function AddNewItem(props) {
     event.preventDefault();
     props.publishListing(formData);
     setSubmitting(true);
-    
     setTimeout(() => {
       setSubmitting(false);
       setFormData({
         reset: true,
       });
+      history.push("/");
     }, 4000);
   };
 
@@ -216,7 +217,7 @@ export default function AddNewItem(props) {
               label="Category *"
               fullWidth
               margin="normal"
-              name="category"
+              // name="category"
               select
               onChange={handleChange}
             >
