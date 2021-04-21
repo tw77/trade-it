@@ -95,10 +95,12 @@ export default function AcceptedProposal(props) {
 
   const mergedProposals = [].concat.apply([], props.proposals);
   const currentUserProposals = mergedProposals.filter((proposal) => proposal.user_id === userId);
-  const offeredItemIds = currentUserProposals.map((proposal) => proposal.listing_id);
 
-  const tradesProposedToMe = mergedProposals.filter((proposal) => offeredItemIds.includes(proposal.asset_id));
+  const userListings = props.listings.filter((listing) => listing.user.id === userId);
+  const userListingIds = userListings.map((listing) => listing.id); 
 
+  const tradesProposedToMe = mergedProposals.filter((proposal) => userListingIds.includes(proposal.asset_id));
+  
   let acceptedProposal;
   let offeredItemListing;
   let wantedItemListing;
