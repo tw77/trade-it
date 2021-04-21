@@ -44,43 +44,51 @@ const CustomTypography = withStyles({
 const categories = [
   {
     value: 1,
-    label: "Electronics",
+    label: 'Electronics',
   },
   {
     value: 2,
-    label: "Clothing",
+    label: 'Clothing',
   },
   {
     value: 3,
-    label: "Books",
+    label: 'Accessories',
   },
   {
     value: 4,
-    label: "Furniture",
+    label: 'Furniture',
   },
   {
     value: 5,
-    label: "Appliances",
+    label: 'Appliances',
   },
   {
     value: 6,
-    label: "Cars",
+    label: 'Sports',
   },
   {
     value: 7,
-    label: "Bicycles",
+    label: 'Bicycles',
   },
   {
     value: 8,
-    label: "Carpets",
+    label: 'Books',
   },
   {
     value: 9,
-    label: "Plants",
+    label: 'Plants',
   },
   {
     value: 10,
-    label: "Instruments",
+    label: 'Instruments',
+  },
+  {
+    value: 11,
+    label: 'Services',
+  },
+  {
+    value: 12,
+    label: 'Cameras',
   },
 ];
 const useStyles = makeStyles((theme) => ({
@@ -174,7 +182,7 @@ export default function AddNewItem(props) {
       ) : (
         <div className={classes.paper}>
           <Typography variant="h5" align="left" color="textPrimary">
-            Add new item
+            Add new listing
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
@@ -241,7 +249,7 @@ export default function AddNewItem(props) {
                   disableRipple
                   onClick={handleSubmit}
                 >
-                  Add Item
+                  Publish
                 </BootstrapButton2>
               </Grid>
             </Grid>
