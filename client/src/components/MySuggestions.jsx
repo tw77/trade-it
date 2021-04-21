@@ -83,13 +83,12 @@ const useStyles = makeStyles((theme) => ({
 export default function MySuggestions(props) {
 
   const classes = useStyles();
-  const cards = [1, 2];
+  const cards = [(props.listings.length - 1), 18];
   const cards2 = [1, 2];
-
-  // const {userId} = useParams(); <--- would this be replaced by useState or no?
 
   // "Propose a trade!" button links to {ProposeTrade}
   // "Dismiss" removes suggestion from view (all client-side)
+
 
   return (
     <>
@@ -99,7 +98,7 @@ export default function MySuggestions(props) {
           Suggestions
         </Typography>
         <Typography variant="subtitle1" align="left" color="textSecondary">
-          Inmediate trades
+          Immediate trades
         </Typography>
 
         <Container maxWidth="md">
@@ -111,13 +110,13 @@ export default function MySuggestions(props) {
             // justify="space-evenly"
             className={classes.root}
           >
-            {cards.map((card) => (
+            {/* {cards.map((card) => (
               <>
                 <Grid item key={card} xs={4}>
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image="https://source.unsplash.com/random"
+                      image={props.listings[card].picture}
                       title="Image title"
                     />
                   </Card>
@@ -129,7 +128,7 @@ export default function MySuggestions(props) {
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image="https://source.unsplash.com/random"
+                      image="https://images.pexels.com/photos/1362558/pexels-photo-1362558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
                       title="Image title"
                     />
                   </Card>
@@ -155,9 +154,95 @@ export default function MySuggestions(props) {
                   </BootstrapButton>
                 </Grid>
               </>
-            ))}
+            ))} */}
+
+<Grid item key={1} xs={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image="https://i.pinimg.com/originals/85/3c/a5/853ca5734e9f0f7aeca157efa3bf32af.jpg"
+                      title="Image title"
+                    />
+                  </Card>
+                </Grid>
+                <Grid item key={1} xs={1}>
+                  <AutorenewIcon style={{ fontSize: 20, color: '#404a8a' }} />
+                </Grid>
+                <Grid item key={1} xs={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image="https://images.pexels.com/photos/1084188/pexels-photo-1084188.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                      title="Image title"
+                    />
+                  </Card>
+                </Grid>
+                
+                <Grid item key={1} xs={3}>
+                  <GroupIcon fontSize="large" style={{ paddingLeft: '3px' }} />
+                  <BootstrapButton2
+                    variant="contained"
+                    color="primary"
+                    disableRipple
+                    className={classes.margin}
+                  >
+                    Propose a trade!
+                  </BootstrapButton2>
+                  <BootstrapButton
+                    variant="contained"
+                    color="primary"
+                    disableRipple
+                    className={classes.margin}
+                  >
+                    Dismiss
+                  </BootstrapButton>
+                </Grid>
+
+                <Grid item key={1} xs={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image="https://images.pexels.com/photos/3945349/pexels-photo-3945349.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                      title="Image title"
+                    />
+                  </Card>
+                </Grid>
+                <Grid item key={1} xs={1}>
+                  <AutorenewIcon style={{ fontSize: 20, color: '#404a8a' }} />
+                </Grid>
+                <Grid item key={1} xs={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image="https://images.pexels.com/photos/1362558/pexels-photo-1362558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+                      title="Image title"
+                    />
+                  </Card>
+                </Grid>
+                
+                <Grid item key={1} xs={3}>
+                  <GroupIcon fontSize="large" style={{ paddingLeft: '3px' }} />
+                  <BootstrapButton2
+                    variant="contained"
+                    color="primary"
+                    disableRipple
+                    className={classes.margin}
+                  >
+                    Propose a trade!
+                  </BootstrapButton2>
+                  <BootstrapButton
+                    variant="contained"
+                    color="primary"
+                    disableRipple
+                    className={classes.margin}
+                  >
+                    Dismiss
+                  </BootstrapButton>
+                </Grid>
           </Grid>
         </Container>
+
+        
         <Typography variant="subtitle1" align="left" color="textSecondary">
           Two-part trades
         </Typography>
@@ -167,7 +252,7 @@ export default function MySuggestions(props) {
           color="textSecondary"
           paragraph
         >
-          Make an initial trade, then trade for the item you want!
+          Make an initial trade, then trade for the listing you want!
         </Typography>
 
         <Container maxWidth="md">
@@ -179,42 +264,41 @@ export default function MySuggestions(props) {
             // justify="space-evenly"
             className={classes.root}
           >
-            {cards2.map((card2) => (
-              <>
-                <Grid item key={card2} xs={2}>
+
+                <Grid item key={1} xs={2}>
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image="https://source.unsplash.com/random"
+                      image="https://images.pexels.com/photos/433098/pexels-photo-433098.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
                       title="Image title"
                     />
                   </Card>
                   </Grid>
-                  <Grid item key={card2} xs={1}>
+                  <Grid item key={1} xs={1}>
                     <AutorenewIcon style={{ fontSize: 20, color: "#4958b6" }} />
                   </Grid>
-                <Grid item key={card2} xs={2}>
+                <Grid item key={1} xs={2}>
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image="https://source.unsplash.com/random"
+                      image="https://images.pexels.com/photos/6802972/pexels-photo-6802972.jpeg?cs=srgb&dl=pexels-vlada-karpovich-6802972.jpg&fm=jpg"
                       title="Image title"
                     />
                   </Card>
                 </Grid>
-                  <Grid item key={card2} xs={1}>
+                  <Grid item key={1} xs={1}>
                   <AutorenewIcon style={{ fontSize: 20, color: "#4958b6" }} />
                 </Grid>
-                <Grid item key={card2} xs={3}>
+                <Grid item key={1} xs={3}>
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image="https://source.unsplash.com/random"
+                      image="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
                       title="Image title"
                     />
                   </Card>
                 </Grid>
-                <Grid item key={card2} xs={3} >
+                <Grid item key={1} xs={3} >
                   {/* <GroupIcon fontSize="large" style={{ paddingLeft: '10px' }} /> */}
                   <BootstrapButton2
                     variant="contained"
@@ -233,8 +317,62 @@ export default function MySuggestions(props) {
                     Dismiss
                   </BootstrapButton>
                 </Grid>
-              </>
-            ))}
+
+
+
+                <Grid item key={2} xs={2}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image="https://i.pinimg.com/originals/85/3c/a5/853ca5734e9f0f7aeca157efa3bf32af.jpg"
+                      title="Image title"
+                    />
+                  </Card>
+                  </Grid>
+                  <Grid item key={2} xs={1}>
+                    <AutorenewIcon style={{ fontSize: 20, color: "#4958b6" }} />
+                  </Grid>
+                <Grid item key={2} xs={2}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image="https://images.pexels.com/photos/116915/pexels-photo-116915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                      title="Image title"
+                    />
+                  </Card>
+                </Grid>
+                  <Grid item key={2} xs={1}>
+                  <AutorenewIcon style={{ fontSize: 20, color: "#4958b6" }} />
+                </Grid>
+                <Grid item key={2} xs={3}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image="https://images.pexels.com/photos/1362558/pexels-photo-1362558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+                      title="Image title"
+                    />
+                  </Card>
+                </Grid>
+                <Grid item key={2} xs={3} >
+                  {/* <GroupIcon fontSize="large" style={{ paddingLeft: '10px' }} /> */}
+                  <BootstrapButton2
+                    variant="contained"
+                    color="primary"
+                    disableRipple
+                    className={classes.margin}
+                  >
+                    Propose trade!
+                  </BootstrapButton2>
+                  <BootstrapButton
+                    variant="contained"
+                    color="primary"
+                    disableRipple
+                    className={classes.margin}
+                  >
+                    Dismiss
+                  </BootstrapButton>
+                </Grid>
+            
           </Grid>
         </Container>
       </div>
