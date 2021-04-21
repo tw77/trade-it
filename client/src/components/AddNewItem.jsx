@@ -240,10 +240,10 @@ export default function AddNewItem(props) {
               value={formData.picture || ""}
             />
             <Grid container spacing={0} direction="row" justify="flex-end">
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <BootstrapButton2
                   type="submit"
-                  style={{ marginTop: "8px" }}
+                  style={{ marginTop: "8px", marginLeft: "11px"}}
                   variant="contained"
                   color="primary"
                   disableRipple

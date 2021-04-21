@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import { Image } from "antd";
-// import "./Listing.css";
+import "./Listing.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -137,7 +137,15 @@ export default function Listing(props) {
                 {currentListing.description}
               </Typography>
               <Divider />
-              <strong style={{ marginRight: "10px" }}>
+              <Grid
+                container
+                spacing={2}
+                direction="column"
+                alignItems="center"
+                justify="space-evenly"
+              >
+                <Grid item xs={12}>
+              <strong>
                 {currentListing.user.first_name} {currentListing.user.last_name}
               </strong>
               {currentListing.neighbourhood.name}, {currentListing.city.name}
@@ -149,7 +157,9 @@ export default function Listing(props) {
                     style={{ marginLeft: "10px" }}
                   />
                 }
-              ></Button>
+                  ></Button>
+                  </Grid>
+                </Grid>
               <Divider />
               <Typography
                 component="h1"
