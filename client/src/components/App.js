@@ -112,7 +112,7 @@ export default function App() {
             <BottomNavigationAction component={Link} to="/wishlist" label="Wishlist" icon={<FavoriteBorderIcon />} />
             <BottomNavigationAction component={Link} to="/suggestions" label="Suggestions" icon={<EmojiObjectsIcon />} />
             <BottomNavigationAction component={Link} to="/proposals" label="Proposals" icon={<AutorenewIcon />} />
-            <BottomNavigationAction component={Link} to="/add" label="New item"  icon={<AddCircleOutlineIcon />} />
+            <BottomNavigationAction component={Link} to="/add" label="New"  icon={<AddCircleOutlineIcon />} />
           </BottomNavigation>
         </footer>
       </div> 

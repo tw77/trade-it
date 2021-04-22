@@ -50,7 +50,7 @@ export default function useApplicationData() {
         password: "judit",
         bio: "I'm Judit and I love coding. I have some cameras that I wanna trade.",
         neighbourhood_id: 1,
-        profile_picture: "https://lh3.googleusercontent.com/onvvPdJRtIj4iHlR1zWb3nTELZDQ4553E0gu6mZyUdkafUAccQv-mF_wMBoW1jPIIhTXUO4LQs1FeQu8fApr0TsUSeO5T50N2Z1TEh6YHUA9ASzupZXWtN4K-eKghclmw1iGpYqxvH04G2DPv4zvgQ7rOwhF9gOVoKHXb9dEpitiLsNeyTyOmeKKY6RQ0pTzRu_aY0i05FgYHkP7PsLy8d6mgA4okWPhlMq2SfZaFtmZceufZdAzQGYxsjWW6K8gaRMzCsetY70yifjbC8jf7VfdCFIZ6ph--OCKNrFLJHFsB8KV1lwHF9NhVbFX35FojmfSevOefMMw2rxHRy7HPUQde0fdSV57Bsjd8xRR9A8m9flDe9EKf0yZ23vwM3aBVMHmY8DEy0KuAlQZG8adfk-APp8_gjnpQ5478iVTsALkeiRjicUrqgBzOvNHGQZsMAcyforOElcli-kh4KEAPMOr-cXoo1A9nbiMnCuKLJsLS5kZ624LwYhiSGi-7BL7_zVFf4bqEvPIOHxKdsB135xotK7MD_ESdLJbbw-q_OQR0NIAIKQ73uIavroGz-HIVWv8fbORc0BCRFyUin35D8pdtuazA5Z10od-tycTZAQiEfS0Dr2h9jlhGkg-8bcjd5GAWUA8EpKE0YxzdbXNvi9R3jwV4SirybFfbwgBueHDjNptXyRQ7ckDdTF3TI1cXUgG3Cny8-OmNdcLnhDbt5k=w770-h513-no?authuser=0"
+        profile_picture: "https://i.imgur.com/SD0t7YG.jpeg"
       },
       history: []
     };
