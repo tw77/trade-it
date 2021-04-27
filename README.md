@@ -27,6 +27,7 @@ Group project with Thomas Weideman [@tw77](https://github.com/tw77). Final proje
 
   #### Go to a particular listing page
   <img src="docs/02_Go_particular_listing.gif" width="250"/>
+  
 </div>
 </div><br />
 
@@ -42,6 +43,7 @@ Group project with Thomas Weideman [@tw77](https://github.com/tw77). Final proje
 
   #### Propose a trade
   <img src="docs/04_Propose_trade.gif" width="250"/><br /><br />
+  
 </div>
 </div><br />
 
@@ -50,25 +52,30 @@ Group project with Thomas Weideman [@tw77](https://github.com/tw77). Final proje
 
   #### Manage proposals & leave a review
   <img src="docs/05_Proposals_tab.gif" width="250"/><br /><br />
+  
 </div>
 <div>
 
   #### Wishlist page
   <img src="docs/06_Wishlist_tab.gif" width="250"/><br /><br />
+  
 </div>
 </div><br />
 
 <div style="display: flex; align-items: flex-start; justify-content: space-evenly">
+  
 <div>
 
   #### Add a new listing
   <img src="docs/07_New_listing.gif" width="250"/><br /><br />
+  
 </div>
 
 <div>
 
   #### Suggestions page
   <img src="docs/08_Suggestions.png" width="225"/><br /><br />
+  
 </div>
 </div>
 </div>
