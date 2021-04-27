@@ -213,7 +213,6 @@ export default function MyWishlist(props) {
               spacing={2}
               direction="row"
               alignItems="center"
-              // justify="space-evenly"
               className={classes.heroContent}
             >
               <Grid item xs={9} style={{ marginBottom: "0px" }}>
@@ -221,14 +220,10 @@ export default function MyWishlist(props) {
                   size="small"
                   variant="outlined"
                   margin="normal"
-                  // required
                   fullWidth
                   id="outlined-basic"
                   label="Item name"
-                  // name="name"
-                  // autoComplete="name"
                   onChange={handleChange}
-                  // autoFocus
                 />
               </Grid>
               <Grid item xs={3}>
