@@ -290,7 +290,7 @@ asset7 = cat1.assets.find_or_create_by!({
 })
 
 asset8 = cat9.assets.find_or_create_by!({
-  name: "name",
+  name: "Cactus plant",
   owner_id: user7.id,
   storer_id: user7.id,
   picture: "https://images.pexels.com/photos/1302305/pexels-photo-1302305.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
@@ -328,7 +328,7 @@ asset12 = cat4.assets.find_or_create_by!({
 })
 
 asset13 = cat9.assets.find_or_create_by!({
-  name: "name",
+  name: "House plant",
   owner_id: user1.id,
   storer_id: user1.id,
   picture: "https://images.pexels.com/photos/912396/pexels-photo-912396.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -438,7 +438,7 @@ asset27 = cat4.assets.find_or_create_by!({
 })
 
 asset28 = cat9.assets.find_or_create_by!({
-  name: "name",
+  name: "House plant",
   owner_id: user1.id,
   storer_id: user1.id,
   picture: "https://images.pexels.com/photos/867481/pexels-photo-867481.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
@@ -499,7 +499,7 @@ asset35 = cat11.assets.find_or_create_by!({
 })
 
 asset36 = cat9.assets.find_or_create_by!({
-  name: "name",
+  name: "House plant",
   owner_id: user3.id,
   storer_id: user3.id,
   picture: "https://images.pexels.com/photos/906150/pexels-photo-906150.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
@@ -611,7 +611,7 @@ asset50 = cat7.assets.find_or_create_by!({
 
 
 asset51 = cat9.assets.find_or_create_by!({
-  name: "name",
+  name: "House plant",
   owner_id: user3.id,
   storer_id: user3.id,
   picture: "https://images.pexels.com/photos/834657/pexels-photo-834657.jpeg?cs=srgb&dl=pexels-lisa-834657.jpg&fm=jpg"

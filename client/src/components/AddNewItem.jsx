@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "grey",
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -128,7 +128,6 @@ const formReducer = (state, event) => {
 
 export default function AddNewItem(props) {
   const history = useHistory();
-  // console.log('listings in AddNewItem.jsx: ', listings);
   const classes = useStyles();
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false); 
@@ -189,20 +188,16 @@ export default function AddNewItem(props) {
             <TextField
               variant="outlined"
               margin="normal"
-              required
               fullWidth
               id="outlined-basic"
               label="Name"
               name="name"
-              autoComplete="name"
-              autoFocus
               onChange={handleChange}
               value={formData.name || ""}
             />
             <TextField
               id="outlined-multiline-static"
               label="Description"
-              required
               fullWidth
               multiline
               rows={4}
@@ -217,7 +212,6 @@ export default function AddNewItem(props) {
               label="Category *"
               fullWidth
               margin="normal"
-              // name="category"
               select
               onChange={handleChange}
             >
@@ -230,13 +224,11 @@ export default function AddNewItem(props) {
             <TextField
               variant="outlined"
               margin="normal"
-              required
               fullWidth
               name="picture"
               label="Picture"
               type="picture"
               id="picture"
-              autoComplete="picture"
               onChange={handleChange}
               value={formData.picture || ""}
             />
