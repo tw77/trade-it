@@ -176,9 +176,9 @@ export default function AcceptedProposal(props) {
     props.updateReviews(otherUserId, reviewText, rating);
     setSubmitting(true);
 
-    setTimeout(() => {
-      setSubmitting(false);
-    }, 2000);
+    // setTimeout(() => {
+    //   setSubmitting(false);
+    // }, 2000);
   }
 
   const [buttonText, setButtonText] = useState("Confirm pick-up");

@@ -221,14 +221,14 @@ export default function MyWishlist(props) {
                   size="small"
                   variant="outlined"
                   margin="normal"
-                  required
+                  // required
                   fullWidth
                   id="outlined-basic"
                   label="Item name"
-                  name="name"
-                  autoComplete="name"
+                  // name="name"
+                  // autoComplete="name"
                   onChange={handleChange}
-                  autoFocus
+                  // autoFocus
                 />
               </Grid>
               <Grid item xs={3}>

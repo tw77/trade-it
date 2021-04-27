@@ -216,10 +216,10 @@ export default function ProposeTrade(props) {
             <form className={classes.form} noValidate>
               <TextField
                 id="outlined-multiline-static"
-                required
+                // required
                 fullWidth
                 rows={2}
-                name="message"
+                // name="message"
                 label="Add a message (optional)"
                 variant="outlined"
                 onChange={onMessageChange}
