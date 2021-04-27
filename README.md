@@ -5,7 +5,7 @@ I came out with the idea for this app idea inspired by the story of Kyle Macdona
 Back-end: Rails, PostgreSQL. <br/>
 Front-end: React, CSS, Material UI, Ant Design.<br/>
 
-Group project with Thomas Weideman [@tw77](https://github.com/tw77). Final project for [Lighthouse Labs](https://www.lighthouselabs.ca/)
+Group project with Thomas Weideman [@tw77](https://github.com/tw77). Final project for [Lighthouse Labs](https://www.lighthouselabs.ca/). <br/>See the 5 minute presentation [here](https://drive.google.com/file/d/14ERGPDsyN8u-6ETYoHKIY3qpd8c5P_py/view).
 
 ### My contribution
 - Pair programmed to build the back end with Ruby on Rails.
