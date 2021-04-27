@@ -10,68 +10,35 @@ Group project with Thomas Weideman [@tw77](https://github.com/tw77). Final proje
 ### My contribution
 - Pair programmed to build the back end with Ruby on Rails.
 - Pair programmed to create the database with PostgreSQL and migrations with Rails.
-- Worked in React to build the components using Material UI and Ant Design.
+- Worked with React to build the components using Material UI and Ant Design.
 - Styled the app with CSS, Bootstrap, and build-in style from Material UI and Ant Design.
 
 ## How it works
 
-<div style="display: flex; align-items: flex-start; justify-content: space-evenly">
-<div>
-
   #### Browse and search for items
-  <img src="docs/01_Browse_and_search_for_items.gif" width="250"/>
-
-</div>
-
-<div>
+  <img src="docs/01_Browse_and_search_for_items.gif" width="300"/>
 
   #### Go to a particular listing page
-  <img src="docs/02_Go_particular_listing.gif" width="250"/>
-</div>
-</div><br />
-
-<div style="display: flex; align-items: flex-start; justify-content: space-evenly">
-<div>
+  <img src="docs/02_Go_particular_listing.gif" width="300"/>
 
   #### Go to a user profile page
-  <img src="docs/03_Go_user_profile.gif" width="250"/><br /><br />
-
-</div>
-
-<div>
+  <img src="docs/03_Go_user_profile.gif" width="300"/><br /><br />
 
   #### Propose a trade
-  <img src="docs/04_Propose_trade.gif" width="250"/><br /><br />
-</div>
-</div><br />
-
-<div style="display: flex; align-items: flex-start; justify-content: space-evenly">
-<div>
+  <img src="docs/04_Propose_trade.gif" width="300"/><br /><br />
 
   #### Manage proposals & leave a review
-  <img src="docs/05_Proposals_tab.gif" width="250"/><br /><br />
-</div>
-<div>
+  <img src="docs/05_Proposals_tab.gif" width="300"/><br /><br />
 
   #### Wishlist page
-  <img src="docs/06_Wishlist_tab.gif" width="250"/><br /><br />
-</div>
-</div><br />
-
-<div style="display: flex; align-items: flex-start; justify-content: space-evenly">
-<div>
+  <img src="docs/06_Wishlist_tab.gif" width="300"/><br /><br />
 
   #### Add a new listing
-  <img src="docs/07_New_listing.gif" width="250"/><br /><br />
-</div>
-
-<div>
+  <img src="docs/07_New_listing.gif" width="300"/><br /><br />
 
   #### Suggestions page
-  <img src="docs/08_Suggestions.png" width="225"/><br /><br />
-</div>
-</div>
-</div>
+  <img src="docs/08_Suggestions.png" width="300"/><br /><br />
+
 
 ## Setup
 1. Fork this repository, then clone your fork of this repository.
