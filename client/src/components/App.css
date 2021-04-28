@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 
 
-/* .App {
-  text-align: center;
-  max-height: 400;
-  margin:0;
- 
-} */
-
 .App-header {
   position: absolute;
   display: flex;
@@ -33,9 +26,3 @@
   align-items: center;
   justify-content: space-between;
 }
-
-/* .App-link {
-
-  color: #61dafb;
-} */
-

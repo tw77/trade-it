@@ -1,12 +1,17 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { Card, Button, CardMedia, Grid, Typography } from "@material-ui/core";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { useParams, useHistory } from "react-router-dom";
+import {
+  Card,
+  Button,
+  CardMedia,
+  Grid,
+  Typography,
+  CssBaseline,
+  Container,
+  CircularProgress,
+} from "@material-ui/core";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import { Container, CircularProgress } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
-import { Image } from "antd";
-import { Rate } from "antd";
+import { Image, Rate } from "antd";
 import "./Profile.css";
 
 const BootstrapButton3 = withStyles({
@@ -19,15 +24,7 @@ const BootstrapButton3 = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#404a8a",
     borderColor: "#404a8a",
-    fontFamily: [
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
   },
 })(Button);
 
@@ -88,14 +85,20 @@ export default function Profile(props) {
       (listing) => listing.user.id === 2
     )); // for now
 
-
   const mergedProposals = [].concat.apply([], props.proposals);
-  const acceptedProposals = mergedProposals.filter((proposal) => proposal.is_accepted === true);
-  const unavailableListingIds = acceptedProposals.map((proposal) => proposal.listing_id);
-  const unavailableAssetIds = acceptedProposals.map((proposal) => proposal.asset_id);
+  const acceptedProposals = mergedProposals.filter(
+    (proposal) => proposal.is_accepted === true
+  );
+  const unavailableListingIds = acceptedProposals.map(
+    (proposal) => proposal.listing_id
+  );
+  const unavailableAssetIds = acceptedProposals.map(
+    (proposal) => proposal.asset_id
+  );
   unavailableListingIds.push(...unavailableAssetIds);
-  const availableListings = listingsByUser.filter((listing) => !unavailableListingIds.includes(listing.id));
-
+  const availableListings = listingsByUser.filter(
+    (listing) => !unavailableListingIds.includes(listing.id)
+  );
 
   function getListingCard(listingsId, name, picture) {
     return (
@@ -115,7 +118,7 @@ export default function Profile(props) {
   }
 
   return (
-    <React.Fragment>
+    <>
       <CssBaseline />
       <Container maxWidth="sm">
         <main>
@@ -155,45 +158,47 @@ export default function Profile(props) {
                         variant="contained"
                         color="primary"
                         disableRipple
-                        // align="right"
                       >
                         Edit
                       </BootstrapButton3>
                     )}
                   </Grid>
                 </Grid>
-                {(availableListings.length > 0) && <>
-                  <Typography
-                  variant="h5"
-                  align="left"
-                  color="subtitle 2"
-                  style={{ paddingTop: "8px"}}
+                {availableListings.length > 0 && (
+                  <>
+                    <Typography
+                      variant="h5"
+                      align="left"
+                      color="subtitle 2"
+                      style={{ paddingTop: "8px" }}
+                    >
+                      Listings by user
+                    </Typography>
 
-                >
-                  Listings by user
-                </Typography>
+                    <Grid container style={{ paddingTop: "10px" }} spacing={4}>
+                      {availableListings.map((item) =>
+                        getListingCard(item.id, item.name, item.picture)
+                      )}
+                    </Grid>
+                  </>
+                )}
 
-                <Grid container style={{ paddingTop: "10px" }} spacing={4}>
-                  {availableListings.map((item) =>
-                    getListingCard(item.id, item.name, item.picture)
-                  )}
-                </Grid>
-                </>}
-                
-
-                {/* <footer className={classes.footer}> */}
                 <Typography
                   variant="h5"
                   align="left"
                   color="subtitle 2"
                   paragraph
-                  style={{ paddingTop: "8px"}}
+                  style={{ paddingTop: "8px" }}
                 >
                   Reviews
                 </Typography>
                 {reviewsOfUser.map((review, index) => (
                   <>
-                    <Rate disabled style={{paddingLeft: '31%'}} defaultValue={review.rating} />
+                    <Rate
+                      disabled
+                      style={{ paddingLeft: "31%" }}
+                      defaultValue={review.rating}
+                    />
                     <Typography
                       variant="subtitle1"
                       align="center"
@@ -214,6 +219,6 @@ export default function Profile(props) {
           </div>
         </main>
       </Container>
-    </React.Fragment>
+    </>
   );
 }

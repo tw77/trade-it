@@ -6,12 +6,12 @@ import {
   Typography,
   TextField,
   CircularProgress,
+  CardMedia,
+  Button,
+  Container,
+  CssBaseline,
 } from "@material-ui/core";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import { Rate } from "antd";
 
@@ -42,16 +42,8 @@ const BootstrapButton2 = withStyles({
     backgroundColor: "#2a9d8f", //green
     borderColor: "#2a9d8f", //green
     fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
       "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
+      "sans-serif"
     ].join(","),
     "&:hover": {
       backgroundColor: "#2a9d8f", //green
@@ -72,18 +64,12 @@ const BootstrapButton3 = withStyles({
     textTransform: "none",
     fontSize: 16,
     padding: "4px 12px 8px 12px",
-    // border: "1px solid",
     lineHeight: 1.5,
     backgroundColor: "#2a9d8f", //green
     borderColor: "#2a9d8f", //green
     fontFamily: [
       "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
+      "sans-serif"
     ].join(","),
     "&:hover": {
       backgroundColor: "#2a9d8f", //green
@@ -100,8 +86,8 @@ const BootstrapButton3 = withStyles({
 
 const CustomTypography = withStyles({
   root: {
-    color: "#6e5d34"
-  }
+    color: "#6e5d34",
+  },
 })(Typography);
 
 export default function AcceptedProposal(props) {
@@ -115,13 +101,19 @@ export default function AcceptedProposal(props) {
   // for now
 
   const mergedProposals = [].concat.apply([], props.proposals);
-  const currentUserProposals = mergedProposals.filter((proposal) => proposal.user_id === userId);
+  const currentUserProposals = mergedProposals.filter(
+    (proposal) => proposal.user_id === userId
+  );
 
-  const userListings = props.listings.filter((listing) => listing.user.id === userId);
-  const userListingIds = userListings.map((listing) => listing.id); 
+  const userListings = props.listings.filter(
+    (listing) => listing.user.id === userId
+  );
+  const userListingIds = userListings.map((listing) => listing.id);
 
-  const tradesProposedToMe = mergedProposals.filter((proposal) => userListingIds.includes(proposal.asset_id));
-  
+  const tradesProposedToMe = mergedProposals.filter((proposal) =>
+    userListingIds.includes(proposal.asset_id)
+  );
+
   let acceptedProposal;
   let offeredItemListing;
   let wantedItemListing;
@@ -175,10 +167,6 @@ export default function AcceptedProposal(props) {
     event.preventDefault();
     props.updateReviews(otherUserId, reviewText, rating);
     setSubmitting(true);
-
-    // setTimeout(() => {
-    //   setSubmitting(false);
-    // }, 2000);
   }
 
   const [buttonText, setButtonText] = useState("Confirm pick-up");
@@ -186,162 +174,172 @@ export default function AcceptedProposal(props) {
   return (
     <>
       <CssBaseline />
-     
-        <div className={classes.heroContent}>
-          <Typography variant="h6" align="left" color="textPrimary" paragraph>
-            Ready for trade:
-          </Typography>
 
-          {offeredItemListing && wantedItemListing ? (
-            <Container maxWidth="md">
-              <Grid
-                container
-                spacing={1}
-                direction="row"
-                alignItems="center"
-                justify="space-evenly"
-                className={classes.root}
-              >
-                <Grid className="grid" item xs={5} sm={6} md={4}>
-                  <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image={offeredItemListing.picture}
-                      title="Image title"
-                    />
-                  </Card>
-                </Grid>
-                <Grid item xs={2} sm={2} md={4}>
-                  <AutorenewIcon style={{ fontSize: 35 }} color="primary" />
-                </Grid>
-                <Grid item xs={5} sm={6} md={4}>
-                  <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image={wantedItemListing.picture}
-                      title="Image title"
-                    />
-                  </Card>
-                </Grid>
-              </Grid>
-              {/* <div className="separation"> */}
-              <Grid
-                container
-                spacing={4}
-                direction="row"
-                alignItems="center"
-                justify="space-around"
-                style={{ paddingTop: "10px" }}
-              >
-                <Grid item xs={4}>
-                  <BootstrapButton3
-                    variant="contained"
-                    color="primary"
-                    disableRipple
-                    onClick={() => setButtonText("Pick up confirmed")}
-                  >
-                    {buttonText}
-                  </BootstrapButton3>
-                </Grid>
+      <div className={classes.heroContent}>
+        <Typography variant="h6" align="left" color="textPrimary" paragraph>
+          Ready for trade:
+        </Typography>
 
-                <Grid item xs={8} sm={6} md={4}>
-                  <Typography
-                    variant="subtitle1"
-                    align="right"
-                    color="textSecondary"
-                    onClick={() =>
-                      history.push(`/profile/${wantedItemListing.user.id}`)
-                    }
-                  >
-                    {wantedItemListing.user.first_name}{" "}
-                    {wantedItemListing.user.last_name}
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    align="right"
-                    color="textSecondary"
-                    onClick={() =>
-                      history.push(`/profile/${wantedItemListing.user.id}`)
-                    }
-                  >
-                    {wantedItemListing.user.email}
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    align="right"
-                    color="textSecondary"
-                    onClick={() =>
-                      history.push(`/profile/${wantedItemListing.user.id}`)
-                    }
-                  >
-                    {wantedItemListing.user.phone}
-                  </Typography>
-              </Grid>
-              </Grid>
-              {submitting ? (
-        <Grid container direction="column" alignItems="center" justify="center">
-          <Grid item xs={12}>
-            <CustomTypography
-              variant="h6"
-              align="justify"
-              style={{
-                backgroundColor: "#e9c46a",
-                border: "2.5px solid #4958b6",
-                padding: "26px",
-                borderRadius: "10px",
-                marginTop: "15%",
-              }}
+        {offeredItemListing && wantedItemListing ? (
+          <Container maxWidth="md">
+            <Grid
+              container
+              spacing={1}
+              direction="row"
+              alignItems="center"
+              justify="space-evenly"
+              className={classes.root}
             >
-              
-              Your review has been published.
-              
-            </CustomTypography>
-          </Grid>
-        </Grid>
-              ) : (
-                  <>
-                <Grid container direction="column" alignItems="center" justify="center">
+              <Grid className="grid" item xs={5} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image={offeredItemListing.picture}
+                    title="Image title"
+                  />
+                </Card>
+              </Grid>
+              <Grid item xs={2} sm={2} md={4}>
+                <AutorenewIcon style={{ fontSize: 35 }} color="primary" />
+              </Grid>
+              <Grid item xs={5} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image={wantedItemListing.picture}
+                    title="Image title"
+                  />
+                </Card>
+              </Grid>
+            </Grid>
+            <Grid
+              container
+              spacing={4}
+              direction="row"
+              alignItems="center"
+              justify="space-around"
+              style={{ paddingTop: "10px" }}
+            >
+              <Grid item xs={4}>
+                <BootstrapButton3
+                  variant="contained"
+                  color="primary"
+                  disableRipple
+                  onClick={() => setButtonText("Pick up confirmed")}
+                >
+                  {buttonText}
+                </BootstrapButton3>
+              </Grid>
 
-                <Grid item xs={6}>
-                  <Rate onChange={onRatingChange} />
+              <Grid item xs={8} sm={6} md={4}>
+                <Typography
+                  variant="subtitle1"
+                  align="right"
+                  color="textSecondary"
+                  onClick={() =>
+                    history.push(`/profile/${wantedItemListing.user.id}`)
+                  }
+                >
+                  {wantedItemListing.user.first_name}{" "}
+                  {wantedItemListing.user.last_name}
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  align="right"
+                  color="textSecondary"
+                  onClick={() =>
+                    history.push(`/profile/${wantedItemListing.user.id}`)
+                  }
+                >
+                  {wantedItemListing.user.email}
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  align="right"
+                  color="textSecondary"
+                  onClick={() =>
+                    history.push(`/profile/${wantedItemListing.user.id}`)
+                  }
+                >
+                  {wantedItemListing.user.phone}
+                </Typography>
+              </Grid>
+            </Grid>
+            {submitting ? (
+              <Grid
+                container
+                direction="column"
+                alignItems="center"
+                justify="center"
+              >
+                <Grid item xs={12}>
+                  <CustomTypography
+                    variant="h6"
+                    align="justify"
+                    style={{
+                      backgroundColor: "#e9c46a",
+                      border: "2.5px solid #4958b6",
+                      padding: "26px",
+                      borderRadius: "10px",
+                      marginTop: "15%",
+                    }}
+                  >
+                    Your review has been published.
+                  </CustomTypography>
                 </Grid>
               </Grid>
-              <form className={classes.form} noValidate>
-                <TextField
-                  id="outlined-multiline-static"
-                  required
-                  fullWidth
-                  multiline
-                  rows={2}
-                  label="Leave a review"
-                  variant="outlined"
-                  onChange={onReviewChange}
-                  value={reviewText}
-                />
-                <div className="separation"></div>
-                <Grid container spacing={2} direction="row" justify="flex-end">
-                  <Grid item xs={3.5}>
-                    <BootstrapButton2
-                      variant="contained"
-                      color="primary"
-                      disableRipple
-                      onClick={publishReview}
-                    >
-                      Publish
-                    </BootstrapButton2>
+            ) : (
+              <>
+                <Grid
+                  container
+                  direction="column"
+                  alignItems="center"
+                  justify="center"
+                >
+                  <Grid item xs={6}>
+                    <Rate onChange={onRatingChange} />
                   </Grid>
                 </Grid>
-                    </form>
-                    </>
-             )}     
-             </Container>
-          ) : (
-            <div className={classes.progress}>
-              <CircularProgress />
-            </div>
-          )}
-        </div>
-      
+                <form className={classes.form} noValidate>
+                  <TextField
+                    id="outlined-multiline-static"
+                    required
+                    fullWidth
+                    multiline
+                    rows={2}
+                    label="Leave a review"
+                    variant="outlined"
+                    onChange={onReviewChange}
+                    value={reviewText}
+                  />
+                  <div className="separation"></div>
+                  <Grid
+                    container
+                    spacing={2}
+                    direction="row"
+                    justify="flex-end"
+                  >
+                    <Grid item xs={3.5}>
+                      <BootstrapButton2
+                        variant="contained"
+                        color="primary"
+                        disableRipple
+                        onClick={publishReview}
+                      >
+                        Publish
+                      </BootstrapButton2>
+                    </Grid>
+                  </Grid>
+                </form>
+              </>
+            )}
+          </Container>
+        ) : (
+          <div className={classes.progress}>
+            <CircularProgress />
+          </div>
+        )}
+      </div>
     </>
-  )
+  );
 }

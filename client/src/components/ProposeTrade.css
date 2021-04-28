@@ -1,7 +1,7 @@
 
 .separation {
   border: 5px ;
-  height: 15px;
+  height: 10px;
   display: block;
 }
 
@@ -11,9 +11,9 @@
 }
 
 #root > div > div > section > div > div > div.MuiGrid-root.makeStyles-root-12.MuiGrid-container.MuiGrid-spacing-xs-1.MuiGrid-align-items-xs-center.MuiGrid-justify-xs-space-evenly > div.MuiGrid-root.grid.MuiGrid-item.MuiGrid-grid-xs-5.MuiGrid-grid-sm-6.MuiGrid-grid-md-4 > div > div.MuiCardContent-root {
-  padding: 6px;
+  padding: 8px 10px !important;
 }
 
 #root > div > div > section > div > div > div.MuiGrid-root.makeStyles-root-12.MuiGrid-container.MuiGrid-spacing-xs-1.MuiGrid-align-items-xs-center.MuiGrid-justify-xs-space-evenly > div:nth-child(3) > div > div.MuiCardContent-root {
-  padding: 6px;
+  padding: 8px 10px !important;
 }

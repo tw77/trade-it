@@ -1,22 +1,17 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-
+import React from "react";
+import { useHistory } from "react-router-dom";
 import {
   Grid,
   Card,
   Typography,
+  CardMedia,
+  Button,
+  Container,
+  CssBaseline,
 } from "@material-ui/core";
-
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import "./ProposeTrade.css";
-import {
-  withStyles,
-  makeStyles,
-} from "@material-ui/core/styles";
 
 const BootstrapButton = withStyles({
   root: {
@@ -29,27 +24,14 @@ const BootstrapButton = withStyles({
     backgroundColor: "#e76f51",
     borderColor: "#e76f51",
     fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
       "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
+      "sans-serif"
     ].join(","),
     "&:hover": {
       backgroundColor: "#e76f51",
       borderColor: "#e76f51",
       boxShadow: "none",
     },
-    // "&:active": {
-    //   boxShadow: "none",
-    //   backgroundColor: "#e76f51",
-    //   borderColor: "#e76f51",
-    // },
   },
 })(Button);
 
@@ -64,16 +46,8 @@ const BootstrapButton2 = withStyles({
     backgroundColor: "#2a9d8f",
     borderColor: "#2a9d8f",
     fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
       "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
+      "sans-serif"
     ].join(","),
     "&:hover": {
       backgroundColor: "#006F3C",
@@ -95,12 +69,7 @@ const BootstrapButton3 = withStyles({
     borderColor: "#4958b6",
     fontFamily: [
       "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
+      "sans-serif"
     ].join(","),
     "&:hover": {
       backgroundColor: "#EDCF3C",
@@ -137,132 +106,127 @@ export default function MyProposals(props) {
   const mergedProposals = [].concat.apply([], props.proposals);
   const userId = 2; // for now
 
+  const currentUserProposals = mergedProposals.filter(
+    (proposal) => proposal.user_id === userId
+  );
+  console.log("currentUserProposals", currentUserProposals);
 
-
-
-
-  const currentUserProposals = mergedProposals.filter((proposal) => proposal.user_id === userId);
-  console.log('currentUserProposals', currentUserProposals);
-
-  const offeredItemIds = currentUserProposals.map((proposal) => proposal.listing_id);
+  const offeredItemIds = currentUserProposals.map(
+    (proposal) => proposal.listing_id
+  );
 
   function findOfferedListings(offeredItemIds) {
     let allOfferedListings = [];
     let offeredItem;
     for (const id of offeredItemIds) {
-      offeredItem = props.listings.find((listing) => listing.id === id)
-      allOfferedListings.push(offeredItem)
+      offeredItem = props.listings.find((listing) => listing.id === id);
+      allOfferedListings.push(offeredItem);
     }
     return allOfferedListings;
   }
 
-  const offeredItemListings = findOfferedListings(offeredItemIds)
-  const offeredItemPictures = offeredItemListings.map((offeredItem) => offeredItem.picture);
+  const offeredItemListings = findOfferedListings(offeredItemIds);
+  const offeredItemPictures = offeredItemListings.map(
+    (offeredItem) => offeredItem.picture
+  );
 
-  const wantedItemIds = currentUserProposals.map((proposal) => proposal.asset_id);
+  const wantedItemIds = currentUserProposals.map(
+    (proposal) => proposal.asset_id
+  );
 
   function findWantedListings(wantedItemIds) {
     let allWantedListings = [];
     let wantedItem;
     for (const id of wantedItemIds) {
-      wantedItem = props.listings.find((listing) => listing.id === id)
-      allWantedListings.push(wantedItem)
+      wantedItem = props.listings.find((listing) => listing.id === id);
+      allWantedListings.push(wantedItem);
     }
     return allWantedListings;
   }
 
   const wantedItemListings = findWantedListings(wantedItemIds);
-  const wantedItemPictures = wantedItemListings.map((wantedItem) => wantedItem.picture);
+  const wantedItemPictures = wantedItemListings.map(
+    (wantedItem) => wantedItem.picture
+  );
 
-  // console.log('mergedProposals', mergedProposals);
-  // console.log('offeredItemIds', offeredItemIds);
-  // console.log('wantedItemIds', wantedItemIds);
-  // console.log('offeredItemListings', offeredItemListings);
-  // console.log('wantedItemListings', wantedItemListings);
+  const userListings = props.listings.filter(
+    (listing) => listing.user.id === userId
+  );
+  const userListingIds = userListings.map((listing) => listing.id);
 
+  const tradesProposedToMe = mergedProposals.filter((proposal) =>
+    userListingIds.includes(proposal.asset_id)
+  );
+  console.log("tradesProposedToMe", tradesProposedToMe);
 
-
-
-
-
-  const userListings = props.listings.filter((listing) => listing.user.id === userId);
-  const userListingIds = userListings.map((listing) => listing.id); 
-
-  const tradesProposedToMe = mergedProposals.filter((proposal) => userListingIds.includes(proposal.asset_id));
-  console.log('tradesProposedToMe', tradesProposedToMe);
-
-  const offeredToMeIds = tradesProposedToMe.map((proposal) => proposal.listing_id);
-  console.log('itemOfferedToMeIds', offeredToMeIds);
+  const offeredToMeIds = tradesProposedToMe.map(
+    (proposal) => proposal.listing_id
+  );
+  console.log("itemOfferedToMeIds", offeredToMeIds);
 
   function findListingsOfferedToMe(offeredToMeIds) {
     let allListingsOfferedToMe = [];
     let offeredItem;
     for (const id of offeredToMeIds) {
-      offeredItem = props.listings.find((listing) => listing.id === id)
-      allListingsOfferedToMe.push(offeredItem)
+      offeredItem = props.listings.find((listing) => listing.id === id);
+      allListingsOfferedToMe.push(offeredItem);
     }
     return allListingsOfferedToMe;
   }
 
-  const offeredToMeListings = findListingsOfferedToMe(offeredToMeIds)
-  console.log('offeredToMeListings', offeredToMeListings);
-  const offeredToMePictures = offeredToMeListings.map((offeredItem) => offeredItem.picture);
+  const offeredToMeListings = findListingsOfferedToMe(offeredToMeIds);
+  console.log("offeredToMeListings", offeredToMeListings);
+  const offeredToMePictures = offeredToMeListings.map(
+    (offeredItem) => offeredItem.picture
+  );
 
-  const listingsTheyWantIds = tradesProposedToMe.map((proposal) => proposal.asset_id);
-  console.log('listingsTheyWantIds', listingsTheyWantIds);
+  const listingsTheyWantIds = tradesProposedToMe.map(
+    (proposal) => proposal.asset_id
+  );
+  console.log("listingsTheyWantIds", listingsTheyWantIds);
 
   function listingsTheyWant(listingsTheyWantIds) {
     let allListingsTheyWant = [];
     let wantedItem;
     for (const id of listingsTheyWantIds) {
-      wantedItem = props.listings.find((listing) => listing.id === id)
-      allListingsTheyWant.push(wantedItem)
+      wantedItem = props.listings.find((listing) => listing.id === id);
+      allListingsTheyWant.push(wantedItem);
     }
     return allListingsTheyWant;
   }
 
   const wantedFromMyListings = listingsTheyWant(listingsTheyWantIds);
-  const wantedFromMyPictures = wantedFromMyListings.map((wantedItem) => wantedItem.picture);
+  const wantedFromMyPictures = wantedFromMyListings.map(
+    (wantedItem) => wantedItem.picture
+  );
 
-
-
-
-
-
-
-
-
-  function accept(card){
+  function accept(card) {
     const updatedProposal = {
       ...tradesProposedToMe[card],
-      is_accepted: true
+      is_accepted: true,
     };
     props.updateProposalStatus(updatedProposal);
-  };
+  }
 
-  function decline(id){};
+  function decline(id) {}
 
-  function viewProposalTheyAccepted(card){
-    history.push(`accepted/${currentUserProposals[card].id}`)
-  };
+  function viewProposalTheyAccepted(card) {
+    history.push(`accepted/${currentUserProposals[card].id}`);
+  }
 
-  function viewProposalIAccepted(card){
-    history.push(`accepted/${tradesProposedToMe[card].id}`)
-  };
+  function viewProposalIAccepted(card) {
+    history.push(`accepted/${tradesProposedToMe[card].id}`);
+  }
 
+  const tradesIProposedCards = Array.from(
+    Array(currentUserProposals.length).keys()
+  ); // an index counting the user's proposals from 0
+  const tradesProposedToMeCards = Array.from(
+    Array(tradesProposedToMe.length).keys()
+  );
 
-
-
-
-
-
-
-  const tradesIProposedCards = Array.from(Array(currentUserProposals.length).keys()); // an index counting the user's proposals from 0
-  const tradesProposedToMeCards = Array.from(Array(tradesProposedToMe.length).keys());
-
-  console.log('tradesIProposedCards', tradesIProposedCards);
-  console.log('tradesProposedToMeCards', tradesProposedToMeCards);
-
+  console.log("tradesIProposedCards", tradesIProposedCards);
+  console.log("tradesProposedToMeCards", tradesProposedToMeCards);
 
   return (
     <>
@@ -271,8 +235,13 @@ export default function MyProposals(props) {
         <Typography variant="h5" align="left" color="textPrimary">
           Proposals
         </Typography>
-        <Typography variant="subtitle1" align="left" color="textSecondary" paragraph>
-        Trades proposed to me
+        <Typography
+          variant="subtitle1"
+          align="left"
+          color="textSecondary"
+          paragraph
+        >
+          Trades proposed to me
         </Typography>
 
         <Container maxWidth="md">
@@ -281,7 +250,6 @@ export default function MyProposals(props) {
             spacing={2}
             direction="row"
             alignItems="center"
-            // justify="space-evenly"
             className={classes.root}
           >
             {tradesProposedToMeCards.map((card) => (
@@ -296,7 +264,7 @@ export default function MyProposals(props) {
                   </Card>
                 </Grid>
                 <Grid item key={card} xs={1}>
-                  <AutorenewIcon style={{ fontSize: 20, color: '#4958b6' }} />
+                  <AutorenewIcon style={{ fontSize: 20, color: "#4958b6" }} />
                 </Grid>
                 <Grid item key={card} xs={4}>
                   <Card className={classes.card}>
@@ -309,7 +277,9 @@ export default function MyProposals(props) {
                 </Grid>
                 <Grid item key={card} xs={3}>
                   <Typography gutterBottom variant="h7">
-                  {tradesProposedToMe[card].is_accepted ? `Trade accepted!` : `2 days ago`}
+                    {tradesProposedToMe[card].is_accepted
+                      ? `Trade accepted!`
+                      : `2 days ago`}
                   </Typography>
                   {tradesProposedToMe[card].is_accepted ? (
                     <BootstrapButton3
@@ -348,8 +318,13 @@ export default function MyProposals(props) {
             ))}
           </Grid>
         </Container>
-        <Typography variant="subtitle1" align="left" color="textSecondary" paragraph>
-        Trades I've proposed
+        <Typography
+          variant="subtitle1"
+          align="left"
+          color="textSecondary"
+          paragraph
+        >
+          Trades I've proposed
         </Typography>
 
         <Container maxWidth="md">
@@ -358,7 +333,6 @@ export default function MyProposals(props) {
             spacing={2}
             direction="row"
             alignItems="center"
-            // justify="space-evenly"
             className={classes.root}
           >
             {tradesIProposedCards.map((card) => (
@@ -373,7 +347,7 @@ export default function MyProposals(props) {
                   </Card>
                 </Grid>
                 <Grid item key={card} xs={1}>
-                  <AutorenewIcon style={{ fontSize: 20, color: '#4958b6' }} />
+                  <AutorenewIcon style={{ fontSize: 20, color: "#4958b6" }} />
                 </Grid>
                 <Grid item key={card} xs={4}>
                   <Card className={classes.card}>
@@ -386,9 +360,12 @@ export default function MyProposals(props) {
                 </Grid>
                 <Grid item key={card} xs={3}>
                   <Typography gutterBottom variant="h7">
-                  {currentUserProposals[card].is_accepted ? `Accepted` : `Pending`}
+                    {currentUserProposals[card].is_accepted
+                      ? `Accepted`
+                      : `Pending`}
                   </Typography>
-                  {currentUserProposals[card].is_accepted ? (<BootstrapButton3
+                  {currentUserProposals[card].is_accepted ? (
+                    <BootstrapButton3
                       variant="contained"
                       color="primary"
                       disableRipple
@@ -396,8 +373,9 @@ export default function MyProposals(props) {
                       onClick={() => viewProposalTheyAccepted(card)}
                     >
                       View
-                    </BootstrapButton3>) : (
-                      <BootstrapButton
+                    </BootstrapButton3>
+                  ) : (
+                    <BootstrapButton
                       variant="contained"
                       color="primary"
                       disableRipple
@@ -405,7 +383,7 @@ export default function MyProposals(props) {
                     >
                       Cancel
                     </BootstrapButton>
-                    )}
+                  )}
                 </Grid>
               </>
             ))}

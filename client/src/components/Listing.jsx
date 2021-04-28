@@ -40,16 +40,8 @@ const BootstrapButton2 = withStyles({
     backgroundColor: "#2a9d8f",
     borderColor: "#2a9d8f",
     fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
       "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
+      "sans-serif"
     ].join(","),
   },
 })(Button);
@@ -76,11 +68,10 @@ export default function Listing(props) {
   const mockTradeHistoryIds = [2, 4, 5];
   let mockTradeHistoryListings = [];
   for (const id of mockTradeHistoryIds) {
-    mockTradeHistoryListings.push(props.listings.find((listing) => listing.id === id))
-  };
-
-  // console.log('mockTradeHistoryListings', mockTradeHistoryListings);
-
+    mockTradeHistoryListings.push(
+      props.listings.find((listing) => listing.id === id)
+    );
+  }
 
   const generateListingJSX = () => {
     return (
@@ -93,7 +84,6 @@ export default function Listing(props) {
                 spacing={2}
                 direction="column"
                 alignItems="center"
-                // justify="space-evenly"
               >
                 <Grid className="grid" item xs={12}>
                   <Image
@@ -145,21 +135,23 @@ export default function Listing(props) {
                 justify="space-evenly"
               >
                 <Grid item xs={12}>
-              <strong>
-                {currentListing.user.first_name} {currentListing.user.last_name}
-              </strong>
-              {currentListing.neighbourhood.name}, {currentListing.city.name}
-              <Button
-                onClick={toUserProfile}
-                startIcon={
-                  <Avatar
-                    src={currentListing.user.profile_picture}
-                    style={{ marginLeft: "10px" }}
-                  />
-                }
+                  <strong>
+                    {currentListing.user.first_name}{" "}
+                    {currentListing.user.last_name}
+                  </strong>
+                  {currentListing.neighbourhood.name},{" "}
+                  {currentListing.city.name}
+                  <Button
+                    onClick={toUserProfile}
+                    startIcon={
+                      <Avatar
+                        src={currentListing.user.profile_picture}
+                        style={{ marginLeft: "10px" }}
+                      />
+                    }
                   ></Button>
-                  </Grid>
                 </Grid>
+              </Grid>
               <Divider />
               <Typography
                 component="h1"
@@ -177,23 +169,23 @@ export default function Listing(props) {
                 justify="flex-start"
                 style={{ padding: "8px 21px" }}
               >
-          
-
-          {currentListing.history.map((prevTrade) => 
-                <>
-                <Grid item xs={1}>
-                <ArrowForwardIcon style={{ fontSize: 20 }} color="primary" />
-              </Grid> 
-                <Grid item xs={3}>
-                  <Image
-                    width={50}
-                    src={prevTrade}
-                    style={{ borderRadius: "10px"}}
-                  />
-
-                </Grid>
-                </>)}
-
+                {currentListing.history.map((prevTrade) => (
+                  <>
+                    <Grid item xs={1}>
+                      <ArrowForwardIcon
+                        style={{ fontSize: 20 }}
+                        color="primary"
+                      />
+                    </Grid>
+                    <Grid item xs={3}>
+                      <Image
+                        width={50}
+                        src={prevTrade}
+                        style={{ borderRadius: "10px" }}
+                      />
+                    </Grid>
+                  </>
+                ))}
               </Grid>
             </div>
           ) : (
@@ -205,7 +197,6 @@ export default function Listing(props) {
       </>
     );
   };
-
 
   return (
     <>
