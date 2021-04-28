@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
@@ -22,74 +22,66 @@ const BootstrapButton2 = withStyles({
     backgroundColor: "#2a9d8f",
     borderColor: "#2a9d8f",
     fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
       "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
+      "sans-serif"
     ].join(","),
   },
 })(Button);
 
 const CustomTypography = withStyles({
   root: {
-    color: "#6e5d34"
-  }
+    color: "#6e5d34",
+  },
 })(Typography);
 
 const categories = [
   {
     value: 1,
-    label: 'Electronics',
+    label: "Electronics",
   },
   {
     value: 2,
-    label: 'Clothing',
+    label: "Clothing",
   },
   {
     value: 3,
-    label: 'Accessories',
+    label: "Accessories",
   },
   {
     value: 4,
-    label: 'Furniture',
+    label: "Furniture",
   },
   {
     value: 5,
-    label: 'Appliances',
+    label: "Appliances",
   },
   {
     value: 6,
-    label: 'Sports',
+    label: "Sports",
   },
   {
     value: 7,
-    label: 'Bicycles',
+    label: "Bicycles",
   },
   {
     value: 8,
-    label: 'Books',
+    label: "Books",
   },
   {
     value: 9,
-    label: 'Plants',
+    label: "Plants",
   },
   {
     value: 10,
-    label: 'Instruments',
+    label: "Instruments",
   },
   {
     value: 11,
-    label: 'Services',
+    label: "Services",
   },
   {
     value: 12,
-    label: 'Cameras',
+    label: "Cameras",
   },
 ];
 const useStyles = makeStyles((theme) => ({
@@ -130,7 +122,7 @@ export default function AddNewItem(props) {
   const history = useHistory();
   const classes = useStyles();
   const [formData, setFormData] = useReducer(formReducer, {});
-  const [submitting, setSubmitting] = useState(false); 
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (event) => {
     setFormData({
@@ -154,7 +146,6 @@ export default function AddNewItem(props) {
     }, 4000);
   };
 
-  // back naviagation with a "Cancel" button?
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -190,7 +181,7 @@ export default function AddNewItem(props) {
               margin="normal"
               fullWidth
               id="outlined-basic"
-              label="Name"
+              label="Title"
               name="name"
               onChange={handleChange}
               value={formData.name || ""}
@@ -236,7 +227,7 @@ export default function AddNewItem(props) {
               <Grid item xs={3}>
                 <BootstrapButton2
                   type="submit"
-                  style={{ marginTop: "8px", marginLeft: "11px"}}
+                  style={{ marginTop: "8px", marginLeft: "11px" }}
                   variant="contained"
                   color="primary"
                   disableRipple
