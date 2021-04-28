@@ -1,20 +1,20 @@
 import React, { useState } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import {
   Grid,
   Card,
   CardContent,
   Typography,
   TextField,
+  CardMedia,
+  Button,
+  Container,
+  CssBaseline
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
-import "./ProposeTrade.css";
-import { useParams, useHistory } from "react-router-dom";
 import { Carousel } from "antd";
+import "./ProposeTrade.css";
 
 const BootstrapButton2 = withStyles({
   root: {
@@ -27,16 +27,8 @@ const BootstrapButton2 = withStyles({
     backgroundColor: "#2a9d8f",
     borderColor: "#2a9d8f",
     fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
       "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
+      "sans-serif"
     ].join(","),
   },
 })(Button);
@@ -216,10 +208,8 @@ export default function ProposeTrade(props) {
             <form className={classes.form} noValidate>
               <TextField
                 id="outlined-multiline-static"
-                // required
                 fullWidth
                 rows={2}
-                // name="message"
                 label="Add a message (optional)"
                 variant="outlined"
                 onChange={onMessageChange}
@@ -230,7 +220,7 @@ export default function ProposeTrade(props) {
                 <Grid item xs={6}>
                   <BootstrapButton2
                     type="submit"
-                    style={{ marginTop: "8px" }}
+                    style={{ marginLeft: "18px" }}
                     variant="contained"
                     color="primary"
                     disableRipple
