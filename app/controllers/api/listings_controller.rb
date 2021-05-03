@@ -2,7 +2,6 @@ class Api::ListingsController < ApplicationController
 
   def create
     @listing = Listing.create!(listing_params)
-    # working
   end
   
   def index
@@ -17,26 +16,22 @@ class Api::ListingsController < ApplicationController
     end
 
     render json: @listings
-    # working
   end
 
   def show
     @listing = Asset.joins(:listing).where(listings: { asset_id: params[:id] })
     render json: @listing
-    # working
   end
 
   def update
     @listing = Listing.find params[:id]
     attributes = listing_params.clone
     @listing.update_attributes(attributes)
-    # working
   end
 
   def destroy
     @listing = Listing.find params[:id]
     @listing.destroy
-    # working
   end
 
   private
