@@ -1,4 +1,4 @@
-# TradeIt
+# Trade It
 
 A mobile app for trading items you no longer need for items and services you want. Don't buy, just trade it and help create a more sustainable future.<br/><br/>
 This was a collaboration with Judit Mendex Puig [@judeIt](https://github.com/judeIt) for our final project in the Lighthouse Labs Web Development bootcamp. The app is inspired by the story of Kyle MacDonald, a man who famously bartered his way from "one red paperclip" to a house in a sequence of online trades.<br/><br/>
