@@ -1,7 +1,7 @@
 class Listing < ApplicationRecord
-  has_many :proposals, dependent: :destroy
   belongs_to :user
   belongs_to :asset
+  has_many :proposals, dependent: :destroy
 
   validates :user_id, presence: true
   validates :asset_id, presence: true
