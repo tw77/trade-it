@@ -43,10 +43,7 @@ const BootstrapButton2 = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#2a9d8f",
     borderColor: "#2a9d8f",
-    fontFamily: [
-      "Roboto",
-      "sans-serif"
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
   },
 })(Button);
 

@@ -67,8 +67,6 @@ export default function ProposeTrade(props) {
     setMessage(event.target.value);
   };
 
-  console.log("props.proposals", props.proposals);
-
   // const mergedProposals = [].concat.apply([], props.proposals);
 
   const currentUserListings = props.listings.filter(

@@ -23,10 +23,7 @@ const BootstrapButton = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#e76f51",
     borderColor: "#e76f51",
-    fontFamily: [
-      "Roboto",
-      "sans-serif"
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
     "&:hover": {
       backgroundColor: "#e76f51",
       borderColor: "#e76f51",
@@ -45,10 +42,7 @@ const BootstrapButton2 = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#2a9d8f",
     borderColor: "#2a9d8f",
-    fontFamily: [
-      "Roboto",
-      "sans-serif"
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
     "&:hover": {
       backgroundColor: "#006F3C",
       borderColor: "#006F3C",
@@ -67,10 +61,7 @@ const BootstrapButton3 = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#4958b6",
     borderColor: "#4958b6",
-    fontFamily: [
-      "Roboto",
-      "sans-serif"
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
     "&:hover": {
       backgroundColor: "#EDCF3C",
       borderColor: "#EDCF3C",
@@ -109,7 +100,6 @@ export default function MyProposals(props) {
   const currentUserProposals = mergedProposals.filter(
     (proposal) => proposal.user_id === userId
   );
-  console.log("currentUserProposals", currentUserProposals);
 
   const offeredItemIds = currentUserProposals.map(
     (proposal) => proposal.listing_id
@@ -157,12 +147,10 @@ export default function MyProposals(props) {
   const tradesProposedToMe = mergedProposals.filter((proposal) =>
     userListingIds.includes(proposal.asset_id)
   );
-  console.log("tradesProposedToMe", tradesProposedToMe);
 
   const offeredToMeIds = tradesProposedToMe.map(
     (proposal) => proposal.listing_id
   );
-  console.log("itemOfferedToMeIds", offeredToMeIds);
 
   function findListingsOfferedToMe(offeredToMeIds) {
     let allListingsOfferedToMe = [];
@@ -175,7 +163,6 @@ export default function MyProposals(props) {
   }
 
   const offeredToMeListings = findListingsOfferedToMe(offeredToMeIds);
-  console.log("offeredToMeListings", offeredToMeListings);
   const offeredToMePictures = offeredToMeListings.map(
     (offeredItem) => offeredItem.picture
   );
@@ -183,7 +170,6 @@ export default function MyProposals(props) {
   const listingsTheyWantIds = tradesProposedToMe.map(
     (proposal) => proposal.asset_id
   );
-  console.log("listingsTheyWantIds", listingsTheyWantIds);
 
   function listingsTheyWant(listingsTheyWantIds) {
     let allListingsTheyWant = [];
@@ -224,9 +210,6 @@ export default function MyProposals(props) {
   const tradesProposedToMeCards = Array.from(
     Array(tradesProposedToMe.length).keys()
   );
-
-  console.log("tradesIProposedCards", tradesIProposedCards);
-  console.log("tradesProposedToMeCards", tradesProposedToMeCards);
 
   return (
     <>

@@ -131,8 +131,6 @@ export default function AddNewItem(props) {
     });
   };
 
-  console.log("props.listings in AddNewItem", props.listings);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     props.publishListing(formData);

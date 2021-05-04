@@ -41,10 +41,7 @@ const BootstrapButton2 = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#2a9d8f", //green
     borderColor: "#2a9d8f", //green
-    fontFamily: [
-      "Roboto",
-      "sans-serif"
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
     "&:hover": {
       backgroundColor: "#2a9d8f", //green
       borderColor: "#2a9d8f", //green
@@ -67,10 +64,7 @@ const BootstrapButton3 = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#2a9d8f", //green
     borderColor: "#2a9d8f", //green
-    fontFamily: [
-      "Roboto",
-      "sans-serif"
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
     "&:hover": {
       backgroundColor: "#2a9d8f", //green
       borderColor: "#2a9d8f", //green
@@ -145,8 +139,6 @@ export default function AcceptedProposal(props) {
     otherUserId = wantedItemListing.owner_id;
   }
 
-  console.log("acceptedProposal", acceptedProposal);
-
   // function confirmTrade(){};
 
   // function confirmPickUp(){};
@@ -154,13 +146,11 @@ export default function AcceptedProposal(props) {
   const [reviewText, setReviewText] = useState("");
   const onReviewChange = function (event) {
     setReviewText(event.target.value);
-    console.log("review", reviewText);
   };
 
   const [rating, setRating] = useState(0);
   const onRatingChange = function (value) {
     setRating({ value });
-    console.log("value", value);
   };
 
   function publishReview(event) {
