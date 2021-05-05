@@ -94,25 +94,6 @@ export default function MyProposals(props) {
   const classes = useStyles();
   const history = useHistory();
 
-  const offeredItemIds = props.userProposals.map(
-    (proposal) => proposal.listing_id
-  );
-
-  function findOfferedListings(offeredItemIds) {
-    let allOfferedListings = [];
-    let offeredItem;
-    for (const id of offeredItemIds) {
-      offeredItem = props.listings.find((listing) => listing.id === id);
-      allOfferedListings.push(offeredItem);
-    }
-    return allOfferedListings;
-  }
-
-  const offeredItemListings = findOfferedListings(offeredItemIds);
-  const offeredItemPictures = offeredItemListings.map(
-    (offeredItem) => offeredItem.picture
-  );
-
   const wantedItemIds = props.userProposals.map(
     (proposal) => proposal.asset_id
   );
@@ -131,6 +112,10 @@ export default function MyProposals(props) {
   const wantedItemPictures = wantedItemListings.map(
     (wantedItem) => wantedItem.picture
   );
+
+
+
+
 
   const offeredToMeIds = props.tradesProposedToUser.map(
     (proposal) => proposal.listing_id
@@ -151,6 +136,9 @@ export default function MyProposals(props) {
     (offeredItem) => offeredItem.picture
   );
 
+
+
+
   const listingsTheyWantIds = props.tradesProposedToUser.map(
     (proposal) => proposal.asset_id
   );
@@ -169,6 +157,10 @@ export default function MyProposals(props) {
   const wantedFromMyPictures = wantedFromMyListings.map(
     (wantedItem) => wantedItem.picture
   );
+
+
+
+
 
   function accept(card) {
     const updatedProposal = {
@@ -308,7 +300,7 @@ export default function MyProposals(props) {
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image={offeredItemPictures[card]}
+                      image={props.picturesOfListingsByUser[card]}
                       title="Image title"
                     />
                   </Card>

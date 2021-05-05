@@ -29,3 +29,18 @@ export function getTradesProposedToUser(state) {
   const userListingIds = userListings.map((listing) => listing.id);
   return state.proposals.filter((proposal) => userListingIds.includes(proposal.asset_id));
 }
+
+export function getPicturesOfListingsByUser(state, userProposals) {
+  const offeredItemIds = userProposals.map(
+    (proposal) => proposal.listing_id
+  );
+  let allOfferedListings = [];
+    let offeredItem;
+    for (const id of offeredItemIds) {
+      offeredItem = state.listings.find((listing) => listing.id === id);
+      allOfferedListings.push(offeredItem);
+    };
+  return allOfferedListings.map(
+    (offeredItem) => offeredItem.picture
+  );
+}
