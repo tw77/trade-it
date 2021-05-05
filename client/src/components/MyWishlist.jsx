@@ -52,18 +52,16 @@ export default function MyWishlist(props) {
   const history = useHistory();
   
   const userId = 2; // for now
-  const mergedWishesNotNull = [].concat
-    .apply([], props.wishes)
-    .filter((wish) => wish);
+  const wishesNotNull = props.wishes.filter((wish) => wish);
 
   let userWishes;
   let userWishCategories;
   let relevantListings;
   let relevantAndAvailableListings;
 
-  if (mergedWishesNotNull.filter((wish) => wish.user_id === userId)) {
+  if (wishesNotNull.filter((wish) => wish.user_id === userId)) {
     // if the user has wishlist entries
-    userWishes = mergedWishesNotNull.filter((wish) => wish.user_id === userId);
+    userWishes = wishesNotNull.filter((wish) => wish.user_id === userId);
     userWishCategories = userWishes.map((wish) => wish.category_id);
     relevantListings = props.listings
       .filter(
