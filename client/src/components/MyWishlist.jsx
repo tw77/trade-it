@@ -43,67 +43,14 @@ const BootstrapButton2 = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#2a9d8f",
     borderColor: "#2a9d8f",
-    fontFamily: [
-      "Roboto",
-      "sans-serif"
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
   },
 })(Button);
 
 export default function MyWishlist(props) {
   const classes = useStyles();
   const history = useHistory();
-  const categories = [
-    {
-      value: 1,
-      label: "Electronics",
-    },
-    {
-      value: 2,
-      label: "Clothing",
-    },
-    {
-      value: 3,
-      label: "Accessories",
-    },
-    {
-      value: 4,
-      label: "Furniture",
-    },
-    {
-      value: 5,
-      label: "Appliances",
-    },
-    {
-      value: 6,
-      label: "Sports",
-    },
-    {
-      value: 7,
-      label: "Bicycles",
-    },
-    {
-      value: 8,
-      label: "Books",
-    },
-    {
-      value: 9,
-      label: "Plants",
-    },
-    {
-      value: 10,
-      label: "Instruments",
-    },
-    {
-      value: 11,
-      label: "Services",
-    },
-    {
-      value: 12,
-      label: "Cameras",
-    },
-  ];
-
+  
   const userId = 2; // for now
   const mergedWishesNotNull = [].concat
     .apply([], props.wishes)
@@ -159,12 +106,12 @@ export default function MyWishlist(props) {
   }
 
   const [wishName, setWishName] = useState("");
-  const handleChange = function (event) {
+  function handleChange(event) {
     setWishName(event.target.value);
   };
 
   const [wishCategory, setWishCategory] = useState(null);
-  const categorySelect = function (event) {
+  function categorySelect(event) {
     setWishCategory(event.target.value);
   };
 
@@ -210,7 +157,7 @@ export default function MyWishlist(props) {
               select
               onChange={categorySelect}
             >
-              {categories.map((option) => (
+              {props.categories.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>

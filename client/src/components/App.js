@@ -24,6 +24,7 @@ import Listing from "./Listing";
 import DropDownMenu from "./DropDownMenu";
 import ProposeTrade from "./ProposeTrade";
 import AcceptedProposal from "./AcceptedProposal";
+import { categories } from "../mockData/categories";
 import "./App.css";
 
 const useStyles = makeStyles({
@@ -62,7 +63,7 @@ export default function App() {
 
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
+  function handleChange(event, newValue) {
     setValue(newValue);
   };
 
@@ -108,6 +109,7 @@ export default function App() {
                     updateWishes={updateWishes}
                     removeWish={removeWish}
                     proposals={state.proposals}
+                    categories={categories}
                   />{" "}
                 </Route>
                 <Route exact path="/suggestions">
@@ -130,6 +132,7 @@ export default function App() {
                   <AddNewItem
                     listings={state.listings}
                     publishListing={publishListing}
+                    categories={categories}
                   />{" "}
                 </Route>
                 <Route exact path="/">
@@ -147,7 +150,6 @@ export default function App() {
                   {" "}
                   <ProposeTrade
                     listings={state.listings}
-                    proposals={state.proposals}
                     propose={propose}
                   />{" "}
                 </Route>

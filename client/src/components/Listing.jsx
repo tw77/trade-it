@@ -39,10 +39,7 @@ const BootstrapButton2 = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#2a9d8f",
     borderColor: "#2a9d8f",
-    fontFamily: [
-      "Roboto",
-      "sans-serif"
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
   },
 })(Button);
 
@@ -54,8 +51,6 @@ export default function Listing(props) {
   const currentListing = props.listings.find(
     (listing) => listing.id === Number(listingId)
   );
-
-  console.log("currentListing", currentListing);
 
   function toOffer() {
     history.push(`/offer/${listingId}`);

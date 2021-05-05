@@ -57,7 +57,7 @@ export default function Listings(props) {
     (listing) => !unavailableListingIds.includes(listing.id)
   );
 
-  const handleSearchChange = (e) => {
+  function handleSearchChange(e) {
     setFilter(e.target.value.toLowerCase());
   };
 

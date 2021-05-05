@@ -41,10 +41,7 @@ const BootstrapButton2 = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#2a9d8f", //green
     borderColor: "#2a9d8f", //green
-    fontFamily: [
-      "Roboto",
-      "sans-serif"
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
     "&:hover": {
       backgroundColor: "#2a9d8f", //green
       borderColor: "#2a9d8f", //green
@@ -67,10 +64,7 @@ const BootstrapButton3 = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#2a9d8f", //green
     borderColor: "#2a9d8f", //green
-    fontFamily: [
-      "Roboto",
-      "sans-serif"
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
     "&:hover": {
       backgroundColor: "#2a9d8f", //green
       borderColor: "#2a9d8f", //green
@@ -93,12 +87,9 @@ const CustomTypography = withStyles({
 export default function AcceptedProposal(props) {
   const classes = useStyles();
   const history = useHistory();
-  const [submitting, setSubmitting] = useState(false); //false
-
+  const [submitting, setSubmitting] = useState(false);
   const { proposalId } = useParams();
-
-  const userId = 2;
-  // for now
+  const userId = 2; // for now
 
   const mergedProposals = [].concat.apply([], props.proposals);
   const currentUserProposals = mergedProposals.filter(
@@ -119,8 +110,9 @@ export default function AcceptedProposal(props) {
   let wantedItemListing;
   let otherUserId;
 
+  // find whether the accepted proposal was proposed to the user or by the user. then retrieve details:
   if (
-    tradesProposedToMe.find((proposal) => proposal.id === Number(proposalId))
+    tradesProposedToMe.find((proposal) => proposal.id === Number(proposalId)) 
   ) {
     acceptedProposal = tradesProposedToMe.find(
       (proposal) => proposal.id === Number(proposalId)
@@ -145,22 +137,14 @@ export default function AcceptedProposal(props) {
     otherUserId = wantedItemListing.owner_id;
   }
 
-  console.log("acceptedProposal", acceptedProposal);
-
-  // function confirmTrade(){};
-
-  // function confirmPickUp(){};
-
   const [reviewText, setReviewText] = useState("");
-  const onReviewChange = function (event) {
+  function onReviewChange(event) {
     setReviewText(event.target.value);
-    console.log("review", reviewText);
   };
 
   const [rating, setRating] = useState(0);
-  const onRatingChange = function (value) {
+  function onRatingChange(value) {
     setRating({ value });
-    console.log("value", value);
   };
 
   function publishReview(event) {
