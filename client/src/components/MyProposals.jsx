@@ -94,10 +94,9 @@ export default function MyProposals(props) {
   const classes = useStyles();
   const history = useHistory();
 
-  const mergedProposals = [].concat.apply([], props.proposals);
   const userId = 2; // for now
 
-  const currentUserProposals = mergedProposals.filter(
+  const currentUserProposals = props.proposals.filter(
     (proposal) => proposal.user_id === userId
   );
 
@@ -144,7 +143,7 @@ export default function MyProposals(props) {
   );
   const userListingIds = userListings.map((listing) => listing.id);
 
-  const tradesProposedToMe = mergedProposals.filter((proposal) =>
+  const tradesProposedToMe = props.proposals.filter((proposal) =>
     userListingIds.includes(proposal.asset_id)
   );
 
