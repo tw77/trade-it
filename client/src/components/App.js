@@ -25,7 +25,7 @@ import DropDownMenu from "./DropDownMenu";
 import ProposeTrade from "./ProposeTrade";
 import AcceptedProposal from "./AcceptedProposal";
 import { categories } from "../mockData/categories";
-import { findMostRepresented } from "../helpers/selectors";
+import { findMostRepresented, getUserProposals, getTradesProposedToUser } from "../helpers/selectors";
 import "./App.css";
 
 const useStyles = makeStyles({
@@ -123,6 +123,8 @@ export default function App() {
                     proposals={state.proposals}
                     listings={state.listings}
                     updateProposalStatus={updateProposalStatus}
+                    userProposals={getUserProposals(state)}
+                    tradesProposedToUser={getTradesProposedToUser(state)}
                   />
                 </Route>
                 <Route exact path="/add">
@@ -149,6 +151,8 @@ export default function App() {
                     proposals={state.proposals}
                     listings={state.listings}
                     updateReviews={updateReviews}
+                    userProposals={getUserProposals(state)}
+                    tradesProposedToUser={getTradesProposedToUser(state)}
                   />
                 </Route>
               </Switch>

@@ -94,13 +94,7 @@ export default function MyProposals(props) {
   const classes = useStyles();
   const history = useHistory();
 
-  const userId = 2; // for now
-
-  const currentUserProposals = props.proposals.filter(
-    (proposal) => proposal.user_id === userId
-  );
-
-  const offeredItemIds = currentUserProposals.map(
+  const offeredItemIds = props.userProposals.map(
     (proposal) => proposal.listing_id
   );
 
@@ -119,7 +113,7 @@ export default function MyProposals(props) {
     (offeredItem) => offeredItem.picture
   );
 
-  const wantedItemIds = currentUserProposals.map(
+  const wantedItemIds = props.userProposals.map(
     (proposal) => proposal.asset_id
   );
 
@@ -138,16 +132,7 @@ export default function MyProposals(props) {
     (wantedItem) => wantedItem.picture
   );
 
-  const userListings = props.listings.filter(
-    (listing) => listing.user.id === userId
-  );
-  const userListingIds = userListings.map((listing) => listing.id);
-
-  const tradesProposedToMe = props.proposals.filter((proposal) =>
-    userListingIds.includes(proposal.asset_id)
-  );
-
-  const offeredToMeIds = tradesProposedToMe.map(
+  const offeredToMeIds = props.tradesProposedToUser.map(
     (proposal) => proposal.listing_id
   );
 
@@ -166,7 +151,7 @@ export default function MyProposals(props) {
     (offeredItem) => offeredItem.picture
   );
 
-  const listingsTheyWantIds = tradesProposedToMe.map(
+  const listingsTheyWantIds = props.tradesProposedToUser.map(
     (proposal) => proposal.asset_id
   );
 
@@ -187,7 +172,7 @@ export default function MyProposals(props) {
 
   function accept(card) {
     const updatedProposal = {
-      ...tradesProposedToMe[card],
+      ...props.tradesProposedToUser[card],
       is_accepted: true,
     };
     props.updateProposalStatus(updatedProposal);
@@ -196,18 +181,18 @@ export default function MyProposals(props) {
   function decline(id) {}
 
   function viewProposalTheyAccepted(card) {
-    history.push(`accepted/${currentUserProposals[card].id}`);
+    history.push(`accepted/${props.userProposals[card].id}`);
   }
 
   function viewProposalIAccepted(card) {
-    history.push(`accepted/${tradesProposedToMe[card].id}`);
+    history.push(`accepted/${props.tradesProposedToUser[card].id}`);
   }
 
   const tradesIProposedCards = Array.from(
-    Array(currentUserProposals.length).keys()
+    Array(props.userProposals.length).keys()
   ); // an index counting the user's proposals from 0
-  const tradesProposedToMeCards = Array.from(
-    Array(tradesProposedToMe.length).keys()
+  const tradesProposedToUserCards = Array.from(
+    Array(props.tradesProposedToUser.length).keys()
   );
 
   return (
@@ -234,7 +219,7 @@ export default function MyProposals(props) {
             alignItems="center"
             className={classes.root}
           >
-            {tradesProposedToMeCards.map((card) => (
+            {tradesProposedToUserCards.map((card) => (
               <>
                 <Grid item key={card} xs={4}>
                   <Card className={classes.card}>
@@ -259,11 +244,11 @@ export default function MyProposals(props) {
                 </Grid>
                 <Grid item key={card} xs={3}>
                   <Typography gutterBottom variant="h7">
-                    {tradesProposedToMe[card].is_accepted
+                    {props.tradesProposedToUser[card].is_accepted
                       ? `Trade accepted!`
                       : `2 days ago`}
                   </Typography>
-                  {tradesProposedToMe[card].is_accepted ? (
+                  {props.tradesProposedToUser[card].is_accepted ? (
                     <BootstrapButton3
                       variant="contained"
                       color="primary"
@@ -342,11 +327,11 @@ export default function MyProposals(props) {
                 </Grid>
                 <Grid item key={card} xs={3}>
                   <Typography gutterBottom variant="h7">
-                    {currentUserProposals[card].is_accepted
+                    {props.userProposals[card].is_accepted
                       ? `Accepted`
                       : `Pending`}
                   </Typography>
-                  {currentUserProposals[card].is_accepted ? (
+                  {props.userProposals[card].is_accepted ? (
                     <BootstrapButton3
                       variant="contained"
                       color="primary"
