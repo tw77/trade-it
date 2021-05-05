@@ -25,6 +25,7 @@ import DropDownMenu from "./DropDownMenu";
 import ProposeTrade from "./ProposeTrade";
 import AcceptedProposal from "./AcceptedProposal";
 import { categories } from "../mockData/categories";
+import { findMostRepresented } from "../helpers/selectors";
 import "./App.css";
 
 const useStyles = makeStyles({
@@ -107,6 +108,7 @@ export default function App() {
                     removeWish={removeWish}
                     proposals={state.proposals}
                     categories={categories}
+                    findMostRepresented={findMostRepresented}
                   />
                 </Route>
                 <Route exact path="/suggestions">

@@ -59,18 +59,19 @@ export default function MyWishlist(props) {
   let relevantListings;
   let relevantAndAvailableListings;
 
+  // if the user has wishlist entries, retrieve details and relevant listings:
   if (wishesNotNull.filter((wish) => wish.user_id === userId)) {
-    // if the user has wishlist entries
     userWishes = wishesNotNull.filter((wish) => wish.user_id === userId);
     userWishCategories = userWishes.map((wish) => wish.category_id);
     relevantListings = props.listings
       .filter(
         (listing) =>
           listing.owner_id !== userId &&
-          listing.category_id === findMostRepresented(userWishCategories)[0]
+          listing.category_id === props.findMostRepresented(userWishCategories)[0]
       )
       .slice(0, 5);
 
+    // filter out listings that have already been accepted in trades:
     const acceptedProposals = props.proposals.filter(
       (proposal) => proposal.is_accepted === true
     );
@@ -84,22 +85,6 @@ export default function MyWishlist(props) {
     relevantAndAvailableListings = relevantListings.filter(
       (listing) => !unavailableListingIds.includes(listing.id)
     );
-  }
-
-  function findMostRepresented(userWishCategories) {
-    const frequency = {};
-
-    userWishCategories.forEach(function (id) {
-      frequency[id] = 0;
-    });
-
-    const uniques = userWishCategories.filter(function (id) {
-      return ++frequency[id] === 1;
-    });
-
-    return uniques.sort(function (a, b) {
-      return frequency[b] - frequency[a];
-    });
   }
 
   const [wishName, setWishName] = useState("");
