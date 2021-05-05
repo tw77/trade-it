@@ -150,7 +150,6 @@ export default function App() {
                   {" "}
                   <ProposeTrade
                     listings={state.listings}
-                    proposals={state.proposals}
                     propose={propose}
                   />{" "}
                 </Route>
