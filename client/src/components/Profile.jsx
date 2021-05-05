@@ -85,8 +85,7 @@ export default function Profile(props) {
       (listing) => listing.user.id === 2
     )); // for now
 
-  const mergedProposals = [].concat.apply([], props.proposals);
-  const acceptedProposals = mergedProposals.filter(
+  const acceptedProposals = props.proposals.filter(
     (proposal) => proposal.is_accepted === true
   );
   const unavailableListingIds = acceptedProposals.map(

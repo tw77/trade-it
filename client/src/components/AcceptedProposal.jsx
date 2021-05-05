@@ -91,8 +91,7 @@ export default function AcceptedProposal(props) {
   const { proposalId } = useParams();
   const userId = 2; // for now
 
-  const mergedProposals = [].concat.apply([], props.proposals);
-  const currentUserProposals = mergedProposals.filter(
+  const currentUserProposals = props.proposals.filter(
     (proposal) => proposal.user_id === userId
   );
 
@@ -101,7 +100,7 @@ export default function AcceptedProposal(props) {
   );
   const userListingIds = userListings.map((listing) => listing.id);
 
-  const tradesProposedToMe = mergedProposals.filter((proposal) =>
+  const tradesProposedToMe = props.proposals.filter((proposal) =>
     userListingIds.includes(proposal.asset_id)
   );
 
@@ -110,7 +109,7 @@ export default function AcceptedProposal(props) {
   let wantedItemListing;
   let otherUserId;
 
-  // find whether the accepted proposal was proposed to the user or by the user. then retrieve details:
+  // find whether the accepted trade was proposed to the user or by the user. then retrieve details:
   if (
     tradesProposedToMe.find((proposal) => proposal.id === Number(proposalId)) 
   ) {

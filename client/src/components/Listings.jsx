@@ -42,8 +42,7 @@ export default function Listings(props) {
   const history = useHistory();
   const [filter, setFilter] = useState();
 
-  const mergedProposals = [].concat.apply([], props.proposals);
-  const acceptedProposals = mergedProposals.filter(
+  const acceptedProposals = props.proposals.filter(
     (proposal) => proposal.is_accepted === true
   );
   const unavailableListingIds = acceptedProposals.map(

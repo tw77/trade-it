@@ -73,8 +73,7 @@ export default function MyWishlist(props) {
       )
       .slice(0, 5);
 
-    const mergedProposals = [].concat.apply([], props.proposals);
-    const acceptedProposals = mergedProposals.filter(
+    const acceptedProposals = props.proposals.filter(
       (proposal) => proposal.is_accepted === true
     );
     const unavailableListingIds = acceptedProposals.map(
