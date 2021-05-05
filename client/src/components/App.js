@@ -65,7 +65,7 @@ export default function App() {
 
   function handleChange(event, newValue) {
     setValue(newValue);
-  };
+  }
 
   return (
     <>
@@ -84,25 +84,22 @@ export default function App() {
             <section>
               <Switch>
                 <Route exact path="/profile/:userId">
-                  {" "}
                   <Profile
                     users={state.users}
                     listings={state.listings}
                     reviews={state.reviews}
                     proposals={state.proposals}
-                  />{" "}
+                  />
                 </Route>
                 <Route exact path="/profile">
-                  {" "}
                   <Profile
                     users={state.users}
                     listings={state.listings}
                     reviews={state.reviews}
                     proposals={state.proposals}
-                  />{" "}
+                  />
                 </Route>
                 <Route exact path="/wishlist">
-                  {" "}
                   <MyWishlist
                     wishes={state.wishes}
                     listings={state.listings}
@@ -110,7 +107,7 @@ export default function App() {
                     removeWish={removeWish}
                     proposals={state.proposals}
                     categories={categories}
-                  />{" "}
+                  />
                 </Route>
                 <Route exact path="/suggestions">
                   <MySuggestions
@@ -120,46 +117,37 @@ export default function App() {
                   />
                 </Route>
                 <Route exact path="/proposals">
-                  {" "}
                   <MyProposals
                     proposals={state.proposals}
                     listings={state.listings}
                     updateProposalStatus={updateProposalStatus}
-                  />{" "}
+                  />
                 </Route>
                 <Route exact path="/add">
-                  {" "}
                   <AddNewItem
                     listings={state.listings}
                     publishListing={publishListing}
                     categories={categories}
-                  />{" "}
+                  />
                 </Route>
                 <Route exact path="/">
-                  {" "}
                   <Listings
                     listings={state.listings}
                     proposals={state.proposals}
-                  />{" "}
+                  />
                 </Route>
                 <Route exact path="/listings/:listingId">
-                  {" "}
-                  <Listing listings={state.listings} />{" "}
+                  <Listing listings={state.listings} />
                 </Route>
                 <Route exact path="/offer/:listingId">
-                  {" "}
-                  <ProposeTrade
-                    listings={state.listings}
-                    propose={propose}
-                  />{" "}
+                  <ProposeTrade listings={state.listings} propose={propose} />
                 </Route>
                 <Route exact path="/accepted/:proposalId">
-                  {" "}
                   <AcceptedProposal
                     proposals={state.proposals}
                     listings={state.listings}
                     updateReviews={updateReviews}
-                  />{" "}
+                  />
                 </Route>
               </Switch>
             </section>
