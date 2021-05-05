@@ -87,12 +87,9 @@ const CustomTypography = withStyles({
 export default function AcceptedProposal(props) {
   const classes = useStyles();
   const history = useHistory();
-  const [submitting, setSubmitting] = useState(false); //false
-
+  const [submitting, setSubmitting] = useState(false);
   const { proposalId } = useParams();
-
-  const userId = 2;
-  // for now
+  const userId = 2; // for now
 
   const mergedProposals = [].concat.apply([], props.proposals);
   const currentUserProposals = mergedProposals.filter(
@@ -113,8 +110,9 @@ export default function AcceptedProposal(props) {
   let wantedItemListing;
   let otherUserId;
 
+  // find whether the accepted proposal was proposed to the user or by the user. then retrieve details:
   if (
-    tradesProposedToMe.find((proposal) => proposal.id === Number(proposalId))
+    tradesProposedToMe.find((proposal) => proposal.id === Number(proposalId)) 
   ) {
     acceptedProposal = tradesProposedToMe.find(
       (proposal) => proposal.id === Number(proposalId)
@@ -139,17 +137,13 @@ export default function AcceptedProposal(props) {
     otherUserId = wantedItemListing.owner_id;
   }
 
-  // function confirmTrade(){};
-
-  // function confirmPickUp(){};
-
   const [reviewText, setReviewText] = useState("");
-  const onReviewChange = function (event) {
+  function onReviewChange(event) {
     setReviewText(event.target.value);
   };
 
   const [rating, setRating] = useState(0);
-  const onRatingChange = function (value) {
+  function onRatingChange(value) {
     setRating({ value });
   };
 

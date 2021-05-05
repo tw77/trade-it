@@ -156,12 +156,12 @@ export default function MyWishlist(props) {
   }
 
   const [wishName, setWishName] = useState("");
-  const handleChange = function (event) {
+  function handleChange(event) {
     setWishName(event.target.value);
   };
 
   const [wishCategory, setWishCategory] = useState(null);
-  const categorySelect = function (event) {
+  function categorySelect(event) {
     setWishCategory(event.target.value);
   };
 

@@ -59,9 +59,6 @@ const useStyles = makeStyles((theme) => ({
 export default function MySuggestions(props) {
   const classes = useStyles();
 
-  // "Propose a trade!" button links to {ProposeTrade}
-  // "Dismiss" removes suggestion from view (all client-side)
-
   return (
     <>
       <CssBaseline />

@@ -21,10 +21,7 @@ const BootstrapButton2 = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#2a9d8f",
     borderColor: "#2a9d8f",
-    fontFamily: [
-      "Roboto",
-      "sans-serif"
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
   },
 })(Button);
 
@@ -33,6 +30,41 @@ const CustomTypography = withStyles({
     color: "#6e5d34",
   },
 })(Typography);
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    paddingTop: "50px",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: "grey",
+  },
+  form: {
+    width: "100%",
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
+const formReducer = (state, event) => {
+  if (event.reset) {
+    return {
+      name: "",
+      description: "",
+      category: "",
+      picture: "",
+    };
+  }
+  return {
+    ...state,
+    [event.name]: event.value,
+  };
+};
 
 const categories = [
   {
@@ -84,39 +116,6 @@ const categories = [
     label: "Cameras",
   },
 ];
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    paddingTop: "50px",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: "grey",
-  },
-  form: {
-    width: "100%",
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
-const formReducer = (state, event) => {
-  if (event.reset) {
-    return {
-      name: "",
-      description: "",
-      category: "",
-      picture: "",
-    };
-  }
-  return {
-    ...state,
-    [event.name]: event.value,
-  };
-};
 
 export default function AddNewItem(props) {
   const history = useHistory();
@@ -124,14 +123,14 @@ export default function AddNewItem(props) {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
 
-  const handleChange = (event) => {
+  function handleChange(event) {
     setFormData({
       name: event.target.name,
       value: event.target.value,
     });
   };
 
-  const handleSubmit = (event) => {
+  function handleSubmit(event) {
     event.preventDefault();
     props.publishListing(formData);
     setSubmitting(true);
