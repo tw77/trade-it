@@ -65,15 +65,14 @@ export default function Profile(props) {
   userId &&
     (displayedUser = props.users.find((user) => user.id === Number(userId)));
   !userId && (displayedUser = props.users.find((user) => user.id === 2)); // for now
-  const mergedReviews = [].concat.apply([], props.reviews);
 
   let reviewsOfUser;
   userId &&
-    (reviewsOfUser = mergedReviews.filter(
+    (reviewsOfUser = props.reviews.filter(
       (review) => review.user_id === Number(userId)
     ));
   !userId &&
-    (reviewsOfUser = mergedReviews.filter((review) => review.user_id === 2)); // for now
+    (reviewsOfUser = props.reviews.filter((review) => review.user_id === 2)); // for now
 
   let listingsByUser;
   userId &&
