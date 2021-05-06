@@ -1,14 +1,11 @@
 export function findMostRepresented(userWishCategories) {
   const frequency = {};
-
   userWishCategories.forEach(function (id) {
     frequency[id] = 0;
   });
-
   const uniques = userWishCategories.filter(function (id) {
     return ++frequency[id] === 1;
   });
-
   return uniques.sort(function (a, b) {
     return frequency[b] - frequency[a];
   });
@@ -42,5 +39,50 @@ export function getPicturesOfListingsByUser(state, userProposals) {
     };
   return allOfferedListings.map(
     (offeredItem) => offeredItem.picture
+  );
+}
+
+export function getPicturesOfListingsWantedByUser(state, userProposals) {
+  const wantedItemIds = userProposals.map(
+    (proposal) => proposal.asset_id
+  );
+  let allWantedListings = [];
+    let wantedItem;
+    for (const id of wantedItemIds) {
+      wantedItem = state.listings.find((listing) => listing.id === id);
+      allWantedListings.push(wantedItem);
+    };
+  return allWantedListings.map(
+    (wantedItem) => wantedItem.picture
+  );
+}
+
+export function getPicturesOfListingsOfferedToUser(state, tradesProposedToUser) {
+  const offeredToMeIds = tradesProposedToUser.map(
+    (proposal) => proposal.listing_id
+  );
+  let allListingsOfferedToMe = [];
+    let offeredItem;
+    for (const id of offeredToMeIds) {
+      offeredItem = state.listings.find((listing) => listing.id === id);
+      allListingsOfferedToMe.push(offeredItem);
+    }
+  return allListingsOfferedToMe.map(
+    (offeredItem) => offeredItem.picture
+  );
+}
+
+export function getPicturesOfListingsWantedFromUser(state, tradesProposedToUser) {
+  const listingsTheyWantIds = tradesProposedToUser.map(
+    (proposal) => proposal.asset_id
+  );
+  let allListingsTheyWant = [];
+    let wantedItem;
+    for (const id of listingsTheyWantIds) {
+      wantedItem = state.listings.find((listing) => listing.id === id);
+      allListingsTheyWant.push(wantedItem);
+    };
+  return allListingsTheyWant.map(
+    (wantedItem) => wantedItem.picture
   );
 }

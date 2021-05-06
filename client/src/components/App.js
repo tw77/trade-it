@@ -25,7 +25,15 @@ import DropDownMenu from "./DropDownMenu";
 import ProposeTrade from "./ProposeTrade";
 import AcceptedProposal from "./AcceptedProposal";
 import { categories } from "../mockData/categories";
-import { findMostRepresented, getUserProposals, getTradesProposedToUser, getPicturesOfListingsByUser } from "../helpers/selectors";
+import {
+  findMostRepresented,
+  getUserProposals,
+  getTradesProposedToUser,
+  getPicturesOfListingsByUser,
+  getPicturesOfListingsWantedByUser,
+  getPicturesOfListingsOfferedToUser,
+  getPicturesOfListingsWantedFromUser
+} from "../helpers/selectors";
 import "./App.css";
 
 const useStyles = makeStyles({
@@ -125,7 +133,22 @@ export default function App() {
                     updateProposalStatus={updateProposalStatus}
                     userProposals={getUserProposals(state)}
                     tradesProposedToUser={getTradesProposedToUser(state)}
-                    picturesOfListingsByUser={getPicturesOfListingsByUser(state, getUserProposals(state))}
+                    picturesOfListingsByUser={getPicturesOfListingsByUser(
+                      state,
+                      getUserProposals(state)
+                    )}
+                    picturesOfListingsWantedByUser={getPicturesOfListingsWantedByUser(
+                      state,
+                      getUserProposals(state)
+                    )}
+                    picturesOfListingsOfferedToUser={getPicturesOfListingsOfferedToUser(
+                      state,
+                      getTradesProposedToUser(state)
+                    )}
+                    picturesOfListingsWantedFromUser={getPicturesOfListingsWantedFromUser(
+                      state,
+                      getTradesProposedToUser(state)
+                    )}
                   />
                 </Route>
                 <Route exact path="/add">

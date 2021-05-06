@@ -94,74 +94,6 @@ export default function MyProposals(props) {
   const classes = useStyles();
   const history = useHistory();
 
-  const wantedItemIds = props.userProposals.map(
-    (proposal) => proposal.asset_id
-  );
-
-  function findWantedListings(wantedItemIds) {
-    let allWantedListings = [];
-    let wantedItem;
-    for (const id of wantedItemIds) {
-      wantedItem = props.listings.find((listing) => listing.id === id);
-      allWantedListings.push(wantedItem);
-    }
-    return allWantedListings;
-  }
-
-  const wantedItemListings = findWantedListings(wantedItemIds);
-  const wantedItemPictures = wantedItemListings.map(
-    (wantedItem) => wantedItem.picture
-  );
-
-
-
-
-
-  const offeredToMeIds = props.tradesProposedToUser.map(
-    (proposal) => proposal.listing_id
-  );
-
-  function findListingsOfferedToMe(offeredToMeIds) {
-    let allListingsOfferedToMe = [];
-    let offeredItem;
-    for (const id of offeredToMeIds) {
-      offeredItem = props.listings.find((listing) => listing.id === id);
-      allListingsOfferedToMe.push(offeredItem);
-    }
-    return allListingsOfferedToMe;
-  }
-
-  const offeredToMeListings = findListingsOfferedToMe(offeredToMeIds);
-  const offeredToMePictures = offeredToMeListings.map(
-    (offeredItem) => offeredItem.picture
-  );
-
-
-
-
-  const listingsTheyWantIds = props.tradesProposedToUser.map(
-    (proposal) => proposal.asset_id
-  );
-
-  function listingsTheyWant(listingsTheyWantIds) {
-    let allListingsTheyWant = [];
-    let wantedItem;
-    for (const id of listingsTheyWantIds) {
-      wantedItem = props.listings.find((listing) => listing.id === id);
-      allListingsTheyWant.push(wantedItem);
-    }
-    return allListingsTheyWant;
-  }
-
-  const wantedFromMyListings = listingsTheyWant(listingsTheyWantIds);
-  const wantedFromMyPictures = wantedFromMyListings.map(
-    (wantedItem) => wantedItem.picture
-  );
-
-
-
-
-
   function accept(card) {
     const updatedProposal = {
       ...props.tradesProposedToUser[card],
@@ -217,7 +149,7 @@ export default function MyProposals(props) {
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image={wantedFromMyPictures[card]}
+                      image={props.picturesOfListingsWantedFromUser[card]}
                       title="Image title"
                     />
                   </Card>
@@ -229,7 +161,7 @@ export default function MyProposals(props) {
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image={offeredToMePictures[card]}
+                      image={props.picturesOfListingsOfferedToUser[card]}
                       title="Image title"
                     />
                   </Card>
@@ -312,7 +244,7 @@ export default function MyProposals(props) {
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image={wantedItemPictures[card]}
+                      image={props.picturesOfListingsWantedByUser[card]}
                       title="Image title"
                     />
                   </Card>
