@@ -52,29 +52,27 @@ export default function MyWishlist(props) {
   const history = useHistory();
   
   const userId = 2; // for now
-  const mergedWishesNotNull = [].concat
-    .apply([], props.wishes)
-    .filter((wish) => wish);
+  const wishesNotNull = props.wishes.filter((wish) => wish);
 
   let userWishes;
   let userWishCategories;
   let relevantListings;
   let relevantAndAvailableListings;
 
-  if (mergedWishesNotNull.filter((wish) => wish.user_id === userId)) {
-    // if the user has wishlist entries
-    userWishes = mergedWishesNotNull.filter((wish) => wish.user_id === userId);
+  // if the user has wishlist entries, retrieve details and relevant listings:
+  if (wishesNotNull.filter((wish) => wish.user_id === userId)) {
+    userWishes = wishesNotNull.filter((wish) => wish.user_id === userId);
     userWishCategories = userWishes.map((wish) => wish.category_id);
     relevantListings = props.listings
       .filter(
         (listing) =>
           listing.owner_id !== userId &&
-          listing.category_id === findMostRepresented(userWishCategories)[0]
+          listing.category_id === props.findMostRepresented(userWishCategories)[0]
       )
       .slice(0, 5);
 
-    const mergedProposals = [].concat.apply([], props.proposals);
-    const acceptedProposals = mergedProposals.filter(
+    // filter out listings that have already been accepted in trades:
+    const acceptedProposals = props.proposals.filter(
       (proposal) => proposal.is_accepted === true
     );
     const unavailableListingIds = acceptedProposals.map(
@@ -87,22 +85,6 @@ export default function MyWishlist(props) {
     relevantAndAvailableListings = relevantListings.filter(
       (listing) => !unavailableListingIds.includes(listing.id)
     );
-  }
-
-  function findMostRepresented(userWishCategories) {
-    const frequency = {};
-
-    userWishCategories.forEach(function (id) {
-      frequency[id] = 0;
-    });
-
-    const uniques = userWishCategories.filter(function (id) {
-      return ++frequency[id] === 1;
-    });
-
-    return uniques.sort(function (a, b) {
-      return frequency[b] - frequency[a];
-    });
   }
 
   const [wishName, setWishName] = useState("");

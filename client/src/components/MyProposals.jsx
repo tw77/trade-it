@@ -94,101 +94,9 @@ export default function MyProposals(props) {
   const classes = useStyles();
   const history = useHistory();
 
-  const mergedProposals = [].concat.apply([], props.proposals);
-  const userId = 2; // for now
-
-  const currentUserProposals = mergedProposals.filter(
-    (proposal) => proposal.user_id === userId
-  );
-
-  const offeredItemIds = currentUserProposals.map(
-    (proposal) => proposal.listing_id
-  );
-
-  function findOfferedListings(offeredItemIds) {
-    let allOfferedListings = [];
-    let offeredItem;
-    for (const id of offeredItemIds) {
-      offeredItem = props.listings.find((listing) => listing.id === id);
-      allOfferedListings.push(offeredItem);
-    }
-    return allOfferedListings;
-  }
-
-  const offeredItemListings = findOfferedListings(offeredItemIds);
-  const offeredItemPictures = offeredItemListings.map(
-    (offeredItem) => offeredItem.picture
-  );
-
-  const wantedItemIds = currentUserProposals.map(
-    (proposal) => proposal.asset_id
-  );
-
-  function findWantedListings(wantedItemIds) {
-    let allWantedListings = [];
-    let wantedItem;
-    for (const id of wantedItemIds) {
-      wantedItem = props.listings.find((listing) => listing.id === id);
-      allWantedListings.push(wantedItem);
-    }
-    return allWantedListings;
-  }
-
-  const wantedItemListings = findWantedListings(wantedItemIds);
-  const wantedItemPictures = wantedItemListings.map(
-    (wantedItem) => wantedItem.picture
-  );
-
-  const userListings = props.listings.filter(
-    (listing) => listing.user.id === userId
-  );
-  const userListingIds = userListings.map((listing) => listing.id);
-
-  const tradesProposedToMe = mergedProposals.filter((proposal) =>
-    userListingIds.includes(proposal.asset_id)
-  );
-
-  const offeredToMeIds = tradesProposedToMe.map(
-    (proposal) => proposal.listing_id
-  );
-
-  function findListingsOfferedToMe(offeredToMeIds) {
-    let allListingsOfferedToMe = [];
-    let offeredItem;
-    for (const id of offeredToMeIds) {
-      offeredItem = props.listings.find((listing) => listing.id === id);
-      allListingsOfferedToMe.push(offeredItem);
-    }
-    return allListingsOfferedToMe;
-  }
-
-  const offeredToMeListings = findListingsOfferedToMe(offeredToMeIds);
-  const offeredToMePictures = offeredToMeListings.map(
-    (offeredItem) => offeredItem.picture
-  );
-
-  const listingsTheyWantIds = tradesProposedToMe.map(
-    (proposal) => proposal.asset_id
-  );
-
-  function listingsTheyWant(listingsTheyWantIds) {
-    let allListingsTheyWant = [];
-    let wantedItem;
-    for (const id of listingsTheyWantIds) {
-      wantedItem = props.listings.find((listing) => listing.id === id);
-      allListingsTheyWant.push(wantedItem);
-    }
-    return allListingsTheyWant;
-  }
-
-  const wantedFromMyListings = listingsTheyWant(listingsTheyWantIds);
-  const wantedFromMyPictures = wantedFromMyListings.map(
-    (wantedItem) => wantedItem.picture
-  );
-
   function accept(card) {
     const updatedProposal = {
-      ...tradesProposedToMe[card],
+      ...props.tradesProposedToUser[card],
       is_accepted: true,
     };
     props.updateProposalStatus(updatedProposal);
@@ -197,18 +105,18 @@ export default function MyProposals(props) {
   function decline(id) {}
 
   function viewProposalTheyAccepted(card) {
-    history.push(`accepted/${currentUserProposals[card].id}`);
+    history.push(`accepted/${props.userProposals[card].id}`);
   }
 
   function viewProposalIAccepted(card) {
-    history.push(`accepted/${tradesProposedToMe[card].id}`);
+    history.push(`accepted/${props.tradesProposedToUser[card].id}`);
   }
 
-  const tradesIProposedCards = Array.from(
-    Array(currentUserProposals.length).keys()
+  const userProposalCards = Array.from(
+    Array(props.userProposals.length).keys()
   ); // an index counting the user's proposals from 0
-  const tradesProposedToMeCards = Array.from(
-    Array(tradesProposedToMe.length).keys()
+  const tradesProposedToUserCards = Array.from(
+    Array(props.tradesProposedToUser.length).keys()
   );
 
   return (
@@ -235,13 +143,13 @@ export default function MyProposals(props) {
             alignItems="center"
             className={classes.root}
           >
-            {tradesProposedToMeCards.map((card) => (
+            {tradesProposedToUserCards.map((card) => (
               <>
                 <Grid item key={card} xs={4}>
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image={wantedFromMyPictures[card]}
+                      image={props.picturesOfListingsWantedFromUser[card]}
                       title="Image title"
                     />
                   </Card>
@@ -253,18 +161,18 @@ export default function MyProposals(props) {
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image={offeredToMePictures[card]}
+                      image={props.picturesOfListingsOfferedToUser[card]}
                       title="Image title"
                     />
                   </Card>
                 </Grid>
                 <Grid item key={card} xs={3}>
                   <Typography gutterBottom variant="h7">
-                    {tradesProposedToMe[card].is_accepted
+                    {props.tradesProposedToUser[card].is_accepted
                       ? `Trade accepted!`
                       : `2 days ago`}
                   </Typography>
-                  {tradesProposedToMe[card].is_accepted ? (
+                  {props.tradesProposedToUser[card].is_accepted ? (
                     <BootstrapButton3
                       variant="contained"
                       color="primary"
@@ -318,13 +226,13 @@ export default function MyProposals(props) {
             alignItems="center"
             className={classes.root}
           >
-            {tradesIProposedCards.map((card) => (
+            {userProposalCards.map((card) => (
               <>
                 <Grid item key={card} xs={4}>
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image={offeredItemPictures[card]}
+                      image={props.picturesOfListingsByUser[card]}
                       title="Image title"
                     />
                   </Card>
@@ -336,18 +244,18 @@ export default function MyProposals(props) {
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image={wantedItemPictures[card]}
+                      image={props.picturesOfListingsWantedByUser[card]}
                       title="Image title"
                     />
                   </Card>
                 </Grid>
                 <Grid item key={card} xs={3}>
                   <Typography gutterBottom variant="h7">
-                    {currentUserProposals[card].is_accepted
+                    {props.userProposals[card].is_accepted
                       ? `Accepted`
                       : `Pending`}
                   </Typography>
-                  {currentUserProposals[card].is_accepted ? (
+                  {props.userProposals[card].is_accepted ? (
                     <BootstrapButton3
                       variant="contained"
                       color="primary"
