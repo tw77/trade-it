@@ -112,7 +112,7 @@ export default function MyProposals(props) {
     history.push(`accepted/${props.tradesProposedToUser[card].id}`);
   }
 
-  const tradesIProposedCards = Array.from(
+  const userProposalCards = Array.from(
     Array(props.userProposals.length).keys()
   ); // an index counting the user's proposals from 0
   const tradesProposedToUserCards = Array.from(
@@ -226,7 +226,7 @@ export default function MyProposals(props) {
             alignItems="center"
             className={classes.root}
           >
-            {tradesIProposedCards.map((card) => (
+            {userProposalCards.map((card) => (
               <>
                 <Grid item key={card} xs={4}>
                   <Card className={classes.card}>

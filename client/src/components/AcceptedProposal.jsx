@@ -89,7 +89,6 @@ export default function AcceptedProposal(props) {
   const history = useHistory();
   const [submitting, setSubmitting] = useState(false);
   const { proposalId } = useParams();
-  const userId = 2; // for now
 
   let acceptedProposal;
   let offeredItemListing;
@@ -98,7 +97,9 @@ export default function AcceptedProposal(props) {
 
   // find whether the accepted trade was proposed to the user or by the user, then retrieve details:
   if (
-    props.tradesProposedToUser.find((proposal) => proposal.id === Number(proposalId)) 
+    props.tradesProposedToUser.find(
+      (proposal) => proposal.id === Number(proposalId)
+    )
   ) {
     acceptedProposal = props.tradesProposedToUser.find(
       (proposal) => proposal.id === Number(proposalId)
@@ -126,12 +127,12 @@ export default function AcceptedProposal(props) {
   const [reviewText, setReviewText] = useState("");
   function onReviewChange(event) {
     setReviewText(event.target.value);
-  };
+  }
 
   const [rating, setRating] = useState(0);
   function onRatingChange(value) {
     setRating({ value });
-  };
+  }
 
   function publishReview(event) {
     event.preventDefault();
