@@ -50,10 +50,8 @@ const BootstrapButton2 = withStyles({
 export default function MyWishlist(props) {
   const classes = useStyles();
   const history = useHistory();
-  
   const userId = 2; // for now
   const wishesNotNull = props.wishes.filter((wish) => wish);
-
   let userWishes;
   let userWishCategories;
   let relevantListings;
@@ -93,6 +91,7 @@ export default function MyWishlist(props) {
   };
 
   const [wishCategory, setWishCategory] = useState(null);
+  
   function categorySelect(event) {
     setWishCategory(event.target.value);
   };

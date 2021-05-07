@@ -89,7 +89,6 @@ export default function AcceptedProposal(props) {
   const history = useHistory();
   const [submitting, setSubmitting] = useState(false);
   const { proposalId } = useParams();
-
   let acceptedProposal;
   let offeredItemListing;
   let wantedItemListing;

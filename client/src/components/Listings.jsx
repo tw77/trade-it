@@ -41,7 +41,6 @@ export default function Listings(props) {
   const classes = useStyles();
   const history = useHistory();
   const [filter, setFilter] = useState();
-
   const acceptedProposals = props.proposals.filter(
     (proposal) => proposal.is_accepted === true
   );
