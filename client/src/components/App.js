@@ -24,6 +24,16 @@ import Listing from "./Listing";
 import DropDownMenu from "./DropDownMenu";
 import ProposeTrade from "./ProposeTrade";
 import AcceptedProposal from "./AcceptedProposal";
+import { categories } from "../mockData/categories";
+import {
+  findMostRepresented,
+  getUserProposals,
+  getTradesProposedToUser,
+  getPicturesOfListingsByUser,
+  getPicturesOfListingsWantedByUser,
+  getPicturesOfListingsOfferedToUser,
+  getPicturesOfListingsWantedFromUser
+} from "../helpers/selectors";
 import "./App.css";
 
 const useStyles = makeStyles({
@@ -62,9 +72,9 @@ export default function App() {
 
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
+  function handleChange(event, newValue) {
     setValue(newValue);
-  };
+  }
 
   return (
     <>
@@ -83,32 +93,31 @@ export default function App() {
             <section>
               <Switch>
                 <Route exact path="/profile/:userId">
-                  {" "}
                   <Profile
                     users={state.users}
                     listings={state.listings}
                     reviews={state.reviews}
                     proposals={state.proposals}
-                  />{" "}
+                  />
                 </Route>
                 <Route exact path="/profile">
-                  {" "}
                   <Profile
                     users={state.users}
                     listings={state.listings}
                     reviews={state.reviews}
                     proposals={state.proposals}
-                  />{" "}
+                  />
                 </Route>
                 <Route exact path="/wishlist">
-                  {" "}
                   <MyWishlist
                     wishes={state.wishes}
                     listings={state.listings}
                     updateWishes={updateWishes}
                     removeWish={removeWish}
                     proposals={state.proposals}
-                  />{" "}
+                    categories={categories}
+                    findMostRepresented={findMostRepresented}
+                  />
                 </Route>
                 <Route exact path="/suggestions">
                   <MySuggestions
@@ -118,46 +127,57 @@ export default function App() {
                   />
                 </Route>
                 <Route exact path="/proposals">
-                  {" "}
                   <MyProposals
                     proposals={state.proposals}
                     listings={state.listings}
                     updateProposalStatus={updateProposalStatus}
-                  />{" "}
+                    userProposals={getUserProposals(state)}
+                    tradesProposedToUser={getTradesProposedToUser(state)}
+                    picturesOfListingsByUser={getPicturesOfListingsByUser(
+                      state,
+                      getUserProposals(state)
+                    )}
+                    picturesOfListingsWantedByUser={getPicturesOfListingsWantedByUser(
+                      state,
+                      getUserProposals(state)
+                    )}
+                    picturesOfListingsOfferedToUser={getPicturesOfListingsOfferedToUser(
+                      state,
+                      getTradesProposedToUser(state)
+                    )}
+                    picturesOfListingsWantedFromUser={getPicturesOfListingsWantedFromUser(
+                      state,
+                      getTradesProposedToUser(state)
+                    )}
+                  />
                 </Route>
                 <Route exact path="/add">
-                  {" "}
                   <AddNewItem
                     listings={state.listings}
                     publishListing={publishListing}
-                  />{" "}
+                    categories={categories}
+                  />
                 </Route>
                 <Route exact path="/">
-                  {" "}
                   <Listings
                     listings={state.listings}
                     proposals={state.proposals}
-                  />{" "}
+                  />
                 </Route>
                 <Route exact path="/listings/:listingId">
-                  {" "}
-                  <Listing listings={state.listings} />{" "}
+                  <Listing listings={state.listings} />
                 </Route>
                 <Route exact path="/offer/:listingId">
-                  {" "}
-                  <ProposeTrade
-                    listings={state.listings}
-                    proposals={state.proposals}
-                    propose={propose}
-                  />{" "}
+                  <ProposeTrade listings={state.listings} propose={propose} />
                 </Route>
                 <Route exact path="/accepted/:proposalId">
-                  {" "}
                   <AcceptedProposal
                     proposals={state.proposals}
                     listings={state.listings}
                     updateReviews={updateReviews}
-                  />{" "}
+                    userProposals={getUserProposals(state)}
+                    tradesProposedToUser={getTradesProposedToUser(state)}
+                  />
                 </Route>
               </Switch>
             </section>

@@ -43,91 +43,34 @@ const BootstrapButton2 = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#2a9d8f",
     borderColor: "#2a9d8f",
-    fontFamily: [
-      "Roboto",
-      "sans-serif"
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
   },
 })(Button);
 
 export default function MyWishlist(props) {
   const classes = useStyles();
   const history = useHistory();
-  const categories = [
-    {
-      value: 1,
-      label: "Electronics",
-    },
-    {
-      value: 2,
-      label: "Clothing",
-    },
-    {
-      value: 3,
-      label: "Accessories",
-    },
-    {
-      value: 4,
-      label: "Furniture",
-    },
-    {
-      value: 5,
-      label: "Appliances",
-    },
-    {
-      value: 6,
-      label: "Sports",
-    },
-    {
-      value: 7,
-      label: "Bicycles",
-    },
-    {
-      value: 8,
-      label: "Books",
-    },
-    {
-      value: 9,
-      label: "Plants",
-    },
-    {
-      value: 10,
-      label: "Instruments",
-    },
-    {
-      value: 11,
-      label: "Services",
-    },
-    {
-      value: 12,
-      label: "Cameras",
-    },
-  ];
-
   const userId = 2; // for now
-  const mergedWishesNotNull = [].concat
-    .apply([], props.wishes)
-    .filter((wish) => wish);
-
+  const wishesNotNull = props.wishes.filter((wish) => wish);
   let userWishes;
   let userWishCategories;
   let relevantListings;
   let relevantAndAvailableListings;
 
-  if (mergedWishesNotNull.filter((wish) => wish.user_id === userId)) {
-    // if the user has wishlist entries
-    userWishes = mergedWishesNotNull.filter((wish) => wish.user_id === userId);
+  // if the user has wishlist entries, retrieve details and relevant listings:
+  if (wishesNotNull.filter((wish) => wish.user_id === userId)) {
+    userWishes = wishesNotNull.filter((wish) => wish.user_id === userId);
     userWishCategories = userWishes.map((wish) => wish.category_id);
     relevantListings = props.listings
       .filter(
         (listing) =>
           listing.owner_id !== userId &&
-          listing.category_id === findMostRepresented(userWishCategories)[0]
+          listing.category_id === props.findMostRepresented(userWishCategories)[0]
       )
       .slice(0, 5);
 
-    const mergedProposals = [].concat.apply([], props.proposals);
-    const acceptedProposals = mergedProposals.filter(
+    // filter out listings that have already been accepted in trades:
+    const acceptedProposals = props.proposals.filter(
       (proposal) => proposal.is_accepted === true
     );
     const unavailableListingIds = acceptedProposals.map(
@@ -142,29 +85,14 @@ export default function MyWishlist(props) {
     );
   }
 
-  function findMostRepresented(userWishCategories) {
-    const frequency = {};
-
-    userWishCategories.forEach(function (id) {
-      frequency[id] = 0;
-    });
-
-    const uniques = userWishCategories.filter(function (id) {
-      return ++frequency[id] === 1;
-    });
-
-    return uniques.sort(function (a, b) {
-      return frequency[b] - frequency[a];
-    });
-  }
-
   const [wishName, setWishName] = useState("");
-  const handleChange = function (event) {
+  function handleChange(event) {
     setWishName(event.target.value);
   };
 
   const [wishCategory, setWishCategory] = useState(null);
-  const categorySelect = function (event) {
+  
+  function categorySelect(event) {
     setWishCategory(event.target.value);
   };
 
@@ -210,7 +138,7 @@ export default function MyWishlist(props) {
               select
               onChange={categorySelect}
             >
-              {categories.map((option) => (
+              {props.categories.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>

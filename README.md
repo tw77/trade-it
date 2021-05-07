@@ -1,7 +1,7 @@
 # Trade it
 
 A mobile app for trading items you no longer need for others you want. Don't buy, just trade it and help create a more sustainable future.<br />
-I came out with the idea for this app idea inspired by the story of Kyle Macdonald. Kyle had a red paper clip, he started a chain of trades with it, and after 14 trades he managed to get a house.<br/><br/>
+I came out with the idea for this app idea inspired by the story of Kyle Macdonald, a Canadian blogger who famously bartered his way from "one red paperclip" to a house in a sequence of 14 trades.<br/><br/>
 Back-end: Rails, PostgreSQL. <br/>
 Front-end: React, CSS, Material UI, Ant Design.<br/>
 
@@ -15,13 +15,13 @@ Group project with Thomas Weideman [@tw77](https://github.com/tw77). Final proje
 
 ## How it works
 
-  #### Browse and search for items
+  #### Browse and search for listings
   <img src="docs/01_Browse_and_search_for_items.gif" width="300"/>
 
-  #### Go to a particular listing page
+  #### View a particular listing
   <img src="docs/02_Go_particular_listing.gif" width="300"/>
 
-  #### Go to a user profile page
+  #### View a user's profile, listings and reviews
   <img src="docs/03_Go_user_profile.gif" width="300"/><br /><br />
 
   #### Propose a trade
@@ -30,16 +30,15 @@ Group project with Thomas Weideman [@tw77](https://github.com/tw77). Final proje
   #### Manage proposals & leave a review
   <img src="docs/05_Proposals_tab.gif" width="300"/><br /><br />
 
-  #### Wishlist page
+  #### Wishlist
   <img src="docs/06_Wishlist_tab.gif" width="300"/><br /><br />
 
   #### Add a new listing
   <img src="docs/07_New_listing.gif" width="300"/><br /><br />
 
-  #### Suggestions page
+  #### Suggestions
   <img src="docs/08_Suggestions.png" width="300"/><br /><br />
-
-
+  
 ## Setup
 1. Fork this repository, then clone your fork of this repository.
 2. In one terminal, run `bundle` to install the dependencies. Run `bin/rake db:setup` to create the databases (called rails_project_development). Run `bin/rails s` to run the server.

@@ -41,9 +41,7 @@ export default function Listings(props) {
   const classes = useStyles();
   const history = useHistory();
   const [filter, setFilter] = useState();
-
-  const mergedProposals = [].concat.apply([], props.proposals);
-  const acceptedProposals = mergedProposals.filter(
+  const acceptedProposals = props.proposals.filter(
     (proposal) => proposal.is_accepted === true
   );
   const unavailableListingIds = acceptedProposals.map(
@@ -57,7 +55,7 @@ export default function Listings(props) {
     (listing) => !unavailableListingIds.includes(listing.id)
   );
 
-  const handleSearchChange = (e) => {
+  function handleSearchChange(e) {
     setFilter(e.target.value.toLowerCase());
   };
 

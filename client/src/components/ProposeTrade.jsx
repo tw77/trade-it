@@ -63,13 +63,9 @@ export default function ProposeTrade(props) {
   const history = useHistory();
 
   const [message, setMessage] = useState("");
-  const onMessageChange = function (event) {
+  function onMessageChange(event) {
     setMessage(event.target.value);
   };
-
-  console.log("props.proposals", props.proposals);
-
-  // const mergedProposals = [].concat.apply([], props.proposals);
 
   const currentUserListings = props.listings.filter(
     (listing) => listing.user.id === 2

@@ -21,10 +21,7 @@ const BootstrapButton2 = withStyles({
     lineHeight: 1.5,
     backgroundColor: "#2a9d8f",
     borderColor: "#2a9d8f",
-    fontFamily: [
-      "Roboto",
-      "sans-serif"
-    ].join(","),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
   },
 })(Button);
 
@@ -34,56 +31,6 @@ const CustomTypography = withStyles({
   },
 })(Typography);
 
-const categories = [
-  {
-    value: 1,
-    label: "Electronics",
-  },
-  {
-    value: 2,
-    label: "Clothing",
-  },
-  {
-    value: 3,
-    label: "Accessories",
-  },
-  {
-    value: 4,
-    label: "Furniture",
-  },
-  {
-    value: 5,
-    label: "Appliances",
-  },
-  {
-    value: 6,
-    label: "Sports",
-  },
-  {
-    value: 7,
-    label: "Bicycles",
-  },
-  {
-    value: 8,
-    label: "Books",
-  },
-  {
-    value: 9,
-    label: "Plants",
-  },
-  {
-    value: 10,
-    label: "Instruments",
-  },
-  {
-    value: 11,
-    label: "Services",
-  },
-  {
-    value: 12,
-    label: "Cameras",
-  },
-];
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -103,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+
 const formReducer = (state, event) => {
   if (event.reset) {
     return {
@@ -124,16 +72,14 @@ export default function AddNewItem(props) {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
 
-  const handleChange = (event) => {
+  function handleChange(event) {
     setFormData({
       name: event.target.name,
       value: event.target.value,
     });
   };
 
-  console.log("props.listings in AddNewItem", props.listings);
-
-  const handleSubmit = (event) => {
+  function handleSubmit(event) {
     event.preventDefault();
     props.publishListing(formData);
     setSubmitting(true);
@@ -206,7 +152,7 @@ export default function AddNewItem(props) {
               select
               onChange={handleChange}
             >
-              {categories.map((option) => (
+              {props.categories.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>
