@@ -48,10 +48,7 @@ export function getPicturesOfListingsWantedByUser(state, userProposals) {
   return allWantedListings.map((wantedItem) => wantedItem.picture);
 }
 
-export function getPicturesOfListingsOfferedToUser(
-  state,
-  tradesProposedToUser
-) {
+export function getPicturesOfListingsOfferedToUser(state, tradesProposedToUser) {
   const offeredToMeIds = tradesProposedToUser.map(
     (proposal) => proposal.listing_id
   );
@@ -64,10 +61,7 @@ export function getPicturesOfListingsOfferedToUser(
   return allListingsOfferedToMe.map((offeredItem) => offeredItem.picture);
 }
 
-export function getPicturesOfListingsWantedFromUser(
-  state,
-  tradesProposedToUser
-) {
+export function getPicturesOfListingsWantedFromUser(state, tradesProposedToUser) {
   const listingsTheyWantIds = tradesProposedToUser.map(
     (proposal) => proposal.asset_id
   );
