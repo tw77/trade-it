@@ -73,3 +73,4 @@ export function getPicturesOfListingsWantedFromUser(state, tradesProposedToUser)
   }
   return allListingsTheyWant.map((wantedItem) => wantedItem.picture);
 }
+
